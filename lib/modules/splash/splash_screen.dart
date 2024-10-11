@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/styles/color.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: sizeScreen.height,
         width: sizeScreen.width,
-        color: const Color.fromARGB(255, 83, 83, 82),
+        color: ColorApps.primary2,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

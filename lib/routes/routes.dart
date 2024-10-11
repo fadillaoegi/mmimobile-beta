@@ -1,3 +1,4 @@
+import 'package:mmimobile/modules/auth/sign_in/sign_in_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
 class RouteScreen {
@@ -12,10 +13,9 @@ class RouteScreen {
   static const history = "$root/history";
   static const underDevelop = "$root/underDevelop";
 
-  // NOTE:
   static final listRouteScreen = {
     splash: (context) => const SplashScreen(),
-    // signIn: (context) => const SigInScreen(),
+    signIn: (context) => const SignInScreen(),
     // signUp: (context) => const SignUpScreen(),
     // browse: (context) => const BrowseScreen(),
     // detail: (context) => const DetailScreen(),
