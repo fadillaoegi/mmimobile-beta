@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,6 +13,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+ startSplash() async {
+  return Timer(
+    const Duration(seconds: 3),
+    () {
+      Navigator.pushReplacementNamed(
+        context,
+        RouteScreen.signIn,
+      );
+    },
+  );
+}
+
+@override
+void initState() {
+  super.initState();
+  startSplash();
+}
+
+
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.of(context).size;
