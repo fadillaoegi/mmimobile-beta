@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
         scaffoldBackgroundColor: ColorApps.white,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteScreen.splash,
+      initialRoute: RouteScreen.signIn,
       routes: RouteScreen.listRouteScreen,
     );
   }

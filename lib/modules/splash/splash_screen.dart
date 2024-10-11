@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/styles/color.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,14 +17,14 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: sizeScreen.height,
         width: sizeScreen.width,
-        color: ColorApps.primary2,
+        color: ColorApps.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/logo.png",
-              width: 220.0,
+              AssetConfig.logo3,
+              width: 280.0,
               fit: BoxFit.cover,
             ),
           ],

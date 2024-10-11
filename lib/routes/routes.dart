@@ -1,4 +1,4 @@
-import 'package:mmimobile/modules/auth/sign_in/sign_in_screen.dart';
+import 'package:mmimobile/modules/auth/sign_in/screens/sign_in_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
 class RouteScreen {
