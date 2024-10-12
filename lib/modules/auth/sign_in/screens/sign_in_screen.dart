@@ -29,26 +29,26 @@ class _SignInScreenState extends State<SignInScreen> {
         onTap: () {
           focusNode.requestFocus();
         },
-        child: SingleChildScrollView(
-          child: Container(
-            height: sizeScreen.height,
-            width: sizeScreen.width,
-            color: ColorApps.primary2,
-            child: Stack(
-              children: [
-                // NOTE: BG
-                Container(
-                  height: sizeScreen.height / 1.5,
-                  width: sizeScreen.width,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(AssetConfig.bgLogin2),
-                        fit: BoxFit.cover),
-                  ),
+        child: Container(
+          height: sizeScreen.height,
+          width: sizeScreen.width,
+          color: ColorApps.primary2,
+          child: Stack(
+            children: [
+              // NOTE: BG
+              Container(
+                height: sizeScreen.height / 1.5,
+                width: sizeScreen.width,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(AssetConfig.bgLogin2),
+                      fit: BoxFit.cover),
                 ),
+              ),
 
-                // NOTE: CONTENT
-                Column(
+              // NOTE: CONTENT
+              SingleChildScrollView(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
@@ -68,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
 
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
                       child: Text(
                         "Hello there, login to continue",
                         style: white500.copyWith(fontSize: 18.0),
@@ -78,7 +78,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     // NOTE: CARD FORM
                     Container(
                       padding: const EdgeInsets.all(30.0),
-                      margin: const EdgeInsets.symmetric(horizontal: 24.0),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 24.0),
                       decoration: BoxDecoration(
                         color: ColorApps.white,
                         borderRadius: BorderRadius.circular(14.0),
@@ -211,9 +212,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                   ],
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ),
       ),
