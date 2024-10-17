@@ -1,3 +1,4 @@
+import 'package:mmimobile/modules/auth/forgot_password/screens/email_forgot_screen.dart';
 import 'package:mmimobile/modules/auth/sign_in/screens/sign_in_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
@@ -6,6 +7,7 @@ class RouteScreen {
   static const splash = "$root/splash";
   static const signIn = "$root/signIn";
   static const signUp = "$root/signUp";
+  static const forgot = "$root/forgot";
   static const browse = "$root/browse";
   static const detail = "$root/detail";
   static const co = "$root/co";
@@ -16,6 +18,7 @@ class RouteScreen {
   static final listRouteScreen = {
     splash: (context) => const SplashScreen(),
     signIn: (context) => const SignInScreen(),
+    forgot: (context) => const EmailForgotScreen(),
     // signUp: (context) => const SignUpScreen(),
     // browse: (context) => const BrowseScreen(),
     // detail: (context) => const DetailScreen(),

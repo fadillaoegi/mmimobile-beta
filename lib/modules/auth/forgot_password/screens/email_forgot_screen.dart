@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/btn_apps_widget.dart';
 import 'package:mmimobile/widget/form_apps_two_widget.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class EmailForgotScreen extends StatefulWidget {
+  const EmailForgotScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<EmailForgotScreen> createState() => _EmailForgotScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _EmailForgotScreenState extends State<EmailForgotScreen> {
   final _emailController = TextEditingController();
-  final _passController = TextEditingController();
-  // final _telpController = TextEditingController();
-  // final GlobalKey<FormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   FocusNode focusNode = FocusNode();
-  bool _isObsecure = true;
-
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
+      // appBar: AppBar(),
       body: GestureDetector(
         onTap: () {
           focusNode.requestFocus();
@@ -63,16 +59,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       height: sizeScreen.height / 6,
                     ),
                     Text(
-                      "Hai, BeautyPreanure!!",
-                      style: white700.copyWith(fontSize: 30.0),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text(
-                        "Hello there, login to continue",
-                        style: white500.copyWith(fontSize: 18.0),
-                      ),
+                      "Lupa Password",
+                      style: white600.copyWith(fontSize: 30.0),
                     ),
 
                     // NOTE: CARD FORM
@@ -96,6 +84,13 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "Silahkan masukan alamat email Anda, untuk mendapatkan kode verifikasi OTP ",
+                            style: black400.copyWith(fontSize: 14.0),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
                           FormAppsTwo(
                             controller: _emailController,
                             labelText: "Email",
@@ -103,41 +98,14 @@ class _SignInScreenState extends State<SignInScreen> {
                           const SizedBox(
                             height: 30.0,
                           ),
-                          FormAppsTwo(
-                            controller: _passController,
-                            labelText: "Password",
-                            obscure: _isObsecure,
-                            suffixIcon: true,
-                            onTap: () {
-                              setState(() {
-                                _isObsecure = !_isObsecure;
-                              });
-                            },
-                          ),
-
-                          // NOTE: FORGOT PASS
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, RouteScreen.forgot);
-                                  },
-                                  child: Text(
-                                    "Lupa Password",
-                                    style: primary600.copyWith(fontSize: 16.0),
-                                  ))
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
                           BtnDefault(
                             onPress: () {
                               focusNode.unfocus();
                             },
-                            text: "Masuk",
+                            text: "Lupa Password",
+                          ),
+                          const SizedBox(
+                            height: 20,
                           ),
                         ],
                       ),
