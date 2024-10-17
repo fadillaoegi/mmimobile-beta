@@ -24,7 +24,7 @@ class BtnDefault extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onPress,
           style: ElevatedButton.styleFrom(
-            backgroundColor: color ?? ColorApps.primary,
+            backgroundColor: color ?? ColorApps.primary2,
             shadowColor: Colors.black.withOpacity(0.3),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50.0),
@@ -33,7 +33,7 @@ class BtnDefault extends StatelessWidget {
           child: Text(
             text!,
             textAlign: TextAlign.center,
-            style: white500.copyWith(fontSize: 14.0),
+            style: white600.copyWith(fontSize: 14.0),
           )),
     );
   }

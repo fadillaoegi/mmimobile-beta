@@ -29,6 +29,7 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
           height: sizeScreen.height,
           width: sizeScreen.width,
           color: ColorApps.primary2,
+          // color: ColorApps.white,
           child: Stack(
             children: [
               // NOTE: BG
@@ -45,22 +46,40 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
               // NOTE: CONTENT
               SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       height: sizeScreen.height / 18,
                     ),
-                    // NOTE: LOGO
-                    Image.asset(
-                      AssetConfig.logo5,
-                      height: 92.0,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30.0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: ColorApps.white,
+                          size: 30.0,
+                        ),
+                      ),
                     ),
+
+                    // NOTE: LOGO
+                    // Image.asset(
+                    //   AssetConfig.logo5,
+                    //   height: 92.0,
+                    // ),
                     SizedBox(
                       height: sizeScreen.height / 6,
                     ),
-                    Text(
-                      "Lupa Password",
-                      style: white600.copyWith(fontSize: 30.0),
+                    SizedBox(
+                      width: sizeScreen.width,
+                      child: Text(
+                        "Lupa Password",
+                        textAlign: TextAlign.center,
+                        style: white600.copyWith(fontSize: 30.0),
+                      ),
                     ),
 
                     // NOTE: CARD FORM

@@ -96,6 +96,25 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Container(
+                              width: sizeScreen.width,
+                              margin: const EdgeInsets.only(bottom: 20.0),
+                              child: Column(
+                                // mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Welcome to  MMI Mobile ",
+                                    style: primary700.copyWith(fontSize: 22.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Text(
+                                    "Hello there, login to continue",
+                                    textAlign: TextAlign.center,
+                                    style: primary500.copyWith(fontSize: 14.0),
+                                  ),
+                                ],
+                              )),
                           FormAppsTwo(
                             controller: _emailController,
                             labelText: "Email",
@@ -115,6 +134,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             },
                           ),
 
+                          const SizedBox(
+                            height: 5,
+                          ),
+
                           // NOTE: FORGOT PASS
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -126,18 +149,39 @@ class _SignInScreenState extends State<SignInScreen> {
                                   },
                                   child: Text(
                                     "Lupa Password",
-                                    style: primary600.copyWith(fontSize: 16.0),
+                                    style: primary600.copyWith(fontSize: 14.0),
                                   ))
                             ],
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           BtnDefault(
                             onPress: () {
                               focusNode.unfocus();
                             },
                             text: "Masuk",
+                          ),
+
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Don’t have an account?",
+                                style: black500.copyWith(fontSize: 14.0),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  "Register Now",
+                                  style: primary700.copyWith(fontSize: 14.0),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
