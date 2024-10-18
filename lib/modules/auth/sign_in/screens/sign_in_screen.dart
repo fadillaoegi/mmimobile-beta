@@ -108,8 +108,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                     style: primary700.copyWith(fontSize: 22.0),
                                     textAlign: TextAlign.center,
                                   ),
+                                  const SizedBox(
+                                    height: 4.0,
+                                  ),
                                   Text(
-                                    "Hello there, login to continue",
+                                    "Let’s begin a new journey with MMI Mobile",
                                     textAlign: TextAlign.center,
                                     style: primary500.copyWith(fontSize: 14.0),
                                   ),

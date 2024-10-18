@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mmimobile/modules/app.dart';
 import 'package:mmimobile/modules/auth/forgot_password/providers/forgot_pass_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
@@ -15,16 +14,19 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => HomeProvider(),),
-        ChangeNotifierProvider(create: (context) => ForgotPassProvider(),),
+        ChangeNotifierProvider(
+          create: (context) => HomeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ForgotPassProvider(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
           scaffoldBackgroundColor: ColorApps.white,
         ),
         debugShowCheckedModeBanner: false,
-        home: const AppScreen(),
-        // initialRoute: RouteScreen.splash,
+        initialRoute: RouteScreen.splash,
         routes: RouteScreen.listRouteScreen,
       ),
     );

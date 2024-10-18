@@ -33,7 +33,7 @@ class BtnDefault extends StatelessWidget {
           child: Text(
             text!,
             textAlign: TextAlign.center,
-            style: white600.copyWith(fontSize: 14.0),
+            style: white600.copyWith(fontSize: 16.0),
           )),
     );
   }

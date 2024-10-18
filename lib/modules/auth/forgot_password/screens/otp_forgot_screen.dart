@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/btn_apps_widget.dart';
-import 'package:mmimobile/widget/form_apps_two_widget.dart';
 
 class OtpForgotScreen extends StatefulWidget {
   const OtpForgotScreen({super.key});
@@ -13,14 +13,12 @@ class OtpForgotScreen extends StatefulWidget {
 }
 
 class _OtpForgotScreenState extends State<OtpForgotScreen> {
-  final _emailController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
   FocusNode focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
-      // appBar: AppBar(),
       body: GestureDetector(
         onTap: () {
           focusNode.requestFocus();
@@ -64,23 +62,17 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                         ),
                       ),
                     ),
-
-                    // NOTE: LOGO
-                    // Image.asset(
-                    //   AssetConfig.logo5,
-                    //   height: 92.0,
-                    // ),
                     SizedBox(
                       height: sizeScreen.height / 6,
                     ),
-                    // SizedBox(
-                    //   width: sizeScreen.width,
-                    //   child: Text(
-                    //     "Lupa Password",
-                    //     textAlign: TextAlign.center,
-                    //     style: white600.copyWith(fontSize: 30.0),
-                    //   ),
-                    // ),
+                    SizedBox(
+                      width: sizeScreen.width,
+                      child: Text(
+                        "Verifikasi Kode OTP",
+                        textAlign: TextAlign.center,
+                        style: white600.copyWith(fontSize: 30.0),
+                      ),
+                    ),
 
                     // NOTE: CARD FORM
                     Container(
@@ -103,23 +95,24 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text.rich(TextSpan(children: [
-                            TextSpan(
-                              text:
-                                  "Please enter your OTP code, which was sent to your email at  ",
-                              style: black400.copyWith(fontSize: 14.0),
-                            ),
-                            TextSpan(
-                              text: "Example@gmail.com",
-                              style: black600.copyWith(fontSize: 14.0),
-                            ),
-                          ])),
+                          Text.rich(
+                            TextSpan(children: [
+                              TextSpan(
+                                text:
+                                    "Please enter your OTP code, which was sent to your email at  ",
+                                style: black400.copyWith(fontSize: 14.0),
+                              ),
+                              TextSpan(
+                                text: "Example@gmail.com",
+                                style: black600.copyWith(fontSize: 14.0),
+                              ),
+                            ]),
+                          ),
                           const SizedBox(
                             height: 20.0,
                           ),
-                          FormAppsTwo(
-                            controller: _emailController,
-                            labelText: "Email",
+                          OtpTextField(
+                            onSubmit: (String value) {},
                           ),
                           const SizedBox(
                             height: 30.0,
@@ -130,7 +123,7 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                               // Navigator.pushNamed(
                               //     context, RouteScreen.otpForgot);
                             },
-                            text: "Lupa Password",
+                            text: "Verifikasi",
                           ),
                           const SizedBox(
                             height: 20,
