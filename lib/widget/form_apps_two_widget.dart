@@ -47,7 +47,7 @@ class FormAppsTwo extends StatelessWidget {
             borderSide: BorderSide(color: ColorApps.primary),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.primary),
+            borderSide: BorderSide(color: ColorApps.primary,width: 2.0),
           )),
     );
   }

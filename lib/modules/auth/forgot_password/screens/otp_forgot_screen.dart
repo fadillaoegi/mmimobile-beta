@@ -26,7 +26,7 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
         child: Container(
           height: sizeScreen.height,
           width: sizeScreen.width,
-          color: ColorApps.primary2,
+          color: ColorApps.primary,
           // color: ColorApps.white,
           child: Stack(
             children: [

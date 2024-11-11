@@ -3,11 +3,17 @@ import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
 class BtnDefault extends StatelessWidget {
-  const BtnDefault({super.key, this.onPress, this.text = "", this.color});
+  const BtnDefault(
+      {super.key,
+      this.onPress,
+      this.text = "",
+      this.color,
+      this.sizeText = 16.0});
 
   final VoidCallback? onPress;
   final String? text;
   final Color? color;
+  final double? sizeText;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,16 +30,16 @@ class BtnDefault extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onPress,
           style: ElevatedButton.styleFrom(
-            backgroundColor: color ?? ColorApps.primary2,
+            backgroundColor: color ?? ColorApps.primary,
             shadowColor: Colors.black.withOpacity(0.3),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0),
+              borderRadius: BorderRadius.circular(10.0),
             ),
           ),
           child: Text(
             text!,
             textAlign: TextAlign.center,
-            style: white600.copyWith(fontSize: 16.0),
+            style: white600.copyWith(fontSize: sizeText),
           )),
     );
   }

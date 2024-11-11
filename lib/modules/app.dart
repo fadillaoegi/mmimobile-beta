@@ -40,7 +40,7 @@ class _AppScreenState extends State<AppScreen> {
         children: _pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: ColorApps.primary2,
+        selectedItemColor: ColorApps.primary,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
