@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
+import 'package:mmimobile/styles/fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,32 +15,57 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  startSplash() async {
-    return Timer(
+  @override
+  void initState() {
+    super.initState();
+    _startSplash();
+  }
+
+  String _message = "Loading...";
+  final bool _isUser = false;
+  Future<void> _startSplash() async {
+    Timer(
       const Duration(seconds: 3),
       () {
-        Navigator.pushReplacementNamed(
-          context,
-          RouteScreen.signIn,
+        setState(() {
+          _message;
+        });
+        Timer(
+          const Duration(seconds: 3),
+          () {
+            setState(() {
+              _message = "Checking user session...";
+            });
+
+            Timer(
+              const Duration(seconds: 3),
+              () {
+                if (_isUser) {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    RouteScreen.app,
+                  );
+                } else {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    RouteScreen.signIn,
+                  );
+                }
+              },
+            );
+          },
         );
       },
     );
   }
 
   @override
-  void initState() {
-    super.initState();
-    startSplash();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: sizeScreen.height,
         width: sizeScreen.width,
-        color: ColorApps.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,6 +74,24 @@ class _SplashScreenState extends State<SplashScreen> {
               AssetConfig.logo3,
               height: 60.0,
               fit: BoxFit.cover,
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CupertinoActivityIndicator(
+                  color: ColorApps.primary,
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  _message,
+                  style: primary500.copyWith(fontSize: 14.0),
+                ),
+              ],
             ),
           ],
         ),

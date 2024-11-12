@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/btn_apps_widget.dart';
@@ -83,10 +84,13 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
                         labelText: "Email",
                       ),
                       const SizedBox(
-                        height: 10.0,
+                        height: 20.0,
                       ),
                       BtnApps(
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.pushNamed(context, RouteScreen.otpForgot,
+                              arguments: _emailController.text);
+                        },
                         text: "Send Code",
                       ),
                     ],

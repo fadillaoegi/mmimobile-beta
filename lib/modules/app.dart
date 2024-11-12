@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/modules/history/screens/history_screen.dart';
+import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
+import 'package:mmimobile/modules/underdevelopment_screen.dart';
 import 'package:mmimobile/styles/color.dart';
 
 class AppScreen extends StatefulWidget {
@@ -12,9 +15,10 @@ class _AppScreenState extends State<AppScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const Center(child: Text('Home Page')),
-    const Center(child: Text('Search Page')),
-    const Center(child: Text('Profile Page')),
+    const UnderdevelopmentScreen(),
+    const UnderdevelopmentScreen(),
+    const HistoryScreen(),
+    const ProfileScreen()
   ];
 
   final List<BottomNavigationBarItem> items = const [
@@ -23,8 +27,12 @@ class _AppScreenState extends State<AppScreen> {
       label: 'Home',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.search),
-      label: 'Search',
+      icon: Icon(Icons.book),
+      label: 'Support',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.history),
+      label: 'History',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
@@ -39,15 +47,21 @@ class _AppScreenState extends State<AppScreen> {
         index: _currentIndex,
         children: _pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: ColorApps.primary,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: items,
+      bottomNavigationBar: Material(
+        elevation: 10.0,
+        child: BottomNavigationBar(
+          selectedItemColor: ColorApps.primary,
+          elevation: 20.0,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: ColorApps.white,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: items,
+        ),
       ),
     );
   }

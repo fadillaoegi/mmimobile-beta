@@ -127,7 +127,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               height: 10.0,
                             ),
                             BtnApps(
-                              onPress: () {},
+                              onPress: () {
+                                Navigator.pushNamed(context, RouteScreen.app);
+                              },
                               text: "Sign in",
                             ),
                             const SizedBox(

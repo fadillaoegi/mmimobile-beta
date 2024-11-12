@@ -68,10 +68,10 @@ class ReveralCodeScreen extends StatelessWidget {
                       children: [
                         Text(
                           "Please enter your referral code",
-                          style: black400.copyWith(fontSize: 13.0),
+                          style: black400.copyWith(fontSize: 14.0),
                         ),
                         const SizedBox(
-                          height: 10.0,
+                          height: 20.0,
                         ),
                         FormAppsTwo(
                           controller: codeReveralC,
