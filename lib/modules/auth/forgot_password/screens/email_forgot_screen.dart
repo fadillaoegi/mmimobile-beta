@@ -74,7 +74,7 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
                       const SizedBox(
                         height: 18.0,
                       ),
-                      Image.asset(AssetConfig.IlForgotPass),
+                      Image.asset(AssetConfig.ilForgotPass),
                       const SizedBox(
                         height: 40.0,
                       ),
