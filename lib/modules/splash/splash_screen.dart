@@ -13,24 +13,23 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
- startSplash() async {
-  return Timer(
-    const Duration(seconds: 3),
-    () {
-      Navigator.pushReplacementNamed(
-        context,
-        RouteScreen.signIn,
-      );
-    },
-  );
-}
+  startSplash() async {
+    return Timer(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushReplacementNamed(
+          context,
+          RouteScreen.signIn,
+        );
+      },
+    );
+  }
 
-@override
-void initState() {
-  super.initState();
-  startSplash();
-}
-
+  @override
+  void initState() {
+    super.initState();
+    startSplash();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,7 @@ void initState() {
           children: [
             Image.asset(
               AssetConfig.logo3,
-              width: 280.0,
+              height: 60.0,
               fit: BoxFit.cover,
             ),
           ],

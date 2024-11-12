@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
-class BtnDefault extends StatelessWidget {
-  const BtnDefault(
+class BtnApps extends StatelessWidget {
+  const BtnApps(
       {super.key,
       this.onPress,
       this.text = "",
       this.color,
-      this.sizeText = 16.0});
+      this.sizeText = 14.0});
 
   final VoidCallback? onPress;
   final String? text;

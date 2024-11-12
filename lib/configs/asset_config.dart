@@ -9,6 +9,7 @@ class AssetConfig {
   static const bgLogin2 = "assets/images/bgLogin2.png";
   static const bgLogin3 = "assets/images/bg.png";
   static const googleIcon = "assets/images/googleIcon.png";
+  static const IlForgotPass = "assets/images/il_forgotPass.png";
 
   // NOTE: LOTTIES
 }

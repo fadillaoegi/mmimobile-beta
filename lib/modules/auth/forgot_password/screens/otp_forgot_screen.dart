@@ -117,7 +117,7 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                           const SizedBox(
                             height: 30.0,
                           ),
-                          BtnDefault(
+                          BtnApps(
                             onPress: () {
                               focusNode.unfocus();
                               // Navigator.pushNamed(

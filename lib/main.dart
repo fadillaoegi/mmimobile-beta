@@ -24,6 +24,10 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           scaffoldBackgroundColor: ColorApps.white,
+          indicatorColor: ColorApps.primary,
+          appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: ColorApps.primary),
+          ),
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: RouteScreen.splash,

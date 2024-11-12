@@ -31,7 +31,7 @@ class FormAppsTwo extends StatelessWidget {
       obscureText: obscure,
       decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: black400.copyWith(fontSize: 16.0),
+          labelStyle: black400.copyWith(fontSize: 13.0),
           suffixIcon: suffixIcon
               ? InkWell(
                   onTap: onTap,
@@ -47,7 +47,7 @@ class FormAppsTwo extends StatelessWidget {
             borderSide: BorderSide(color: ColorApps.primary),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.primary,width: 2.0),
+            borderSide: BorderSide(color: ColorApps.primary, width: 2.0),
           )),
     );
   }

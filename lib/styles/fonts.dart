@@ -13,6 +13,8 @@ TextStyle black700 =
     GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.black);
 
 // NOTE: FONT WHITE
+TextStyle white300 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w300, color: ColorApps.white);
 TextStyle white400 =
     GoogleFonts.poppins(fontWeight: FontWeight.w400, color: ColorApps.white);
 TextStyle white500 =
