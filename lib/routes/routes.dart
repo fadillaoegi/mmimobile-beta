@@ -4,9 +4,11 @@ import 'package:mmimobile/modules/auth/forgot_password/screens/otp_forgot_screen
 import 'package:mmimobile/modules/auth/forgot_password/screens/reset_password_screen.dart';
 import 'package:mmimobile/modules/auth/sign_in/screens/sign_in_screen.dart';
 import 'package:mmimobile/modules/auth/sign_up/screens/reveral_code_screen.dart';
+import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
+import 'package:mmimobile/modules/profile_setting/screens/account_setting_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
 class RouteScreen {
@@ -22,8 +24,10 @@ class RouteScreen {
   static const browse = "$root/browse";
   static const detailHistory = "$root/detailHistory";
   static const profile = "$root/profile";
+  static const profileSetting = "$root/profileSetting";
   static const coSuccess = "$root/coSuccess";
   static const history = "$root/history";
+  static const faq = "$root/faq";
   static const underDevelop = "$root/underDevelop";
 
   static final listRouteScreen = {
@@ -37,5 +41,7 @@ class RouteScreen {
     history: (context) => const HistoryScreen(),
     detailHistory: (context) => const DetailHistoryScreen(),
     profile: (context) => const ProfileScreen(),
+    profileSetting: (context) => const ProfileSettingScreen(),
+    faq: (context) => const FaqScreen(),
   };
 }

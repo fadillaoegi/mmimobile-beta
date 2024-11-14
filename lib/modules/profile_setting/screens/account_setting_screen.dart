@@ -3,8 +3,8 @@ import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/image_circle_widget.dart';
 import 'package:mmimobile/widget/item_list_widget.dart';
 
-class AccountSettingScreen extends StatelessWidget {
-  const AccountSettingScreen({super.key});
+class ProfileSettingScreen extends StatelessWidget {
+  const ProfileSettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

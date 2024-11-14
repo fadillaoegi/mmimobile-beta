@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/image_circle_widget.dart';
@@ -29,7 +30,10 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RouteScreen.profileSetting);
+                        },
                         child: const Icon(
                           Icons.settings,
                           color: ColorApps.white,
