@@ -4,17 +4,20 @@ import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
 class ItemHistory extends StatelessWidget {
-  const ItemHistory(
-      {super.key,
-      this.onTap,
-      this.nameSO = "",
-      this.date = "",
-      this.shadow = true,
-      this.productCount = 0});
+  const ItemHistory({
+    super.key,
+    this.onTap,
+    this.nameSO = "",
+    this.date = "",
+    this.shadow = true,
+    this.productCount = 0,
+    this.count = "",
+  });
 
   final VoidCallback? onTap;
   final bool? shadow;
   final String? nameSO;
+  final String? count;
   final int? productCount;
   final String? date;
 
@@ -79,6 +82,17 @@ class ItemHistory extends StatelessWidget {
                   "$date",
                   style: disable400.copyWith(fontSize: 12.0),
                 ),
+                count == ""
+                    ? const SizedBox()
+                    : const SizedBox(
+                        height: 8.0,
+                      ),
+                count == ""
+                    ? const SizedBox()
+                    : Text(
+                        "Total $count",
+                        style: primary500.copyWith(fontSize: 12.0),
+                      ),
               ],
             )
           ],

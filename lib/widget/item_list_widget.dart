@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
-class ItemProfile extends StatelessWidget {
-  const ItemProfile({
+class ItemList extends StatelessWidget {
+  const ItemList({
     super.key,
     this.icon,
     this.iconImage = "",
@@ -45,13 +45,16 @@ class ItemProfile extends StatelessWidget {
                   ),
                   Text(
                     "$label",
-                    style: disable2400.copyWith(fontSize: 13.0),
+                    style: label == "Sign Out"
+                        ? error400.copyWith(fontSize: 13.0)
+                        : disable2400.copyWith(fontSize: 13.0),
                   ),
                 ],
               ),
-              const Icon(
+              Icon(
                 Icons.keyboard_arrow_right_outlined,
-                color: ColorApps.disable2,
+                color:
+                    label == "Sign Out" ? ColorApps.error : ColorApps.disable2,
                 size: 22.0,
               ),
             ],

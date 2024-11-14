@@ -53,3 +53,7 @@ TextStyle disable2600 =
     GoogleFonts.poppins(fontWeight: FontWeight.w600, color: ColorApps.disable2);
 TextStyle disable2700 =
     GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.disable2);
+
+// NOTE: FONT ERROR
+TextStyle error400 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w400, color: ColorApps.error);

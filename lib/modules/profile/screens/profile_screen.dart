@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
-import 'package:mmimobile/widget/item_profile_widget.dart';
+import 'package:mmimobile/widget/image_circle_widget.dart';
+import 'package:mmimobile/widget/item_list_widget.dart';
 import 'package:mmimobile/widget/profile/infomation_profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -39,15 +40,7 @@ class ProfileScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 60.0,
-                      width: 60.0,
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(
-                          AssetConfig.logo,
-                        ),
-                      ),
-                    ),
+                    const ImageCircle(),
                     const SizedBox(
                       width: 10.0,
                     ),
@@ -66,27 +59,27 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20.0,
                 ),
-                ItemProfile(
+                ItemList(
                   onTap: () {},
                   label: "Website",
                   iconImage: AssetConfig.iconWebsite,
                 ),
-                ItemProfile(
+                ItemList(
                   onTap: () {},
                   label: "Partners",
                   iconImage: AssetConfig.iconPartners,
                 ),
-                ItemProfile(
+                ItemList(
                   onTap: () {},
                   label: "Privacy Policy",
                   iconImage: AssetConfig.iconPrivacyPolicy,
                 ),
-                ItemProfile(
+                ItemList(
                   onTap: () {},
                   label: "Copyright",
                   iconImage: AssetConfig.iconCopyright,
                 ),
-                ItemProfile(
+                ItemList(
                   onTap: () {},
                   label: "FAQ",
                   iconImage: AssetConfig.iconFaq,

@@ -11,13 +11,14 @@ class HistoryScreen extends StatelessWidget {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          scrolledUnderElevation: 0.0,
-          centerTitle: false,
-          title: Text(
-            "History",
-            style: primary700.copyWith(fontSize: 20.0),
-          )),
+        automaticallyImplyLeading: false,
+        scrolledUnderElevation: 0.0,
+        centerTitle: false,
+        title: Text(
+          "History",
+          style: primary700.copyWith(fontSize: 20.0),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           width: sizeScreen.width,

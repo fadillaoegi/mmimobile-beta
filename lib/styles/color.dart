@@ -8,6 +8,7 @@ class ColorApps {
   static const icon2 = Color(0xff5E5E5E);
   static const black = Color(0xff181717);
   static const white = Color(0xffFFFFFF);
+  static const error = Color(0xffF03434);
   static const blue = Color(0xff307FE2);
   static const disable = Color(0xffAFAFAF);
   static const disable2 = Color(0xff5E5E5E);
