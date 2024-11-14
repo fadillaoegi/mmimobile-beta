@@ -96,7 +96,7 @@ class InformationProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(
-                AssetConfig.iconFaq,
+                AssetConfig.iconLevelDiamond,
                 height: 20.0,
                 width: 20.0,
               )
