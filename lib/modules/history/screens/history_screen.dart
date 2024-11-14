@@ -35,7 +35,7 @@ class HistoryScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, RouteScreen.detailHistory);
                     },
-                    shadow: false,
+                    shadow: true,
                     nameSO: "SO-230800092",
                     productCount: 10,
                     date: "01-October-2024",

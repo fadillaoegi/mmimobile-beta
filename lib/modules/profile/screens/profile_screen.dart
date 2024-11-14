@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/styles/color.dart';
+import 'package:mmimobile/styles/fonts.dart';
+import 'package:mmimobile/widget/item_profile_widget.dart';
+import 'package:mmimobile/widget/profile/infomation_profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -28,22 +32,64 @@ class ProfileScreen extends StatelessWidget {
                         child: const Icon(
                           Icons.settings,
                           color: ColorApps.white,
+                          size: 30.0,
                         ))
                   ],
                 ),
-                Container(
-                  width: sizeScreen.width,
-                  height: sizeScreen.height / 8,
-                  padding: const EdgeInsets.all(14.0),
-                  decoration: const BoxDecoration(
-                      color: ColorApps.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      boxShadow: []),
-                  child: const Column(
-                    children: [
-                      Text("data"),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 60.0,
+                      width: 60.0,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(
+                          AssetConfig.logo,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      "ALifah",
+                      style: white600.copyWith(fontSize: 14.0),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                InformationProfile(
+                  width: sizeScreen,
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                ItemProfile(
+                  onTap: () {},
+                  label: "Website",
+                  iconImage: AssetConfig.iconWebsite,
+                ),
+                ItemProfile(
+                  onTap: () {},
+                  label: "Partners",
+                  iconImage: AssetConfig.iconPartners,
+                ),
+                ItemProfile(
+                  onTap: () {},
+                  label: "Privacy Policy",
+                  iconImage: AssetConfig.iconPrivacyPolicy,
+                ),
+                ItemProfile(
+                  onTap: () {},
+                  label: "Copyright",
+                  iconImage: AssetConfig.iconCopyright,
+                ),
+                ItemProfile(
+                  onTap: () {},
+                  label: "FAQ",
+                  iconImage: AssetConfig.iconFaq,
                 ),
               ],
             ),

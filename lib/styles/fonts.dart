@@ -34,7 +34,6 @@ TextStyle primary600 =
 TextStyle primary700 =
     GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.primary);
 
-// NOTE: FONT CATEGORY
 // NOTE: FONT DISABLE
 TextStyle disable400 =
     GoogleFonts.poppins(fontWeight: FontWeight.w400, color: ColorApps.disable);
@@ -44,3 +43,13 @@ TextStyle disable600 =
     GoogleFonts.poppins(fontWeight: FontWeight.w600, color: ColorApps.disable);
 TextStyle disable700 =
     GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.disable);
+
+// NOTE: FONT DISABLE2
+TextStyle disable2400 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w400, color: ColorApps.disable2);
+TextStyle disable2500 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w500, color: ColorApps.disable2);
+TextStyle disable2600 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w600, color: ColorApps.disable2);
+TextStyle disable2700 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.disable2);

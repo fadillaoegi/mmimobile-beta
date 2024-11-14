@@ -63,21 +63,21 @@ class ItemHistory extends StatelessWidget {
               children: [
                 Text(
                   "$nameSO",
-                  style: black600.copyWith(fontSize: 13.0),
+                  style: black600.copyWith(fontSize: 14.0),
                 ),
                 const SizedBox(
                   height: 8.0,
                 ),
                 Text(
                   "x$productCount Product",
-                  style: disable500.copyWith(fontSize: 13.0),
+                  style: disable400.copyWith(fontSize: 12.0),
                 ),
                 const SizedBox(
                   height: 8.0,
                 ),
                 Text(
                   "$date",
-                  style: disable600.copyWith(fontSize: 13.0),
+                  style: disable400.copyWith(fontSize: 12.0),
                 ),
               ],
             )
