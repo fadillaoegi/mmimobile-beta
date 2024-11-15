@@ -84,7 +84,9 @@ class ProfileScreen extends StatelessWidget {
                   iconImage: AssetConfig.iconCopyright,
                 ),
                 ItemList(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteScreen.faq);
+                  },
                   label: "FAQ",
                   iconImage: AssetConfig.iconFaq,
                 ),

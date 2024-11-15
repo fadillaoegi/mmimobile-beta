@@ -32,7 +32,9 @@ class ItemList extends StatelessWidget {
                   iconImage == ""
                       ? Icon(
                           icon,
-                          color: ColorApps.icon2,
+                          color: label == "Sign Out"
+                              ? ColorApps.error
+                              : ColorApps.disable2,
                           size: 22.0,
                         )
                       : Image.asset(
@@ -63,7 +65,9 @@ class ItemList extends StatelessWidget {
         const SizedBox(
           height: 8.0,
         ),
-        const Divider(),
+        Divider(
+          color: label == "Sign Out" ? ColorApps.error : ColorApps.disable2,
+        ),
       ],
     );
   }

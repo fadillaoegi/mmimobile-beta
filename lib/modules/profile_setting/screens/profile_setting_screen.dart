@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/image_circle_widget.dart';
 import 'package:mmimobile/widget/item_list_widget.dart';
@@ -11,10 +12,9 @@ class ProfileSettingScreen extends StatelessWidget {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Account Settings",
-          style: primary700.copyWith(fontSize: 20.0),
-        ),
+        centerTitle: true,
+        title:
+            Text("Setting Profile", style: primary700.copyWith(fontSize: 20.0)),
         scrolledUnderElevation: 0.0,
       ),
       body: Container(
@@ -24,7 +24,12 @@ class ProfileSettingScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const ImageCircle(),
+            const SizedBox(
+              height: 20.0,
+            ),
+            const ImageCircle(
+              size: 100.0,
+            ),
             const SizedBox(
               height: 10.0,
             ),
@@ -59,7 +64,13 @@ class ProfileSettingScreen extends StatelessWidget {
               icon: Icons.delete_forever_outlined,
             ),
             ItemList(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  RouteScreen.signIn,
+                  (route) => false,
+                );
+              },
               label: "Sign Out",
               icon: Icons.logout,
             ),

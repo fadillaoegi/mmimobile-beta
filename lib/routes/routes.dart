@@ -8,7 +8,7 @@ import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
-import 'package:mmimobile/modules/profile_setting/screens/account_setting_screen.dart';
+import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
 class RouteScreen {

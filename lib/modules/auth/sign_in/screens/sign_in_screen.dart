@@ -128,7 +128,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             BtnApps(
                               onPress: () {
-                                Navigator.pushNamed(context, RouteScreen.app);
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  RouteScreen.app,
+                                  (route) => false,
+                                );
                               },
                               text: "Sign in",
                             ),
