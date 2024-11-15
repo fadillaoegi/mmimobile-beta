@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeConfig.themeData(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteScreen.splash,
+        initialRoute: RouteScreen.app,
         routes: RouteScreen.listRouteScreen,
       ),
     );

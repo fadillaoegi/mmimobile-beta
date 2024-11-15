@@ -7,6 +7,7 @@ import 'package:mmimobile/modules/auth/sign_up/screens/reveral_code_screen.dart'
 import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
+import 'package:mmimobile/modules/privacy_policy/screens/privacy_policy_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
 import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
@@ -27,6 +28,7 @@ class RouteScreen {
   static const profileSetting = "$root/profileSetting";
   static const coSuccess = "$root/coSuccess";
   static const history = "$root/history";
+  static const privacyPolicy = "$root/privacyPolicy";
   static const faq = "$root/faq";
   static const underDevelop = "$root/underDevelop";
 
@@ -43,5 +45,6 @@ class RouteScreen {
     profile: (context) => const ProfileScreen(),
     profileSetting: (context) => const ProfileSettingScreen(),
     faq: (context) => const FaqScreen(),
+    privacyPolicy: (context) => const PrivacyPolicyScreen(),
   };
 }
