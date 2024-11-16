@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -43,19 +44,23 @@ class InformationProfile extends StatelessWidget {
                   const SizedBox(
                     height: 12.0,
                   ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        AssetConfig.iconRatingGold,
-                        height: 20.0,
-                        width: 20.0,
-                      ),
-                      const SizedBox(width: 6.0),
-                      Text(
-                        "Gold",
-                        style: black500.copyWith(fontSize: 14.0),
-                      )
-                    ],
+                  InkWell(
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteScreen.reward),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          AssetConfig.iconRatingGold,
+                          height: 20.0,
+                          width: 20.0,
+                        ),
+                        const SizedBox(width: 6.0),
+                        Text(
+                          "Gold",
+                          style: black500.copyWith(fontSize: 14.0),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),

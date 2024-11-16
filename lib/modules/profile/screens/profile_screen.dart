@@ -74,7 +74,8 @@ class ProfileScreen extends StatelessWidget {
                   iconImage: AssetConfig.iconPartners,
                 ),
                 ItemList(
-                  onTap: () {},
+                  onTap: () =>
+                      Navigator.pushNamed(context, RouteScreen.privacyPolicy),
                   label: "Privacy Policy",
                   iconImage: AssetConfig.iconPrivacyPolicy,
                 ),
@@ -84,9 +85,7 @@ class ProfileScreen extends StatelessWidget {
                   iconImage: AssetConfig.iconCopyright,
                 ),
                 ItemList(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteScreen.faq);
-                  },
+                  onTap: () => Navigator.pushNamed(context, RouteScreen.faq),
                   label: "FAQ",
                   iconImage: AssetConfig.iconFaq,
                 ),

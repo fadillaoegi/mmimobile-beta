@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/theme_config.dart';
 import 'package:mmimobile/modules/auth/forgot_password/providers/forgot_pass_provider.dart';
+import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
+import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:provider/provider.dart';
@@ -15,11 +17,17 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => HomeProvider(),
+          create: (context) => SignInProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => ForgotPassProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => HomeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FaqProvider(),
+        )
       ],
       child: MaterialApp(
         theme: ThemeConfig.themeData(),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/btn_apps_widget.dart';
 import 'package:mmimobile/widget/form_apps_two_widget.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -13,18 +15,12 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
-  // final _telpController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey();
-  FocusNode focusNode = FocusNode();
-  bool _isObsecure = true;
-
   @override
   Widget build(BuildContext context) {
+    final signProvider = Provider.of<SignInProvider>(context);
     return GestureDetector(
       onTap: () {
-        focusNode.unfocus();
+        signProvider.focusNode.unfocus();
       },
       child: Scaffold(
         body: LayoutBuilder(
@@ -83,25 +79,26 @@ class _SignInScreenState extends State<SignInScreen> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Form(
-                        key: formKey,
+                        key: signProvider.formKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             FormAppsTwo(
-                              controller: _emailController,
+                              controller: signProvider.emailController,
                               labelText: "Email",
                             ),
                             const SizedBox(
                               height: 30.0,
                             ),
                             FormAppsTwo(
-                              controller: _passController,
+                              controller: signProvider.passController,
                               labelText: "Password",
-                              obscure: _isObsecure,
+                              obscure: signProvider.isObsecure,
                               suffixIcon: true,
                               onTap: () {
                                 setState(() {
-                                  _isObsecure = !_isObsecure;
+                                  signProvider.isObsecure =
+                                      !signProvider.isObsecure;
                                 });
                               },
                             ),
@@ -128,11 +125,19 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             BtnApps(
                               onPress: () {
-                                Navigator.pushNamedAndRemoveUntil(
-                                  context,
-                                  RouteScreen.app,
-                                  (route) => false,
-                                );
+                                String emailC =
+                                    signProvider.emailController.text;
+                                String passC = signProvider.passController.text;
+                                if (emailC.toString() == signProvider.email &&
+                                    passC.toString() == signProvider.password) {
+                                  Navigator.pushNamedAndRemoveUntil(
+                                    context,
+                                    RouteScreen.app,
+                                    (route) => false,
+                                  );
+                                } else {
+                                  
+                                }
                               },
                               text: "Sign in",
                             ),

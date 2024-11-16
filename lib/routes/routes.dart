@@ -10,6 +10,7 @@ import 'package:mmimobile/modules/history/screens/history_screen.dart';
 import 'package:mmimobile/modules/privacy_policy/screens/privacy_policy_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
 import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen.dart';
+import 'package:mmimobile/modules/reward/screens/reward_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
 class RouteScreen {
@@ -30,6 +31,7 @@ class RouteScreen {
   static const history = "$root/history";
   static const privacyPolicy = "$root/privacyPolicy";
   static const faq = "$root/faq";
+  static const reward = "$root/reward";
   static const underDevelop = "$root/underDevelop";
 
   static final listRouteScreen = {
@@ -46,5 +48,6 @@ class RouteScreen {
     profileSetting: (context) => const ProfileSettingScreen(),
     faq: (context) => const FaqScreen(),
     privacyPolicy: (context) => const PrivacyPolicyScreen(),
+    reward: (context) => const RewardScreen(),
   };
 }
