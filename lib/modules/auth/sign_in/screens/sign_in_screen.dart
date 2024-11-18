@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
-import 'package:mmimobile/widget/btn_apps_widget.dart';
+import 'package:mmimobile/widget/alert/alert_dialog_no_action_widget.dart';
+import 'package:mmimobile/widget/alert/alert_dialog_widget.dart';
+import 'package:mmimobile/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/widget/form_apps_two_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +19,18 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  void showAlertDialogAgri(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => const AlertDialogApps(
+        title: "Konfirmasi",
+        content: "Apakah Anda yakin ingin melanjutkan?",
+        textBtn: "Ya",
+        onTap: null, // Tambahkan logika di sini jika diperlukan
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final signProvider = Provider.of<SignInProvider>(context);
@@ -66,7 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     style: white600.copyWith(fontSize: 26.0),
                                   ),
                                   TextSpan(
-                                    text: "Welcome to  MMI Mobile",
+                                    text: "Welcome to MMI Mobile",
                                     style: white300.copyWith(fontSize: 22.0),
                                   ),
                                 ])),
@@ -130,13 +146,39 @@ class _SignInScreenState extends State<SignInScreen> {
                                 String passC = signProvider.passController.text;
                                 if (emailC.toString() == signProvider.email &&
                                     passC.toString() == signProvider.password) {
-                                  Navigator.pushNamedAndRemoveUntil(
-                                    context,
-                                    RouteScreen.app,
-                                    (route) => false,
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) =>
+                                        const AlertDialogNoAction(
+                                      title: "Sign in Success",
+                                      lotties: AssetConfig.lottieSuccess,
+                                      content: "",
+                                    ),
+                                  );
+                                  Timer(
+                                    const Duration(seconds: 3),
+                                    () {
+                                      Navigator.pushNamedAndRemoveUntil(
+                                        context,
+                                        RouteScreen.app,
+                                        (route) => false,
+                                      );
+                                    },
                                   );
                                 } else {
-                                  
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) =>
+                                        const AlertDialogNoAction(
+                                      title: "Sign in Failed",
+                                      lotties: AssetConfig.lottieFailed,
+                                      content: "Incorrect email or password",
+                                    ),
+                                  );
+                                  Timer(
+                                    const Duration(seconds: 3),
+                                    () => Navigator.pop(context),
+                                  );
                                 }
                               },
                               text: "Sign in",

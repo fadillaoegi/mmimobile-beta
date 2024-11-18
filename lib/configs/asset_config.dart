@@ -25,4 +25,11 @@ class AssetConfig {
   static const iconRatingGold = "assets/images/iconRatingGold.png";
 
   // NOTE: LOTTIES
+  static const lottieSuccess = "assets/lotties/success.json";
+  static const lottieFailed = "assets/lotties/failed.json";
+  static const lottieDelete = "assets/lotties/delete.json";
+  static const lottieUpdate = "assets/lotties/update.json";
+  static const lottieUpload = "assets/lotties/upload.json";
+  static const lottieLogout = "assets/lotties/logout.json";
+  static const lottieLogout2 = "assets/lotties/logout2.json";
 }

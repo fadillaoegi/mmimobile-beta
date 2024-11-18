@@ -45,8 +45,7 @@ class InformationProfile extends StatelessWidget {
                     height: 12.0,
                   ),
                   InkWell(
-                    onTap: () =>
-                        Navigator.pushNamed(context, RouteScreen.reward),
+                    onTap: () {},
                     child: Row(
                       children: [
                         Image.asset(
@@ -76,19 +75,23 @@ class InformationProfile extends StatelessWidget {
                   const SizedBox(
                     height: 12.0,
                   ),
-                  Row(
-                    children: [
-                      Image.asset(
-                        AssetConfig.iconPoint,
-                        height: 20.0,
-                        width: 20.0,
-                      ),
-                      const SizedBox(width: 6.0),
-                      Text(
-                        "455",
-                        style: black500.copyWith(fontSize: 14.0),
-                      )
-                    ],
+                  InkWell(
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteScreen.reward),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          AssetConfig.iconPoint,
+                          height: 20.0,
+                          width: 20.0,
+                        ),
+                        const SizedBox(width: 6.0),
+                        Text(
+                          "455",
+                          style: black500.copyWith(fontSize: 14.0),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),

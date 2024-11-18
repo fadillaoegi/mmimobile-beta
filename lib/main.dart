@@ -32,7 +32,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeConfig.themeData(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteScreen.app,
+        initialRoute: RouteScreen.signIn,
         routes: RouteScreen.listRouteScreen,
       ),
     );

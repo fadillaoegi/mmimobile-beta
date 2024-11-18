@@ -3,7 +3,7 @@ import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
-import 'package:mmimobile/widget/btn_apps_widget.dart';
+import 'package:mmimobile/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/widget/form_apps_two_widget.dart';
 
 class EmailForgotScreen extends StatefulWidget {
