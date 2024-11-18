@@ -11,20 +11,22 @@ class ItemHistory extends StatelessWidget {
     this.date = "",
     this.shadow = true,
     this.productCount = 0,
-    this.count = "",
+    this.count = 0,
+    this.isDetail = false,
   });
 
   final VoidCallback? onTap;
   final bool? shadow;
+  final bool? isDetail;
   final String? nameSO;
-  final String? count;
+  final int? count;
   final int? productCount;
   final String? date;
 
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         width: sizeScreen.width,
@@ -82,17 +84,17 @@ class ItemHistory extends StatelessWidget {
                   "$date",
                   style: disable400.copyWith(fontSize: 12.0),
                 ),
-                count == ""
-                    ? const SizedBox()
-                    : const SizedBox(
+                isDetail!
+                    ? const SizedBox(
                         height: 8.0,
-                      ),
-                count == ""
-                    ? const SizedBox()
-                    : Text(
-                        "Total $count",
+                      )
+                    : const SizedBox(),
+                isDetail!
+                    ? Text(
+                        "Total Rp. $count",
                         style: primary500.copyWith(fontSize: 12.0),
-                      ),
+                      )
+                    : const SizedBox()
               ],
             )
           ],

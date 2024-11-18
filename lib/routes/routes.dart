@@ -6,10 +6,12 @@ import 'package:mmimobile/modules/auth/sign_in/screens/sign_in_screen.dart';
 import 'package:mmimobile/modules/auth/sign_up/screens/reveral_code_screen.dart';
 import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
+import 'package:mmimobile/modules/history/screens/detail_product_screen.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
 import 'package:mmimobile/modules/privacy_policy/screens/privacy_policy_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
 import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen.dart';
+import 'package:mmimobile/modules/reward/screens/history_reward_screen.dart';
 import 'package:mmimobile/modules/reward/screens/reward_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 
@@ -25,6 +27,7 @@ class RouteScreen {
   static const resetPassword = "$root/resetPassword";
   static const browse = "$root/browse";
   static const detailHistory = "$root/detailHistory";
+  static const detailProduct = "$root/detailProduct";
   static const profile = "$root/profile";
   static const profileSetting = "$root/profileSetting";
   static const coSuccess = "$root/coSuccess";
@@ -32,6 +35,7 @@ class RouteScreen {
   static const privacyPolicy = "$root/privacyPolicy";
   static const faq = "$root/faq";
   static const reward = "$root/reward";
+  static const historyReward = "$root/historyReward";
   static const underDevelop = "$root/underDevelop";
 
   static final listRouteScreen = {
@@ -44,10 +48,12 @@ class RouteScreen {
     resetPassword: (context) => const ResetPasswordScreen(),
     history: (context) => const HistoryScreen(),
     detailHistory: (context) => const DetailHistoryScreen(),
+    detailProduct: (context) => const DetailProductScreen(),
     profile: (context) => const ProfileScreen(),
     profileSetting: (context) => const ProfileSettingScreen(),
     faq: (context) => const FaqScreen(),
     privacyPolicy: (context) => const PrivacyPolicyScreen(),
     reward: (context) => const RewardScreen(),
+    historyReward: (context) => const HistoryRewardScreen(),
   };
 }

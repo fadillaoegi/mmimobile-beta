@@ -57,7 +57,7 @@ class InformationProfile extends StatelessWidget {
                         Text(
                           "Gold",
                           style: black500.copyWith(fontSize: 14.0),
-                        )
+                        ),
                       ],
                     ),
                   )

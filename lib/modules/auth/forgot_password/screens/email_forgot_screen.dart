@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/routes/routes.dart';
+import 'package:mmimobile/modules/auth/forgot_password/providers/forgot_pass_provider.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/widget/form_apps_two_widget.dart';
+import 'package:provider/provider.dart';
 
 class EmailForgotScreen extends StatefulWidget {
   const EmailForgotScreen({super.key});
@@ -14,15 +15,13 @@ class EmailForgotScreen extends StatefulWidget {
 }
 
 class _EmailForgotScreenState extends State<EmailForgotScreen> {
-  final _emailController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey();
-  FocusNode focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
+    final forgotPassP = Provider.of<ForgotPassProvider>(context);
     return Scaffold(
       body: GestureDetector(
           onTap: () {
-            focusNode.requestFocus();
+            forgotPassP.focusNode.requestFocus();
           },
           child: LayoutBuilder(
             builder: (context, constraints) => SingleChildScrollView(
@@ -63,14 +62,14 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
                       ),
                       Text(
                         "Forgot Password",
-                        style: primary600.copyWith(fontSize: 16.0),
+                        style: primary600.copyWith(fontSize: 20.0),
                       ),
                       const SizedBox(
                         height: 18.0,
                       ),
                       Text(
                         "Enter you email account to reset password",
-                        style: black400.copyWith(fontSize: 13.0),
+                        style: black400.copyWith(fontSize: 14.0),
                       ),
                       const SizedBox(
                         height: 18.0,
@@ -79,18 +78,24 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
                       const SizedBox(
                         height: 40.0,
                       ),
-                      FormAppsTwo(
-                        controller: _emailController,
-                        labelText: "Email",
+                      Form(
+                        key: forgotPassP.formKey,
+                        child: FormAppsTwo(
+                          controller: forgotPassP.emailController,
+                          labelText: "Email",
+                          validator: (p0) {
+                            if (p0!.isEmpty || p0 == "") {
+                              return "Email is required ";
+                            }
+                            return null;
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 20.0,
                       ),
                       BtnApps(
-                        onPress: () {
-                          Navigator.pushNamed(context, RouteScreen.otpForgot,
-                              arguments: _emailController.text);
-                        },
+                        onPress: () => forgotPassP.emailForgot(context),
                         text: "Send Code",
                       ),
                     ],

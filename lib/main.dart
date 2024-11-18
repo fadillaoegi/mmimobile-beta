@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/theme_config.dart';
 import 'package:mmimobile/modules/auth/forgot_password/providers/forgot_pass_provider.dart';
+import 'package:mmimobile/modules/auth/forgot_password/providers/otp_forgot_provider.dart';
 import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
 import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
@@ -21,6 +22,9 @@ class MainApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ForgotPassProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => OtpForgotProvider(),
         ),
         ChangeNotifierProvider(
           create: (context) => HomeProvider(),

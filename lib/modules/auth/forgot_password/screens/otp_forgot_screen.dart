@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/modules/auth/forgot_password/providers/otp_forgot_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
+import 'package:provider/provider.dart';
 
 class OtpForgotScreen extends StatefulWidget {
   const OtpForgotScreen({super.key});
@@ -13,18 +15,14 @@ class OtpForgotScreen extends StatefulWidget {
 }
 
 class _OtpForgotScreenState extends State<OtpForgotScreen> {
-  final _otpCodeC = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey();
-  FocusNode focusNode = FocusNode();
-  String staticCode = "000000";
-
   @override
   Widget build(BuildContext context) {
     String emailUser = ModalRoute.settingsOf(context)!.arguments as String;
+    final otpForgotP = Provider.of<OtpForgotProvider>(context);
     return Scaffold(
       body: GestureDetector(
           onTap: () {
-            focusNode.requestFocus();
+            otpForgotP.focusNode.requestFocus();
           },
           child: LayoutBuilder(
             builder: (context, constraints) => SingleChildScrollView(
@@ -88,8 +86,8 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                       ),
                       OtpTextField(
                         onSubmit: (String value) {
-                          _otpCodeC.text = value;
-                          if (value == staticCode) {
+                          otpForgotP.otpCodeC.text = value;
+                          if (value == otpForgotP.staticCode) {
                             Navigator.pushNamed(
                                 context, RouteScreen.resetPassword);
                           }
