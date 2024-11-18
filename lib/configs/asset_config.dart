@@ -10,6 +10,7 @@ class AssetConfig {
   static const bgLogin3 = "assets/images/bg.png";
   static const googleIcon = "assets/images/googleIcon.png";
   static const ilForgotPass = "assets/images/il_forgotPass.png";
+  static const imageProduct = "assets/images/imageProduct.png";
   static const underdevMmi = "assets/images/underdevMmi.png";
 
   // NOTE: ICON

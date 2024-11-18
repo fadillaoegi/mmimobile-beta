@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/item_history_widget.dart';
@@ -53,7 +54,7 @@ class DetailHistoryScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => ItemHistory(
                   onTap: () {
-                    // Navigator.pushNamed(context, RouteScreen.detailHistory);
+                    Navigator.pushNamed(context, RouteScreen.detailProduct);
                   },
                   isDetail: true,
                   nameSO: "SO-230800092",
