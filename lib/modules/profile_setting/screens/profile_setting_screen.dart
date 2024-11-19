@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
+import 'package:mmimobile/widget/alert/alert_dialog_widget.dart';
 import 'package:mmimobile/widget/image_circle_widget.dart';
 import 'package:mmimobile/widget/item_list_widget.dart';
 
@@ -64,16 +66,44 @@ class ProfileSettingScreen extends StatelessWidget {
                 icon: Icons.phone_android,
               ),
               ItemList(
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialogApps(
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteScreen.signIn,
+                          (route) => false,
+                        );
+                      },
+                      lotties: AssetConfig.lottieDelete,
+                      title: "Are you sure ?",
+                      content: "Delete Account",
+                      textBtn: "Yes",
+                    ),
+                  );
+                },
                 label: "Delete Account",
                 icon: Icons.delete_forever_outlined,
               ),
               ItemList(
                 onTap: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    RouteScreen.signIn,
-                    (route) => false,
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialogApps(
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteScreen.signIn,
+                          (route) => false,
+                        );
+                      },
+                      lotties: AssetConfig.lottieLogout2,
+                      title: "Are you sure ?",
+                      content: "Sign Out",
+                      textBtn: "Yes",
+                    ),
                   );
                 },
                 label: "Sign Out",

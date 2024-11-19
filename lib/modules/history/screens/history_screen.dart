@@ -41,7 +41,7 @@ class HistoryScreen extends StatelessWidget {
                     productCount: 10,
                     date: "01-October-2024",
                   ),
-                )
+                ),
               ],
             ),
           ),

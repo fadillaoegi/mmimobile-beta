@@ -80,11 +80,6 @@ class ProfileScreen extends StatelessWidget {
                   iconImage: AssetConfig.iconPrivacyPolicy,
                 ),
                 ItemList(
-                  onTap: () {},
-                  label: "Copyright",
-                  iconImage: AssetConfig.iconCopyright,
-                ),
-                ItemList(
                   onTap: () => Navigator.pushNamed(context, RouteScreen.faq),
                   label: "FAQ",
                   iconImage: AssetConfig.iconFaq,
