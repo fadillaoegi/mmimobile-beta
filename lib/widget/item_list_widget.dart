@@ -67,6 +67,7 @@ class ItemList extends StatelessWidget {
         ),
         Divider(
           color: label == "Sign Out" ? ColorApps.error : ColorApps.disable2,
+          thickness: 0.1,
         ),
       ],
     );

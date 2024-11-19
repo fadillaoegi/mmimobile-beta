@@ -63,27 +63,47 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20.0,
                 ),
-                ItemList(
-                  onTap: () {},
-                  label: "Website",
-                  iconImage: AssetConfig.iconWebsite,
-                ),
-                ItemList(
-                  onTap: () {},
-                  label: "Partners",
-                  iconImage: AssetConfig.iconPartners,
-                ),
-                ItemList(
-                  onTap: () =>
-                      Navigator.pushNamed(context, RouteScreen.privacyPolicy),
-                  label: "Privacy Policy",
-                  iconImage: AssetConfig.iconPrivacyPolicy,
-                ),
-                ItemList(
-                  onTap: () => Navigator.pushNamed(context, RouteScreen.faq),
-                  label: "FAQ",
-                  iconImage: AssetConfig.iconFaq,
-                ),
+                Container(
+                  padding: const EdgeInsets.all(14.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: ColorApps.black
+                              .withOpacity(0.10), // Warna bayangan
+                          spreadRadius: 0, // Seberapa jauh shadow menyebar
+                          blurRadius: 0.6, // Seberapa halus blur shadow
+                          offset: const Offset(0, 5), // Offset shadow (X, Y)
+                        )
+                      ],
+                      color: ColorApps.white),
+                  child: Column(
+                    children: [
+                      ItemList(
+                        onTap: () {},
+                        label: "Website",
+                        iconImage: AssetConfig.iconWebsite,
+                      ),
+                      ItemList(
+                        onTap: () {},
+                        label: "Partners",
+                        iconImage: AssetConfig.iconPartners,
+                      ),
+                      ItemList(
+                        onTap: () => Navigator.pushNamed(
+                            context, RouteScreen.privacyPolicy),
+                        label: "Privacy Policy",
+                        iconImage: AssetConfig.iconPrivacyPolicy,
+                      ),
+                      ItemList(
+                        onTap: () =>
+                            Navigator.pushNamed(context, RouteScreen.faq),
+                        label: "FAQ",
+                        iconImage: AssetConfig.iconFaq,
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

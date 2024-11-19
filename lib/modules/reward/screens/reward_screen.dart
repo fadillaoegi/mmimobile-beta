@@ -14,11 +14,16 @@ class RewardScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(
-                Icons.arrow_back,
-                color: ColorApps.white,
-              )),
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(
+              Icons.arrow_back,
+              color: ColorApps.white,
+            ),
+          ),
+          title: Text(
+            "Reward",
+            style: white700.copyWith(fontSize: 20.0),
+          ),
           backgroundColor: ColorApps.reward,
           automaticallyImplyLeading: false,
           actionsIconTheme: const IconThemeData(color: ColorApps.white),
@@ -45,9 +50,32 @@ class RewardScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "322",
-                          style: white700.copyWith(fontSize: 30.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "322",
+                              style: white700.copyWith(fontSize: 30.0),
+                            ),
+                            InkWell(
+                                onTap: () {},
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.history,
+                                      color: ColorApps.white,
+                                      size: 30.0,
+                                    ),
+                                    const SizedBox(
+                                      width: 8.0,
+                                    ),
+                                    Text(
+                                      "History",
+                                      style: white500.copyWith(fontSize: 16.0),
+                                    )
+                                  ],
+                                ))
+                          ],
                         ),
                         Text.rich(TextSpan(children: [
                           TextSpan(text: "322 ", style: white600.copyWith()),
