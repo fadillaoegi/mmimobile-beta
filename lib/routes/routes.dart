@@ -8,8 +8,10 @@ import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_product_screen.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
+import 'package:mmimobile/modules/password_edit/screens/paswword_edit_screen.dart';
 import 'package:mmimobile/modules/privacy_policy/screens/privacy_policy_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
+import 'package:mmimobile/modules/profile_edit/screens/profile_edit_screen.dart';
 import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen.dart';
 import 'package:mmimobile/modules/reward/screens/history_reward_screen.dart';
 import 'package:mmimobile/modules/reward/screens/reward_screen.dart';
@@ -30,6 +32,8 @@ class RouteScreen {
   static const detailProduct = "$root/detailProduct";
   static const profile = "$root/profile";
   static const profileSetting = "$root/profileSetting";
+  static const profileEdit = "$root/profileEdit";
+  static const editPassword = "$root/editPassword";
   static const coSuccess = "$root/coSuccess";
   static const history = "$root/history";
   static const privacyPolicy = "$root/privacyPolicy";
@@ -51,6 +55,8 @@ class RouteScreen {
     detailProduct: (context) => const DetailProductScreen(),
     profile: (context) => const ProfileScreen(),
     profileSetting: (context) => const ProfileSettingScreen(),
+    profileEdit: (context) => const ProfileEditScreen(),
+    editPassword: (context) => const PaswwordEditScreen(),
     faq: (context) => const FaqScreen(),
     privacyPolicy: (context) => const PrivacyPolicyScreen(),
     reward: (context) => const RewardScreen(),

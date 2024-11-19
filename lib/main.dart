@@ -6,6 +6,7 @@ import 'package:mmimobile/modules/auth/forgot_password/providers/reset_password_
 import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
 import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
+import 'package:mmimobile/modules/password_edit/providers/password_edit_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -34,13 +35,16 @@ class MainApp extends StatelessWidget {
           create: (context) => HomeProvider(),
         ),
         ChangeNotifierProvider(
+          create: (context) => PasswordEditProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => FaqProvider(),
         )
       ],
       child: MaterialApp(
         theme: ThemeConfig.themeData(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteScreen.splash,
+        initialRoute: RouteScreen.app,
         routes: RouteScreen.listRouteScreen,
       ),
     );

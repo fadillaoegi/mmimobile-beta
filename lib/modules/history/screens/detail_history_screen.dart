@@ -57,7 +57,8 @@ class DetailHistoryScreen extends StatelessWidget {
                     Navigator.pushNamed(context, RouteScreen.detailProduct);
                   },
                   isDetail: true,
-                  nameSO: "SO-230800092",
+                  shadow: false,
+                  nameSO: "SO-24-007191",
                   productCount: 10,
                   date: "01-October-2024",
                 ),

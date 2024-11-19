@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/forgot_password/providers/otp_forgot_provider.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,6 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
   @override
   Widget build(BuildContext context) {
     String emailUser = ModalRoute.settingsOf(context)!.arguments as String;
-
     final otpForgotP = Provider.of<OtpForgotProvider>(context);
     return Scaffold(
       body: GestureDetector(
@@ -86,15 +86,15 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                       ),
                       OtpTextField(
                         onSubmit: (String value) {
-                          setState(() {
-                            otpForgotP.otpCodeC.text = value;
-                            otpForgotP.otpVerification(
-                                context, value, emailUser);
-                          });
+                          otpForgotP.otpCodeC.text = value;
+                          if (value == otpForgotP.staticCode) {
+                            Navigator.pushNamed(
+                                context, RouteScreen.resetPassword);
+                          }
                         },
                         numberOfFields: 6,
                         borderWidth: 2.0,
-                        obscureText: false,
+                        obscureText: true,
                         clearText: true,
                         focusedBorderColor: ColorApps.primary,
                       ),

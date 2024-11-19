@@ -17,64 +17,70 @@ class ProfileSettingScreen extends StatelessWidget {
             Text("Setting Profile", style: primary700.copyWith(fontSize: 20.0)),
         scrolledUnderElevation: 0.0,
       ),
-      body: Container(
-        height: sizeScreen.height,
-        width: sizeScreen.width,
-        padding: const EdgeInsets.symmetric(horizontal: 14.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 20.0,
-            ),
-            const ImageCircle(
-              size: 100.0,
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "Edit Photo",
-                style: disable2500.copyWith(fontSize: 14.0),
+      body: SingleChildScrollView(
+        child: Container(
+          height: sizeScreen.height,
+          width: sizeScreen.width,
+          padding: const EdgeInsets.symmetric(horizontal: 14.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 20.0,
               ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            ItemList(
-              onTap: () {},
-              label: "Edit Profile",
-              icon: Icons.person,
-            ),
-            ItemList(
-              onTap: () {},
-              label: "Edit Password",
-              icon: Icons.lock_outline,
-            ),
-            ItemList(
-              onTap: () {},
-              label: "Edit Phone Number",
-              icon: Icons.phone_android,
-            ),
-            ItemList(
-              onTap: () {},
-              label: "Delete Account",
-              icon: Icons.delete_forever_outlined,
-            ),
-            ItemList(
-              onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  RouteScreen.signIn,
-                  (route) => false,
-                );
-              },
-              label: "Sign Out",
-              icon: Icons.logout,
-            ),
-          ],
+              const ImageCircle(
+                size: 100.0,
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Edit Photo",
+                  style: disable2500.copyWith(fontSize: 14.0),
+                ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              ItemList(
+                onTap: () {
+                  Navigator.pushNamed(context, RouteScreen.profileEdit);
+                },
+                label: "Edit Profile",
+                icon: Icons.person,
+              ),
+              ItemList(
+                onTap: () {
+                  Navigator.pushNamed(context, RouteScreen.editPassword);
+                },
+                label: "Edit Password",
+                icon: Icons.lock_outline,
+              ),
+              ItemList(
+                onTap: () {},
+                label: "Edit Phone Number",
+                icon: Icons.phone_android,
+              ),
+              ItemList(
+                onTap: () {},
+                label: "Delete Account",
+                icon: Icons.delete_forever_outlined,
+              ),
+              ItemList(
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RouteScreen.signIn,
+                    (route) => false,
+                  );
+                },
+                label: "Sign Out",
+                icon: Icons.logout,
+              ),
+            ],
+          ),
         ),
       ),
     );
