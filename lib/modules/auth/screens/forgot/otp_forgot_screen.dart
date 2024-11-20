@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/modules/auth/forgot_password/providers/forgot_pass_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/otp_forgot_provider.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
-import 'package:mmimobile/widget/button/btn_apps_widget.dart';
-import 'package:mmimobile/widget/form_apps_two_widget.dart';
 import 'package:provider/provider.dart';
 
-class EmailForgotScreen extends StatefulWidget {
-  const EmailForgotScreen({super.key});
+class OtpForgotScreen extends StatefulWidget {
+  const OtpForgotScreen({super.key});
 
   @override
-  State<EmailForgotScreen> createState() => _EmailForgotScreenState();
+  State<OtpForgotScreen> createState() => _OtpForgotScreenState();
 }
 
-class _EmailForgotScreenState extends State<EmailForgotScreen> {
+class _OtpForgotScreenState extends State<OtpForgotScreen> {
   @override
   Widget build(BuildContext context) {
-    final forgotPassP = Provider.of<ForgotPassProvider>(context);
+    String emailUser = ModalRoute.settingsOf(context)!.arguments as String;
+    final otpForgotP = Provider.of<OtpForgotProvider>(context);
     return Scaffold(
       body: GestureDetector(
           onTap: () {
-            forgotPassP.focusNode.requestFocus();
+            otpForgotP.focusNode.requestFocus();
           },
           child: LayoutBuilder(
             builder: (context, constraints) => SingleChildScrollView(
@@ -61,42 +62,59 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
                         height: 40.0,
                       ),
                       Text(
-                        "Forgot Password",
-                        style: primary600.copyWith(fontSize: 20.0),
+                        "Enter Verification Code",
+                        style: primary600.copyWith(fontSize: 16.0),
                       ),
                       const SizedBox(
                         height: 18.0,
                       ),
                       Text(
-                        "Enter you email account to reset password",
-                        style: black400.copyWith(fontSize: 14.0),
+                        "OTP code has been sent to the email address",
+                        textAlign: TextAlign.center,
+                        style: black400.copyWith(fontSize: 13.0),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        emailUser.isEmpty ? "example@gmail.com." : emailUser,
+                        textAlign: TextAlign.center,
+                        style: primary400.copyWith(fontSize: 13.0),
                       ),
                       const SizedBox(
                         height: 18.0,
                       ),
-                      Image.asset(AssetConfig.ilForgotPass),
-                      const SizedBox(
-                        height: 40.0,
-                      ),
-                      Form(
-                        key: forgotPassP.formKey,
-                        child: FormAppsTwo(
-                          controller: forgotPassP.emailController,
-                          labelText: "Email",
-                          validator: (p0) {
-                            if (p0!.isEmpty || p0 == "") {
-                              return "Email is required ";
-                            }
-                            return null;
-                          },
-                        ),
+                      OtpTextField(
+                        onSubmit: (String value) {
+                          otpForgotP.otpCodeC.text = value;
+                          if (value == otpForgotP.staticCode) {
+                            Navigator.pushNamed(
+                                context, RouteScreen.resetPassword);
+                          }
+                        },
+                        numberOfFields: 6,
+                        borderWidth: 2.0,
+                        obscureText: true,
+                        clearText: true,
+                        focusedBorderColor: ColorApps.primary,
                       ),
                       const SizedBox(
                         height: 20.0,
                       ),
-                      BtnApps(
-                        onPress: () => forgotPassP.emailForgot(context),
-                        text: "Send Code",
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Didn’t you receive any code?",
+                            style: black500.copyWith(fontSize: 13.0),
+                          ),
+                          TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Resend Code",
+                                style: primary500.copyWith(fontSize: 13.0),
+                              ))
+                        ],
                       ),
                     ],
                   ),

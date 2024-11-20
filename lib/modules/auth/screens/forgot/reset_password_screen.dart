@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/modules/auth/forgot_password/providers/reset_password_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/reset_password_provider.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';

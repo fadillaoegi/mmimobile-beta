@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
+import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';

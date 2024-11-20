@@ -1,9 +1,9 @@
 import 'package:mmimobile/modules/app.dart';
-import 'package:mmimobile/modules/auth/forgot_password/screens/email_forgot_screen.dart';
-import 'package:mmimobile/modules/auth/forgot_password/screens/otp_forgot_screen.dart';
-import 'package:mmimobile/modules/auth/forgot_password/screens/reset_password_screen.dart';
-import 'package:mmimobile/modules/auth/sign_in/screens/sign_in_screen.dart';
-import 'package:mmimobile/modules/auth/sign_up/screens/reveral_code_screen.dart';
+import 'package:mmimobile/modules/auth/screens/forgot/email_forgot_screen.dart';
+import 'package:mmimobile/modules/auth/screens/forgot/otp_forgot_screen.dart';
+import 'package:mmimobile/modules/auth/screens/forgot/reset_password_screen.dart';
+import 'package:mmimobile/modules/auth/screens/sign_in_screen.dart';
+import 'package:mmimobile/modules/auth/screens/reveral_code_screen.dart';
 import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_product_screen.dart';

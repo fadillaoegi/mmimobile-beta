@@ -1,1 +1,1 @@
-class RequestConfig {}
+class RequestApps {}

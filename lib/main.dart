@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/theme_config.dart';
-import 'package:mmimobile/modules/auth/forgot_password/providers/forgot_pass_provider.dart';
-import 'package:mmimobile/modules/auth/forgot_password/providers/otp_forgot_provider.dart';
-import 'package:mmimobile/modules/auth/forgot_password/providers/reset_password_provider.dart';
-import 'package:mmimobile/modules/auth/sign_in/providers/sign_in_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/forgot_pass_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/otp_forgot_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/reset_password_provider.dart';
+import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
 import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
 import 'package:mmimobile/modules/password_edit/providers/password_edit_provider.dart';
@@ -39,7 +39,7 @@ class MainApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => FaqProvider(),
-        )
+        ),
       ],
       child: MaterialApp(
         theme: ThemeConfig.themeData(),
