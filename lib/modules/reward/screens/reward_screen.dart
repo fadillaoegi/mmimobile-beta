@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';
@@ -13,6 +14,7 @@ class RewardScreen extends StatelessWidget {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: const Icon(
@@ -22,7 +24,7 @@ class RewardScreen extends StatelessWidget {
           ),
           title: Text(
             "Reward",
-            style: white700.copyWith(fontSize: 20.0),
+            style: white600.copyWith(fontSize: 20.0),
           ),
           backgroundColor: ColorApps.reward,
           automaticallyImplyLeading: false,
@@ -58,7 +60,10 @@ class RewardScreen extends StatelessWidget {
                               style: white700.copyWith(fontSize: 30.0),
                             ),
                             InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouteScreen.historyReward);
+                                },
                                 child: Row(
                                   children: [
                                     const Icon(

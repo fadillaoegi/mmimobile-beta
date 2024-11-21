@@ -16,44 +16,54 @@ import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen
 import 'package:mmimobile/modules/reward/screens/history_reward_screen.dart';
 import 'package:mmimobile/modules/reward/screens/reward_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
+import 'package:mmimobile/modules/website/screens/website_screen.dart';
 
 class RouteScreen {
   static const root = "/mmimobile";
   static const splash = "$root/splash";
   static const app = "$root/app";
+  static const underDevelop = "$root/underDevelop";
+  // NOTE: AUTH
   static const signIn = "$root/signIn";
   static const codeReveral = "$root/codeReveral";
   static const signUp = "$root/signUp";
   static const forgot = "$root/forgot";
   static const otpForgot = "$root/otpForgot";
   static const resetPassword = "$root/resetPassword";
-  static const browse = "$root/browse";
+  // NOTE: HOME
+  static const home = "$root/home";
+  // NOTE: HISTORY
+  static const history = "$root/history";
   static const detailHistory = "$root/detailHistory";
   static const detailProduct = "$root/detailProduct";
+  // NOTE: PROFILE
   static const profile = "$root/profile";
+  static const website = "$root/website";
+  static const reward = "$root/reward";
+  static const privacyPolicy = "$root/privacyPolicy";
+  static const faq = "$root/faq";
   static const profileSetting = "$root/profileSetting";
   static const profileEdit = "$root/profileEdit";
   static const editPassword = "$root/editPassword";
   static const coSuccess = "$root/coSuccess";
-  static const history = "$root/history";
-  static const privacyPolicy = "$root/privacyPolicy";
-  static const faq = "$root/faq";
-  static const reward = "$root/reward";
   static const historyReward = "$root/historyReward";
-  static const underDevelop = "$root/underDevelop";
 
   static final listRouteScreen = {
     splash: (context) => const SplashScreen(),
+    app: (context) => const AppScreen(),
+    // NOTE: AUTH
     signIn: (context) => const SignInScreen(),
     codeReveral: (context) => const ReveralCodeScreen(),
-    app: (context) => const AppScreen(),
     forgot: (context) => const EmailForgotScreen(),
     otpForgot: (context) => const OtpForgotScreen(),
     resetPassword: (context) => const ResetPasswordScreen(),
+    // NOTE: HISTORY
     history: (context) => const HistoryScreen(),
     detailHistory: (context) => const DetailHistoryScreen(),
     detailProduct: (context) => const DetailProductScreen(),
+    // NOTE: PROFILE
     profile: (context) => const ProfileScreen(),
+    website: (context) => const WebsiteScreen(),
     profileSetting: (context) => const ProfileSettingScreen(),
     profileEdit: (context) => const ProfileEditScreen(),
     editPassword: (context) => const PaswwordEditScreen(),

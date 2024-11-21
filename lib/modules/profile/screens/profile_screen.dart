@@ -1,3 +1,4 @@
+import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/routes.dart';
@@ -80,14 +81,13 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       ItemList(
-                        onTap: () {},
+                        onTap: () async {
+                          await EasyLauncher.url(
+                              url: "https://mashmoshem.co.id/",
+                              mode: Mode.inAppWeb);
+                        },
                         label: "Website",
                         iconImage: AssetConfig.iconWebsite,
-                      ),
-                      ItemList(
-                        onTap: () {},
-                        label: "Partners",
-                        iconImage: AssetConfig.iconPartners,
                       ),
                       ItemList(
                         onTap: () => Navigator.pushNamed(

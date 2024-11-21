@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/configs/theme_config.dart';
-import 'package:mmimobile/modules/auth/providers/forgot/forgot_pass_provider.dart';
-import 'package:mmimobile/modules/auth/providers/forgot/otp_forgot_provider.dart';
-import 'package:mmimobile/modules/auth/providers/forgot/reset_password_provider.dart';
-import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
 import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
+import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/otp_forgot_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/forgot_pass_provider.dart';
+import 'package:mmimobile/modules/auth/providers/forgot/reset_password_provider.dart';
 import 'package:mmimobile/modules/password_edit/providers/password_edit_provider.dart';
-import 'package:mmimobile/routes/routes.dart';
-import 'package:provider/provider.dart';
 
-void main() => runApp(const MainApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MainApp());
+}
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -44,7 +46,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeConfig.themeData(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteScreen.app,
+        initialRoute: RouteScreen.splash,
         routes: RouteScreen.listRouteScreen,
       ),
     );

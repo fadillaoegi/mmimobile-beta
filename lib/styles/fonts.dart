@@ -34,6 +34,16 @@ TextStyle primary600 =
 TextStyle primary700 =
     GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.primary);
 
+// NOTE: FONT PRIMARYY
+TextStyle reward400 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w400, color: ColorApps.reward);
+TextStyle reward500 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w500, color: ColorApps.reward);
+TextStyle reward600 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w600, color: ColorApps.reward);
+TextStyle reward700 =
+    GoogleFonts.poppins(fontWeight: FontWeight.w700, color: ColorApps.reward);
+
 // NOTE: FONT DISABLE
 TextStyle disable400 =
     GoogleFonts.poppins(fontWeight: FontWeight.w400, color: ColorApps.disable);
