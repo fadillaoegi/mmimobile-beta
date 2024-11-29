@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/modules/phone_edit/providers/phone_edit_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/configs/theme_config.dart';
@@ -40,13 +41,16 @@ class MainApp extends StatelessWidget {
           create: (context) => PasswordEditProvider(),
         ),
         ChangeNotifierProvider(
+          create: (context) => PhoneEditProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => FaqProvider(),
         ),
       ],
       child: MaterialApp(
         theme: ThemeConfig.themeData(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteScreen.splash,
+        initialRoute: RouteScreen.app,
         routes: RouteScreen.listRouteScreen,
       ),
     );

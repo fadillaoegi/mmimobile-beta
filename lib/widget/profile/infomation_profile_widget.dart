@@ -3,6 +3,7 @@ import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
+import 'package:mmimobile/styles/shadow.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class InformationProfile extends StatelessWidget {
@@ -21,14 +22,7 @@ class InformationProfile extends StatelessWidget {
       decoration: BoxDecoration(
           color: ColorApps.white,
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-          boxShadow: [
-            BoxShadow(
-              color: ColorApps.black.withOpacity(0.10), // Warna bayangan
-              spreadRadius: 0, // Seberapa jauh shadow menyebar
-              blurRadius: 0.6, // Seberapa halus blur shadow
-              offset: const Offset(0, 5), // Offset shadow (X, Y)
-            )
-          ]),
+          boxShadow: boxShadow),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

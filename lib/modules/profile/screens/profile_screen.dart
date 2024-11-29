@@ -4,6 +4,7 @@ import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
+import 'package:mmimobile/styles/shadow.dart';
 import 'package:mmimobile/widget/image_circle_widget.dart';
 import 'package:mmimobile/widget/item_list_widget.dart';
 import 'package:mmimobile/widget/profile/infomation_profile_widget.dart';
@@ -68,15 +69,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(14.0),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: ColorApps.black
-                              .withOpacity(0.10), // Warna bayangan
-                          spreadRadius: 0, // Seberapa jauh shadow menyebar
-                          blurRadius: 0.6, // Seberapa halus blur shadow
-                          offset: const Offset(0, 5), // Offset shadow (X, Y)
-                        )
-                      ],
+                      boxShadow: boxShadow,
                       color: ColorApps.white),
                   child: Column(
                     children: [
