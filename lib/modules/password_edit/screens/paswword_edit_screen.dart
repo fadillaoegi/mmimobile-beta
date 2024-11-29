@@ -40,7 +40,15 @@ class PaswwordEditScreen extends StatelessWidget {
                         boxShadow: boxShadow),
                     child: Form(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "Please enter your new Password",
+                            style: black400.copyWith(fontSize: 14.0),
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
                           FormAppsTwo(
                             controller: passEditP.passController,
                             labelText: "Password",

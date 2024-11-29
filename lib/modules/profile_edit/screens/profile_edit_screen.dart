@@ -43,7 +43,15 @@ class ProfileEditScreen extends StatelessWidget {
                           ]),
                       child: Form(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Text(
+                              "Please enter your new data",
+                              style: black400.copyWith(fontSize: 14.0),
+                            ),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
                             FormAppsTwo(
                               labelText: "Email",
                               controller: TextEditingController(),
@@ -53,13 +61,6 @@ class ProfileEditScreen extends StatelessWidget {
                             ),
                             FormAppsTwo(
                               labelText: "Name",
-                              controller: TextEditingController(),
-                            ),
-                            const SizedBox(
-                              height: 20.0,
-                            ),
-                            FormAppsTwo(
-                              labelText: "Phone",
                               controller: TextEditingController(),
                             ),
                             const SizedBox(
