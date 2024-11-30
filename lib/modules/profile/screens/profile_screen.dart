@@ -1,7 +1,7 @@
 import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/routes/routes.dart';
+import 'package:mmimobile/routes/initial_routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/styles/shadow.dart';

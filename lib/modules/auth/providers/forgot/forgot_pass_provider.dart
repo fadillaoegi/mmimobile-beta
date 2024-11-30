@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/routes/routes.dart';
+import 'package:mmimobile/routes/initial_routes.dart';
 import 'package:mmimobile/widget/alert/alert_dialog_no_action_widget.dart';
 
 class ForgotPassProvider extends ChangeNotifier {
