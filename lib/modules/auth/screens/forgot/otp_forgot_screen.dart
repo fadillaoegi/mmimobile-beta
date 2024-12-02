@@ -7,17 +7,14 @@ import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:provider/provider.dart';
 
-class OtpForgotScreen extends StatefulWidget {
-  const OtpForgotScreen({super.key});
+class OtpForgotScreen extends StatelessWidget {
+  const OtpForgotScreen({super.key, this.emailUser});
 
-  @override
-  State<OtpForgotScreen> createState() => _OtpForgotScreenState();
-}
+  final String? emailUser;
 
-class _OtpForgotScreenState extends State<OtpForgotScreen> {
   @override
   Widget build(BuildContext context) {
-    String emailUser = ModalRoute.settingsOf(context)!.arguments as String;
+    // String emailUser = ModalRoute.settingsOf(context)!.arguments as String;
     final otpForgotP = Provider.of<OtpForgotProvider>(context);
     return Scaffold(
       body: GestureDetector(
@@ -77,7 +74,7 @@ class _OtpForgotScreenState extends State<OtpForgotScreen> {
                         height: 10.0,
                       ),
                       Text(
-                        emailUser.isEmpty ? "example@gmail.com." : emailUser,
+                        emailUser!.isEmpty ? "example@gmail.com." : emailUser!,
                         textAlign: TextAlign.center,
                         style: primary400.copyWith(fontSize: 13.0),
                       ),

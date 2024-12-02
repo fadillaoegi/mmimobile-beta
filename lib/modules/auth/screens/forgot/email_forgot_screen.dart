@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/providers/forgot/forgot_pass_provider.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';
@@ -41,7 +42,8 @@ class _EmailForgotScreenState extends State<EmailForgotScreen> {
                           children: [
                             InkWell(
                               onTap: () {
-                                Navigator.pop(context);
+                                // Navigator.pop(context);
+                                goRouter.pop(context);
                               },
                               child: const Icon(
                                 Icons.arrow_back,

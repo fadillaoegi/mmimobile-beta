@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
@@ -18,6 +19,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     final signInProvider = Provider.of<SignInProvider>(context);
+    GoRouter goRouter = GoRouter.of(context);
 
     return GestureDetector(
       onTap: () {
@@ -123,8 +125,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               children: [
                                 TextButton(
                                     onPressed: () {
-                                      Navigator.pushNamed(
-                                          context, RouteScreen.forgot);
+                                      // Navigator.pushNamed(
+                                      //     context, RouteScreen.forgot);
+                                      goRouter.goNamed(RouteScreen.forgot);
                                     },
                                     child: Text(
                                       "Forgot Password",
@@ -152,8 +155,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, RouteScreen.codeReveral);
+                                    // Navigator.pushNamed(
+                                    //     context, RouteScreen.codeReveral);
+                                    goRouter.goNamed(RouteScreen.codeReveral);
                                   },
                                   child: Text(
                                     "Sign up",

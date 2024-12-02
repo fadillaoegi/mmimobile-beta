@@ -13,6 +13,7 @@ class ReveralCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final codeReveralC = TextEditingController();
     return Scaffold(
+      appBar: AppBar(),
       body: LayoutBuilder(
         builder: (context, constraints) => SingleChildScrollView(
           child: ConstrainedBox(
@@ -22,23 +23,23 @@ class ReveralCodeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Icon(
-                            Icons.arrow_back,
-                            color: ColorApps.primary,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       InkWell(
+                  //         onTap: () {
+                  //           Navigator.pop(context);
+                  //         },
+                  //         child: const Icon(
+                  //           Icons.arrow_back,
+                  //           color: ColorApps.primary,
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   Center(
                     child: Image.asset(
                       AssetConfig.logo3,

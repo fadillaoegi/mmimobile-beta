@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
@@ -14,14 +16,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  String _message = "Loading...";
+  final bool _isUser = false;
   @override
   void initState() {
     super.initState();
     _startSplash();
   }
 
-  String _message = "Loading...";
-  final bool _isUser = false;
   Future<void> _startSplash() async {
     Timer(
       const Duration(seconds: 3),
@@ -40,15 +42,17 @@ class _SplashScreenState extends State<SplashScreen> {
               const Duration(seconds: 3),
               () {
                 if (_isUser) {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    RouteScreen.app,
-                  );
+                  // Navigator.pushReplacementNamed(
+                  //   context,
+                  //   RouteScreen.app,
+                  // );
+                  goRouter.goNamed(RouteScreen.signIn);
                 } else {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    RouteScreen.signIn,
-                  );
+                  // Navigator.pushReplacementNamed(
+                  //   context,
+                  //   RouteScreen.signIn,
+                  // );
+                  goRouter.goNamed(RouteScreen.signIn);
                 }
               },
             );
@@ -61,6 +65,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
+    GoRouter goRouter = GoRouter.of(context);
+
     return Scaffold(
       body: SizedBox(
         height: sizeScreen.height,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/widget/alert/alert_dialog_no_action_widget.dart';
 
 class SignInProvider extends ChangeNotifier {
@@ -36,11 +37,12 @@ class SignInProvider extends ChangeNotifier {
           Timer(
             const Duration(seconds: 3),
             () {
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                RouteScreen.app,
-                (route) => false,
-              );
+              // Navigator.pushNamedAndRemoveUntil(
+              //   context,
+              //   RouteScreen.app,
+              //   (route) => false,
+              // );
+              goRouter.goNamed(RouteScreen.app);
             },
           );
         } else {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mmimobile/routes/initial_routes.dart';
-import 'package:provider/provider.dart';
-import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/configs/theme_config.dart';
+import 'package:mmimobile/routes/routes.dart';
+
+import 'package:provider/provider.dart';
 import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
 import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
@@ -48,11 +48,18 @@ class MainApp extends StatelessWidget {
           create: (context) => FaqProvider(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         theme: ThemeConfig.themeData(),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteScreen.splash,
-        routes: listRouteScreen,
+        routerConfig: goRouter,
+        // routeInformationProvider: goRouter.routeInformationProvider,
+        // routeInformationParser: goRouter.routeInformationParser,
+        // routerDelegate: goRouter.routerDelegate,
+        //  MaterialApp(
+        //   theme: ThemeConfig.themeData(),
+        //   debugShowCheckedModeBanner: false,
+        //   initialRoute: RouteScreen.splash,
+        //   routes: listRouteScreen,
       ),
     );
   }
