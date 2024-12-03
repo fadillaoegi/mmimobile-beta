@@ -3,6 +3,7 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/providers/forgot/otp_forgot_provider.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:provider/provider.dart';
@@ -85,8 +86,9 @@ class OtpForgotScreen extends StatelessWidget {
                         onSubmit: (String value) {
                           otpForgotP.otpCodeC.text = value;
                           if (value == otpForgotP.staticCode) {
-                            Navigator.pushNamed(
-                                context, RouteScreen.resetPassword);
+                            // Navigator.pushNamed(
+                            //     context, RouteScreen.resetPassword);
+                            goRouter.goNamed(RouteScreen.resetPassword);
                           }
                         },
                         numberOfFields: 6,

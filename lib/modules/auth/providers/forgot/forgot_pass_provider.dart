@@ -18,7 +18,7 @@ class ForgotPassProvider extends ChangeNotifier {
 
   // NOTE: FUNCTION
   emailForgot(BuildContext context) {
-    String email = emailController.text;
+    final email = emailController.text;
     final goRouter = GoRouter.of(context);
     if (formKey.currentState!.validate()) {
       if (email != _emailStatic) {
@@ -32,7 +32,8 @@ class ForgotPassProvider extends ChangeNotifier {
         );
         Timer(
           const Duration(seconds: 3),
-          () => Navigator.pop(context),
+          () => goRouter.pop(context),
+          // () => Navigator.pop(context),
         );
       } else {
         showDialog(
