@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/widget/out_btn_apps_widget.dart';
@@ -67,7 +68,8 @@ class AlertDialogApps extends StatelessWidget {
               Expanded(
                   child: BtnApps(
                 onPress: () {
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                  goRouter.pop(context);
                 },
                 text: "Tidak",
               )),

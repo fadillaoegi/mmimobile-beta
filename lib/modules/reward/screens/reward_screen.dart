@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/widget/item_mission_widget.dart';
+import 'package:mmimobile/widget/reward/item_reward_widget.dart';
 
 class RewardScreen extends StatelessWidget {
   const RewardScreen({super.key});
@@ -16,7 +17,8 @@ class RewardScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           leading: IconButton(
-            onPressed: () => Navigator.pop(context),
+            // onPressed: () => Navigator.pop(context),
+            onPressed: () => goRouter.pop(context),
             icon: const Icon(
               Icons.arrow_back,
               color: ColorApps.white,
@@ -61,8 +63,9 @@ class RewardScreen extends StatelessWidget {
                             ),
                             InkWell(
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                      context, RouteScreen.historyReward);
+                                  // Navigator.pushNamed(
+                                  //     context, RouteScreen.historyReward);
+                                  goRouter.goNamed(RouteScreen.historyReward);
                                 },
                                 child: Row(
                                   children: [
@@ -166,51 +169,5 @@ class RewardScreen extends StatelessWidget {
             ),
           ],
         ));
-  }
-}
-
-class ItemDailyReward extends StatelessWidget {
-  const ItemDailyReward({
-    super.key,
-    this.point = 2,
-    this.isChacked = true,
-  });
-
-  final int? point;
-  final bool? isChacked;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 6.0,
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
-      decoration: BoxDecoration(
-          color: const Color.fromARGB(100, 175, 175, 175),
-          border: Border.all(
-              color: isChacked!
-                  ? ColorApps.reward
-                  : const Color.fromARGB(100, 175, 175, 175)),
-          borderRadius: const BorderRadius.all(Radius.circular(10.0))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "+$point",
-            style: black500.copyWith(fontSize: 12.0),
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          Image.asset(
-            AssetConfig.iconPoint,
-            height: 22.0,
-            width: 22.0,
-          ),
-        ],
-      ),
-    );
   }
 }

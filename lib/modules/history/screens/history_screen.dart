@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/item_history_widget.dart';
 
@@ -9,6 +10,7 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
+    // final goRouter = GoRouter.of(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -34,7 +36,8 @@ class HistoryScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) => ItemHistory(
                     onTap: () {
-                      Navigator.pushNamed(context, RouteScreen.detailHistory);
+                      // Navigator.pushNamed(context, RouteScreen.detailHistory);
+                      goRouter.goNamed(RouteScreen.detailHistory);
                     },
                     shadow: false,
                     nameSO: "SO-24-007191",

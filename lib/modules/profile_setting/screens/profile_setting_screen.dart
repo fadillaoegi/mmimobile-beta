@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/styles/shadow.dart';
@@ -54,21 +55,24 @@ class ProfileSettingScreen extends StatelessWidget {
               ),
               ItemList(
                 onTap: () {
-                  Navigator.pushNamed(context, RouteScreen.profileEdit);
+                  // Navigator.pushNamed(context, RouteScreen.profileEdit);
+                  goRouter.goNamed(RouteScreen.profileEdit);
                 },
                 label: "Edit Profile",
                 icon: Icons.person,
               ),
               ItemList(
                 onTap: () {
-                  Navigator.pushNamed(context, RouteScreen.editPassword);
+                  // Navigator.pushNamed(context, RouteScreen.editPassword);
+                  goRouter.goNamed(RouteScreen.editPassword);
                 },
                 label: "Edit Password",
                 icon: Icons.lock_outline,
               ),
               ItemList(
                 onTap: () {
-                  Navigator.pushNamed(context, RouteScreen.phoneEdit);
+                  // Navigator.pushNamed(context, RouteScreen.phoneEdit);
+                  goRouter.goNamed(RouteScreen.phoneEdit);
                 },
                 label: "Edit Phone Number",
                 icon: Icons.phone_android,
@@ -79,11 +83,12 @@ class ProfileSettingScreen extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialogApps(
                       onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          RouteScreen.signIn,
-                          (route) => false,
-                        );
+                        // Navigator.pushNamedAndRemoveUntil(
+                        //   context,
+                        //   RouteScreen.signIn,
+                        //   (route) => false,
+                        // );
+                        goRouter.goNamed(RouteScreen.signIn);
                       },
                       lotties: AssetConfig.lottieDelete,
                       title: "Are you sure ?",
@@ -101,11 +106,12 @@ class ProfileSettingScreen extends StatelessWidget {
                     context: context,
                     builder: (context) => AlertDialogApps(
                       onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          RouteScreen.signIn,
-                          (route) => false,
-                        );
+                        // Navigator.pushNamedAndRemoveUntil(
+                        //   context,
+                        //   RouteScreen.signIn,
+                        //   (route) => false,
+                        // );
+                        goRouter.goNamed(RouteScreen.signIn);
                       },
                       lotties: AssetConfig.lottieLogout2,
                       title: "Are you sure ?",

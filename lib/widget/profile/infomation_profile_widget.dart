@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/styles/shadow.dart';
@@ -70,8 +71,8 @@ class InformationProfile extends StatelessWidget {
                     height: 12.0,
                   ),
                   InkWell(
-                    onTap: () =>
-                        Navigator.pushNamed(context, RouteScreen.reward),
+                    onTap: () => goRouter.goNamed(RouteScreen.reward),
+                    // Navigator.pushNamed(context, RouteScreen.reward),
                     child: Row(
                       children: [
                         Image.asset(

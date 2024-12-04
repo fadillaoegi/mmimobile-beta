@@ -23,7 +23,7 @@ import 'package:mmimobile/modules/splash/splash_screen.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
 
 final GoRouter goRouter =
-    GoRouter(initialLocation: RouteScreen.splashPath, routes: [
+    GoRouter(initialLocation: RouteScreen.appPath, routes: [
   GoRoute(
     path: RouteScreen.splashPath,
     name: RouteScreen.splash,
@@ -73,31 +73,33 @@ final GoRouter goRouter =
             ]),
       ]),
 
+  // NOTE: MAIN APP SCREEN
+
   GoRoute(
     path: RouteScreen.appPath,
     name: RouteScreen.app,
-    builder: (context, state) => const AppScreen(),
+    builder: (context, state) {
+      return const AppScreen();
+    },
   ),
-
   // NOTE: MODULE HOME
   // NOTE: MODULE SYSTEM SUPPORT
   // NOTE: MODULE HISTORY
   GoRoute(
-      path: RouteScreen.historyPath,
-      name: RouteScreen.history,
-      builder: (context, state) => const HistoryScreen(),
+    path: RouteScreen.historyPath,
+    name: RouteScreen.history,
+    builder: (context, state) => const HistoryScreen(),
+  ),
+  GoRoute(
+      path: RouteScreen.detailHistoryPath,
+      name: RouteScreen.detailHistory,
+      builder: (context, state) => const DetailHistoryScreen(),
       routes: [
         GoRoute(
-            path: RouteScreen.detailHistoryPath,
-            name: RouteScreen.detailHistory,
-            builder: (context, state) => const DetailHistoryScreen(),
-            routes: [
-              GoRoute(
-                path: RouteScreen.detailProductPath,
-                name: RouteScreen.detailHistoryPath,
-                builder: (context, state) => const DetailProductScreen(),
-              ),
-            ]),
+          path: RouteScreen.detailProductPath,
+          name: RouteScreen.detailProduct,
+          builder: (context, state) => const DetailProductScreen(),
+        ),
       ]),
 
   // NOTE: MODULE PROFILE
@@ -186,5 +188,3 @@ final GoRouter goRouter =
 //   RouteScreen.reward: (context) => const RewardScreen(),
 //   RouteScreen.historyReward: (context) => const HistoryRewardScreen(),
 // };
-
-

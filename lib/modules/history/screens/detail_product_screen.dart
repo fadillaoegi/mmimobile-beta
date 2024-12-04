@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
@@ -9,6 +10,7 @@ class DetailProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
+    final goRouter = GoRouter.of(context);
     return Scaffold(
       body: Container(
         height: sizeScreen.height,
@@ -32,7 +34,8 @@ class DetailProductScreen extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
+                        goRouter.pop(context);
                       },
                       child: Container(
                         height: 40.0,
