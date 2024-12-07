@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
@@ -10,7 +10,6 @@ class DetailProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
-    final goRouter = GoRouter.of(context);
     return Scaffold(
       body: Container(
         height: sizeScreen.height,
@@ -30,7 +29,6 @@ class DetailProductScreen extends StatelessWidget {
               child: SafeArea(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
                       onTap: () {

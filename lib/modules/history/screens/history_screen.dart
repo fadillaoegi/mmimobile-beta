@@ -10,7 +10,6 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
-    // final goRouter = GoRouter.of(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

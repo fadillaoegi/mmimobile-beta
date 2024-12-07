@@ -6,6 +6,7 @@ import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
 import 'package:mmimobile/modules/password_edit/providers/password_edit_provider.dart';
 import 'package:mmimobile/modules/phone_edit/providers/phone_edit_provider.dart';
+import 'package:mmimobile/modules/system_support/providers/system_support_provider.dart';
 import 'package:provider/provider.dart';
 
 // class GlobalProviderApps extends ChangeNotifier {
@@ -24,6 +25,9 @@ final providers = [
   ),
   ChangeNotifierProvider<HomeProvider>(
     create: (context) => HomeProvider(),
+  ),
+  ChangeNotifierProvider<SystemSupportProvider>(
+    create: (context) => SystemSupportProvider(),
   ),
   ChangeNotifierProvider<PasswordEditProvider>(
     create: (context) => PasswordEditProvider(),
