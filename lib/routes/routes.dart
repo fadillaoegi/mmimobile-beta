@@ -5,6 +5,9 @@ import 'package:mmimobile/modules/auth/screens/sign_in_screen.dart';
 import 'package:mmimobile/modules/auth/screens/forgot/otp_forgot_screen.dart';
 import 'package:mmimobile/modules/auth/screens/forgot/email_forgot_screen.dart';
 import 'package:mmimobile/modules/auth/screens/forgot/reset_password_screen.dart';
+import 'package:mmimobile/modules/class/screens/class_forum_screen.dart';
+import 'package:mmimobile/modules/class/screens/class_free_screen.dart';
+import 'package:mmimobile/modules/class/screens/class_premium_screen.dart';
 import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/auth/screens/reveral_code_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
@@ -95,10 +98,17 @@ final GoRouter goRouter =
               GoRoute(
                 path: RouteScreen.classFreePath,
                 name: RouteScreen.classFree,
+                builder: (context, state) => const ClassFreeScreen(),
               ),
               GoRoute(
                 path: RouteScreen.classPremiumPath,
                 name: RouteScreen.classPremium,
+                builder: (context, state) => const ClassPremiumScreen(),
+              ),
+              GoRoute(
+                path: RouteScreen.classForumPath,
+                name: RouteScreen.classForum,
+                builder: (context, state) => const ClassForumScreen(),
               ),
             ]),
         // MODULE: MODULE HISTORY

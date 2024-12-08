@@ -14,19 +14,6 @@ class DetailHistoryScreen extends StatelessWidget {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
-        leading: InkWell(
-          onTap: () {
-            // Navigator.pop(context);
-            // goRouter.goNamed(RouteScreen.app);
-            goRouter.pop(context);
-          },
-          child: const Center(
-            child: Icon(
-              Icons.arrow_back,
-              size: 26.0,
-            ),
-          ),
-        ),
         centerTitle: true,
         title:
             Text("Detail History", style: primary700.copyWith(fontSize: 20.0)),

@@ -20,7 +20,7 @@ class RewardScreen extends StatelessWidget {
             // onPressed: () => Navigator.pop(context),
             onPressed: () => goRouter.pop(context),
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios_new,
               color: ColorApps.white,
             ),
           ),

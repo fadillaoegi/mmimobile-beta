@@ -20,9 +20,14 @@ class ProfileScreen extends StatelessWidget {
         body: Stack(
       children: [
         Container(
-          height: sizeScreen.height / 4,
+          height: sizeScreen.height / 3,
           width: sizeScreen.width,
-          color: ColorApps.primary,
+          decoration: const BoxDecoration(
+              color: ColorApps.primary,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
+              )),
         ),
         SafeArea(
           child: Padding(
@@ -87,9 +92,6 @@ class ProfileScreen extends StatelessWidget {
                       ItemList(
                         onTap: () =>
                             goRouter.goNamed(RouteScreen.privacyPolicy),
-
-                        // Navigator.pushNamed(
-                        //     context, RouteScreen.privacyPolicy),
                         label: "Privacy Policy",
                         iconImage: AssetConfig.iconPrivacyPolicy,
                       ),
