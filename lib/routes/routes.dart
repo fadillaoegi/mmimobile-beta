@@ -62,6 +62,7 @@ final GoRouter goRouter =
                     ),
                   ]),
             ]),
+
         // NOTE: MODULE SIGN UP
         GoRoute(
             path: RouteScreen.codeReveralPath,
@@ -87,11 +88,20 @@ final GoRouter goRouter =
         // NOTE: MODULE HOME
         // NOTE: MODULE SYSTEM SUPPORT
         GoRoute(
-          path: RouteScreen.systemSupportPath,
-          name: RouteScreen.systemSupport,
-          builder: (context, state) => const SystemSupportScreen(),
-        ),
-        // MODULE: HOSTORY
+            path: RouteScreen.systemSupportPath,
+            name: RouteScreen.systemSupport,
+            builder: (context, state) => const SystemSupportScreen(),
+            routes: [
+              GoRoute(
+                path: RouteScreen.classFreePath,
+                name: RouteScreen.classFree,
+              ),
+              GoRoute(
+                path: RouteScreen.classPremiumPath,
+                name: RouteScreen.classPremium,
+              ),
+            ]),
+        // MODULE: MODULE HISTORY
         GoRoute(
           path: RouteScreen.historyPath,
           name: RouteScreen.history,
@@ -121,7 +131,7 @@ final GoRouter goRouter =
           name: RouteScreen.website,
           builder: (context, state) => const WebsiteScreen(),
         ),
-        // NOTE: REWARD
+        // NOTE: MODULE REWARD
         GoRoute(
             path: RouteScreen.rewardPath,
             name: RouteScreen.reward,
@@ -133,7 +143,7 @@ final GoRouter goRouter =
                 builder: (context, state) => const HistoryRewardScreen(),
               ),
             ]),
-        // NOTE: PROFILE SETTINGS
+        // NOTE: MODULE PROFILE SETTINGS
         GoRoute(
             path: RouteScreen.profileSettingPath,
             name: RouteScreen.profileSetting,

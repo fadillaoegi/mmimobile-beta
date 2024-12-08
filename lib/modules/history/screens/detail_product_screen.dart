@@ -18,7 +18,6 @@ class DetailProductScreen extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: sizeScreen.width,
               padding: const EdgeInsets.all(8.0),
               height: sizeScreen.height / 2.2,
               decoration: const BoxDecoration(
@@ -29,6 +28,7 @@ class DetailProductScreen extends StatelessWidget {
               child: SafeArea(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
                       onTap: () {

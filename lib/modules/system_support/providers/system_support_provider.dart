@@ -7,6 +7,17 @@ class SystemSupportProvider extends ChangeNotifier {
       CarouselSliderController();
   int currentIndex = 0;
   // int get currentIndex => _currentIndex;
+  final List<String> itemEmpty = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ];
   final List<String> imageUrls = [
     'https://mashmoshem.co.id/wp-content/uploads/2024/08/MMI-Banner-2.webp',
     'https://mashmoshem.co.id/wp-content/uploads/2024/09/Clay-Mask.webp',
@@ -17,7 +28,7 @@ class SystemSupportProvider extends ChangeNotifier {
 
   void onPageChanged(int index, CarouselPageChangedReason reason) {
     // setState(() {
-      currentIndex = index;
+    currentIndex = index;
     // });
     notifyListeners();
   }
