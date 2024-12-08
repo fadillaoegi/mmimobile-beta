@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
+import 'package:mmimobile/modules/system_support/screens/system_support_screen.dart';
 import 'package:mmimobile/modules/underdevelopment_screen.dart';
 import 'package:mmimobile/styles/color.dart';
 
@@ -16,7 +17,8 @@ class _AppScreenState extends State<AppScreen> {
 
   final List<Widget> _pages = [
     const UnderdevelopmentScreen(),
-    const UnderdevelopmentScreen(),
+    // const UnderdevelopmentScreen(),
+    const SystemSupportScreen(),
     const HistoryScreen(),
     const ProfileScreen()
   ];

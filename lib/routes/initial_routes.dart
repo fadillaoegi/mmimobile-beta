@@ -21,6 +21,9 @@ class RouteScreen {
   // NOTE: HOME
   static const home = "home";
   static const homPath = "/home";
+  // NOTE: SYSTEM SUPPORT
+  static const systemSupportPath = "/systemSupportPath";
+  static const systemSupport = "systemSupportPath";
   // NOTE: HISTORY
   static const history = "history";
   static const historyPath = "/history";

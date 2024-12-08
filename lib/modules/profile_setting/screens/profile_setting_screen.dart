@@ -17,10 +17,12 @@ class ProfileSettingScreen extends StatelessWidget {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
+        // leading: ,
         centerTitle: true,
         title:
             Text("Setting Profile", style: primary700.copyWith(fontSize: 20.0)),
         scrolledUnderElevation: 0.0,
+
       ),
       body: SingleChildScrollView(
         child: Container(

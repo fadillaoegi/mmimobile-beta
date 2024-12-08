@@ -17,7 +17,8 @@ class DetailHistoryScreen extends StatelessWidget {
         leading: InkWell(
           onTap: () {
             // Navigator.pop(context);
-            goRouter.goNamed(RouteScreen.app);
+            // goRouter.goNamed(RouteScreen.app);
+            goRouter.pop(context);
           },
           child: const Center(
             child: Icon(
