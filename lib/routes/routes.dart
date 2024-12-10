@@ -27,7 +27,7 @@ import 'package:mmimobile/modules/splash/splash_screen.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
 
 final GoRouter goRouter =
-    GoRouter(initialLocation: RouteScreen.appPath, routes: [
+    GoRouter(initialLocation: RouteScreen.splashPath, routes: [
   GoRoute(
     path: RouteScreen.splashPath,
     name: RouteScreen.splash,
