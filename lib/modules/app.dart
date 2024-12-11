@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
+import 'package:mmimobile/modules/home/screens/home_screen.dart';
 import 'package:mmimobile/modules/profile/screens/profile_screen.dart';
 import 'package:mmimobile/modules/system_support/screens/system_support_screen.dart';
-import 'package:mmimobile/modules/underdevelopment_screen.dart';
+// import 'package:mmimobile/modules/underdevelopment_screen.dart';
 import 'package:mmimobile/styles/color.dart';
 
 class AppScreen extends StatefulWidget {
@@ -16,7 +17,8 @@ class _AppScreenState extends State<AppScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const UnderdevelopmentScreen(),
+    // const UnderdevelopmentScreen(),
+    const HomeScreen(),
     // const UnderdevelopmentScreen(),
     const SystemSupportScreen(),
     const HistoryScreen(),

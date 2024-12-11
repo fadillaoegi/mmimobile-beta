@@ -20,7 +20,7 @@ class RouteScreen {
   static const resetPasswordPath = "/resetPassword";
   // NOTE: HOME
   static const home = "home";
-  static const homPath = "/home";
+  static const homePath = "/home";
   // NOTE: SYSTEM SUPPORT
   static const systemSupportPath = "/systemSupport";
   static const systemSupport = "systemSupport";

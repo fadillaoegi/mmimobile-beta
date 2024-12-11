@@ -1,18 +1,20 @@
 import 'package:go_router/go_router.dart';
 import 'package:mmimobile/modules/app.dart';
+import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/auth/screens/sign_up_screen.dart';
 import 'package:mmimobile/modules/auth/screens/sign_in_screen.dart';
+import 'package:mmimobile/modules/website/screens/website_screen.dart';
 import 'package:mmimobile/modules/auth/screens/forgot/otp_forgot_screen.dart';
 import 'package:mmimobile/modules/auth/screens/forgot/email_forgot_screen.dart';
 import 'package:mmimobile/modules/auth/screens/forgot/reset_password_screen.dart';
 import 'package:mmimobile/modules/class/screens/class_forum_screen.dart';
 import 'package:mmimobile/modules/class/screens/class_free_screen.dart';
 import 'package:mmimobile/modules/class/screens/class_premium_screen.dart';
-import 'package:mmimobile/modules/faq/screens/faq_screen.dart';
 import 'package:mmimobile/modules/auth/screens/reveral_code_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_history_screen.dart';
 import 'package:mmimobile/modules/history/screens/detail_product_screen.dart';
 import 'package:mmimobile/modules/history/screens/history_screen.dart';
+import 'package:mmimobile/modules/home/screens/home_screen.dart';
 import 'package:mmimobile/modules/password_edit/screens/paswword_edit_screen.dart';
 import 'package:mmimobile/modules/phone_edit/screens/phone_edit_screen.dart';
 import 'package:mmimobile/modules/privacy_policy/screens/privacy_policy_screen.dart';
@@ -22,12 +24,11 @@ import 'package:mmimobile/modules/profile_setting/screens/profile_setting_screen
 import 'package:mmimobile/modules/reward/screens/history_reward_screen.dart';
 import 'package:mmimobile/modules/reward/screens/reward_screen.dart';
 import 'package:mmimobile/modules/system_support/screens/system_support_screen.dart';
-import 'package:mmimobile/modules/website/screens/website_screen.dart';
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
 
 final GoRouter goRouter =
-    GoRouter(initialLocation: RouteScreen.splashPath, routes: [
+    GoRouter(initialLocation: RouteScreen.appPath, routes: [
   GoRoute(
     path: RouteScreen.splashPath,
     name: RouteScreen.splash,
@@ -89,6 +90,11 @@ final GoRouter goRouter =
       },
       routes: [
         // NOTE: MODULE HOME
+        GoRoute(
+          path: RouteScreen.homePath,
+          name: RouteScreen.home,
+          builder: (context, state) => const HomeScreen(),
+        ),
         // NOTE: MODULE SYSTEM SUPPORT
         GoRoute(
             path: RouteScreen.systemSupportPath,
