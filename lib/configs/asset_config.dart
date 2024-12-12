@@ -13,6 +13,7 @@ class AssetConfig {
   static const imageProduct = "assets/images/imageProduct.png";
   static const underdevMmi = "assets/images/underdevMmi.png";
   static const bannerSystemSupport = "assets/images/bannerSystemSupport.png";
+  static const examplePromo = "assets/images/examplePromo.png";
 
   // NOTE: ICON
   static const iconPrivacyPolicy = "assets/images/iconPrivacyPolicy.png";

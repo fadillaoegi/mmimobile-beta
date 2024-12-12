@@ -3,20 +3,30 @@ import 'package:mmimobile/styles/shadow.dart';
 
 class TransparantCard extends StatelessWidget {
   const TransparantCard(
-      {super.key, this.sizeScreen, this.childern, this.opacity = 0.5});
+      {super.key,
+      this.width,
+      this.height,
+      this.childern,
+      this.opacity = 0.5,
+      this.padding = 12.0,
+      this.color = Colors.white});
 
-  final Size? sizeScreen;
+  final double? width;
+  final double? height;
   final List<Widget>? childern;
   final double? opacity;
+  final double? padding;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: sizeScreen!.width,
-      padding: const EdgeInsets.all(12.0),
+      width: width,
+      height: height,
+      padding: EdgeInsets.all(padding!),
       decoration: BoxDecoration(
           boxShadow: boxShadow,
-          color: Colors.white.withOpacity(opacity!),
+          color: color!.withOpacity(opacity!),
           borderRadius: BorderRadius.circular(10.0)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

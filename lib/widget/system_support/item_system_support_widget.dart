@@ -10,12 +10,16 @@ class ItemSystemSupport extends StatelessWidget {
           "https://mashmoshem.co.id/wp-content/uploads/2024/08/MMI-Banner-2.webp",
       this.title = "title",
       this.desc = "description",
+      this.height = 184.0,
+      this.width = 260.0,
       this.onTap});
 
   // final Size? sizeScreen;
   final String? title;
   final String? imgUrl;
   final String? desc;
+  final double? width;
+  final double? height;
   final VoidCallback? onTap;
 
   @override
@@ -23,8 +27,8 @@ class ItemSystemSupport extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 260.0,
-        height: 184.0,
+        width: width,
+        height: height,
         margin: const EdgeInsets.only(right: 10.0),
         decoration: BoxDecoration(
           color: ColorApps.white,
