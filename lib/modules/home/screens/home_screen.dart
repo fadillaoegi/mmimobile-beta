@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                     // NOTE:
                     TransparantCard(
                       width: sizeScreen.width,
-                      opacity: 0.7,
+                      opacity: 1,
                       childern: [
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                     // NOTE:
                     TransparantCard(
                       width: sizeScreen.width,
-                      opacity: 0.8,
+                      opacity: 1,
                       childern: [
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
