@@ -105,7 +105,7 @@ class RewardScreen extends StatelessWidget {
                           boxShadow: [
                             BoxShadow(
                               color: ColorApps.black
-                                  .withOpacity(0.10), // Warna bayangan
+                                  .withValues(alpha: 0.4), // Warna bayangan
                               spreadRadius: 1, // Seberapa jauh shadow menyebar
                               blurRadius: 10, // Seberapa halus blur shadow
                               offset:

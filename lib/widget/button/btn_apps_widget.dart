@@ -21,7 +21,7 @@ class BtnApps extends StatelessWidget {
       height: 50.0,
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           spreadRadius: 1,
           blurRadius: 10,
           offset: const Offset(0, 4),
@@ -31,7 +31,7 @@ class BtnApps extends StatelessWidget {
           onPressed: onPress,
           style: ElevatedButton.styleFrom(
             backgroundColor: color ?? ColorApps.primary,
-            shadowColor: Colors.black.withOpacity(0.3),
+            shadowColor: Colors.black.withValues(alpha: 0.10),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),

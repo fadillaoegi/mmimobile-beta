@@ -40,7 +40,7 @@ class ItemHistory extends StatelessWidget {
               shadow!
                   ? BoxShadow(
                       color:
-                          ColorApps.black.withOpacity(0.10), // Warna bayangan
+                          ColorApps.black.withValues(alpha: 0.10), // Warna bayangan
                       spreadRadius: 0, // Seberapa jauh shadow menyebar
                       blurRadius: 0.6, // Seberapa halus blur shadow
                       offset: const Offset(0, 5), // Offset shadow (X, Y)

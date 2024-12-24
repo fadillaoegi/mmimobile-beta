@@ -26,7 +26,7 @@ class TransparantCard extends StatelessWidget {
       padding: EdgeInsets.all(padding!),
       decoration: BoxDecoration(
           boxShadow: boxShadow,
-          color: color!.withOpacity(opacity!),
+          color: color!.withValues(alpha: opacity),
           borderRadius: BorderRadius.circular(10.0)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
