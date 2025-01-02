@@ -27,174 +27,177 @@ import 'package:mmimobile/modules/system_support/screens/system_support_screen.d
 import 'package:mmimobile/modules/splash/splash_screen.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
 
-final GoRouter goRouter =
-    GoRouter(initialLocation: RouteScreen.appPath, routes: [
-  GoRoute(
-    path: RouteScreen.splashPath,
-    name: RouteScreen.splash,
-    builder: (context, state) => const SplashScreen(),
-  ),
+final GoRouter goRouter = GoRouter(
+  initialLocation: RouteScreen.splashPath,
+  routes: [
+    GoRoute(
+      path: RouteScreen.splashPath,
+      name: RouteScreen.splash,
+      builder: (context, state) => const SplashScreen(),
+    ),
 
-  // NOTE: AUTH
-  GoRoute(
-      path: RouteScreen.signInPath,
-      name: RouteScreen.signIn,
-      builder: (context, state) => const SignInScreen(),
-      routes: [
-        // NOTE: MODULE FORGOT PASSWORD
-        GoRoute(
-            path: RouteScreen.forgotPath,
-            name: RouteScreen.forgot,
-            builder: (context, state) {
-              return const EmailForgotScreen();
-            },
-            routes: [
-              GoRoute(
-                  path: RouteScreen.otpForgotPath,
-                  name: RouteScreen.otpForgot,
-                  builder: (context, state) {
-                    final emailUser = state.extra as String;
-                    return OtpForgotScreen(
-                      emailUser: emailUser,
-                    );
-                  },
-                  routes: [
-                    GoRoute(
-                      path: RouteScreen.resetPasswordPath,
-                      name: RouteScreen.resetPassword,
-                      builder: (context, state) => const ResetPasswordScreen(),
-                    ),
-                  ]),
-            ]),
+    // NOTE: AUTH
+    GoRoute(
+        path: RouteScreen.signInPath,
+        name: RouteScreen.signIn,
+        builder: (context, state) => const SignInScreen(),
+        routes: [
+          // NOTE: MODULE FORGOT PASSWORD
+          GoRoute(
+              path: RouteScreen.forgotPath,
+              name: RouteScreen.forgot,
+              builder: (context, state) {
+                return const EmailForgotScreen();
+              },
+              routes: [
+                GoRoute(
+                    path: RouteScreen.otpForgotPath,
+                    name: RouteScreen.otpForgot,
+                    builder: (context, state) {
+                      final emailUser = state.extra as String;
+                      return OtpForgotScreen(
+                        emailUser: emailUser,
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: RouteScreen.resetPasswordPath,
+                        name: RouteScreen.resetPassword,
+                        builder: (context, state) =>
+                            const ResetPasswordScreen(),
+                      ),
+                    ]),
+              ]),
 
-        // NOTE: MODULE SIGN UP
-        GoRoute(
-            path: RouteScreen.codeReveralPath,
-            name: RouteScreen.codeReveral,
-            builder: (context, state) => const ReveralCodeScreen(),
-            routes: [
-              GoRoute(
-                path: RouteScreen.signUpPath,
-                name: RouteScreen.signUp,
-                builder: (context, state) => const SignUpScreen(),
-              ),
-            ]),
-      ]),
+          // NOTE: MODULE SIGN UP
+          GoRoute(
+              path: RouteScreen.codeReveralPath,
+              name: RouteScreen.codeReveral,
+              builder: (context, state) => const ReveralCodeScreen(),
+              routes: [
+                GoRoute(
+                  path: RouteScreen.signUpPath,
+                  name: RouteScreen.signUp,
+                  builder: (context, state) => const SignUpScreen(),
+                ),
+              ]),
+        ]),
 
-  // NOTE: MODULE MAIN APP SCREEN
-  GoRoute(
-      path: RouteScreen.appPath,
-      name: RouteScreen.app,
-      builder: (context, state) {
-        return const AppScreen();
-      },
-      routes: [
-        // NOTE: MODULE HOME
-        GoRoute(
-          path: RouteScreen.homePath,
-          name: RouteScreen.home,
-          builder: (context, state) => const HomeScreen(),
-        ),
-        // NOTE: MODULE SYSTEM SUPPORT
-        GoRoute(
-            path: RouteScreen.systemSupportPath,
-            name: RouteScreen.systemSupport,
-            builder: (context, state) => const SystemSupportScreen(),
-            routes: [
-              GoRoute(
-                path: RouteScreen.classFreePath,
-                name: RouteScreen.classFree,
-                builder: (context, state) => const ClassFreeScreen(),
-              ),
-              GoRoute(
-                path: RouteScreen.classPremiumPath,
-                name: RouteScreen.classPremium,
-                builder: (context, state) => const ClassPremiumScreen(),
-              ),
-              GoRoute(
-                path: RouteScreen.classForumPath,
-                name: RouteScreen.classForum,
-                builder: (context, state) => const ClassForumScreen(),
-              ),
-            ]),
-        // MODULE: MODULE HISTORY
-        GoRoute(
-          path: RouteScreen.historyPath,
-          name: RouteScreen.history,
-          builder: (context, state) => const HistoryScreen(),
-        ),
-        GoRoute(
-            path: RouteScreen.detailHistoryPath,
-            name: RouteScreen.detailHistory,
-            builder: (context, state) => const DetailHistoryScreen(),
-            routes: [
-              GoRoute(
-                path: RouteScreen.detailProductPath,
-                name: RouteScreen.detailProduct,
-                builder: (context, state) => const DetailProductScreen(),
-              ),
-            ]),
+    // NOTE: MODULE MAIN APP SCREEN
+    GoRoute(
+        path: RouteScreen.appPath,
+        name: RouteScreen.app,
+        builder: (context, state) {
+          return const AppScreen();
+        },
+        routes: [
+          // NOTE: MODULE HOME
+          GoRoute(
+            path: RouteScreen.homePath,
+            name: RouteScreen.home,
+            builder: (context, state) => const HomeScreen(),
+          ),
+          // NOTE: MODULE SYSTEM SUPPORT
+          GoRoute(
+              path: RouteScreen.systemSupportPath,
+              name: RouteScreen.systemSupport,
+              builder: (context, state) => const SystemSupportScreen(),
+              routes: [
+                GoRoute(
+                  path: RouteScreen.classFreePath,
+                  name: RouteScreen.classFree,
+                  builder: (context, state) => const ClassFreeScreen(),
+                ),
+                GoRoute(
+                  path: RouteScreen.classPremiumPath,
+                  name: RouteScreen.classPremium,
+                  builder: (context, state) => const ClassPremiumScreen(),
+                ),
+                GoRoute(
+                  path: RouteScreen.classForumPath,
+                  name: RouteScreen.classForum,
+                  builder: (context, state) => const ClassForumScreen(),
+                ),
+              ]),
+          // MODULE: MODULE HISTORY
+          GoRoute(
+            path: RouteScreen.historyPath,
+            name: RouteScreen.history,
+            builder: (context, state) => const HistoryScreen(),
+          ),
+          GoRoute(
+              path: RouteScreen.detailHistoryPath,
+              name: RouteScreen.detailHistory,
+              builder: (context, state) => const DetailHistoryScreen(),
+              routes: [
+                GoRoute(
+                  path: RouteScreen.detailProductPath,
+                  name: RouteScreen.detailProduct,
+                  builder: (context, state) => const DetailProductScreen(),
+                ),
+              ]),
 
-        // NOTE: MODULE PROFILE
-        GoRoute(
-          path: RouteScreen.profilePath,
-          name: RouteScreen.profile,
-          builder: (context, state) => const ProfileScreen(),
-        ),
-        // NOTE: WEBSITE
-        GoRoute(
-          path: RouteScreen.websitePath,
-          name: RouteScreen.website,
-          builder: (context, state) => const WebsiteScreen(),
-        ),
-        // NOTE: MODULE REWARD
-        GoRoute(
-            path: RouteScreen.rewardPath,
-            name: RouteScreen.reward,
-            builder: (context, state) => const RewardScreen(),
-            routes: [
-              GoRoute(
-                path: RouteScreen.historyRewardPath,
-                name: RouteScreen.historyReward,
-                builder: (context, state) => const HistoryRewardScreen(),
-              ),
-            ]),
-        // NOTE: MODULE PROFILE SETTINGS
-        GoRoute(
-            path: RouteScreen.profileSettingPath,
-            name: RouteScreen.profileSetting,
-            builder: (context, state) => const ProfileSettingScreen(),
-            routes: [
-              GoRoute(
-                path: RouteScreen.profileEditPath,
-                name: RouteScreen.profileEdit,
-                builder: (context, state) => const ProfileEditScreen(),
-              ),
-              GoRoute(
-                path: RouteScreen.editPasswordPath,
-                name: RouteScreen.editPassword,
-                builder: (context, state) => const PaswwordEditScreen(),
-              ),
-              GoRoute(
-                path: RouteScreen.phoneEditPath,
-                name: RouteScreen.phoneEdit,
-                builder: (context, state) => const PhoneEditScreen(),
-              ),
-            ]),
-        // NOTE: MODULE FAQ
-        GoRoute(
-          path: RouteScreen.faqPath,
-          name: RouteScreen.faq,
-          builder: (context, state) => const FaqScreen(),
-        ),
-        // NOTE: MODULE PRIVACY POLICY
-        GoRoute(
-          path: RouteScreen.privacyPolicyPath,
-          name: RouteScreen.privacyPolicy,
-          builder: (context, state) => const PrivacyPolicyScreen(),
-        ),
-      ]),
-]);
+          // NOTE: MODULE PROFILE
+          GoRoute(
+            path: RouteScreen.profilePath,
+            name: RouteScreen.profile,
+            builder: (context, state) => const ProfileScreen(),
+          ),
+          // NOTE: WEBSITE
+          GoRoute(
+            path: RouteScreen.websitePath,
+            name: RouteScreen.website,
+            builder: (context, state) => const WebsiteScreen(),
+          ),
+          // NOTE: MODULE REWARD
+          GoRoute(
+              path: RouteScreen.rewardPath,
+              name: RouteScreen.reward,
+              builder: (context, state) => const RewardScreen(),
+              routes: [
+                GoRoute(
+                  path: RouteScreen.historyRewardPath,
+                  name: RouteScreen.historyReward,
+                  builder: (context, state) => const HistoryRewardScreen(),
+                ),
+              ]),
+          // NOTE: MODULE PROFILE SETTINGS
+          GoRoute(
+              path: RouteScreen.profileSettingPath,
+              name: RouteScreen.profileSetting,
+              builder: (context, state) => const ProfileSettingScreen(),
+              routes: [
+                GoRoute(
+                  path: RouteScreen.profileEditPath,
+                  name: RouteScreen.profileEdit,
+                  builder: (context, state) => const ProfileEditScreen(),
+                ),
+                GoRoute(
+                  path: RouteScreen.editPasswordPath,
+                  name: RouteScreen.editPassword,
+                  builder: (context, state) => const PaswwordEditScreen(),
+                ),
+                GoRoute(
+                  path: RouteScreen.phoneEditPath,
+                  name: RouteScreen.phoneEdit,
+                  builder: (context, state) => const PhoneEditScreen(),
+                ),
+              ]),
+          // NOTE: MODULE FAQ
+          GoRoute(
+            path: RouteScreen.faqPath,
+            name: RouteScreen.faq,
+            builder: (context, state) => const FaqScreen(),
+          ),
+          // NOTE: MODULE PRIVACY POLICY
+          GoRoute(
+            path: RouteScreen.privacyPolicyPath,
+            name: RouteScreen.privacyPolicy,
+            builder: (context, state) => const PrivacyPolicyScreen(),
+          ),
+        ]),
+  ],
+);
 
 // NOTE: ROUTE DEEFAULT
 // final listRouteScreen = {

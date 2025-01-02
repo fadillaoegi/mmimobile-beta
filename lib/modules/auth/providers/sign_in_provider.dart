@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
+import 'package:mmimobile/models/user_model.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/widget/alert/alert_dialog_no_action_widget.dart';
 
 class SignInProvider extends ChangeNotifier {
+  // NOTE: INITIAL CODE
   FocusNode focusNode = FocusNode();
   final GlobalKey<FormState> formKey = GlobalKey();
   final emailController = TextEditingController();
@@ -17,6 +19,13 @@ class SignInProvider extends ChangeNotifier {
   // String get email => _emailStatic;
   final _passwordStatic = "11111111";
   // String get password => _passwordStatic;
+
+  User _dataUser = User();
+  User? get dataUser => _dataUser;
+  void setDataUser(User user) {
+    _dataUser = user;
+    notifyListeners();
+  }
 
   // NOTE: FUNCTION SING IN
   signIn(BuildContext context) {
