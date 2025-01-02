@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/models/user_model.dart';
@@ -10,16 +11,19 @@ class SignInProvider extends ChangeNotifier {
   // NOTE: INITIAL CODE
   FocusNode focusNode = FocusNode();
   final GlobalKey<FormState> formKey = GlobalKey();
+  final phoneController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
   bool isObsecure = true;
 
-  // NOTE: DATA STATIS
-  final _emailStatic = "example@gmail.com";
+  // NOTE: DATA STATIC
+  // final _emailStatic = "example@gmail.com";
+  final _phoneStatic = "+62000000000";
   // String get email => _emailStatic;
   final _passwordStatic = "11111111";
   // String get password => _passwordStatic;
 
+  // NOTE: DATA DYNAMIC
   User _dataUser = User();
   User? get dataUser => _dataUser;
   void setDataUser(User user) {
@@ -28,12 +32,16 @@ class SignInProvider extends ChangeNotifier {
   }
 
   // NOTE: FUNCTION SING IN
-  signIn(BuildContext context) {
-    String emailC = emailController.text;
+  signIn(BuildContext context) async {
+    String phoneC = phoneController.text;
     String passC = passController.text;
+    final formData = FormData.fromMap({
+      "email": phoneC,
+      "password": passC,
+    });
     if (formKey.currentState!.validate()) {
-      if (emailC.contains("@")) {
-        if (emailC.toString() == _emailStatic &&
+      if (phoneC.contains("+62")) {
+        if (phoneC.toString() == _phoneStatic &&
             passC.toString() == _passwordStatic) {
           showDialog(
             context: context,
@@ -60,7 +68,7 @@ class SignInProvider extends ChangeNotifier {
             builder: (context) => const AlertDialogNoAction(
               title: "Sign in Failed",
               lotties: AssetConfig.lottieFailed,
-              content: "Incorrect email or password",
+              content: "Incorrect Phone or password",
             ),
           );
           Timer(
@@ -72,7 +80,7 @@ class SignInProvider extends ChangeNotifier {
         showDialog(
           context: context,
           builder: (context) => const AlertDialogNoAction(
-            title: "Incorrect email format",
+            title: "Incorrect Phone format",
             lotties: AssetConfig.lottieFailed,
             content: "",
           ),

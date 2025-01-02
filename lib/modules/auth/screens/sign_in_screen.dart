@@ -87,8 +87,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             FormAppsTwo(
-                              controller: signInProvider.emailController,
-                              labelText: "Email",
+                              controller: signInProvider.phoneController,
+                              labelText: "Phone",
                               validator: (p0) {
                                 if (p0!.isEmpty || p0 == "") {
                                   return "Email is required ";

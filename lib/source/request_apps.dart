@@ -29,4 +29,13 @@ class RequestApps {
     }
     return null;
   }
+
+  static Future<Map?> postFutureDio(String url, FormData data) async {
+    try {} catch (e) {
+      DMethod.printTitle("Try ~ $url", e.toString());
+      return null;
+    }
+
+    return null;
+  }
 }
