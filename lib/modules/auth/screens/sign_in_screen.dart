@@ -101,6 +101,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             FormAppsTwo(
                               controller: signInProvider.passController,
+                              keybooardType: TextInputType.phone,
                               labelText: "Password",
                               obscure: signInProvider.isObsecure,
                               suffixIcon: true,

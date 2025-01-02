@@ -12,6 +12,7 @@ class FormAppsTwo extends StatelessWidget {
     this.enabled = true,
     this.suffixIcon = false,
     this.onTap,
+    this.keybooardType = TextInputType.emailAddress,
   });
 
   final TextEditingController? controller;
@@ -21,6 +22,7 @@ class FormAppsTwo extends StatelessWidget {
   final String labelText;
   final String? Function(String?)? validator;
   final VoidCallback? onTap;
+  final TextInputType? keybooardType;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class FormAppsTwo extends StatelessWidget {
       controller: controller,
       enabled: enabled,
       obscureText: obscure,
+      keyboardType: keybooardType,
       decoration: InputDecoration(
           labelText: labelText,
           labelStyle: black400.copyWith(fontSize: 13.0),

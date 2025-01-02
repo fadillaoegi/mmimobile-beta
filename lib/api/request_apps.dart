@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
 
-class RequestApps {
+class RequestApp {
   static final dio = Dio();
   static const headerKey = "";
   static const apiKey = "";
@@ -30,8 +30,15 @@ class RequestApps {
     return null;
   }
 
-  static Future<Map?> postFutureDio(String url, FormData data) async {
-    try {} catch (e) {
+  static Future<Map?> postFutureDio(String url, FormData formData) async {
+    try {
+      Response dioRes = await dio.post(
+        url, data: formData,
+        // options: Options(
+        //   headers: {headerKey: url},
+        // ),
+      );
+    } catch (e) {
       DMethod.printTitle("Try ~ $url", e.toString());
       return null;
     }
