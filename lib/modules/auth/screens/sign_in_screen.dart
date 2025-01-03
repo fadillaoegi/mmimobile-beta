@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mmimobile/configs/asset_config.dart';
@@ -28,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
       },
       child: ModalProgressHUD(
         inAsyncCall: signInProvider.isLoading,
-        progressIndicator: const CircularProgressIndicator(),
+        progressIndicator: const CupertinoActivityIndicator(),
         child: Scaffold(
           body: LayoutBuilder(
             builder: (context, constraints) => SingleChildScrollView(

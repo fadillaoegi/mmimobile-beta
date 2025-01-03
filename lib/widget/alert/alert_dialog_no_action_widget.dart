@@ -18,49 +18,46 @@ class AlertDialogNoAction extends StatelessWidget {
   final String? lotties;
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false, // Prevent back navigation
-      child: AlertDialog(
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            icon == null && lotties == ""
-                ? const SizedBox()
-                : icon != null && lotties == ""
-                    ? Icon(
-                        icon,
-                        color: colorIcon,
-                        size: 80.0,
-                      )
-                    : Lottie.asset(
-                        lotties!,
-                        width: 80.0,
-                        height: 80.0,
-                      ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Column(
-                children: [
-                  Text(
-                    title!,
-                    textAlign: TextAlign.center,
-                    style: black500.copyWith(fontSize: 22.0),
-                  ),
-                  const SizedBox(
-                    height: 6.0,
-                  ),
-                  Text(
-                    content!,
-                    textAlign: TextAlign.center,
-                    style: black500.copyWith(fontSize: 16.0),
-                  ),
-                ],
-              ),
+    return AlertDialog(
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          icon == null && lotties == ""
+              ? const SizedBox()
+              : icon != null && lotties == ""
+                  ? Icon(
+                      icon,
+                      color: colorIcon,
+                      size: 80.0,
+                    )
+                  : Lottie.asset(
+                      lotties!,
+                      width: 80.0,
+                      height: 80.0,
+                    ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: Column(
+              children: [
+                Text(
+                  title!,
+                  textAlign: TextAlign.center,
+                  style: black500.copyWith(fontSize: 22.0),
+                ),
+                const SizedBox(
+                  height: 6.0,
+                ),
+                Text(
+                  content!,
+                  textAlign: TextAlign.center,
+                  style: black500.copyWith(fontSize: 16.0),
+                ),
+              ],
             ),
-          ],
-        ),
-        scrollable: true,
+          ),
+        ],
       ),
+      scrollable: true,
     );
   }
 }

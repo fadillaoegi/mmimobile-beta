@@ -54,6 +54,7 @@ class SignInProvider extends ChangeNotifier {
         if (result) {
           showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (context) => const AlertDialogNoAction(
               title: "Sign in Success",
               lotties: AssetConfig.lottieSuccess,
@@ -69,6 +70,7 @@ class SignInProvider extends ChangeNotifier {
         } else {
           showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (context) => const AlertDialogNoAction(
               title: "Sign in Failed",
               lotties: AssetConfig.lottieFailed,
@@ -85,6 +87,7 @@ class SignInProvider extends ChangeNotifier {
       DMethod.printTitle("Try ~ signInProvider", e.toString());
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) => const AlertDialogNoAction(
           title: "Sign in Failed",
           lotties: AssetConfig.lottieFailed,
