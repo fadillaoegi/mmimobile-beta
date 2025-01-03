@@ -1,4 +1,4 @@
 class ApiApps {
-  static const root = "http://localhost";
-  static const login = "$root/login";
+  static const root = "https://mmi.entis.app/api";
+  static const signIn = "$root/signin";
 }

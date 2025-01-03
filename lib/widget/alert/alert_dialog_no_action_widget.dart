@@ -19,7 +19,7 @@ class AlertDialogNoAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async => false, // Prevent back navigation
+      onWillPop: () async => false, // Prevent back navigation
       child: AlertDialog(
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

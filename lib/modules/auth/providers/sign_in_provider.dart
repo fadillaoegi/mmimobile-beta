@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class SignInProvider extends ChangeNotifier {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   bool isObsecure = true;
+  bool isLoading = false;
+  final dio = Dio();
 
   // NOTE: DATA STATIC
   // final _emailStatic = "example@gmail.com";
@@ -35,16 +38,20 @@ class SignInProvider extends ChangeNotifier {
 
   // NOTE: FUNCTION SING IN
   signIn(BuildContext context) async {
+    isLoading = true;
+    notifyListeners();
     try {
-      String phoneC = phoneController.text.trim();
-      String passC = passController.text.trim();
+      String phone = phoneController.text.trim();
+      String pass = passController.text.trim();
+      print(phone);
+      print(pass);
       final formData = FormData.fromMap({
-        "email": phoneC,
-        "password": passC,
+        "phone": phone,
+        "password": pass,
       });
       if (formKey.currentState!.validate()) {
-        final response = await AuthSource.login(formData);
-        if (response) {
+        final result = await AuthSource.signIn(formData);
+        if (result) {
           showDialog(
             context: context,
             builder: (context) => const AlertDialogNoAction(
@@ -56,68 +63,40 @@ class SignInProvider extends ChangeNotifier {
           Timer(
             const Duration(seconds: 3),
             () {
-              // Navigator.pushNamedAndRemoveUntil(
-              //   context,
-              //   RouteScreen.app,
-              //   (route) => false,
-              // );
               goRouter.goNamed(RouteScreen.app);
             },
           );
+        } else {
+          showDialog(
+            context: context,
+            builder: (context) => const AlertDialogNoAction(
+              title: "Sign in Failed",
+              lotties: AssetConfig.lottieFailed,
+              content: "Incorrect Phone or password",
+            ),
+          );
+          Timer(
+            const Duration(seconds: 3),
+            () => Navigator.pop(context),
+          );
         }
-        // if (phoneC.contains("+62")) {
-        //   if (phoneC.toString() == _phoneStatic &&
-        //       passC.toString() == _passwordStatic) {
-        //     showDialog(
-        //       context: context,
-        //       builder: (context) => const AlertDialogNoAction(
-        //         title: "Sign in Success",
-        //         lotties: AssetConfig.lottieSuccess,
-        //         content: "",
-        //       ),
-        //     );
-        //     Timer(
-        //       const Duration(seconds: 3),
-        //       () {
-        //         // Navigator.pushNamedAndRemoveUntil(
-        //         //   context,
-        //         //   RouteScreen.app,
-        //         //   (route) => false,
-        //         // );
-        //         goRouter.goNamed(RouteScreen.app);
-        //       },
-        //     );
-        //   } else {
-        //     showDialog(
-        //       context: context,
-        //       builder: (context) => const AlertDialogNoAction(
-        //         title: "Sign in Failed",
-        //         lotties: AssetConfig.lottieFailed,
-        //         content: "Incorrect Phone or password",
-        //       ),
-        //     );
-        //     Timer(
-        //       const Duration(seconds: 3),
-        //       () => Navigator.pop(context),
-        //     );
-        //   }
-        //   // } else {
-        //   //   showDialog(
-        //   //     context: context,
-        //   //     builder: (context) => const AlertDialogNoAction(
-        //   //       title: "Incorrect Phone format",
-        //   //       lotties: AssetConfig.lottieFailed,
-        //   //       content: "",
-        //   //     ),
-        //   //   );
-        //   //   Timer(
-        //   //     const Duration(seconds: 3),
-        //   //     () => Navigator.pop(context),
-        //   //   );
-        //   // }
       }
     } catch (e) {
       DMethod.printTitle("Try ~ signInProvider", e.toString());
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialogNoAction(
+          title: "Sign in Failed",
+          lotties: AssetConfig.lottieFailed,
+          content: "Incorrect Phone or password",
+        ),
+      );
+      Timer(
+        const Duration(seconds: 3),
+        () => Navigator.pop(context),
+      );
     }
+    isLoading = false;
+    notifyListeners();
   }
 }

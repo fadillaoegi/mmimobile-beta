@@ -4,23 +4,26 @@ import 'package:mmimobile/api/api.dart';
 import 'package:mmimobile/api/request_apps.dart';
 
 class AuthSource {
-  static Future<bool> login(FormData formdata) async {
+  static Future<bool> signIn(FormData formdata) async {
     try {
-      const url = ApiApps.login;
+      const url = ApiApps.signIn;
       final result = await RequestApp.postFutureDio(url, formdata);
-      print(result);
+      print("from source $result");
 
       if (result == null) return false;
 
-      if (result["success"]) {
-        // var mapUser = result["data"];
-        // print("Data user dari AuthSource: $mapUser");
-        // SessionUser.saveUser(User.fromJson(mapUser));
+      final mapUser = result.data;
+      if (result.statusCode == 200) {
+        print("Data user dari AuthSource: $mapUser");
         return true;
       } else {
+        print("Data user dari AuthSource: $mapUser");
         // Get.snackbar("Login Gagal", result["message"] ?? "Email atau Password Salah");
         return false;
       }
+    } on DioException catch (error) {
+      DMethod.printTitle("Error ~ sourceAuthLogin", error.toString());
+      return false;
     } catch (e) {
       DMethod.printTitle("Error ~ sourceAuthLogin", e.toString());
       // Get.snackbar("Error", "Terjadi kesalahan pada server");
