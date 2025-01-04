@@ -99,26 +99,25 @@ final GoRouter goRouter = GoRouter(
           ),
           // NOTE: MODULE SYSTEM SUPPORT
           GoRoute(
-              path: RouteScreen.systemSupportPath,
-              name: RouteScreen.systemSupport,
-              builder: (context, state) => const SystemSupportScreen(),
-              routes: [
-                GoRoute(
-                  path: RouteScreen.classFreePath,
-                  name: RouteScreen.classFree,
-                  builder: (context, state) => const ClassFreeScreen(),
-                ),
-                GoRoute(
-                  path: RouteScreen.classPremiumPath,
-                  name: RouteScreen.classPremium,
-                  builder: (context, state) => const ClassPremiumScreen(),
-                ),
-                GoRoute(
-                  path: RouteScreen.classForumPath,
-                  name: RouteScreen.classForum,
-                  builder: (context, state) => const ClassForumScreen(),
-                ),
-              ]),
+            path: RouteScreen.systemSupportPath,
+            name: RouteScreen.systemSupport,
+            builder: (context, state) => const SystemSupportScreen(),
+          ),
+          GoRoute(
+            path: RouteScreen.classFreePath,
+            name: RouteScreen.classFree,
+            builder: (context, state) => const ClassFreeScreen(),
+          ),
+          GoRoute(
+            path: RouteScreen.classPremiumPath,
+            name: RouteScreen.classPremium,
+            builder: (context, state) => const ClassPremiumScreen(),
+          ),
+          GoRoute(
+            path: RouteScreen.classForumPath,
+            name: RouteScreen.classForum,
+            builder: (context, state) => const ClassForumScreen(),
+          ),
           // MODULE: MODULE HISTORY
           GoRoute(
             path: RouteScreen.historyPath,

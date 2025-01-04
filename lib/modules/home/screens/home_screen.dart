@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               height: sizeScreen.height / 2.5,
               width: sizeScreen.width,
-              decoration: const BoxDecoration(                
+              decoration: const BoxDecoration(
                   color: ColorApps.primary,
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(30.0),
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                                       width: 10.0,
                                     ),
                                     Text(
-                                      "200",
+                                      "200 ",
                                       style: white300.copyWith(fontSize: 12.0),
                                     ),
                                     Text(

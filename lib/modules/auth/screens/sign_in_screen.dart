@@ -155,27 +155,29 @@ class _SignInScreenState extends State<SignInScreen> {
                               const SizedBox(
                                 height: 40,
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Don’t have an account?",
-                                    style: black500.copyWith(fontSize: 13.0),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      // Navigator.pushNamed(
-                                      //     context, RouteScreen.codeReveral);
-                                      goRouter.goNamed(RouteScreen.codeReveral);
-                                    },
-                                    child: Text(
-                                      "Sign up",
-                                      style:
-                                          primary700.copyWith(fontSize: 13.0),
-                                    ),
-                                  ),
-                                ],
-                              ),
+
+                              // NOTE: UNCOMMENT IF YOU NEED THIS FEATURE
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              //   children: [
+                              //     Text(
+                              //       "Don’t have an account?",
+                              //       style: black500.copyWith(fontSize: 13.0),
+                              //     ),
+                              //     TextButton(
+                              //       onPressed: () {
+                              //         // Navigator.pushNamed(
+                              //         //     context, RouteScreen.codeReveral);
+                              //         goRouter.goNamed(RouteScreen.codeReveral);
+                              //       },
+                              //       child: Text(
+                              //         "Sign up",
+                              //         style:
+                              //             primary700.copyWith(fontSize: 13.0),
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ),

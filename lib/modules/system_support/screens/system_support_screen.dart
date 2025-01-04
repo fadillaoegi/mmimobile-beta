@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/modules/system_support/providers/system_support_provider.dart';
+import 'package:mmimobile/routes/initial_routes.dart';
+import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/widget/section_title_widget.dart';
 import 'package:mmimobile/widget/system_support/carousel_widget.dart';
 import 'package:mmimobile/widget/system_support/item_system_support_widget.dart';
@@ -33,10 +35,11 @@ class _SystemSupportScreenState extends State<SystemSupportScreen> {
                 const SizedBox(
                   height: 10.0,
                 ),
-      
+
                 // NOTE: SECTION FREE CLASS
-                const SectionTittle(
+                SectionTittle(
                   title: "Free Class",
+                  onTap: () => goRouter.goNamed(RouteScreen.classFree),
                 ),
                 const SizedBox(
                   height: 10.0,
@@ -56,7 +59,7 @@ class _SystemSupportScreenState extends State<SystemSupportScreen> {
                 const SizedBox(
                   height: 20.0,
                 ),
-      
+
                 // NOTE: SECTION PREMIUM CLASS
                 const SectionTittle(
                   title: "Premium Class",
@@ -79,7 +82,7 @@ class _SystemSupportScreenState extends State<SystemSupportScreen> {
                 const SizedBox(
                   height: 20.0,
                 ),
-      
+
                 // NOTE: SECTION FORUM
                 const SectionTittle(
                   title: "Forum",

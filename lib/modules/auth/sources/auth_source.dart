@@ -18,7 +18,6 @@ class AuthSource {
         return true;
       } else {
         print("Data user dari AuthSource: $mapUser");
-        // Get.snackbar("Login Gagal", result["message"] ?? "Email atau Password Salah");
         return false;
       }
     } on DioException catch (error) {

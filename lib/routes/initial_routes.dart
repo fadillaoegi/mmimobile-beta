@@ -5,6 +5,7 @@ class RouteScreen {
   static const appPath = "/app";
   static const underDevelop = "underDevelop";
   static const underDevelopPath = "/underDevelop";
+
   // NOTE: AUTH
   static const signIn = "signIn";
   static const signInPath = "/signIn";
@@ -18,9 +19,11 @@ class RouteScreen {
   static const otpForgotPath = "/otpForgot";
   static const resetPassword = "resetPassword";
   static const resetPasswordPath = "/resetPassword";
+
   // NOTE: HOME
   static const home = "home";
   static const homePath = "/home";
+
   // NOTE: SYSTEM SUPPORT
   static const systemSupportPath = "/systemSupport";
   static const systemSupport = "systemSupport";
@@ -28,8 +31,11 @@ class RouteScreen {
   static const classFree = "classFree";
   static const classPremiumPath = "/classPremium";
   static const classPremium = "classPremium";
+  static const classSinglePath = "/classSingle";
+  static const classSingle = "classSingle";
   static const classForumPath = "/classForum";
   static const classForum = "classForum";
+
   // NOTE: HISTORY
   static const history = "history";
   static const historyPath = "/history";
@@ -37,6 +43,7 @@ class RouteScreen {
   static const detailHistoryPath = "/detailHistory";
   static const detailProduct = "detailProduct";
   static const detailProductPath = "/detailProduct";
+  
   // NOTE: PROFILE
   static const profile = "profile";
   static const profilePath = "/profile";
