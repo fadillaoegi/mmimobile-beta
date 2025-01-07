@@ -54,10 +54,10 @@ final GoRouter goRouter = GoRouter(
                     path: RouteScreen.otpForgotPath,
                     name: RouteScreen.otpForgot,
                     builder: (context, state) {
-                      final emailUser = state.extra as String;
-                      return OtpForgotScreen(
-                        emailUser: emailUser,
-                      );
+                      // final emailUser = state.extra as String;
+                      return const OtpForgotScreen(
+                          // emailUser: emailUser,
+                          );
                     },
                     routes: [
                       GoRoute(

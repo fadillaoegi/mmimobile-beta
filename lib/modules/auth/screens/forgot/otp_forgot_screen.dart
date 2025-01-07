@@ -9,9 +9,12 @@ import 'package:mmimobile/styles/fonts.dart';
 import 'package:provider/provider.dart';
 
 class OtpForgotScreen extends StatelessWidget {
-  const OtpForgotScreen({super.key, this.emailUser});
+  const OtpForgotScreen({
+    super.key,
+    // this.emailUser,
+  });
 
-  final String? emailUser;
+  // final String? emailUser;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +78,8 @@ class OtpForgotScreen extends StatelessWidget {
                         height: 10.0,
                       ),
                       Text(
-                        emailUser!.isEmpty ? "example@gmail.com." : emailUser!,
+                        // emailUser!.isEmpty ? "example@gmail.com." : emailUser!,
+                        "example@gmail.com .",
                         textAlign: TextAlign.center,
                         style: primary400.copyWith(fontSize: 13.0),
                       ),

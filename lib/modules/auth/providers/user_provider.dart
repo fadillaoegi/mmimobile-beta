@@ -8,9 +8,4 @@ class UserProvider extends ChangeNotifier {
     _dataUser = user;
     notifyListeners();
   }
-
-  // void clearDataUser() {
-  //   _dataUser = User(); // Reset ke objek kosong
-  //   notifyListeners();
-  // }
 }

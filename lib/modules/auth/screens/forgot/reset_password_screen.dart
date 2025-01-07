@@ -73,7 +73,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     FormAppsTwo(
                       controller: resetPassP.passController,
-                      labelText: "Password",
+                      labelText: "New password",
                       obscure: resetPassP.isObsecure,
                       suffixIcon: true,
                       validator: (p0) {
