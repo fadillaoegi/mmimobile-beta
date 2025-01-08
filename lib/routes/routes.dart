@@ -51,23 +51,22 @@ final GoRouter goRouter = GoRouter(
               },
               routes: [
                 GoRoute(
-                    path: RouteScreen.otpForgotPath,
-                    name: RouteScreen.otpForgot,
-                    builder: (context, state) {
-                      // final emailUser = state.extra as String;
-                      return const OtpForgotScreen(
-                          // emailUser: emailUser,
-                          );
-                    },
-                    routes: [
-                      GoRoute(
-                        path: RouteScreen.resetPasswordPath,
-                        name: RouteScreen.resetPassword,
-                        builder: (context, state) =>
-                            const ResetPasswordScreen(),
-                      ),
-                    ]),
+                  path: RouteScreen.otpForgotPath,
+                  name: RouteScreen.otpForgot,
+                  builder: (context, state) {
+                    // final emailUser = state.extra as String;
+                    return const OtpForgotScreen(
+                        // emailUser: emailUser,
+                        );
+                  },
+                ),
               ]),
+
+          GoRoute(
+            path: RouteScreen.resetPasswordPath,
+            name: RouteScreen.resetPassword,
+            builder: (context, state) => const ResetPasswordScreen(),
+          ),
 
           // NOTE: MODULE SIGN UP
           GoRoute(
@@ -197,30 +196,3 @@ final GoRouter goRouter = GoRouter(
         ]),
   ],
 );
-
-// NOTE: ROUTE DEEFAULT
-// final listRouteScreen = {
-//   RouteScreen.splash: (context) => const SplashScreen(),
-//   RouteScreen.app: (context) => const AppScreen(),
-//   // NOTE: AUTH
-//   RouteScreen.signIn: (context) => const SignInScreen(),
-//   RouteScreen.codeReveral: (context) => const ReveralCodeScreen(),
-//   RouteScreen.forgot: (context) => const EmailForgotScreen(),
-//   RouteScreen.otpForgot: (context) => const OtpForgotScreen(),
-//   RouteScreen.resetPassword: (context) => const ResetPasswordScreen(),
-//   // NOTE: HISTORY
-//   RouteScreen.history: (context) => const HistoryScreen(),
-//   RouteScreen.detailHistory: (context) => const DetailHistoryScreen(),
-//   RouteScreen.detailProduct: (context) => const DetailProductScreen(),
-//   // NOTE: PROFILE
-//   RouteScreen.profile: (context) => const ProfileScreen(),
-//   RouteScreen.website: (context) => const WebsiteScreen(),
-//   RouteScreen.profileSetting: (context) => const ProfileSettingScreen(),
-//   RouteScreen.profileEdit: (context) => const ProfileEditScreen(),
-//   RouteScreen.editPassword: (context) => const PaswwordEditScreen(),
-//   RouteScreen.phoneEdit: (context) => const PhoneEditScreen(),
-//   RouteScreen.faq: (context) => const FaqScreen(),
-//   RouteScreen.privacyPolicy: (context) => const PrivacyPolicyScreen(),
-//   RouteScreen.reward: (context) => const RewardScreen(),
-//   RouteScreen.historyReward: (context) => const HistoryRewardScreen(),
-// };

@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:d_method/d_method.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/sources/auth_source.dart';
 import 'package:mmimobile/routes/routes.dart';
@@ -19,28 +19,50 @@ class SignInProvider extends ChangeNotifier {
 
   // NOTE: FUNCTION SING IN
   void signIn(BuildContext context) async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    String phone = phoneController.text.trim();
+    String pass = passController.text.trim();
     isLoading = true;
     notifyListeners();
+    if (phone.isEmpty && pass.isEmpty) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const AlertDialogNoAction(
+          // title: "Sign in Success, please edit your password",
+          title: "Sign in failed",
+          lotties: AssetConfig.lottieSuccess,
+          content: "Phone and password are required",
+        ),
+      );
+      Timer(
+        const Duration(seconds: 3),
+        () {
+          // goRouter.goNamed(RouteScreen.resetPassword);
+          goRouter.pop(context);
+        },
+      );
+      isLoading = false;
+      notifyListeners();
+    }
     try {
-      String phone = phoneController.text.trim();
-      String pass = passController.text.trim();
       final formData = FormData.fromMap({
         "phone": phone,
         "password": pass,
       });
+      final result = await AuthSource.signIn(formData);
       if (formKey.currentState!.validate()) {
-        final result = await AuthSource.signIn(formData);
-        // if (result!.isNotEmpty) {
-        if (result!["status"] == false) {
+        if (result!["status"]) {
           if (result["status_pass_default"]) {
             showDialog(
               context: context,
               barrierDismissible: false,
               builder: (context) => AlertDialogNoAction(
-                // title: "Sign in Success, please edit your password",
-                title: result['message'],
+                title: "Login success",
                 lotties: AssetConfig.lottieSuccess,
-                content: "",
+                content: result['message'],
               ),
             );
             Timer(
@@ -50,6 +72,7 @@ class SignInProvider extends ChangeNotifier {
                 goRouter.pop(context);
               },
             );
+            // return;
           } else {
             showDialog(
               context: context,
@@ -67,16 +90,17 @@ class SignInProvider extends ChangeNotifier {
                 goRouter.pop(context);
               },
             );
+            return;
           }
         } else {
           print("AuthSource: $result");
           showDialog(
             context: context,
             barrierDismissible: false,
-            builder: (context) => AlertDialogNoAction(
+            builder: (context) => const AlertDialogNoAction(
               title: "Sign in Failed",
               lotties: AssetConfig.lottieFailed,
-              content: result["message"],
+              content: "Your not resgisterd",
             ),
           );
           Timer(
@@ -84,7 +108,6 @@ class SignInProvider extends ChangeNotifier {
             () => goRouter.pop(context),
           );
         }
-        // }
       }
     } catch (e) {
       DMethod.printTitle("Try ~ signInProvider", e.toString());
