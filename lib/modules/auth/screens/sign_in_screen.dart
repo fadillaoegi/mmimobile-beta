@@ -115,9 +115,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 validator: (p0) {
                                   if (p0!.isEmpty || p0 == "") {
                                     return "Password is required ";
-                                  } else if(p0.length < 8) {
+                                  } else if (p0.length < 8) {
                                     return "Password must be 8 characters ";
-
                                   }
                                   return null;
                                 },

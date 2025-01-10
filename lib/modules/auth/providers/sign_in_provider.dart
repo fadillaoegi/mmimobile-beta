@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/configs/asset_config.dart';
 import 'package:mmimobile/modules/auth/sources/auth_source.dart';
+import 'package:mmimobile/routes/initial_routes.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/widget/alert/alert_dialog_no_action_widget.dart';
 
@@ -52,62 +53,113 @@ class SignInProvider extends ChangeNotifier {
         "phone": phone,
         "password": pass,
       });
+
       final result = await AuthSource.signIn(formData);
-      if (formKey.currentState!.validate()) {
-        if (result!["status"]) {
-          if (result["status_pass_default"]) {
+
+      result!.isNotEmpty ? result : null;
+
+      // NOTE: HANDLE RESPONSE WRONG PASSWORD
+      if (result['message'] == 'Invalid password') {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => AlertDialogNoAction(
+            title: "Sign in failed",
+            lotties: AssetConfig.lottieFailed,
+            content: result['message'],
+          ),
+        );
+        Timer(
+          const Duration(seconds: 3),
+          () {
+            // goRouter.goNamed(RouteScreen.resetPassword);
+            goRouter.pop(context);
+          },
+        );
+        isLoading = false;
+        notifyListeners();
+        return;
+      }
+
+      // NOTE: HANDLE RESPONSE STATUS TRUE
+      if (result["status"]) {
+        // print(result["data"]["customer_status"]);
+        // NOTE: HANDLE RESPONSE STATUS PASS DEFAULT
+        if (result["status_pass_default"]) {
+          bool customerStatus = result['data']["customer_status"];
+          if (!customerStatus) {
             showDialog(
               context: context,
               barrierDismissible: false,
-              builder: (context) => AlertDialogNoAction(
-                title: "Login success",
-                lotties: AssetConfig.lottieSuccess,
-                content: result['message'],
+              builder: (context) => const AlertDialogNoAction(
+                title: "Sign in failed",
+                lotties: AssetConfig.lottieFailed,
+                content: "You are not yet a customer.",
               ),
             );
             Timer(
               const Duration(seconds: 3),
               () {
-                // goRouter.goNamed(RouteScreen.resetPassword);
                 goRouter.pop(context);
               },
             );
-            // return;
-          } else {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) => AlertDialogNoAction(
-                title: result['message'],
-                lotties: AssetConfig.lottieSuccess,
-                content: "",
-              ),
-            );
-            Timer(
-              const Duration(seconds: 3),
-              () {
-                // goRouter.goNamed(RouteScreen.app);
-                goRouter.pop(context);
-              },
-            );
+            isLoading = false;
+            notifyListeners();
             return;
           }
-        } else {
-          print("AuthSource: $result");
           showDialog(
             context: context,
             barrierDismissible: false,
-            builder: (context) => const AlertDialogNoAction(
-              title: "Sign in Failed",
-              lotties: AssetConfig.lottieFailed,
-              content: "Your not resgisterd",
+            builder: (context) => AlertDialogNoAction(
+              title: "Sign in success",
+              lotties: AssetConfig.lottieSuccess,
+              content: result['message'],
             ),
           );
           Timer(
             const Duration(seconds: 3),
-            () => goRouter.pop(context),
+            () {
+              goRouter.goNamed(RouteScreen.resetPassword);
+              goRouter.pop(context);
+            },
           );
+          // return;
+        } else {
+          // NOTE: HANDLE RESPONSE SUCCCESS
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) => AlertDialogNoAction(
+              title: result['message'],
+              lotties: AssetConfig.lottieSuccess,
+              content: "",
+            ),
+          );
+          Timer(
+            const Duration(seconds: 3),
+            () {
+              goRouter.goNamed(RouteScreen.app);
+              // goRouter.pop(context);
+            },
+          );
+          return;
         }
+      } else {
+        print("AuthSource: $result");
+        // NOTE: HANDLE RESPONSE NOT REGISTERED
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => const AlertDialogNoAction(
+            title: "Sign in Failed",
+            lotties: AssetConfig.lottieFailed,
+            content: "Your not resgisterd",
+          ),
+        );
+        Timer(
+          const Duration(seconds: 3),
+          () => goRouter.pop(context),
+        );
       }
     } catch (e) {
       DMethod.printTitle("Try ~ signInProvider", e.toString());
