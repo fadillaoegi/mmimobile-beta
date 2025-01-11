@@ -2,8 +2,9 @@ import 'dart:async';
 import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:mmimobile/api/api.dart';
 import 'package:mmimobile/configs/asset_config.dart';
-import 'package:mmimobile/modules/auth/sources/auth_source.dart';
+import 'package:mmimobile/sources/source_apps.dart';
 import 'package:mmimobile/routes/initial_routes.dart';
 import 'package:mmimobile/routes/routes.dart';
 import 'package:mmimobile/widget/alert/alert_dialog_no_action_widget.dart';
@@ -54,7 +55,7 @@ class SignInProvider extends ChangeNotifier {
         "password": pass,
       });
 
-      final result = await AuthSource.signIn(formData);
+      final result = await SourceApps.hitApiToMap(ApiApps.signIn, formData);
 
       result!.isNotEmpty ? result : null;
 

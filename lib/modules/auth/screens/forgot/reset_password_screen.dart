@@ -8,7 +8,9 @@ import 'package:mmimobile/widget/form_apps_two_widget.dart';
 import 'package:provider/provider.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({super.key});
+  const ResetPasswordScreen({super.key, this.customerId = '1'});
+
+  final String? customerId;
 
   @override
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
@@ -95,7 +97,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       validator: (p0) {
                         if (p0!.isEmpty) {
                           return "Confirm password required";
-                        } else if (p0 != resetPassP.passController.text) {}
+                        } else if (p0 != resetPassP.passController.text) {
+                          return "passwords are not the same";
+                        }
 
                         return null;
                       },
@@ -106,7 +110,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     BtnApps(
                       onPress: () {
-                        resetPassP.resetPassword(context);
+                        resetPassP.resetPassword(context, widget.customerId!);
                       },
                       text: "Reset Password",
                     ),

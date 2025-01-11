@@ -1,13 +1,15 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:mmimobile/api/api.dart';
 import 'package:d_method/d_method.dart';
 import 'package:mmimobile/api/request_apps.dart';
 
-class AuthSource {
-  static Future<Map<String, dynamic>?> signIn(FormData formdata) async {
+class SourceApps {
+  static Future<Map<String, dynamic>?> hitApiToMap(
+    String url,
+    FormData formdata,
+  ) async {
     try {
-      const url = ApiApps.signIn;
+      // const url = ApiApps.signIn;
       final result = await RequestApp.postFutureDio(url, formdata);
       print("from source $result");
       if (result!.statusCode == 200) {
