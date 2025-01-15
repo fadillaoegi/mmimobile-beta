@@ -9,57 +9,53 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 String userToJson(User data) => json.encode(data.toJson());
 
 class User {
+  String? provinceId;
+  String? cityId;
+  String? subdistrictId;
+  String? customerTypeId;
   String? customerId;
-  bool? customerStatus;
-  bool? customerPassDefault;
-  String? customerName;
   String? customerDateBirth;
-  String? customerEmail;
-  String? customerPassword;
+  String? customerName;
   String? customerPhone;
-  int? provinceId;
-  int? cityId;
-  int? subdistrictId;
+  String? customerEmail;
+  String? customerAddress;
 
   User({
-    this.customerId,
-    this.customerStatus,
-    this.customerPassDefault,
-    this.customerName,
-    this.customerDateBirth,
-    this.customerEmail,
-    this.customerPassword,
-    this.customerPhone,
     this.provinceId,
     this.cityId,
     this.subdistrictId,
+    this.customerTypeId,
+    this.customerId,
+    this.customerDateBirth,
+    this.customerName,
+    this.customerPhone,
+    this.customerEmail,
+    this.customerAddress,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        customerId: json["customer_id"],
-        customerStatus: json["customer_status"],
-        customerPassDefault: json["customer_pass_default"],
-        customerName: json["customer_name"],
-        customerDateBirth: json["customer_date_birth"],
-        customerEmail: json["customer_email"],
-        customerPassword: json["customer_password"],
-        customerPhone: json["customer_phone"],
         provinceId: json["province_id"],
         cityId: json["city_id"],
         subdistrictId: json["subdistrict_id"],
+        customerTypeId: json["customer_type_id"],
+        customerId: json["customer_id"],
+        customerDateBirth: json["customer_date_birth"],
+        customerName: json["customer_name"],
+        customerPhone: json["customer_phone"],
+        customerEmail: json["customer_email"],
+        customerAddress: json["customer_address"],
       );
 
   Map<String, dynamic> toJson() => {
+        "province_id": provinceId,
+        "city_id": cityId,
+        "subdistrict_id": subdistrictId,
+        "customer_type_id": customerTypeId,
         "customer_id": customerId,
-        "customer_status": customerStatus,
-        "customer_pass_default": customerPassDefault,
-        "customer_name": customerName,
         "customer_date_birth": customerDateBirth,
-        "customer_email": customerEmail,
-        "customer_password": customerPassword,
+        "customer_name": customerName,
         "customer_phone": customerPhone,
-        "province_id": provinceId.toString(),
-        "city_id": cityId.toString(),
-        "subdistrict_id": subdistrictId.toString(),
+        "customer_email": customerEmail,
+        "customer_address": customerAddress,
       };
 }

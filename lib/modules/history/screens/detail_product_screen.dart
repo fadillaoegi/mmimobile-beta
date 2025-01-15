@@ -5,7 +5,10 @@ import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 
 class DetailProductScreen extends StatelessWidget {
-  const DetailProductScreen({super.key});
+  const DetailProductScreen({
+    super.key,
+  });
+  // final Map<String, dynamic>? user;
 
   @override
   Widget build(BuildContext context) {

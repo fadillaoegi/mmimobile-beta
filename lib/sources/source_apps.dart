@@ -17,7 +17,6 @@ class SourceApps {
         final data = mapUser.isEmpty ? null : mapUser;
         return data;
       }
-
       return null;
     } on DioException catch (e) {
       DMethod.printTitle("Error ~ sourceAuthLogin", e.toString());

@@ -2,6 +2,7 @@ import 'package:mmimobile/modules/auth/providers/forgot/forgot_pass_provider.dar
 import 'package:mmimobile/modules/auth/providers/forgot/otp_forgot_provider.dart';
 import 'package:mmimobile/modules/auth/providers/forgot/reset_password_provider.dart';
 import 'package:mmimobile/modules/auth/providers/sign_in_provider.dart';
+import 'package:mmimobile/modules/auth/providers/user_provider.dart';
 import 'package:mmimobile/modules/faq/providers/faq_provider.dart';
 import 'package:mmimobile/modules/home/providers/home_provider.dart';
 import 'package:mmimobile/modules/password_edit/providers/password_edit_provider.dart';
@@ -11,6 +12,9 @@ import 'package:provider/provider.dart';
 
 // class GlobalProviderApps extends ChangeNotifier {
 final providers = [
+  ChangeNotifierProvider<UserProvider>(
+    create: (context) => UserProvider(),
+  ),
   ChangeNotifierProvider<SignInProvider>(
     create: (context) => SignInProvider(),
   ),

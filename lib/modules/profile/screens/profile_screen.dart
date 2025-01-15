@@ -11,7 +11,13 @@ import 'package:mmimobile/widget/item_list_widget.dart';
 import 'package:mmimobile/widget/profile/infomation_profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({
+    super.key,
+    this.user,
+  });
+
+  // final User? user;
+  final Map<String, dynamic>? user;
 
   @override
   Widget build(BuildContext context) {

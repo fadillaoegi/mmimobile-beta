@@ -6,7 +6,10 @@ import 'package:mmimobile/modules/system_support/screens/system_support_screen.d
 import 'package:mmimobile/styles/color.dart';
 
 class AppScreen extends StatefulWidget {
-  const AppScreen({super.key});
+  const AppScreen({super.key,});
+
+  // final User? user;
+  // final Map<String, dynamic>? user;
 
   @override
   State<AppScreen> createState() => _AppScreenState();
@@ -15,14 +18,27 @@ class AppScreen extends StatefulWidget {
 class _AppScreenState extends State<AppScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    // const UnderdevelopmentScreen(),
-    const HomeScreen(),
-    // const UnderdevelopmentScreen(),
-    const SystemSupportScreen(),
-    const HistoryScreen(),
-    const ProfileScreen()
-  ];
+  late List<Widget> _pages;
+
+  // final List<Widget> _pages = [
+  //   HomeScreen(
+  //     user: widget.user!,
+  //   ),
+  //   const SystemSupportScreen(),
+  //   const HistoryScreen(),
+  //   const ProfileScreen()
+  // ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      const HomeScreen(),
+      const SystemSupportScreen(),
+      const HistoryScreen(),
+      const ProfileScreen()
+    ];
+  }
 
   final List<BottomNavigationBarItem> items = const [
     BottomNavigationBarItem(

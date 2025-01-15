@@ -16,6 +16,7 @@ class SignInProvider extends ChangeNotifier {
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
+  // final userProvider = UserProvider();
   bool isObsecure = true;
   bool isLoading = false;
 
@@ -73,7 +74,6 @@ class SignInProvider extends ChangeNotifier {
         Timer(
           const Duration(seconds: 3),
           () {
-            // goRouter.goNamed(RouteScreen.resetPassword);
             goRouter.pop(context);
           },
         );
@@ -84,7 +84,6 @@ class SignInProvider extends ChangeNotifier {
 
       // NOTE: HANDLE RESPONSE STATUS TRUE
       if (result["status"]) {
-        // print(result["data"]["customer_status"]);
         // NOTE: HANDLE RESPONSE STATUS PASS DEFAULT
         if (result["status_pass_default"]) {
           bool customerStatus = result['data']["customer_status"];
@@ -120,7 +119,8 @@ class SignInProvider extends ChangeNotifier {
           Timer(
             const Duration(seconds: 3),
             () {
-              goRouter.goNamed(RouteScreen.resetPassword);
+              final customerId = result['data']['customer_id'];
+              goRouter.goNamed(RouteScreen.resetPassword, extra: customerId);
               goRouter.pop(context);
             },
           );
@@ -139,8 +139,15 @@ class SignInProvider extends ChangeNotifier {
           Timer(
             const Duration(seconds: 3),
             () {
-              goRouter.goNamed(RouteScreen.app);
-              // goRouter.pop(context);
+              // SessionApps.saveUser(User.fromJson(result['data']), userProvider);
+              Map<String, dynamic> user = result['data'];
+              goRouter.pop(context);
+              Timer(
+                const Duration(seconds: 2),
+                () {
+                  goRouter.goNamed(RouteScreen.app, extra: user);
+                },
+              );
             },
           );
           return;

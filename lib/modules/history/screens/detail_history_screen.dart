@@ -7,7 +7,10 @@ import 'package:mmimobile/widget/item_history_widget.dart';
 import 'package:mmimobile/widget/list_between_widget.dart';
 
 class DetailHistoryScreen extends StatelessWidget {
-  const DetailHistoryScreen({super.key});
+  const DetailHistoryScreen({
+    super.key,
+  });
+  // final Map<String, dynamic>? user;
 
   @override
   Widget build(BuildContext context) {

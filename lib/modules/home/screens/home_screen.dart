@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/modules/auth/providers/user_provider.dart';
 import 'package:mmimobile/styles/color.dart';
 import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/banner_information_widget.dart';
 import 'package:mmimobile/widget/image_circle_widget.dart';
 import 'package:mmimobile/widget/transparant_card_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    this.user,
+  });
+
+  // final User? user;
+  final Map<String, dynamic>? user;
 
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
-
+    final userProvider = context.watch<UserProvider>();
     return Scaffold(
       body: SizedBox(
         height: sizeScreen.height,
@@ -51,13 +59,19 @@ class HomeScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Nabila Alifah",
+                                  "Alifah",
+                                  // userProvider.dataUser!.customerName
+                                  //     .toString(),
+                                  // user!['customer_name'].toString(),
                                   style: white600.copyWith(fontSize: 14.0),
                                 ),
                                 Row(
                                   children: [
                                     Text(
                                       "Diamond",
+                                      // user!['customer_status']
+                                      //     ? "Pelanggan"
+                                      //     : "Belum pelanggan",
                                       style: white300.copyWith(fontSize: 12.0),
                                     ),
                                     Text(
@@ -69,10 +83,12 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       "200 ",
+                                      // "diamond ",
                                       style: white300.copyWith(fontSize: 12.0),
                                     ),
                                     Text(
                                       "Point",
+                                      // "",
                                       style: white300.copyWith(fontSize: 12.0),
                                     ),
                                   ],

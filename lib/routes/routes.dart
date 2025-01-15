@@ -63,10 +63,14 @@ final GoRouter goRouter = GoRouter(
               ]),
 
           GoRoute(
-            path: RouteScreen.resetPasswordPath,
-            name: RouteScreen.resetPassword,
-            builder: (context, state) => const ResetPasswordScreen(),
-          ),
+              path: RouteScreen.resetPasswordPath,
+              name: RouteScreen.resetPassword,
+              builder: (context, state) {
+                final userId = state.extra as String;
+                return ResetPasswordScreen(
+                  user: userId,
+                );
+              }),
 
           // NOTE: MODULE SIGN UP
           GoRoute(

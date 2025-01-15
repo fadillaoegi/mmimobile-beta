@@ -8,7 +8,11 @@ import 'package:mmimobile/widget/system_support/item_system_support_widget.dart'
 import 'package:provider/provider.dart';
 
 class SystemSupportScreen extends StatefulWidget {
-  const SystemSupportScreen({super.key});
+  const SystemSupportScreen({
+    super.key,
+  });
+  // final User? user;
+  // final Map<String, dynamic>? user;
 
   @override
   State<SystemSupportScreen> createState() => _SystemSupportScreenState();

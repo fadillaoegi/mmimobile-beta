@@ -5,7 +5,12 @@ import 'package:mmimobile/styles/fonts.dart';
 import 'package:mmimobile/widget/item_history_widget.dart';
 
 class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({super.key});
+  const HistoryScreen({
+    super.key,
+    // this.user,
+  });
+  // final User? user;
+  // final Map<String, dynamic>? user;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +40,9 @@ class HistoryScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) => ItemHistory(
                     onTap: () {
-                      // Navigator.pushNamed(context, RouteScreen.detailHistory);
-                      goRouter.goNamed(RouteScreen.detailHistory);
+                      goRouter.goNamed(
+                        RouteScreen.detailHistory,
+                      );
                     },
                     shadow: false,
                     nameSO: "SO-24-007191",

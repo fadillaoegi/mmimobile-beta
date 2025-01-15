@@ -8,9 +8,10 @@ import 'package:mmimobile/widget/form_apps_two_widget.dart';
 import 'package:provider/provider.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({super.key, this.customerId = '1'});
+  const ResetPasswordScreen({super.key, this.user});
 
-  final String? customerId;
+  // final Map<String, dynamic>? user;
+  final String? user;
 
   @override
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
@@ -19,6 +20,8 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
+    // final customerId = widget.user!['customer_id'];
+    final customerId = widget.user!;
     final resetPassP = Provider.of<ResetPasswordProvider>(context);
     return Scaffold(
       body: LayoutBuilder(
@@ -110,7 +113,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     BtnApps(
                       onPress: () {
-                        resetPassP.resetPassword(context, widget.customerId!);
+                        resetPassP.resetPassword(context, customerId);
                       },
                       text: "Reset Password",
                     ),

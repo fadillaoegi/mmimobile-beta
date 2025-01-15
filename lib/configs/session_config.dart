@@ -15,7 +15,7 @@ class SessionApps {
     return sessionSuccess;
   }
 
-  static Future<User> loadUser(UserProvider provider) async {
+  static Future<User> loadUser() async {
     User dataUser = User();
     final prefs = await SharedPreferences.getInstance();
     String? strUser = prefs.getString("user");
