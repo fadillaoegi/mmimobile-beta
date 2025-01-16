@@ -1,0 +1,79 @@
+part of 'app_pages.dart';
+
+abstract class Routes {
+  Routes._();
+  static const home = _Paths.home;
+  static const splash = _Paths.splash;
+
+  // NOTE: MODULE AUTH
+  static const forgotPassword = _Paths.forgotPassword;
+  static const otp = _Paths.otp;
+  static const signIn = _Paths.signIn;
+  static const signUp = _Paths.signUp;
+
+  // NOTE: MODULE HISTORY
+  static const history = _Paths.history;
+  static const historyDetail = _Paths.historyDetail;
+
+  // NOTE: MODULE REWARD
+  static const reward = _Paths.reward;
+  static const rewardHistory = _Paths.rewardHistory;
+
+  // NOTE: MODULE PROFILE
+  static const faq = _Paths.faq;
+  static const profile = _Paths.profile;
+  static const profileSetting = _Paths.profileSetting;
+  static const profileEdit = _Paths.profileEdit;
+  static const profileEditPassword = _Paths.profileEditPassword;
+
+  // NOTE: MODULE SYSTEM SUPPORT
+  static const systemSupport = _Paths.systemSupport;
+  static const productDetail = _Paths.productDetail;
+  static const appMain = _Paths.appMain;
+  static const resetPassword = _Paths.resetPassword;
+  static const systemSupportClass = _Paths.systemSupportClass;
+  static const privacyPolicy = _Paths.privacyPolicy;
+  static const website = _Paths.website;
+  static const notification = _Paths.notification;
+  static const underDevelopment = _Paths.underDevelopment;
+}
+
+abstract class _Paths {
+  _Paths._();
+  static const splash = '/splash';
+  static const appMain = '/app-main';
+
+  // NOTE: MODULE AUTH
+  static const signIn = '/sign-in';
+  static const signUp = '/sign-up';
+  static const resetPassword = '/reset-password';
+  static const forgotPassword = '/forgot-password';
+  static const otp = '/otp';
+
+  // NOTE: MODULE HOME
+  static const home = '/home';
+
+  // NOTE: MODULE HISTORY
+  static const history = '/history';
+  static const historyDetail = '/history-detail';
+
+  // NOTE: MODULE REWARD
+  static const reward = '/reward';
+  static const rewardHistory = '/reward-history';
+
+  // NOTE: MODULE PROFILE
+  static const profile = '/profile';
+  static const profileSetting = '/profile-setting';
+  static const faq = '/faq';
+  static const profileEdit = '/profile-edit';
+  static const profileEditPassword = '/profile-edit-password';
+
+  // NOTE: MODULE SYTEM SUPPORT
+  static const systemSupport = '/system-support';
+  static const productDetail = '/product-detail';
+  static const systemSupportClass = '/support-system-class';
+  static const privacyPolicy = '/privacy-policy';
+  static const website = '/website';
+  static const notification = '/notification';
+  static const underDevelopment = '/underdevelopment';
+}

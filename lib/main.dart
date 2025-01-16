@@ -1,25 +1,17 @@
+import 'package:get/get.dart';
+import 'app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:mmimobile/configs/provider_config.dart';
-import 'package:mmimobile/configs/theme_config.dart';
-import 'package:mmimobile/routes/routes.dart';
-import 'package:provider/provider.dart';
+import 'package:mmimobile/app/configs/theme_config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: providers,
-      child: MaterialApp.router(
-        theme: ThemeConfig.themeData(),
-        debugShowCheckedModeBanner: false,
-        routerConfig: goRouter,
-      ),
-    );
-  }
+  runApp(
+    GetMaterialApp(
+      title: "Mmimobile",
+      debugShowCheckedModeBanner: false,
+      initialRoute: AppPages.initial,
+      getPages: AppPages.routes,
+      theme: ThemeConfig.themeData(),
+    ),
+  );
 }

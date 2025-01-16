@@ -8,7 +8,7 @@
 PRODUCT_NAME = mmimobile
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.mmimobile
+PRODUCT_BUNDLE_IDENTIFIER = com.mmimobile.app
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2025 com.mmimobile. All rights reserved.

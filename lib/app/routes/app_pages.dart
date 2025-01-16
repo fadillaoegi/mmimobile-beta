@@ -1,0 +1,192 @@
+import 'package:get/get.dart';
+
+import '../modules/app_main/bindings/app_main_binding.dart';
+import '../modules/app_main/views/app_main_view.dart';
+import '../modules/faq/bindings/faq_binding.dart';
+import '../modules/faq/views/faq_view.dart';
+import '../modules/auth/forgot_password/bindings/forgot_password_binding.dart';
+import '../modules/auth/forgot_password/views/forgot_password_view.dart';
+import '../modules/history/bindings/history_binding.dart';
+import '../modules/history/views/history_view.dart';
+import '../modules/history_detail/bindings/history_detail_binding.dart';
+import '../modules/history_detail/views/history_detail_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
+import '../modules/auth/otp/bindings/otp_binding.dart';
+import '../modules/auth/otp/views/otp_view.dart';
+import '../modules/privacy_policy/bindings/privacy_policy_binding.dart';
+import '../modules/privacy_policy/views/privacy_policy_view.dart';
+import '../modules/product_detail/bindings/product_detail_binding.dart';
+import '../modules/product_detail/views/product_detail_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
+import '../modules/profile_edit/bindings/profile_edit_binding.dart';
+import '../modules/profile_edit/views/profile_edit_view.dart';
+import '../modules/profile_edit_password/bindings/profile_edit_password_binding.dart';
+import '../modules/profile_edit_password/views/profile_edit_password_view.dart';
+import '../modules/profile_setting/bindings/profile_setting_binding.dart';
+import '../modules/profile_setting/views/profile_setting_view.dart';
+import '../modules/auth/reset_password/bindings/reset_password_binding.dart';
+import '../modules/auth/reset_password/views/reset_password_view.dart';
+import '../modules/reward/bindings/reward_binding.dart';
+import '../modules/reward/views/reward_view.dart';
+import '../modules/reward_history/bindings/reward_history_binding.dart';
+import '../modules/reward_history/views/reward_history_view.dart';
+import '../modules/auth/sign_in/bindings/sign_in_binding.dart';
+import '../modules/auth/sign_in/views/sign_in_view.dart';
+import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
+import '../modules/auth/sign_up/views/sign_up_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
+import '../modules/support_system_class/bindings/support_system_class_binding.dart';
+import '../modules/support_system_class/views/support_system_class_view.dart';
+import '../modules/system_support/bindings/system_support_binding.dart';
+import '../modules/system_support/views/system_support_view.dart';
+import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
+import '../modules/underdevelopment/views/underdevelopment_view.dart';
+import '../modules/website/bindings/website_binding.dart';
+import '../modules/website/views/website_view.dart';
+
+part 'app_routes.dart';
+
+class AppPages {
+  AppPages._();
+
+  static const initial = Routes.splash;
+
+  static final routes = [
+    // NOTE: MODULE HOME
+    GetPage(
+      name: _Paths.home,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
+
+    // NOTE: MODULE AUTH
+    GetPage(
+      name: _Paths.forgotPassword,
+      page: () => const ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.otp,
+      page: () => const OtpView(),
+      binding: OtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.signIn,
+      page: () => const SignInView(),
+      binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.signUp,
+      page: () => const SignUpView(),
+      binding: SignUpBinding(),
+    ),
+
+    // NOTE: MODULE HISTORY
+    GetPage(
+      name: _Paths.history,
+      page: () => const HistoryView(),
+      binding: HistoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.historyDetail,
+      page: () => const HistoryDetailView(),
+      binding: HistoryDetailBinding(),
+    ),
+
+    // NOTE: MODULE REWARD
+    GetPage(
+      name: _Paths.reward,
+      page: () => const RewardView(),
+      binding: RewardBinding(),
+    ),
+    GetPage(
+      name: _Paths.rewardHistory,
+      page: () => const RewardHistoryView(),
+      binding: RewardHistoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.splash,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+    ),
+
+    // NOTE: MODULE PROFILE
+    GetPage(
+      name: _Paths.profile,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.faq,
+      page: () => const FaqView(),
+      binding: FaqBinding(),
+    ),
+    GetPage(
+      name: _Paths.profileEdit,
+      page: () => const ProfileEditView(),
+      binding: ProfileEditBinding(),
+    ),
+    GetPage(
+      name: _Paths.profileEditPassword,
+      page: () => const ProfileEditPasswordView(),
+      binding: ProfileEditPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.profileSetting,
+      page: () => const ProfileSettingView(),
+      binding: ProfileSettingBinding(),
+    ),
+
+    // NOTE: MODULE SYSTEM SUPPORT
+    GetPage(
+      name: _Paths.systemSupport,
+      page: () => const SystemSupportView(),
+      binding: SystemSupportBinding(),
+    ),
+    GetPage(
+      name: _Paths.productDetail,
+      page: () => const ProductDetailView(),
+      binding: ProductDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.appMain,
+      page: () => const AppMainView(),
+      binding: AppMainBinding(),
+    ),
+    GetPage(
+      name: _Paths.resetPassword,
+      page: () => const ResetPasswordView(),
+      binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.systemSupportClass,
+      page: () => const SupportSystemClassView(),
+      binding: SupportSystemClassBinding(),
+    ),
+    GetPage(
+      name: _Paths.privacyPolicy,
+      page: () => const PrivacyPolicyView(),
+      binding: PrivacyPolicyBinding(),
+    ),
+    GetPage(
+      name: _Paths.website,
+      page: () => const WebsiteView(),
+      binding: WebsiteBinding(),
+    ),
+    GetPage(
+      name: _Paths.notification,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.underDevelopment,
+      page: () => const UnderdevelopmentView(),
+      binding: UnderdevelopmentBinding(),
+    ),
+  ];
+}
