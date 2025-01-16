@@ -84,6 +84,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       validator: (p0) {
                         if (p0!.isEmpty) {
                           return "Password is required";
+                        } else if (p0.length < 8) {
+                          return "Password must be 8 characters ";
                         }
                         return null;
                       },
@@ -102,6 +104,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           return "Confirm password required";
                         } else if (p0 != resetPassP.passController.text) {
                           return "passwords are not the same";
+                        } else if (p0.length < 8) {
+                          return "Password must be 8 characters ";
                         }
 
                         return null;

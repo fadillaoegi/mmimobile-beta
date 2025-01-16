@@ -72,7 +72,7 @@ class ResetPasswordProvider extends ChangeNotifier {
             Timer(
               const Duration(seconds: 2),
               () {
-                goRouter.goNamed(RouteScreen.signIn);
+                goRouter.goNamed(RouteScreen.app);
               },
             );
           },
