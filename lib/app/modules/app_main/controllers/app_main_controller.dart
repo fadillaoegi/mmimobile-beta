@@ -6,6 +6,11 @@ import 'package:mmimobile/app/modules/profile/views/profile_view.dart';
 import 'package:mmimobile/app/modules/system_support/views/system_support_view.dart';
 
 class AppMainController extends GetxController {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
   Rx<int> currentIndex = 0.obs;
 
   final pages = [
@@ -33,19 +38,4 @@ class AppMainController extends GetxController {
       label: 'Profile',
     ),
   ];
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

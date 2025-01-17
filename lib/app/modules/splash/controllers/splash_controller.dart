@@ -14,15 +14,6 @@ class SplashController extends GetxController {
     startSplash();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   // NOTE: FUCNTION
   Future<void> startSplash() async {
@@ -38,7 +29,7 @@ class SplashController extends GetxController {
             update();
 
             Timer(
-              const Duration(seconds: 3),
+              const Duration(seconds: 2),
               () {
                 if (isUser.value) {
                   Get.offAllNamed(Routes.appMain);
