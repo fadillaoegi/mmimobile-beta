@@ -56,7 +56,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.forgotPassword;
+  static const initial = Routes.addEmail;
 
   static final routes = [
     // NOTE: MODULE HOME

@@ -70,7 +70,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     ),
                     Image.asset(
                       AssetConfig.ilForgotPass,
-                      height: 200.0,
+                      height: 300.0,
                     ),
                     const SizedBox(
                       height: 40.0,

@@ -72,6 +72,24 @@ class ResetPasswordController extends GetxController {
           update();
           return;
         }
+
+        if (!result['data']['customer_email']) {
+          Get.dialog(
+            const AlertDialogNoAction(
+              title: "Welcome to Mmimpbile",
+              lotties: AssetConfig.lottieSuccess,
+              content: "Reset password success",
+            ),
+            barrierDismissible: false,
+          );
+          Timer(
+            const Duration(seconds: 3),
+            () {
+              Get.back();
+              Get.offAllNamed(Routes.addEmail);
+            },
+          );
+        }
         Get.dialog(
           const AlertDialogNoAction(
             title: "Welcome to Mmimpbile",

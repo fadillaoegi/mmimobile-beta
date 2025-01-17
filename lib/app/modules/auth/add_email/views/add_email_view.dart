@@ -14,6 +14,7 @@ class AddEmailView extends GetView<AddEmailController> {
   const AddEmailView({super.key});
   @override
   Widget build(BuildContext context) {
+
     final controller = Get.put(AddEmailController());
     return Scaffold(
       body: LayoutBuilder(
@@ -55,17 +56,12 @@ class AddEmailView extends GetView<AddEmailController> {
                     ),
                     Text(
                       "Add Your Email",
-                      style: primary600.copyWith(fontSize: 16.0),
+                      style: primary600.copyWith(fontSize: 20.0),
                     ),
                     const SizedBox(
                       height: 18.0,
                     ),
                     Lottie.asset(AssetConfig.lottieEmail),
-                    // Text(
-                    //   "",
-                    //   textAlign: TextAlign.center,
-                    //   style: black400.copyWith(fontSize: 13.0),
-                    // ),
                     const SizedBox(
                       height: 18.0,
                     ),
@@ -83,7 +79,7 @@ class AddEmailView extends GetView<AddEmailController> {
                       height: 20.0,
                     ),
                     BtnApps(
-                      onPress: () {},
+                      // onPress: () => controller.addEmail(context),
                       text: "Submit",
                     ),
                   ],
