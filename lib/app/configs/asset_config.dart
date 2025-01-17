@@ -29,6 +29,7 @@ class AssetConfig {
 
   // NOTE: LOTTIES
   static const lottieFailed = "assets/lotties/failed.json";
+  static const lottieEmail = "assets/images/email.png";
   static const lottieDelete = "assets/lotties/delete.json";
   static const lottieUpdate = "assets/lotties/update.json";
   static const lottieUpload = "assets/lotties/upload.json";

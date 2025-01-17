@@ -1,11 +1,21 @@
 import 'package:get/get.dart';
 
+import '../modules/auth/add_email/bindings/add_email_binding.dart';
+import '../modules/auth/add_email/views/add_email_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
-import '../modules/faq/bindings/faq_binding.dart';
-import '../modules/faq/views/faq_view.dart';
 import '../modules/auth/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/auth/forgot_password/views/forgot_password_view.dart';
+import '../modules/auth/otp/bindings/otp_binding.dart';
+import '../modules/auth/otp/views/otp_view.dart';
+import '../modules/auth/reset_password/bindings/reset_password_binding.dart';
+import '../modules/auth/reset_password/views/reset_password_view.dart';
+import '../modules/auth/sign_in/bindings/sign_in_binding.dart';
+import '../modules/auth/sign_in/views/sign_in_view.dart';
+import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
+import '../modules/auth/sign_up/views/sign_up_view.dart';
+import '../modules/faq/bindings/faq_binding.dart';
+import '../modules/faq/views/faq_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/history_detail/bindings/history_detail_binding.dart';
@@ -14,8 +24,6 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
-import '../modules/auth/otp/bindings/otp_binding.dart';
-import '../modules/auth/otp/views/otp_view.dart';
 import '../modules/privacy_policy/bindings/privacy_policy_binding.dart';
 import '../modules/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
@@ -28,16 +36,10 @@ import '../modules/profile_edit_password/bindings/profile_edit_password_binding.
 import '../modules/profile_edit_password/views/profile_edit_password_view.dart';
 import '../modules/profile_setting/bindings/profile_setting_binding.dart';
 import '../modules/profile_setting/views/profile_setting_view.dart';
-import '../modules/auth/reset_password/bindings/reset_password_binding.dart';
-import '../modules/auth/reset_password/views/reset_password_view.dart';
 import '../modules/reward/bindings/reward_binding.dart';
 import '../modules/reward/views/reward_view.dart';
 import '../modules/reward_history/bindings/reward_history_binding.dart';
 import '../modules/reward_history/views/reward_history_view.dart';
-import '../modules/auth/sign_in/bindings/sign_in_binding.dart';
-import '../modules/auth/sign_in/views/sign_in_view.dart';
-import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
-import '../modules/auth/sign_up/views/sign_up_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/support_system_class/bindings/support_system_class_binding.dart';
@@ -54,7 +56,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.splash;
+  static const initial = Routes.forgotPassword;
 
   static final routes = [
     // NOTE: MODULE HOME
@@ -66,16 +68,6 @@ class AppPages {
 
     // NOTE: MODULE AUTH
     GetPage(
-      name: _Paths.forgotPassword,
-      page: () => const ForgotPasswordView(),
-      binding: ForgotPasswordBinding(),
-    ),
-    GetPage(
-      name: _Paths.otp,
-      page: () => const OtpView(),
-      binding: OtpBinding(),
-    ),
-    GetPage(
       name: _Paths.signIn,
       page: () => const SignInView(),
       binding: SignInBinding(),
@@ -84,6 +76,21 @@ class AppPages {
       name: _Paths.signUp,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.addEmail,
+      page: () => const AddEmailView(),
+      binding: AddEmailBinding(),
+    ),
+    GetPage(
+      name: _Paths.forgotPassword,
+      page: () => const ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.otp,
+      page: () => const OtpView(),
+      binding: OtpBinding(),
     ),
 
     // NOTE: MODULE HISTORY
