@@ -7,7 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SessionUser {
   static const userKey = "userKey";
-// MENYIMPAN USER LOGIN?REGISTER
+
+  // NOTE: MENYIMPAN USER LOGIN?REGISTER
   static Future<bool> saveUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
     Map<String, dynamic>? mapUser = user.toJson();
@@ -20,7 +21,7 @@ class SessionUser {
     return success;
   }
 
-// MENAMBAH USER
+  // NOTE: GET USER
   static Future<User?> getUser() async {
     final prefs = await SharedPreferences.getInstance();
     User user = User();
@@ -35,15 +36,14 @@ class SessionUser {
     return user;
   }
 
-// CLEAR USER (Logout)
+  // NOTE: CLEAR USER (Logout)
   static Future<bool> clearUser() async {
     final prefs = await SharedPreferences.getInstance();
     bool success = await prefs.remove(userKey);
-    final controllUser = Get.put(UserController());
-    controllUser.setData(User());
+    final controller = Get.put(UserController());
+    controller.setData(User());
     // Map<String, dynamic> mapUser = user.toJson();
     // String stringUser = jsonEncode(mapUser);
     return success;
   }
 }
-

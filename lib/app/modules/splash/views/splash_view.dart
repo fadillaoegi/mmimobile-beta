@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import '../controllers/splash_controller.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
-
-import '../controllers/splash_controller.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
 
 class SplashView extends GetView<SplashController> {
   const SplashView({super.key});
