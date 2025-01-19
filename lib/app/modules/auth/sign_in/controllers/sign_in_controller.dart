@@ -139,10 +139,11 @@ class SignInController extends GetxController {
           Timer(
             const Duration(seconds: 3),
             () {
+              print("MASUK SINI");
               final customerId = result['data']['customer_id'];
               Get.toNamed(Routes.resetPassword,
                   arguments: customerId.toString());
-              Get.back();
+              // Get.back();
             },
           );
           // return;

@@ -5,6 +5,7 @@ import 'package:mmimobile/app/configs/theme_config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     GetMaterialApp(
       title: "Mmimobile",

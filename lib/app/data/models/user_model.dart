@@ -37,7 +37,7 @@ class User {
         provinceId: json["province_id"],
         cityId: json["city_id"],
         subdistrictId: json["subdistrict_id"],
-        customerTypeId: json["customer_type_id"] == 1 ? "Pelanggan" : "2",
+        customerTypeId: json["customer_type_id"] == 1 ? "Pelanggan" : "Calon Pelanggan",
         customerId: json["customer_id"],
         customerDateBirth: json["customer_date_birth"],
         customerName: json["customer_name"],

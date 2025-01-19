@@ -26,11 +26,9 @@ class AddEmailController extends GetxController {
       if (formKey.currentState!.validate()) {
         final result =
             await SourceApps.hitApiToMap(ApiApps.updateEmail, formData);
-        result ?? result;
+        result ?? null;
 
-        // if (email == result['customer_email']) {
-          
-        // }
+        
       }
     } catch (e) {
       DMethod.printTitle("Try~controllerEmail", e.toString());

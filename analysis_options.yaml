@@ -1,8 +1,0 @@
-analyzer:
-  errors:
-    unnecessary_overrides: ignore
-    avoid_print: ignore
-include: package:flutter_lints/flutter.yaml
-linter:
-  rules:
-    

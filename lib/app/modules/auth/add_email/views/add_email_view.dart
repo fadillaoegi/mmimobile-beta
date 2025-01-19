@@ -14,7 +14,7 @@ class AddEmailView extends GetView<AddEmailController> {
   const AddEmailView({super.key});
   @override
   Widget build(BuildContext context) {
-
+    final customerId = "";
     final controller = Get.put(AddEmailController());
     return Scaffold(
       body: LayoutBuilder(
@@ -79,7 +79,8 @@ class AddEmailView extends GetView<AddEmailController> {
                       height: 20.0,
                     ),
                     BtnApps(
-                      // onPress: () => controller.addEmail(context),
+                      // onPress: () {},
+                      onPress: () => controller.addEmail(context, customerId),
                       text: "Submit",
                     ),
                   ],
