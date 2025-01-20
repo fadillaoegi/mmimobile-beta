@@ -17,6 +17,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
+    final controller = Get.put(ProfileSettingController());
     return Scaffold(
       appBar: AppBar(
         // leading: ,
@@ -99,9 +100,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                   Get.dialog(
                     barrierDismissible: false,
                     AlertDialogApps(
-                      onTap: () {
-                        Get.offAllNamed(Routes.signIn);
-                      },
+                      onTap: () => controller.logout(),
                       lotties: AssetConfig.lottieLogout2,
                       title: "Are you sure ?",
                       content: "Sign Out",

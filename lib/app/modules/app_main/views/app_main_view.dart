@@ -8,7 +8,8 @@ class AppMainView extends GetView<AppMainController> {
   const AppMainView({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<AppMainController>();
+    // final controller = Get.find<AppMainController>();
+    final controller = Get.put(AppMainController());
     return Obx(
       () => Scaffold(
         body: IndexedStack(

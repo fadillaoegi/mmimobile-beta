@@ -1,21 +1,15 @@
 import 'package:get/get.dart';
+import 'package:mmimobile/app/configs/session_config.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
 
 class ProfileSettingController extends GetxController {
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void logout() async {
+    await SessionUser.clearUser(); // Hapus sesi pengguna
+    Get.offAllNamed(Routes.signIn); // Arahkan ke halaman login
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

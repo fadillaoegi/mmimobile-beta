@@ -11,7 +11,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
   const ResetPasswordView({super.key});
   @override
   Widget build(BuildContext context) {
-    final customerId = '';
+    String customerId = Get.arguments;
     final controller = Get.put(ResetPasswordController());
     return Scaffold(
       body: LayoutBuilder(
@@ -52,7 +52,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       height: 40.0,
                     ),
                     Text(
-                      "Reset Your Password",
+                      "Reset Your Password $customerId",
                       style: primary600.copyWith(fontSize: 16.0),
                     ),
                     const SizedBox(
@@ -66,41 +66,46 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     const SizedBox(
                       height: 18.0,
                     ),
-                    FormAppsTwo(
-                      controller: controller.passController.value,
-                      labelText: "New password",
-                      obscure: controller.isObsecure.value,
-                      suffixIcon: true,
-                      validator: (p0) {
-                        if (p0!.isEmpty) {
-                          return "Password is required";
-                        } else if (p0.length < 8) {
-                          return "Password must be 8 characters ";
-                        }
-                        return null;
-                      },
-                      onTap: () => controller.hidePass(),
+                    Obx(
+                      () => FormAppsTwo(
+                        controller: controller.passController.value,
+                        labelText: "New password",
+                        obscure: controller.isObsecure.value,
+                        suffixIcon: true,
+                        validator: (p0) {
+                          if (p0!.isEmpty) {
+                            return "Password is required";
+                          } else if (p0.length < 8) {
+                            return "Password must be 8 characters ";
+                          }
+                          return null;
+                        },
+                        onTap: () => controller.hidePass(),
+                      ),
                     ),
                     const SizedBox(
                       height: 20.0,
                     ),
-                    FormAppsTwo(
-                      controller: controller.confirmPassController.value,
-                      labelText: "Confirm Password",
-                      obscure: controller.isObsecure.value,
-                      suffixIcon: true,
-                      validator: (p0) {
-                        if (p0!.isEmpty) {
-                          return "Confirm password required";
-                        } else if (p0 != controller.passController.value.text) {
-                          return "passwords are not the same";
-                        } else if (p0.length < 8) {
-                          return "Password must be 8 characters ";
-                        }
+                    Obx(
+                      () => FormAppsTwo(
+                        controller: controller.confirmPassController.value,
+                        labelText: "Confirm Password",
+                        obscure: controller.isObsecureSecond.value,
+                        suffixIcon: true,
+                        validator: (p0) {
+                          if (p0!.isEmpty) {
+                            return "Confirm password required";
+                          } else if (p0 !=
+                              controller.passController.value.text) {
+                            return "passwords are not the same";
+                          } else if (p0.length < 8) {
+                            return "Password must be 8 characters ";
+                          }
 
-                        return null;
-                      },
-                      onTap: () => controller.hidePass(),
+                          return null;
+                        },
+                        onTap: () => controller.hidePassSecond(),
+                      ),
                     ),
                     const SizedBox(
                       height: 20.0,

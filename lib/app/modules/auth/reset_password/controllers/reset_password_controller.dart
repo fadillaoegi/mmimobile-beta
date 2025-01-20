@@ -62,7 +62,7 @@ class ResetPasswordController extends GetxController {
             ),
             barrierDismissible: false,
           );
-          Timer(
+          Future.delayed(
             const Duration(seconds: 3),
             () {
               Get.back();
@@ -74,22 +74,29 @@ class ResetPasswordController extends GetxController {
         }
 
         if (!result['data']['customer_email']) {
+          print(result['data']['customer_email'].toString());
           Get.dialog(
             const AlertDialogNoAction(
-              title: "Welcome to Mmimpbile",
+              title: "Password update successfully",
               lotties: AssetConfig.lottieSuccess,
-              content: "Reset password success",
+              content: "Your not have email, \n please enter your email.",
             ),
             barrierDismissible: false,
           );
-          Timer(
+          Future.delayed(
             const Duration(seconds: 3),
             () {
+              String customerId = result['data']['customer_id'];
               Get.back();
-              Get.offAllNamed(Routes.addEmail);
+              Get.offAllNamed(Routes.addEmail, arguments: customerId);
             },
           );
+
+          isLoading.value = false;
+          update();
+          return;
         }
+
         Get.dialog(
           const AlertDialogNoAction(
             title: "Welcome to Mmimpbile",
@@ -98,11 +105,16 @@ class ResetPasswordController extends GetxController {
           ),
           barrierDismissible: false,
         );
-        Timer(
+        Future.delayed(
           const Duration(seconds: 3),
           () {
             Get.back();
-            Get.offAllNamed(Routes.appMain);
+            Future.delayed(
+              const Duration(seconds: 3),
+              () {
+                Get.offAllNamed(Routes.appMain);
+              },
+            );
           },
         );
       }

@@ -32,7 +32,7 @@ class SessionUser {
     }
     final controllUser = Get.put(UserController());
     controllUser.setData(user);
-    // print(user);
+    print(user);
     return user;
   }
 
@@ -42,8 +42,6 @@ class SessionUser {
     bool success = await prefs.remove(userKey);
     final controller = Get.put(UserController());
     controller.setData(User());
-    // Map<String, dynamic> mapUser = user.toJson();
-    // String stringUser = jsonEncode(mapUser);
     return success;
   }
 }

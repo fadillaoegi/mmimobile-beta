@@ -14,7 +14,7 @@ class AddEmailView extends GetView<AddEmailController> {
   const AddEmailView({super.key});
   @override
   Widget build(BuildContext context) {
-    final customerId = "";
+    final customerId = Get.arguments as String;
     final controller = Get.put(AddEmailController());
     return Scaffold(
       body: LayoutBuilder(
@@ -34,9 +34,7 @@ class AddEmailView extends GetView<AddEmailController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           InkWell(
-                            onTap: () {
-                              Get.back();
-                            },
+                            onTap: () => Get.back(),
                             child: const Icon(
                               Icons.arrow_back,
                               color: ColorApps.primary,
@@ -55,7 +53,7 @@ class AddEmailView extends GetView<AddEmailController> {
                       height: 40.0,
                     ),
                     Text(
-                      "Add Your Email",
+                      "Add Your Email $customerId",
                       style: primary600.copyWith(fontSize: 20.0),
                     ),
                     const SizedBox(
