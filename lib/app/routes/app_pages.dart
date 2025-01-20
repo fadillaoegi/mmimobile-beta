@@ -57,6 +57,7 @@ class AppPages {
   AppPages._();
 
   static const initial = Routes.splash;
+  static const mainApp = Routes.appMain;
 
   static final routes = [
     // NOTE: MODULE HOME
