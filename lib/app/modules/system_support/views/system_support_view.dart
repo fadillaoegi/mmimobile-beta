@@ -8,10 +8,12 @@ import '../controllers/system_support_controller.dart';
 
 class SystemSupportView extends GetView<SystemSupportController> {
   const SystemSupportView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final sizeScreen = MediaQuery.sizeOf(context);
+    final sizeScreen = MediaQuery.of(context).size;
     final controller = Get.put(SystemSupportController());
+
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -22,79 +24,27 @@ class SystemSupportView extends GetView<SystemSupportController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // NOTE: CAROUSEL
+                // Carousel Section
                 CarouselSystemSupport(controller: controller),
-                const SizedBox(
-                  height: 10.0,
-                ),
+                const SizedBox(height: 10.0),
 
-                // NOTE: SECTION FREE CLASS
+                // Free Class Section
                 SectionTittle(
                   title: "Free Class",
                   onTap: () => Get.toNamed(Routes.systemSupportClass),
                 ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                SizedBox(
-                  height: 200.0,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                        controller.itemEmpty.length,
-                        (index) => const ItemSystemSupport(),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
+                const SizedBox(height: 10.0),
+                buildHorizontalList(controller.itemEmpty),
 
-                // NOTE: SECTION PREMIUM CLASS
-                const SectionTittle(
-                  title: "Premium Class",
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                SizedBox(
-                  height: 200.0,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                        controller.itemEmpty.length,
-                        (index) => const ItemSystemSupport(),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
+                // Premium Class Section
+                const SectionTittle(title: "Premium Class"),
+                const SizedBox(height: 10.0),
+                buildHorizontalList(controller.itemEmpty),
 
-                // NOTE: SECTION FORUM
-                const SectionTittle(
-                  title: "Forum",
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                SizedBox(
-                    height: 200.0,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          controller.itemEmpty.length,
-                          (index) => const ItemSystemSupport(),
-                        ),
-                      ),
-                    )),
-
-                // _buildHorizontalList(controller.itemEmpty)
+                // Forum Section
+                const SectionTittle(title: "Forum"),
+                const SizedBox(height: 10.0),
+                buildHorizontalList(controller.itemEmpty),
               ],
             ),
           ),
@@ -103,16 +53,19 @@ class SystemSupportView extends GetView<SystemSupportController> {
     );
   }
 
-  // Widget _buildHorizontalList(List<String> items) {
-  //   return SizedBox(
-  //     height: 200.0,
-  //     child: ListView.builder(
-  //       scrollDirection: Axis.horizontal,
-  //       itemCount: items.length,
-  //       itemBuilder: (context, index) {
-  //         return const ItemSystemSupport();
-  //       },
-  //     ),
-  //   );
-  // }
+  Widget buildHorizontalList(List<String> items) {
+    if (items.isEmpty) {
+      return const Center(child: Text("No items available"));
+    }
+    return SizedBox(
+      height: 200.0,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return const ItemSystemSupport();
+        },
+      ),
+    );
+  }
 }

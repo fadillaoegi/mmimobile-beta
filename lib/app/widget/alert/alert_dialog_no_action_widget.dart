@@ -42,7 +42,7 @@ class AlertDialogNoAction extends StatelessWidget {
                 Text(
                   title!,
                   textAlign: TextAlign.center,
-                  style: black500.copyWith(fontSize: 22.0),
+                  style: black500.copyWith(fontSize: 20.0),
                 ),
                 const SizedBox(
                   height: 6.0,
