@@ -24,11 +24,11 @@ class SystemSupportView extends GetView<SystemSupportController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Carousel Section
+                // NOTE: Carousel Section
                 CarouselSystemSupport(controller: controller),
                 const SizedBox(height: 10.0),
 
-                // Free Class Section
+                // NOTE: Free Class Section
                 SectionTittle(
                   title: "Free Class",
                   onTap: () => Get.toNamed(Routes.systemSupportClass),
@@ -36,12 +36,12 @@ class SystemSupportView extends GetView<SystemSupportController> {
                 const SizedBox(height: 10.0),
                 buildHorizontalList(controller.itemEmpty),
 
-                // Premium Class Section
+                // NOTE: Premium Class Section
                 const SectionTittle(title: "Premium Class"),
                 const SizedBox(height: 10.0),
                 buildHorizontalList(controller.itemEmpty),
 
-                // Forum Section
+                // NOTE: Forum Section
                 const SectionTittle(title: "Forum"),
                 const SizedBox(height: 10.0),
                 buildHorizontalList(controller.itemEmpty),

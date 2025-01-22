@@ -37,6 +37,7 @@ abstract class Routes {
   static const notification = _Paths.notification;
   static const underDevelopment = _Paths.underDevelopment;
   static const addEmail = _Paths.addEmail;
+  static const ACCOUNT_SETTING = _Paths.ACCOUNT_SETTING;
 }
 
 abstract class _Paths {
@@ -78,4 +79,5 @@ abstract class _Paths {
   static const notification = '/notification';
   static const underDevelopment = '/underdevelopment';
   static const addEmail = '/add-email';
+  static const ACCOUNT_SETTING = '/account-setting';
 }

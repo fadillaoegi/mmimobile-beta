@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
-import '../modules/auth/add_email/bindings/add_email_binding.dart';
-import '../modules/auth/add_email/views/add_email_view.dart';
+import '../modules/account_setting/bindings/account_setting_binding.dart';
+import '../modules/account_setting/views/account_setting_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
+import '../modules/auth/add_email/bindings/add_email_binding.dart';
+import '../modules/auth/add_email/views/add_email_view.dart';
 import '../modules/auth/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/auth/forgot_password/views/forgot_password_view.dart';
 import '../modules/auth/otp/bindings/otp_binding.dart';
@@ -195,6 +197,11 @@ class AppPages {
       name: _Paths.underDevelopment,
       page: () => const UnderdevelopmentView(),
       binding: UnderdevelopmentBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNT_SETTING,
+      page: () => const AccountSettingView(),
+      binding: AccountSettingBinding(),
     ),
   ];
 }

@@ -1,16 +1,16 @@
+import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:get/get.dart';
-import 'package:mmimobile/app/modules/auth/data/controller/user_controller.dart';
-import 'package:mmimobile/app/styles/color.dart';
-import 'package:mmimobile/app/styles/fonts.dart';
-import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:flutter/material.dart';
+import 'package:mmimobile/app/styles/shadow.dart';
+import 'package:mmimobile/app/widget/item_list_widget.dart';
 import '../controllers/profile_controller.dart';
+import 'package:mmimobile/app/styles/fonts.dart';
+import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
-import 'package:easy_url_launcher/easy_url_launcher.dart';
-import 'package:mmimobile/app/widget/item_list_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/profile/infomation_profile_widget.dart';
+import 'package:mmimobile/app/modules/auth/data/controller/user_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
@@ -19,18 +19,17 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.of(context).size;
     final userController = Get.put(UserController());
-    // final userController = Get.find<UserController>();
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            height: sizeScreen.height / 3,
+            height: sizeScreen.height / 4,
             width: sizeScreen.width,
             decoration: const BoxDecoration(
               color: ColorApps.primary,
               borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(0.0),
+                bottomLeft: Radius.circular(0.0),
               ),
             ),
           ),
@@ -57,23 +56,56 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const ImageCircle(),
                       const SizedBox(width: 10.0),
-                      Obx(() {
-                        // Menggunakan Obx untuk memantau perubahan data
-                        final customerName =
-                            userController.user.customerName ?? "Guest";
-                        return Text(
-                          customerName,
-                          style: white600.copyWith(fontSize: 14.0),
-                        );
-                      }),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(
+                            () => Text(
+                              userController.user.customerName ?? "Guest",
+                              style: white600.copyWith(fontSize: 16.0),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 5.0,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: BoxDecoration(
+                          color: ColorApps.white,
+                          borderRadius: BorderRadius.circular(100.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 2.0),
+                            Image.asset(
+                              AssetConfig.iconLevelDiamond,
+                              height: 14.0,
+                              width: 14.0,
+                            ),
+                            const SizedBox(width: 2.0),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 12.0,
+                            )
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20.0),
                   InformationProfile(width: sizeScreen),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 40.0),
                   Container(
                     padding: const EdgeInsets.all(14.0),
                     decoration: BoxDecoration(

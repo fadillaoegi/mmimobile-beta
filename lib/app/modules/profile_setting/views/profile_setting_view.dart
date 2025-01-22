@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
-import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
-import 'package:mmimobile/app/widget/item_list_widget.dart';
-
 import '../controllers/profile_setting_controller.dart';
 
 class ProfileSettingView extends GetView<ProfileSettingController> {
@@ -20,100 +16,164 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
     final controller = Get.put(ProfileSettingController());
     return Scaffold(
       appBar: AppBar(
-        // leading: ,
-        centerTitle: true,
-        title:
-            Text("Setting Profile", style: primary700.copyWith(fontSize: 20.0)),
+        // centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Setting Profile",
+              style: primary600.copyWith(fontSize: 20.0),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.check,
+                color: ColorApps.primary,
+              ),
+            )
+          ],
+        ),
         scrolledUnderElevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          width: sizeScreen.width,
-          margin: const EdgeInsets.symmetric(horizontal: 10.0),
-          padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: ColorApps.white,
-              boxShadow: boxShadow),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
             children: [
-              const SizedBox(
-                height: 20.0,
-              ),
-              const ImageCircle(
-                size: 100.0,
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Edit Photo",
-                  style: disable2500.copyWith(fontSize: 14.0),
-                ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              ItemList(
-                onTap: () {
-                  Get.toNamed(Routes.profileEdit);
-                },
-                label: "Edit Profile",
-                icon: Icons.person,
-              ),
-              ItemList(
-                onTap: () {
-                  Get.toNamed(Routes.profileEditPassword);
-                },
-                label: "Edit Password",
-                icon: Icons.lock_outline,
-              ),
-              ItemList(
-                onTap: () {
-                  Get.toNamed(Routes.profileEditPassword);
-                },
-                label: "Edit Phone Number",
-                icon: Icons.phone_android,
-              ),
-              ItemList(
-                onTap: () {
-                  Get.dialog(
-                      AlertDialogApps(
-                        onTap: () {
-                          Get.offAllNamed(Routes.signIn);
-                        },
-                        lotties: AssetConfig.lottieDelete,
-                        title: "Are you sure ?",
-                        content: "Delete Account",
-                        textBtn: "Yes",
-                      ),
-                      barrierDismissible: false);
-                },
-                label: "Delete Account",
-                icon: Icons.delete_forever_outlined,
-              ),
-              ItemList(
-                onTap: () {
-                  Get.dialog(
-                    barrierDismissible: false,
-                    AlertDialogApps(
-                      onTap: () => controller.logout(),
-                      lotties: AssetConfig.lottieLogout2,
-                      title: "Are you sure ?",
-                      content: "Sign Out",
-                      textBtn: "Yes",
+              Container(
+                width: sizeScreen.width,
+                height: sizeScreen.height / 4,
+                decoration: BoxDecoration(color: ColorApps.primary),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const ImageCircle(
+                      size: 80.0,
                     ),
-                  );
-                },
-                label: "Sign Out",
-                icon: Icons.logout,
-              ),
+                  ],
+                ),
+              )
             ],
           ),
-        ),
+          const SizedBox(height: 20.0),
+          TwoItemProfileSetting(
+            onTap: () {},
+            title: "Name",
+            value: "John Doe",
+            onTapTwo: () {},
+            titleTwo: "Email",
+            valueTwo: "johndoe@example.com",
+          ),
+          const SizedBox(height: 20.0),
+          TwoItemProfileSetting(
+            onTap: () {},
+            title: "Phone",
+            value: "08*****",
+            onTapTwo: () {},
+            titleTwo: "Password",
+            valueTwo: "*******",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TwoItemProfileSetting extends StatelessWidget {
+  const TwoItemProfileSetting({
+    super.key,
+    this.value = "",
+    this.valueTwo = "",
+    this.title = "",
+    this.titleTwo = "",
+    this.onTap,
+    this.onTapTwo,
+  });
+
+  final String? title;
+  final String? value;
+  final VoidCallback? onTap;
+  final String? titleTwo;
+  final String? valueTwo;
+  final VoidCallback? onTapTwo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorApps.white,
+        boxShadow: boxShadow,
+      ),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: onTap,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title ?? "",
+                    style: black400.copyWith(fontSize: 13.0),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        value ?? "",
+                        style: black400.copyWith(fontSize: 13.0),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 18.0,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          Divider(
+            color: ColorApps.disable2,
+            thickness: 0.1,
+          ),
+          GestureDetector(
+            onTap: onTapTwo,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    titleTwo ?? "",
+                    style: black400.copyWith(fontSize: 13.0),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        valueTwo ?? "",
+                        style: black400.copyWith(fontSize: 13.0),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 18.0,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

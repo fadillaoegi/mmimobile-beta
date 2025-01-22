@@ -15,7 +15,7 @@ class PrivacyPolicyView extends GetView<PrivacyPolicyController> {
       appBar: AppBar(
         centerTitle: true,
         title:
-            Text("Privacy Policy", style: primary700.copyWith(fontSize: 20.0)),
+            Text("Privacy Policy", style: primary600.copyWith(fontSize: 20.0)),
         scrolledUnderElevation: 0.0,
       ),
       body: Container(

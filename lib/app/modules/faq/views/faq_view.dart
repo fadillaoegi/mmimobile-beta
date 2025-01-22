@@ -15,7 +15,7 @@ class FaqView extends GetView<FaqController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("FAQ", style: primary700.copyWith(fontSize: 20.0)),
+        title: Text("FAQ", style: primary600.copyWith(fontSize: 20.0)),
         scrolledUnderElevation: 0.0,
       ),
       body: Container(

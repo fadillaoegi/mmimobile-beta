@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmimobile/app/modules/auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/banner_information_widget.dart';
@@ -89,7 +90,7 @@ class HomeView extends GetView<HomeController> {
                             ],
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () => Get.toNamed(Routes.notification),
                             icon: const Icon(
                               Icons.notifications_none_sharp,
                               color: ColorApps.white,
