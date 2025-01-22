@@ -46,6 +46,7 @@ dependencies:
   modal_progress_hud_nsn: ^0.5.1
   easy_url_launcher: ^0.0.7
   flutter_launcher_icons: ^0.14.3
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

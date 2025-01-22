@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmimobile/app/modules/system_support/controllers/system_support_controller.dart';
@@ -16,7 +18,7 @@ class CarouselSystemSupport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () {
-        // Validasi jika imageUrl kosong
+        // NOTE: Validasi jika imageUrl kosong
         if (controller.imageUrl.isEmpty) {
           return const Center(
             child: Text(
@@ -39,11 +41,22 @@ class CarouselSystemSupport extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 2.0),
                     decoration: BoxDecoration(
-                      color: ColorApps.secondary,
                       borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                        image: NetworkImage(url),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: CachedNetworkImage(
+                        imageUrl: url,
                         fit: BoxFit.cover,
+                        placeholder: (context, url) => const Center(
+                          child: CupertinoActivityIndicator(),
+                        ),
+                        errorWidget: (context, url, error) => const Center(
+                          child: Icon(
+                            Icons.broken_image,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                     ),
                   );
