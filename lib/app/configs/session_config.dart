@@ -2,7 +2,7 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
-import 'package:mmimobile/app/modules/auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SessionUser {

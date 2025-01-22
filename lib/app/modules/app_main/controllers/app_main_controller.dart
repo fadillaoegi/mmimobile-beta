@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mmimobile/app/modules/history/views/history_view.dart';
+import 'package:mmimobile/app/modules/modules_history/history/views/history_view.dart';
 import 'package:mmimobile/app/modules/home/views/home_view.dart';
-import 'package:mmimobile/app/modules/profile/views/profile_view.dart';
+import 'package:mmimobile/app/modules/modules_profile/profile/views/profile_view.dart';
 import 'package:mmimobile/app/modules/system_support/views/system_support_view.dart';
 
 class AppMainController extends GetxController {

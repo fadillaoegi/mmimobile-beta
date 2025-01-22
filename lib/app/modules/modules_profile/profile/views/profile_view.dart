@@ -1,6 +1,7 @@
 import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/item_list_widget.dart';
 import '../controllers/profile_controller.dart';
@@ -10,7 +11,6 @@ import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/profile/infomation_profile_widget.dart';
-import 'package:mmimobile/app/modules/auth/data/controller/user_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
