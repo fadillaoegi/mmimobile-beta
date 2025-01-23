@@ -23,7 +23,6 @@ abstract class Routes {
   static const faq = _Paths.faq;
   static const profile = _Paths.profile;
   static const profileSetting = _Paths.profileSetting;
-  static const profileEdit = _Paths.profileEdit;
   static const profileEditPassword = _Paths.profileEditPassword;
 
   // NOTE: MODULE SYSTEM SUPPORT
@@ -37,7 +36,9 @@ abstract class Routes {
   static const notification = _Paths.notification;
   static const underDevelopment = _Paths.underDevelopment;
   static const addEmail = _Paths.addEmail;
-  static const ACCOUNT_SETTING = _Paths.ACCOUNT_SETTING;
+  static const accountSetting = _Paths.accountSetting;
+  static const profileEditName = _Paths.profileEditName;
+  static const profileUpdateEmail = _Paths.profileUpdateEmail;
 }
 
 abstract class _Paths {
@@ -67,7 +68,6 @@ abstract class _Paths {
   static const profile = '/profile';
   static const profileSetting = '/profile-setting';
   static const faq = '/faq';
-  static const profileEdit = '/profile-edit';
   static const profileEditPassword = '/profile-edit-password';
 
   // NOTE: MODULE SYTEM SUPPORT
@@ -79,5 +79,7 @@ abstract class _Paths {
   static const notification = '/notification';
   static const underDevelopment = '/underdevelopment';
   static const addEmail = '/add-email';
-  static const ACCOUNT_SETTING = '/account-setting';
+  static const accountSetting = '/account-setting';
+  static const profileEditName = '/profile-edit-name';
+  static const profileUpdateEmail = '/profile-update-email';
 }

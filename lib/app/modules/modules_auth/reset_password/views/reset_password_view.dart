@@ -97,7 +97,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                             return "Confirm password required";
                           } else if (p0 !=
                               controller.passController.value.text) {
-                            return "passwords are not the same";
+                            return "passwords are not match";
                           } else if (p0.length < 8) {
                             return "Password must be 8 characters ";
                           }

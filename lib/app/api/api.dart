@@ -4,7 +4,7 @@ class ApiApps {
 
   // NOTE: ROOT LOCAL
   // static const root = "http://192.168.1.10/EntIS-MMI/api"; // WIFI KOST
-  static const root = "http://190.110.0.21/EntIS-MMI/api"; // WIFI KANTOR
+  static const root = "http://190.110.0.22/EntIS-MMI/api"; // WIFI KANTOR
 
   // NOTE: CUSTOMER AUTH API
   static const signIn = "$root/signin";

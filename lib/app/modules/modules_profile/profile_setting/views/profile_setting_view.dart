@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -19,7 +21,6 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
     final userController = Get.put(UserController());
     return Scaffold(
       appBar: AppBar(
-        // centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -62,10 +63,10 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
           const SizedBox(height: 20.0),
           Obx(
             () => TwoItemProfileSetting(
-              onTap: () {},
+              onTap: () => Get.toNamed(Routes.profileEditName),
               title: "Name",
               value: userController.user.customerName.toString(),
-              onTapTwo: () {},
+              onTapTwo: () => Get.toNamed(Routes.profileUpdateEmail),
               titleTwo: "Email",
               valueTwo: userController.user.customerEmail.toString(),
             ),
@@ -76,7 +77,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
               onTap: () {},
               title: "Phone",
               value: maskText(userController.user.customerPhone.toString()),
-              onTapTwo: () {},
+              onTapTwo: () => Get.toNamed(Routes.profileEditPassword),
               titleTwo: "Password",
               valueTwo: "********",
             ),

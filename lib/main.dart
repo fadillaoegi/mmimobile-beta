@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // NOTE: Ambil data sesi pengguna sebelum menjalankan aplikasi
-User? currentUser = await SessionUser.getUser();
+  User? currentUser = await SessionUser.getUser();
 
   runApp(
     GetMaterialApp(

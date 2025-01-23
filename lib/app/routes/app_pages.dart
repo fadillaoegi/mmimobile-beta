@@ -1,56 +1,59 @@
 import 'package:get/get.dart';
-import 'package:mmimobile/app/modules/modules_auth/add_email/bindings/add_email_binding.dart';
-import 'package:mmimobile/app/modules/modules_auth/add_email/views/add_email_view.dart';
-import 'package:mmimobile/app/modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
-import 'package:mmimobile/app/modules/modules_auth/forgot_password/views/forgot_password_view.dart';
-import 'package:mmimobile/app/modules/modules_auth/otp/bindings/otp_binding.dart';
-import 'package:mmimobile/app/modules/modules_auth/otp/views/otp_view.dart';
-import 'package:mmimobile/app/modules/modules_auth/reset_password/bindings/reset_password_binding.dart';
-import 'package:mmimobile/app/modules/modules_auth/reset_password/views/reset_password_view.dart';
-import 'package:mmimobile/app/modules/modules_auth/sign_in/bindings/sign_in_binding.dart';
-import 'package:mmimobile/app/modules/modules_auth/sign_in/views/sign_in_view.dart';
-import 'package:mmimobile/app/modules/modules_auth/sign_up/bindings/sign_up_binding.dart';
-import 'package:mmimobile/app/modules/modules_auth/sign_up/views/sign_up_view.dart';
-import '../modules/modules_profile/account_setting/bindings/account_setting_binding.dart';
-import '../modules/modules_profile/account_setting/views/account_setting_view.dart';
+
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
-import '../modules/modules_profile/faq/bindings/faq_binding.dart';
-import '../modules/modules_profile/faq/views/faq_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
+import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
+import '../modules/modules_auth/add_email/views/add_email_view.dart';
+import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
+import '../modules/modules_auth/forgot_password/views/forgot_password_view.dart';
+import '../modules/modules_auth/otp/bindings/otp_binding.dart';
+import '../modules/modules_auth/otp/views/otp_view.dart';
+import '../modules/modules_auth/reset_password/bindings/reset_password_binding.dart';
+import '../modules/modules_auth/reset_password/views/reset_password_view.dart';
+import '../modules/modules_auth/sign_in/bindings/sign_in_binding.dart';
+import '../modules/modules_auth/sign_in/views/sign_in_view.dart';
+import '../modules/modules_auth/sign_up/bindings/sign_up_binding.dart';
+import '../modules/modules_auth/sign_up/views/sign_up_view.dart';
 import '../modules/modules_history/history/bindings/history_binding.dart';
 import '../modules/modules_history/history/views/history_view.dart';
 import '../modules/modules_history/history_detail/bindings/history_detail_binding.dart';
 import '../modules/modules_history/history_detail/views/history_detail_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
-import '../modules/notification/bindings/notification_binding.dart';
-import '../modules/notification/views/notification_view.dart';
+import '../modules/modules_profile/account_setting/bindings/account_setting_binding.dart';
+import '../modules/modules_profile/account_setting/views/account_setting_view.dart';
+import '../modules/modules_profile/faq/bindings/faq_binding.dart';
+import '../modules/modules_profile/faq/views/faq_view.dart';
 import '../modules/modules_profile/privacy_policy/bindings/privacy_policy_binding.dart';
 import '../modules/modules_profile/privacy_policy/views/privacy_policy_view.dart';
-import '../modules/product_detail/bindings/product_detail_binding.dart';
-import '../modules/product_detail/views/product_detail_view.dart';
 import '../modules/modules_profile/profile/bindings/profile_binding.dart';
 import '../modules/modules_profile/profile/views/profile_view.dart';
-import '../modules/modules_profile/profile_edit/bindings/profile_edit_binding.dart';
-import '../modules/modules_profile/profile_edit/views/profile_edit_view.dart';
 import '../modules/modules_profile/profile_edit_password/bindings/profile_edit_password_binding.dart';
 import '../modules/modules_profile/profile_edit_password/views/profile_edit_password_view.dart';
 import '../modules/modules_profile/profile_setting/bindings/profile_setting_binding.dart';
 import '../modules/modules_profile/profile_setting/views/profile_setting_view.dart';
-import '../modules/reward/bindings/reward_binding.dart';
-import '../modules/reward/views/reward_view.dart';
-import '../modules/reward_history/bindings/reward_history_binding.dart';
-import '../modules/reward_history/views/reward_history_view.dart';
-import '../modules/splash/bindings/splash_binding.dart';
-import '../modules/splash/views/splash_view.dart';
-import '../modules/support_system_class/bindings/support_system_class_binding.dart';
-import '../modules/support_system_class/views/support_system_class_view.dart';
-import '../modules/system_support/bindings/system_support_binding.dart';
-import '../modules/system_support/views/system_support_view.dart';
-import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
-import '../modules/underdevelopment/views/underdevelopment_view.dart';
+import '../modules/modules_profile/reward/bindings/reward_binding.dart';
+import '../modules/modules_profile/reward/views/reward_view.dart';
+import '../modules/modules_profile/reward_history/bindings/reward_history_binding.dart';
+import '../modules/modules_profile/reward_history/views/reward_history_view.dart';
 import '../modules/modules_profile/website/bindings/website_binding.dart';
 import '../modules/modules_profile/website/views/website_view.dart';
+import '../modules/modules_system_support/support_system_class/bindings/support_system_class_binding.dart';
+import '../modules/modules_system_support/support_system_class/views/support_system_class_view.dart';
+import '../modules/modules_system_support/system_support/bindings/system_support_binding.dart';
+import '../modules/modules_system_support/system_support/views/system_support_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
+import '../modules/product_detail/bindings/product_detail_binding.dart';
+import '../modules/product_detail/views/product_detail_view.dart';
+import '../modules/modules_profile/profile_edit_name/bindings/profile_edit_name_binding.dart';
+import '../modules/modules_profile/profile_edit_name/views/profile_edit_name_view.dart';
+import '../modules/modules_profile/profile_update_email/bindings/profile_update_email_binding.dart';
+import '../modules/modules_profile/profile_update_email/views/profile_update_email_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
+import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
+import '../modules/underdevelopment/views/underdevelopment_view.dart';
 
 part 'app_routes.dart';
 
@@ -136,11 +139,6 @@ class AppPages {
       binding: FaqBinding(),
     ),
     GetPage(
-      name: _Paths.profileEdit,
-      page: () => const ProfileEditView(),
-      binding: ProfileEditBinding(),
-    ),
-    GetPage(
       name: _Paths.profileEditPassword,
       page: () => const ProfileEditPasswordView(),
       binding: ProfileEditPasswordBinding(),
@@ -149,6 +147,16 @@ class AppPages {
       name: _Paths.profileSetting,
       page: () => const ProfileSettingView(),
       binding: ProfileSettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.accountSetting,
+      page: () => const AccountSettingView(),
+      binding: AccountSettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.profileEditName,
+      page: () => const ProfileEditNameView(),
+      binding: ProfileEditNameBinding(),
     ),
 
     // NOTE: MODULE SYSTEM SUPPORT
@@ -198,9 +206,9 @@ class AppPages {
       binding: UnderdevelopmentBinding(),
     ),
     GetPage(
-      name: _Paths.ACCOUNT_SETTING,
-      page: () => const AccountSettingView(),
-      binding: AccountSettingBinding(),
+      name: _Paths.profileUpdateEmail,
+      page: () => const ProfileUpdateEmailView(),
+      binding: ProfileUpdateEmailBinding(),
     ),
   ];
 }

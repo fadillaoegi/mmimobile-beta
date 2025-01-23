@@ -32,11 +32,11 @@ class TwoItemProfileSetting extends StatelessWidget {
       ),
       child: Column(
         children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
+            child: GestureDetector(
+              onTap: onTap,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -68,11 +68,11 @@ class TwoItemProfileSetting extends StatelessWidget {
             thickness: 0.1,
           ),
           activeSectionTwo!
-              ? GestureDetector(
-                  onTap: onTapTwo,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 14.0),
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0, vertical: 14.0),
+                  child: GestureDetector(
+                    onTap: onTapTwo,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
