@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
-
 import '../controllers/profile_edit_name_controller.dart';
 
 class ProfileEditNameView extends GetView<ProfileEditNameController> {
@@ -68,9 +69,8 @@ class ProfileEditNameView extends GetView<ProfileEditNameController> {
                                   validator: (p0) {
                                     if (p0!.isEmpty) {
                                       return "you haven't made any changes";
-                                    } else if (p0.length <= 5){
+                                    } else if (p0.length <= 5) {
                                       return "Name must contain at least 5 characters";
-
                                     }
                                     return null;
                                   },
