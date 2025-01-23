@@ -28,10 +28,14 @@ import '../modules/modules_profile/privacy_policy/bindings/privacy_policy_bindin
 import '../modules/modules_profile/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/modules_profile/profile/bindings/profile_binding.dart';
 import '../modules/modules_profile/profile/views/profile_view.dart';
+import '../modules/modules_profile/profile_edit_name/bindings/profile_edit_name_binding.dart';
+import '../modules/modules_profile/profile_edit_name/views/profile_edit_name_view.dart';
 import '../modules/modules_profile/profile_edit_password/bindings/profile_edit_password_binding.dart';
 import '../modules/modules_profile/profile_edit_password/views/profile_edit_password_view.dart';
 import '../modules/modules_profile/profile_setting/bindings/profile_setting_binding.dart';
 import '../modules/modules_profile/profile_setting/views/profile_setting_view.dart';
+import '../modules/modules_profile/profile_update_email/bindings/profile_update_email_binding.dart';
+import '../modules/modules_profile/profile_update_email/views/profile_update_email_view.dart';
 import '../modules/modules_profile/reward/bindings/reward_binding.dart';
 import '../modules/modules_profile/reward/views/reward_view.dart';
 import '../modules/modules_profile/reward_history/bindings/reward_history_binding.dart';
@@ -46,10 +50,8 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
-import '../modules/modules_profile/profile_edit_name/bindings/profile_edit_name_binding.dart';
-import '../modules/modules_profile/profile_edit_name/views/profile_edit_name_view.dart';
-import '../modules/modules_profile/profile_update_email/bindings/profile_update_email_binding.dart';
-import '../modules/modules_profile/profile_update_email/views/profile_update_email_view.dart';
+import '../modules/profile_update_phone/bindings/profile_update_phone_binding.dart';
+import '../modules/profile_update_phone/views/profile_update_phone_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
@@ -209,6 +211,11 @@ class AppPages {
       name: _Paths.profileUpdateEmail,
       page: () => const ProfileUpdateEmailView(),
       binding: ProfileUpdateEmailBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_UPDATE_PHONE,
+      page: () => const ProfileUpdatePhoneView(),
+      binding: ProfileUpdatePhoneBinding(),
     ),
   ];
 }

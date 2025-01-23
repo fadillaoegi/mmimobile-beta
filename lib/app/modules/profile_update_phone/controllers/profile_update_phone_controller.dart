@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
-class ProfileUpdateEmailController extends GetxController {
+class ProfileUpdatePhoneController extends GetxController {
+  //TODO: Implement ProfileUpdatePhoneController
+
   final count = 0.obs;
   @override
   void onInit() {

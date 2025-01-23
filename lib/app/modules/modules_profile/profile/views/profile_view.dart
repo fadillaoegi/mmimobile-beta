@@ -44,7 +44,7 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       InkWell(
                         onTap: () {
-                          Get.toNamed(Routes.profileSetting);
+                          Get.toNamed(Routes.accountSetting);
                         },
                         child: const Icon(
                           Icons.settings,
@@ -58,7 +58,9 @@ class ProfileView extends GetView<ProfileController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const ImageCircle(),
+                      GestureDetector(
+                          onTap: () => Get.toNamed(Routes.profileSetting),
+                          child: const ImageCircle()),
                       const SizedBox(width: 10.0),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
