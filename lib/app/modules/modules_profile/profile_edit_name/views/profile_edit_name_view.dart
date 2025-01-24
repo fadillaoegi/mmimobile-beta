@@ -12,15 +12,14 @@ import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controll
 
 class ProfileEditNameView extends GetView<ProfileEditNameController> {
   const ProfileEditNameView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileEditNameController());
     final userController = Get.put(UserController());
     final customerId = userController.user.customerId as String;
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
           title: Row(

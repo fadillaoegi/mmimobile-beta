@@ -39,7 +39,7 @@ abstract class Routes {
   static const accountSetting = _Paths.accountSetting;
   static const profileEditName = _Paths.profileEditName;
   static const profileUpdateEmail = _Paths.profileUpdateEmail;
-  static const PROFILE_UPDATE_PHONE = _Paths.PROFILE_UPDATE_PHONE;
+  static const profileUpdatePhone = _Paths.profileUpdatePhone;
 }
 
 abstract class _Paths {
@@ -83,5 +83,5 @@ abstract class _Paths {
   static const accountSetting = '/account-setting';
   static const profileEditName = '/profile-edit-name';
   static const profileUpdateEmail = '/profile-update-email';
-  static const PROFILE_UPDATE_PHONE = '/profile-update-phone';
+  static const profileUpdatePhone = '/profile-update-phone';
 }

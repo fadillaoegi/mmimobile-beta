@@ -74,7 +74,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
           const SizedBox(height: 20.0),
           Obx(
             () => TwoItemProfileSetting(
-              onTap: () {},
+              onTap: () => Get.toNamed(Routes.profileUpdatePhone),
               title: "Phone",
               value: maskText(userController.user.customerPhone.toString()),
               onTapTwo: () => Get.toNamed(Routes.profileEditPassword),

@@ -47,6 +47,7 @@ dependencies:
   easy_url_launcher: ^0.0.7
   flutter_launcher_icons: ^0.14.3
   cached_network_image: ^3.4.1
+  intl_phone_field: ^3.2.0
 
 dev_dependencies:
   flutter_test:

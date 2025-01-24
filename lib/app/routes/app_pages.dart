@@ -50,8 +50,8 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
-import '../modules/profile_update_phone/bindings/profile_update_phone_binding.dart';
-import '../modules/profile_update_phone/views/profile_update_phone_view.dart';
+import '../modules/modules_profile/profile_update_phone/bindings/profile_update_phone_binding.dart';
+import '../modules/modules_profile/profile_update_phone/views/profile_update_phone_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
@@ -213,7 +213,7 @@ class AppPages {
       binding: ProfileUpdateEmailBinding(),
     ),
     GetPage(
-      name: _Paths.PROFILE_UPDATE_PHONE,
+      name: _Paths.profileUpdatePhone,
       page: () => const ProfileUpdatePhoneView(),
       binding: ProfileUpdatePhoneBinding(),
     ),
