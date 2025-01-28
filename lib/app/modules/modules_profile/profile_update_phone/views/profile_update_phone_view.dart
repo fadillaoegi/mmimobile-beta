@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
 import '../controllers/profile_update_phone_controller.dart';
 
 class ProfileUpdatePhoneView extends GetView<ProfileUpdatePhoneController> {

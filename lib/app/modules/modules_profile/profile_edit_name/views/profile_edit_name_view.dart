@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
-import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/widget/alert/alert_form_pass_widget.dart';
 import '../controllers/profile_edit_name_controller.dart';
 import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class ProfileEditNameView extends GetView<ProfileEditNameController> {
@@ -20,43 +18,62 @@ class ProfileEditNameView extends GetView<ProfileEditNameController> {
     final customerId = userController.user.customerId as String;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Edit Name',
-                style: primary500,
-              ),
-              IconButton(
-                  onPressed: () => controller.editName(context, customerId),
-                  icon: Icon(
-                    Icons.check,
-                    color: ColorApps.primary,
-                    size: 28.0,
-                  ))
-            ],
+      child: Form(
+        key: controller.formKey,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Edit Name',
+                  style: primary500,
+                ),
+                IconButton(
+                    onPressed: () {
+                      Get.dialog(
+                          Obx(() => AlertFormPass(
+                                obscureText: controller.obsecure.value,
+                                controller: controller.passController.value,
+                                validator: (p0) {
+                                  if (p0!.isEmpty || p0 == "") {
+                                    return "Password is required ";
+                                  }
+                                  return null;
+                                },
+                                btnTitle: 'Update name',
+                                onTapSuffix: () => controller.seeHide(),
+                                onTap: () {
+                                  Get.back();
+                                  controller.editName(context, customerId);
+                                },
+                              )),
+                          barrierDismissible: false);
+                    },
+                    icon: Icon(
+                      Icons.check,
+                      color: ColorApps.primary,
+                      size: 28.0,
+                    ))
+              ],
+            ),
+            centerTitle: true,
           ),
-          centerTitle: true,
-        ),
-        body: LayoutBuilder(
-          builder: (context, constraints) => SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Container(
-                        padding: const EdgeInsets.all(14.0),
-                        width: constraints.maxWidth,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            color: ColorApps.white,
-                            boxShadow: boxShadow),
-                        child: Form(
-                          key: controller.formKey,
+          body: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.all(14.0),
+                          width: constraints.maxWidth,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: ColorApps.white,
+                              boxShadow: boxShadow),
                           child: Column(
                             children: [
                               Obx(
@@ -79,9 +96,9 @@ class ProfileEditNameView extends GetView<ProfileEditNameController> {
                                 height: 20.0,
                               ),
                             ],
-                          ),
-                        )),
-                  ],
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ),
