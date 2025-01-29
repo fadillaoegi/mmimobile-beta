@@ -84,7 +84,7 @@ class ProfileEditNameController extends GetxController {
         if (result['message'] == 'Invalid password') {
           Get.dialog(
             AlertDialogNoAction(
-              title: "Sign in failed",
+              title: "Edit name failed",
               lotties: AssetConfig.lottieFailed,
               content: result['message'],
             ),
