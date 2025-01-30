@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:d_method/d_method.dart';
@@ -9,32 +10,32 @@ import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/configs/session_config.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class ProfileEditNameController extends GetxController {
-  final count = 0.obs;
-  final newNameController = TextEditingController().obs;
-  final passController = TextEditingController().obs;
+  late final UserController dataUser;
+  late final newNameController = TextEditingController().obs;
+  late final passController = TextEditingController().obs;
   final GlobalKey<FormState> formKey = GlobalKey();
   final isLoading = false.obs;
   final obsecure = true.obs;
   @override
   void onInit() {
     super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
+    dataUser = Get.find<UserController>();
+    newNameController.value =
+        TextEditingController(text: dataUser.user.customerName);
+    passController.value = TextEditingController();
   }
 
   @override
   void onClose() {
-    newNameController.close();
-    passController.close();
-    newNameController.value.clear();
-    passController.value.clear();
+    newNameController.value.dispose();
+    passController.value.dispose();
     super.onClose();
   }
 
@@ -43,8 +44,9 @@ class ProfileEditNameController extends GetxController {
     update();
   }
 
-  editName(BuildContext context, customerId) async {
+  editName(BuildContext context, String customerId) async {
     isLoading.value = true;
+    update();
     if (formKey.currentState!.validate()) {
       final customerName = newNameController.value.text.trim();
       final password = passController.value.text.trim();
@@ -64,7 +66,7 @@ class ProfileEditNameController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Update name failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: result['message'],
             ),
             barrierDismissible: false,
@@ -85,7 +87,7 @@ class ProfileEditNameController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Edit name failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: result['message'],
             ),
             barrierDismissible: false,
@@ -102,31 +104,18 @@ class ProfileEditNameController extends GetxController {
         }
 
         // NOTE: HANDLE RESPONSE SUCCESS
-        Get.dialog(
-          AlertDialogNoAction(
-            title: "Name updated",
-            lotties: AssetConfig.lottieSuccess,
-            content: "",
-          ),
-          barrierDismissible: false,
-        );
-
         Future.delayed(
           const Duration(seconds: 2),
           () {
             User user = User.fromJson(result['data']);
-            SessionUser.saveUser(user);
-            Get.back();
-            Future.delayed(
-              const Duration(seconds: 2),
-              () {
-                isLoading.value = false;
-                update();
-              },
-            );
+            SessionUserFLdev.saveUser(user);
           },
         );
-        return;
+        SnackbarFLdev.snackShow(
+            title: "Success update", message: "Name updated");
+
+        isLoading.value = false;
+        update();
       } catch (e) {
         DMethod.printTitle('Try ~ fromProfileNameController', e.toString());
         isLoading.value = false;

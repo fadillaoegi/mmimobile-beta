@@ -35,7 +35,7 @@ class ForgotPasswordController extends GetxController {
           AlertDialogNoAction(
             title: "Your email is not registered",
             content: email,
-            lotties: AssetConfig.lottieFailed,
+            lotties: AssetConfigFLdev.lottieFailed,
           ),
         );
         Timer(
@@ -47,7 +47,7 @@ class ForgotPasswordController extends GetxController {
           AlertDialogNoAction(
             title: "Code OTP sent to your email",
             content: email,
-            lotties: AssetConfig.lottieSuccess,
+            lotties: AssetConfigFLdev.lottieSuccess,
           ),
         );
 

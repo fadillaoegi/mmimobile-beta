@@ -25,7 +25,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
               decoration: const BoxDecoration(
                   color: ColorApps.primary,
                   image: DecorationImage(
-                      image: AssetImage(AssetConfig.imageProduct),
+                      image: AssetImage(AssetConfigFLdev.imageProduct),
                       fit: BoxFit.cover)),
               child: SafeArea(
                 child: Row(

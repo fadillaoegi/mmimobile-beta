@@ -44,7 +44,7 @@ class InformationProfile extends StatelessWidget {
                     child: Row(
                       children: [
                         Image.asset(
-                          AssetConfig.iconRatingGold,
+                          AssetConfigFLdev.iconRatingGold,
                           height: 20.0,
                           width: 20.0,
                         ),
@@ -76,7 +76,7 @@ class InformationProfile extends StatelessWidget {
                     child: Row(
                       children: [
                         Image.asset(
-                          AssetConfig.iconPoint,
+                          AssetConfigFLdev.iconPoint,
                           height: 20.0,
                           width: 20.0,
                         ),
@@ -99,7 +99,7 @@ class InformationProfile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(
-                AssetConfig.iconLevelDiamond,
+                AssetConfigFLdev.iconLevelDiamond,
                 height: 20.0,
                 width: 20.0,
               )

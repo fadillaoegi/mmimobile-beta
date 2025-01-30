@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mmimobile/app/styles/color.dart';
 
-class ThemeConfig {
+class ThemeConfigFLdev {
   static themeData() {
     return ThemeData(
         scaffoldBackgroundColor: Color(0xffFDFDFD),

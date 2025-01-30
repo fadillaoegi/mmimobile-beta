@@ -57,7 +57,7 @@ class ResetPasswordController extends GetxController {
           Get.dialog(
             const AlertDialogNoAction(
               title: "Reset password failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: "You are not yet a customer.",
             ),
             barrierDismissible: false,
@@ -78,7 +78,7 @@ class ResetPasswordController extends GetxController {
           Get.dialog(
             const AlertDialogNoAction(
               title: "Password update successfully",
-              lotties: AssetConfig.lottieSuccess,
+              lotties: AssetConfigFLdev.lottieSuccess,
               content: "Your not have email, \n please enter your email.",
             ),
             barrierDismissible: false,
@@ -100,7 +100,7 @@ class ResetPasswordController extends GetxController {
         Get.dialog(
           const AlertDialogNoAction(
             title: "Welcome to Mmimpbile",
-            lotties: AssetConfig.lottieSuccess,
+            lotties: AssetConfigFLdev.lottieSuccess,
             content: "Reset password success",
           ),
           barrierDismissible: false,

@@ -72,7 +72,7 @@ class BannerInformation extends StatelessWidget {
                                   //     topRight:
                                   //         Radius.circular(10.0)),
                                   image: DecorationImage(
-                                      image: AssetImage(AssetConfig.examplePromo),
+                                      image: AssetImage(AssetConfigFLdev.examplePromo),
                                       fit: BoxFit.fill)),
                             )
                           ],

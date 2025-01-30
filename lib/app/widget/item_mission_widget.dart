@@ -38,7 +38,7 @@ class ItemMission extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                AssetConfig.logo,
+                AssetConfigFLdev.logo,
                 height: 60.0,
                 width: 60.0,
               ),

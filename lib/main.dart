@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // NOTE: Ambil data sesi pengguna sebelum menjalankan aplikasi
-  User? currentUser = await SessionUser.getUser();
+  User? currentUser = await SessionUserFLdev.getUser();
 
   runApp(
     GetMaterialApp(
@@ -19,7 +19,7 @@ void main() async {
           ? AppPages.mainApp
           : AppPages.initial,
       getPages: AppPages.routes,
-      theme: ThemeConfig.themeData(),
+      theme: ThemeConfigFLdev.themeData(),
     ),
   );
 }

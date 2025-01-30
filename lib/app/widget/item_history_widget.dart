@@ -56,7 +56,7 @@ class ItemHistory extends StatelessWidget {
               width: 60.0,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(AssetConfig.logo), fit: BoxFit.cover),
+                      image: AssetImage(AssetConfigFLdev.logo), fit: BoxFit.cover),
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
             ),
             const SizedBox(

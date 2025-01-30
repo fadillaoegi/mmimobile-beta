@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -10,8 +9,8 @@ import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import '../controllers/sign_in_controller.dart';
 
 class SignInView extends GetView<SignInController> {
@@ -22,7 +21,7 @@ class SignInView extends GetView<SignInController> {
     return Obx(
       () => ModalProgressHUD(
         inAsyncCall: controller.isLoading.value,
-        progressIndicator: const CupertinoActivityIndicator(),
+        progressIndicator: LoadingApps(),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -47,7 +46,7 @@ class SignInView extends GetView<SignInController> {
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                      AssetConfig.bgLogin3,
+                                      AssetConfigFLdev.bgLogin3,
                                     ),
                                     fit: BoxFit.cover),
                               ),
@@ -64,7 +63,7 @@ class SignInView extends GetView<SignInController> {
                                         padding:
                                             const EdgeInsets.only(top: 30.0),
                                         child: Image.asset(
-                                          AssetConfig.logo5,
+                                          AssetConfigFLdev.logo5,
                                           height: 50.0,
                                         ),
                                       ),

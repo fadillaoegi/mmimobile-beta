@@ -66,7 +66,7 @@ class ItemClass extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              AssetConfig.bannerSystemSupport,
+              AssetConfigFLdev.bannerSystemSupport,
               width: sizeScreen.width,
               fit: BoxFit.cover,
               height: 242.0 / 2,

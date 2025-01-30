@@ -13,7 +13,7 @@ class ImageCircle extends StatelessWidget {
       width: size,
       child: const CircleAvatar(
         backgroundImage: AssetImage(
-          AssetConfig.logo,
+          AssetConfigFLdev.logo,
         ),
       ),
     );

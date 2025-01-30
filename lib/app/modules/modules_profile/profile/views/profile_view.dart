@@ -91,7 +91,7 @@ class ProfileView extends GetView<ProfileController> {
                           children: [
                             const SizedBox(width: 2.0),
                             Image.asset(
-                              AssetConfig.iconLevelDiamond,
+                              AssetConfigFLdev.iconLevelDiamond,
                               height: 14.0,
                               width: 14.0,
                             ),
@@ -125,17 +125,17 @@ class ProfileView extends GetView<ProfileController> {
                             );
                           },
                           label: "Website",
-                          iconImage: AssetConfig.iconWebsite,
+                          iconImage: AssetConfigFLdev.iconWebsite,
                         ),
                         ItemList(
                           onTap: () => Get.toNamed(Routes.privacyPolicy),
                           label: "Privacy Policy",
-                          iconImage: AssetConfig.iconPrivacyPolicy,
+                          iconImage: AssetConfigFLdev.iconPrivacyPolicy,
                         ),
                         ItemList(
                           onTap: () => Get.toNamed(Routes.faq),
                           label: "FAQ",
-                          iconImage: AssetConfig.iconFaq,
+                          iconImage: AssetConfigFLdev.iconFaq,
                         ),
                       ],
                     ),

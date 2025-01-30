@@ -9,7 +9,7 @@ class ProfileSettingController extends GetxController {
   }
 
   void logout() async {
-    await SessionUser.clearUser(); // Hapus sesi pengguna
+    await SessionUserFLdev.clearUser(); // Hapus sesi pengguna
     Get.offAllNamed(Routes.signIn); // Arahkan ke halaman login
   }
 }

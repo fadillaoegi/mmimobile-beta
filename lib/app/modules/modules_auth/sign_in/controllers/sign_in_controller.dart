@@ -57,7 +57,7 @@ class SignInController extends GetxController {
       Get.dialog(
         AlertDialogNoAction(
           title: "Sign in failed",
-          lotties: AssetConfig.lottieFailed,
+          lotties: AssetConfigFLdev.lottieFailed,
           content: "Phone and password are required",
         ),
         barrierDismissible: false,
@@ -85,7 +85,7 @@ class SignInController extends GetxController {
       Get.dialog(
         AlertDialogNoAction(
           title: "Sign in failed",
-          lotties: AssetConfig.lottieFailed,
+          lotties: AssetConfigFLdev.lottieFailed,
           content: result['message'],
         ),
         barrierDismissible: false,
@@ -110,7 +110,7 @@ class SignInController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Sign in failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: "You are not yet a customer.",
             ),
             barrierDismissible: false,
@@ -126,7 +126,7 @@ class SignInController extends GetxController {
         Get.dialog(
           AlertDialogNoAction(
             title: "Sign in success",
-            lotties: AssetConfig.lottieSuccess,
+            lotties: AssetConfigFLdev.lottieSuccess,
             content: result['message'],
           ),
           barrierDismissible: false,
@@ -148,7 +148,7 @@ class SignInController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Signin success",
-              lotties: AssetConfig.lottieSuccess,
+              lotties: AssetConfigFLdev.lottieSuccess,
               content: "You don't have email, please enter your email",
             ),
             barrierDismissible: false,
@@ -173,7 +173,7 @@ class SignInController extends GetxController {
         Get.dialog(
           AlertDialogNoAction(
             title: "Sign in success",
-            lotties: AssetConfig.lottieSuccess,
+            lotties: AssetConfigFLdev.lottieSuccess,
             content: "",
           ),
           barrierDismissible: false,
@@ -183,7 +183,7 @@ class SignInController extends GetxController {
           const Duration(seconds: 2),
           () {
             User user = User.fromJson(result['data']);
-            SessionUser.saveUser(user);
+            SessionUserFLdev.saveUser(user);
             Get.back();
             Future.delayed(
               const Duration(seconds: 2),
@@ -202,7 +202,7 @@ class SignInController extends GetxController {
       Get.dialog(
         AlertDialogNoAction(
           title: "Sign in Failed",
-          lotties: AssetConfig.lottieFailed,
+          lotties: AssetConfigFLdev.lottieFailed,
           content: "Your not resgisterd",
         ),
         barrierDismissible: false,

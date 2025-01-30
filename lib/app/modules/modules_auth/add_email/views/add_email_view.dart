@@ -45,7 +45,7 @@ class AddEmailView extends GetView<AddEmailController> {
                     ),
                     Center(
                       child: Image.asset(
-                        AssetConfig.logo3,
+                        AssetConfigFLdev.logo3,
                         height: 50.0,
                       ),
                     ),
@@ -59,7 +59,7 @@ class AddEmailView extends GetView<AddEmailController> {
                     const SizedBox(
                       height: 18.0,
                     ),
-                    Lottie.asset(AssetConfig.lottieEmail),
+                    Lottie.asset(AssetConfigFLdev.lottieEmail),
                     const SizedBox(
                       height: 18.0,
                     ),

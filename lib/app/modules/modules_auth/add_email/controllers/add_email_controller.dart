@@ -38,7 +38,7 @@ class AddEmailController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Sign in failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: result['message'],
             ),
             barrierDismissible: false,
@@ -53,7 +53,7 @@ class AddEmailController extends GetxController {
         Get.dialog(
           AlertDialogNoAction(
             title: "Welcome to mmimobile",
-            lotties: AssetConfig.lottieSuccess,
+            lotties: AssetConfigFLdev.lottieSuccess,
             content: result['message'],
           ),
           barrierDismissible: false,
@@ -63,7 +63,7 @@ class AddEmailController extends GetxController {
           Duration(seconds: 2),
           () {
             User user = User.fromJson(result['data']);
-            SessionUser.saveUser(user);
+            SessionUserFLdev.saveUser(user);
             Future.delayed(
               Duration(seconds: 2),
               () {

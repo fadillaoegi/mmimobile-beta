@@ -22,7 +22,7 @@ class SplashView extends GetView<SplashController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                AssetConfig.logo3,
+                AssetConfigFLdev.logo3,
                 height: 60.0,
                 fit: BoxFit.cover,
               ),

@@ -62,7 +62,7 @@ class ProfileEditPasswordController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Edit password failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: result['message'],
             ),
             barrierDismissible: false,
@@ -76,7 +76,7 @@ class ProfileEditPasswordController extends GetxController {
           Get.dialog(
             AlertDialogNoAction(
               title: "Edit password failed",
-              lotties: AssetConfig.lottieFailed,
+              lotties: AssetConfigFLdev.lottieFailed,
               content: result['message'],
             ),
             barrierDismissible: false,
@@ -87,14 +87,14 @@ class ProfileEditPasswordController extends GetxController {
 
         // NOTE: EXECUTE EDIT PASSWORD
         User user = User.fromJson(result['data']);
-        bool successUpdate = await SessionUser.saveUser(user);
+        bool successUpdate = await SessionUserFLdev.saveUser(user);
         print(successUpdate);
 
         if (successUpdate) {
           Get.dialog(
             AlertDialogNoAction(
               title: "Password updated",
-              lotties: AssetConfig.lottieSuccess,
+              lotties: AssetConfigFLdev.lottieSuccess,
               content: "",
             ),
             barrierDismissible: false,

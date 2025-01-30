@@ -5,7 +5,7 @@ import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SessionUser {
+class SessionUserFLdev {
   static const userKey = "userKey";
 
   // NOTE: MENYIMPAN USER LOGIN?REGISTER

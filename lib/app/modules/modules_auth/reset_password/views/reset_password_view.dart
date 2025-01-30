@@ -44,7 +44,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     ),
                     Center(
                       child: Image.asset(
-                        AssetConfig.logo3,
+                        AssetConfigFLdev.logo3,
                         height: 50.0,
                       ),
                     ),
