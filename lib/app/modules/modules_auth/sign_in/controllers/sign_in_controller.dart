@@ -172,15 +172,15 @@ class SignInController extends GetxController {
         // NOTE: HANDLE RESPONSE SUCCCESS
         Get.dialog(
           AlertDialogNoAction(
-            title: "Sign in success",
+            title: "Sign Success",
             lotties: AssetConfigFLdev.lottieSuccess,
-            content: "",
+            content: "Welcome to Mmimobile",
           ),
           barrierDismissible: false,
         );
 
         Future.delayed(
-          const Duration(seconds: 2),
+          const Duration(seconds: 3),
           () {
             User user = User.fromJson(result['data']);
             SessionUserFLdev.saveUser(user);
@@ -195,6 +195,8 @@ class SignInController extends GetxController {
             );
           },
         );
+        isLoading.value = false;
+        update();
         return;
       }
     } else {

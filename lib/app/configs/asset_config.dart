@@ -34,6 +34,6 @@ class AssetConfigFLdev {
   static const lottieUpdate = "assets/lotties/update.json";
   static const lottieUpload = "assets/lotties/upload.json";
   static const lottieLogout = "assets/lotties/logout.json";
-  static const lottieLogout2 = "assets/lotties/logout2.json";
+  static const lottieWarning = "assets/lotties/warning.json";
   static const lottieSuccess = "assets/lotties/success.json";
 }

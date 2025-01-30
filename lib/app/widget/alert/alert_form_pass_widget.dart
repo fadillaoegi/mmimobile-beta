@@ -13,7 +13,7 @@ class AlertFormPass extends StatelessWidget {
       this.controller,
       this.btnTitle = '',
       this.validator,
-      this.obscureText});
+      this.obscureText = true});
   final String? btnTitle;
   final VoidCallback? onTap;
   final VoidCallback? onTapSuffix;
@@ -49,7 +49,7 @@ class AlertFormPass extends StatelessWidget {
               style: black400,
             ),
             const SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             TextFormField(
               validator: validator,

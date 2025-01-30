@@ -13,6 +13,7 @@ import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class ProfileUpdateEmailController extends GetxController {
   late final UserController dataUser;
@@ -33,10 +34,8 @@ class ProfileUpdateEmailController extends GetxController {
 
   @override
   void onClose() {
-    emailController.value.clear();
-    passwordController.value.clear();
-    emailController.close();
-    passwordController.close();
+    emailController.value.dispose();
+    passwordController.value.dispose();
     super.onClose();
   }
 
@@ -104,24 +103,24 @@ class ProfileUpdateEmailController extends GetxController {
       }
 
       // NOTE: HANDLE RESPONSE SUCCESS
-      Get.dialog(
-        AlertDialogNoAction(
-          title: "Email updated",
-          lotties: AssetConfigFLdev.lottieSuccess,
-          content: "",
-        ),
-        barrierDismissible: false,
-      );
+      // Get.dialog(
+      //   AlertDialogNoAction(
+      //     title: "Email updated",
+      //     lotties: AssetConfigFLdev.lottieSuccess,
+      //     content: "",
+      //   ),
+      //   barrierDismissible: false,
+      // );
 
       Future.delayed(
         const Duration(seconds: 2),
         () {
           User user = User.fromJson(result['data']);
           SessionUserFLdev.saveUser(user);
-          Get.back();
-          Get.back();
         },
       );
+      SnackbarFLdev.snackShow(
+          title: "Success update", message: "Email updated");
 
       isLoading.value = false;
       update();

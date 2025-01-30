@@ -4,6 +4,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
@@ -93,19 +94,41 @@ class SignInView extends GetView<SignInController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FormAppsTwo(
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                IntlPhoneField(
                                   controller: controller.phoneController.value,
-                                  labelText: "Phone",
-                                  keybooardType: TextInputType.phone,
                                   validator: (p0) {
-                                    if (p0!.isEmpty || p0 == "") {
-                                      return "Email is required ";
+                                    if (p0!.toString().isEmpty || p0 == "") {
+                                      return "Phone is required ";
                                     }
                                     return null;
                                   },
+                                  decoration: InputDecoration(
+                                    labelText: 'Phone Number',
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide(),
+                                    ),
+                                  ),
+                                  initialCountryCode: 'ID',
+                                  onChanged: (phone) {
+                                    print(phone.completeNumber);
+                                  },
                                 ),
+                                // FormAppsTwo(
+                                //   controller: controller.phoneController.value,
+                                //   labelText: "Phone",
+                                //   keybooardType: TextInputType.phone,
+                                //   validator: (p0) {
+                                //     if (p0!.isEmpty || p0 == "") {
+                                //       return "Phone is required ";
+                                //     }
+                                //     return null;
+                                //   },
+                                // ),
                                 const SizedBox(
-                                  height: 30.0,
+                                  height: 20.0,
                                 ),
                                 Obx(
                                   () => FormAppsTwo(

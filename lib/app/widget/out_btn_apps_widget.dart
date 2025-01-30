@@ -22,7 +22,8 @@ class OutBtnApps extends StatelessWidget {
         width: double.infinity,
         height: 50.0,
         decoration: BoxDecoration(
-            border: Border.all(color: ColorApps.primary),
+            border:
+                Border.all(color: color != null ? color! : ColorApps.primary),
             borderRadius: BorderRadius.circular(10.0)),
         child: Center(
           child: Text(

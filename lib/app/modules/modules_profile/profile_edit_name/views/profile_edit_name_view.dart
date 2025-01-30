@@ -60,42 +60,44 @@ class ProfileEditNameView extends GetView<ProfileEditNameController> {
                   child: ConstrainedBox(
                     constraints:
                         BoxConstraints(minHeight: constraints.maxHeight),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Container(
-                              padding: const EdgeInsets.all(14.0),
-                              width: constraints.maxWidth,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  color: ColorApps.white,
-                                  boxShadow: boxShadow),
-                              child: Column(
-                                children: [
-                                  Obx(
-                                    () => FormAppsTwo(
-                                      controller:
-                                          controller.newNameController.value,
-                                      labelText: userController
-                                          .user.customerName
-                                          .toString(),
-                                      validator: (p0) {
-                                        if (p0!.isEmpty) {
-                                          return "you haven't made any changes";
-                                        } else if (p0.length <= 5) {
-                                          return "Name must contain at least 5 characters";
-                                        }
-                                        return null;
-                                      },
+                    child: IntrinsicHeight(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Container(
+                                padding: const EdgeInsets.all(14.0),
+                                width: constraints.maxWidth,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: ColorApps.white,
+                                    boxShadow: boxShadow),
+                                child: Column(
+                                  children: [
+                                    Obx(
+                                      () => FormAppsTwo(
+                                        controller:
+                                            controller.newNameController.value,
+                                        labelText: userController
+                                            .user.customerName
+                                            .toString(),
+                                        validator: (p0) {
+                                          if (p0!.isEmpty) {
+                                            return "you haven't made any changes";
+                                          } else if (p0.length <= 5) {
+                                            return "Name must contain at least 5 characters";
+                                          }
+                                          return null;
+                                        },
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20.0,
-                                  ),
-                                ],
-                              )),
-                        ],
+                                    const SizedBox(
+                                      height: 20.0,
+                                    ),
+                                  ],
+                                )),
+                          ],
+                        ),
                       ),
                     ),
                   ),
