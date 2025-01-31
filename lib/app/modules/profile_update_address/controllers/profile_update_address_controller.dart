@@ -1,6 +1,5 @@
-import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -15,53 +14,51 @@ import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controll
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
-class ProfileUpdatePhoneController extends GetxController {
+class ProfileUpdateAddressController extends GetxController {
   late final UserController dataUser;
   late final passwordController = TextEditingController().obs;
-  late final phoneController = TextEditingController().obs;
-  final obsecure = true.obs;
+  late final addressController = TextEditingController().obs;
   final isLoading = false.obs;
+  final obsecureText = true.obs;
   @override
   void onInit() {
     super.onInit();
     dataUser = Get.find<UserController>();
-    phoneController.value =
-        TextEditingController(text: dataUser.user.customerPhone);
+    addressController.value =
+        TextEditingController(text: dataUser.user.customerAddress);
   }
 
   @override
   void onClose() {
     passwordController.value.dispose();
-    phoneController.value.dispose();
     super.onClose();
   }
 
   seeHide() {
-    obsecure.value = !obsecure.value;
+    obsecureText.value = !obsecureText.value;
     update();
   }
 
-  updatePhone(BuildContext context, String customerId) async {
+  updateAdress(BuildContext context, String customerId) async {
     isLoading.value = true;
     update();
-    String passsword = passwordController.value.text.trim();
-    String phone = phoneController.value.text.trim();
-
+    String password = passwordController.value.text.trim();
+    String address = addressController.value.text.trim();
     final formData = FormData.fromMap({
       'customer_id': customerId,
-      'customer_password': passsword,
-      'customer_phone': phone,
+      'customer_address': address,
+      'customer_password': password,
     });
     try {
       final result =
-          await SourceApps.hitApiToMap(ApiApps.updatePhone, formData);
-
+          await SourceApps.hitApiToMap(ApiApps.updateAdress, formData);
       passwordController.value.clear();
+
       // NOTE: HANDLE RESPONSE ID EMPTY
       if (!result!['status']) {
         Get.dialog(
           AlertDialogNoAction(
-            title: "Update phone failed",
+            title: "Update address failed",
             lotties: AssetConfigFLdev.lottieFailed,
             content: result['message'],
           ),
@@ -69,9 +66,7 @@ class ProfileUpdatePhoneController extends GetxController {
         );
         Future.delayed(
           const Duration(seconds: 3),
-          () {
-            Get.back();
-          },
+          () => Get.back(),
         );
         isLoading.value = false;
         update();
@@ -82,7 +77,7 @@ class ProfileUpdatePhoneController extends GetxController {
       if (result['message'] == 'Invalid password') {
         Get.dialog(
           AlertDialogNoAction(
-            title: "Update phone failed",
+            title: "Update address failed",
             lotties: AssetConfigFLdev.lottieFailed,
             content: result['message'],
           ),
@@ -108,13 +103,12 @@ class ProfileUpdatePhoneController extends GetxController {
         },
       );
       SnackbarFLdev.snackShow(
-          title: "Success update", message: "Phone updated");
+          title: "Success update", message: "Address updated");
 
       isLoading.value = false;
       update();
     } catch (e) {
-      DMethod.printTitle('Try ~ from Controller', e.toString());
-      isLoading.value = true;
+      isLoading.value = false;
       update();
     }
   }

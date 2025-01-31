@@ -32,76 +32,59 @@ class TwoItemProfileSetting extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
-            child: GestureDetector(
-              onTap: onTap,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    title ?? "",
-                    style: black400.copyWith(fontSize: 13.0),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        value ?? "",
-                        style: black400.copyWith(fontSize: 13.0),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        size: 18.0,
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          Divider(
-            color: ColorApps.disable2,
-            thickness: 0.1,
-          ),
-          activeSectionTwo!
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 14.0),
-                  child: GestureDetector(
-                    onTap: onTapTwo,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          titleTwo ?? "",
-                          style: black400.copyWith(fontSize: 13.0),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              valueTwo ?? "",
-                              style: black400.copyWith(fontSize: 13.0),
-                            ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 18.0,
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              : SizedBox(),
+          _buildItem(title, value, onTap),
+          if (activeSectionTwo!)
+            Divider(color: ColorApps.disable2, thickness: 0.1),
+          if (activeSectionTwo!) _buildItem(titleTwo, valueTwo, onTapTwo),
         ],
       ),
     );
+  }
+
+  Widget _buildItem(String? title, String? value, VoidCallback? onTap) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Text(
+                title ?? "",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: black400.copyWith(fontSize: 13.0),
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Text(
+                    _truncateText(value ?? "", 10), // Batasi 10 karakter
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: black400.copyWith(fontSize: 13.0),
+                  ),
+                ),
+                const SizedBox(width: 10.0),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 18.0,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // NOTE Fungsi untuk membatasi teks maksimal 10 karakter
+  String _truncateText(String text, int maxLength) {
+    return (text.length > maxLength)
+        ? '${text.substring(0, maxLength)}...'
+        : text;
   }
 }

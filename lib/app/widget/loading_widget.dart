@@ -9,6 +9,7 @@ class LoadingApps extends StatelessWidget {
     return CupertinoActivityIndicator(
       radius: 14.0,
       color: ColorApps.primary,
+      animating: true,
     );
   }
 }

@@ -4,8 +4,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 
-class AppBarApps extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarApps({
+class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarAppFLdev({
     super.key,
     this.title = "",
     this.checkClick = false,

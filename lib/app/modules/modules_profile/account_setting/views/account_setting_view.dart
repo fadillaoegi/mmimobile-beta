@@ -14,7 +14,7 @@ class AccountSettingView extends GetView<AccountSettingController> {
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: AppBarApps(
+      appBar: AppBarAppFLdev(
         title: "Account setting",
       ),
       body: Container(

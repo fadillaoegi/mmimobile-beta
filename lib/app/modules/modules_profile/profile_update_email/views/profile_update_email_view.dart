@@ -31,7 +31,7 @@ class ProfileUpdateEmailView extends GetView<ProfileUpdateEmailController> {
           child: Form(
             key: controller.formKey,
             child: Scaffold(
-              appBar: AppBarApps(
+              appBar: AppBarAppFLdev(
                 title: "Update Email",
                 checkClick: true,
                 onTap: () {

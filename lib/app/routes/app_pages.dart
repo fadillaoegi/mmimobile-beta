@@ -35,6 +35,8 @@ import '../modules/modules_profile/profile_setting/bindings/profile_setting_bind
 import '../modules/modules_profile/profile_setting/views/profile_setting_view.dart';
 import '../modules/modules_profile/profile_update_email/bindings/profile_update_email_binding.dart';
 import '../modules/modules_profile/profile_update_email/views/profile_update_email_view.dart';
+import '../modules/modules_profile/profile_update_phone/bindings/profile_update_phone_binding.dart';
+import '../modules/modules_profile/profile_update_phone/views/profile_update_phone_view.dart';
 import '../modules/modules_profile/reward/bindings/reward_binding.dart';
 import '../modules/modules_profile/reward/views/reward_view.dart';
 import '../modules/modules_profile/reward_history/bindings/reward_history_binding.dart';
@@ -49,8 +51,8 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
-import '../modules/modules_profile/profile_update_phone/bindings/profile_update_phone_binding.dart';
-import '../modules/modules_profile/profile_update_phone/views/profile_update_phone_view.dart';
+import '../modules/profile_update_address/bindings/profile_update_address_binding.dart';
+import '../modules/profile_update_address/views/profile_update_address_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
@@ -215,6 +217,11 @@ class AppPages {
       name: _Paths.profileUpdatePhone,
       page: () => const ProfileUpdatePhoneView(),
       binding: ProfileUpdatePhoneBinding(),
+    ),
+    GetPage(
+      name: _Paths.profileUpdateAddress,
+      page: () => const ProfileUpdateAddressView(),
+      binding: ProfileUpdateAddressBinding(),
     ),
   ];
 }

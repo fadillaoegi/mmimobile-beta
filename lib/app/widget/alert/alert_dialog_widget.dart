@@ -58,7 +58,7 @@ class AlertDialogApps extends StatelessWidget {
                 Text(
                   content!,
                   textAlign: TextAlign.center,
-                  style: black500.copyWith(fontSize: 14.0),
+                  style: black400.copyWith(fontSize: 14.0),
                 ),
               ],
             ),

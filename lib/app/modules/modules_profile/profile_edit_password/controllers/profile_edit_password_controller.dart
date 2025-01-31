@@ -88,7 +88,6 @@ class ProfileEditPasswordController extends GetxController {
         // NOTE: EXECUTE EDIT PASSWORD
         User user = User.fromJson(result['data']);
         bool successUpdate = await SessionUserFLdev.saveUser(user);
-        print(successUpdate);
 
         if (successUpdate) {
           Get.dialog(

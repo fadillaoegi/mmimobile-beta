@@ -17,7 +17,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
     final userController = Get.find<UserController>();
 
     return Scaffold(
-        appBar: AppBarApps(
+        appBar: AppBarAppFLdev(
           title: "Setting Profile",
           checkClick: true,
           onTap: () {},
@@ -58,16 +58,27 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                             userController.user.customerEmail ?? "Unknown",
                       )),
                   const SizedBox(height: 20.0),
-                  Obx(() => TwoItemProfileSetting(
-                        onTap: () => Get.toNamed(Routes.profileUpdatePhone),
-                        title: "Phone",
-                        value: maskText(
-                            userController.user.customerPhone ?? "No Phone"),
-                        onTapTwo: () => Get.toNamed(Routes.profileEditPassword),
-                        titleTwo: "Password",
-                        valueTwo: "********",
-                      )),
+                  Obx(
+                    () => TwoItemProfileSetting(
+                      onTap: () => Get.toNamed(Routes.profileUpdatePhone),
+                      title: "Phone",
+                      value: maskText(
+                          userController.user.customerPhone ?? "No Phone"),
+                      onTapTwo: () => Get.toNamed(Routes.profileEditPassword),
+                      titleTwo: "Password",
+                      valueTwo: "********",
+                    ),
+                  ),
                   const SizedBox(height: 20.0),
+                  TwoItemProfileSetting(
+                    onTap: () => Get.toNamed(Routes.profileUpdateAddress),
+                    title: "Address",
+                    activeSectionTwo: false,
+                    value: userController.user.customerAddress ?? "No Address",
+                    onTapTwo: () => Get.toNamed(Routes.profileEditPassword),
+                    titleTwo: "Password",
+                    valueTwo: "********",
+                  ),
                 ],
               ),
             ),

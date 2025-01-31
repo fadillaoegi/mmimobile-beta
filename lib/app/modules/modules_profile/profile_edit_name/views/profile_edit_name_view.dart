@@ -31,7 +31,7 @@ class ProfileEditNameView extends GetView<ProfileEditNameController> {
           child: Form(
             key: controller.formKey,
             child: Scaffold(
-              appBar: AppBarApps(
+              appBar: AppBarAppFLdev(
                 title: "Update Name",
                 checkClick: true,
                 onTap: () {
