@@ -28,12 +28,12 @@ class AssetConfigFLdev {
   static const iconLevelDiamond = "assets/images/iconLevelDiamond.png";
 
   // NOTE: LOTTIES
-  static const lottieFailed = "assets/lotties/failed.json";
-  static const lottieEmail = "assets/lotties/email.json";
-  static const lottieDelete = "assets/lotties/delete.json";
-  static const lottieUpdate = "assets/lotties/update.json";
-  static const lottieUpload = "assets/lotties/upload.json";
-  static const lottieLogout = "assets/lotties/logout.json";
-  static const lottieWarning = "assets/lotties/warning.json";
-  static const lottieSuccess = "assets/lotties/success.json";
+  static const lottieFailed = "assets/lotties/failedFldev.json";
+  static const lottieEmail = "assets/lotties/emailFldev.json";
+  static const lottieDelete = "assets/lotties/deleteFldev.json";
+  static const lottieUpdate = "assets/lotties/updateFldev.json";
+  static const lottieUpload = "assets/lotties/uploadFldev.json";
+  static const lottieLogout = "assets/lotties/logoutFldev.json";
+  static const lottieWarning = "assets/lotties/warningFldev.json";
+  static const lottieSuccess = "assets/lotties/successFldev.json";
 }
