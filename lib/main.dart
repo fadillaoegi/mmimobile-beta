@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:mmimobile/app/configs/session_config.dart';
-import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/configs/theme_config.dart';
+import 'package:mmimobile/app/configs/session_config.dart';
+import 'package:mmimobile/app/data/models/user_model.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

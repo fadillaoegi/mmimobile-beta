@@ -21,10 +21,10 @@ class ItemDailyReward extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
       decoration: BoxDecoration(
-          color: const Color.fromARGB(100, 175, 175, 175),
+          color: const Color.fromARGB(28, 109, 133, 36),
           border: Border.all(
               color: isChacked!
-                  ? ColorApps.reward
+                  ? ColorApps.primary
                   : const Color.fromARGB(100, 175, 175, 175)),
           borderRadius: const BorderRadius.all(Radius.circular(10.0))),
       child: Column(
@@ -33,7 +33,7 @@ class ItemDailyReward extends StatelessWidget {
         children: [
           Text(
             "+$point",
-            style: black500.copyWith(fontSize: 12.0),
+            style: primary500.copyWith(fontSize: 12.0),
           ),
           const SizedBox(
             height: 16.0,

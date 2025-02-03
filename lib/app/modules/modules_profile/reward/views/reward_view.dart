@@ -133,6 +133,7 @@ class RewardView extends GetView<RewardController> {
                             height: 10.0,
                           ),
                           BtnApps(
+                            borderRadius: 50.0,
                             onPress: () {},
                             text: "Check-in Today",
                             color: ColorApps.reward,

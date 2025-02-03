@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -66,67 +67,26 @@ class SignInController extends GetxController {
         const Duration(seconds: 3),
         () => Get.back(),
       );
-      isLoading.value = false;
-      update();
+      // isLoading.value = false;
+      // update();
       return;
     }
-    // try {
-    final formData = FormData.fromMap({
-      "phone": phone,
-      "password": pass,
-    });
+    try {
+      final formData = FormData.fromMap({
+        "phone": phone,
+        "password": pass,
+      });
 
-    final result = await SourceApps.hitApiToMap(ApiApps.signIn, formData);
+      final result = await SourceApps.hitApiToMap(ApiApps.signIn, formData);
 
-    result!.isNotEmpty ? result : null;
+      result!.isNotEmpty ? result : null;
 
-    // NOTE: HANDLE RESPONSE WRONG PASSWORD
-    if (result['message'] == 'Invalid password') {
-      Get.dialog(
-        AlertDialogNoAction(
-          title: "Sign in failed",
-          lotties: AssetConfigFLdev.lottieFailed,
-          content: result['message'],
-        ),
-        barrierDismissible: false,
-      );
-
-      Future.delayed(
-        Duration(seconds: 2),
-        () => Get.back(),
-      );
-
-      isLoading.value = false;
-      update();
-      return;
-    }
-
-    // NOTE: HANDLE RESPONSE STATUS TRUE
-    if (result["status"]) {
-      // NOTE: HANDLE RESPONSE STATUS PASS DEFAULT
-      if (result["status_pass_default"]) {
-        bool customerStatus = result['data']["customer_status"];
-        if (!customerStatus) {
-          Get.dialog(
-            AlertDialogNoAction(
-              title: "Sign in failed",
-              lotties: AssetConfigFLdev.lottieFailed,
-              content: "You are not yet a customer.",
-            ),
-            barrierDismissible: false,
-          );
-          Future.delayed(
-            const Duration(seconds: 3),
-            () => Get.back(),
-          );
-          isLoading.value = false;
-          update();
-          return;
-        }
+      // NOTE: HANDLE RESPONSE WRONG PASSWORD
+      if (result['message'] == 'Invalid password') {
         Get.dialog(
           AlertDialogNoAction(
-            title: "Sign in success",
-            lotties: AssetConfigFLdev.lottieSuccess,
+            title: "Sign in failed",
+            lotties: AssetConfigFLdev.lottieFailed,
             content: result['message'],
           ),
           barrierDismissible: false,
@@ -134,90 +94,135 @@ class SignInController extends GetxController {
 
         Future.delayed(
           Duration(seconds: 2),
-          () {
-            String customerId = result['data']['customer_id'];
-            Get.back();
-            Get.toNamed(Routes.resetPassword, arguments: customerId.toString());
-          },
+          () => Get.back(),
         );
-        // return;
-      } else {
-        // NOTE: HANDLE RESPONSE EMAIL NOT FOUND
-        if (result['data']['customer_email'] == null ||
-            result['data']['customer_email'] == '') {
+
+        // isLoading.value = false;
+        // update();
+        return;
+      }
+
+      // NOTE: HANDLE RESPONSE STATUS TRUE
+      if (result["status"]) {
+        // NOTE: HANDLE RESPONSE STATUS PASS DEFAULT
+        if (result["status_pass_default"]) {
+          bool customerStatus = result['data']["customer_status"];
+          if (!customerStatus) {
+            Get.dialog(
+              AlertDialogNoAction(
+                title: "Sign in failed",
+                lotties: AssetConfigFLdev.lottieFailed,
+                content: "You are not yet a customer.",
+              ),
+              barrierDismissible: false,
+            );
+            Future.delayed(
+              const Duration(seconds: 3),
+              () => Get.back(),
+            );
+            isLoading.value = false;
+            update();
+            return;
+          }
           Get.dialog(
             AlertDialogNoAction(
-              title: "Signin success",
+              title: "Sign in success",
               lotties: AssetConfigFLdev.lottieSuccess,
-              content: "You don't have email, please enter your email",
+              content: result['message'],
             ),
             barrierDismissible: false,
           );
+
           Future.delayed(
-            const Duration(seconds: 2),
+            Duration(seconds: 2),
             () {
               String customerId = result['data']['customer_id'];
+              Get.back();
+              Get.toNamed(Routes.resetPassword,
+                  arguments: customerId.toString());
+            },
+          );
+          // return;
+        } else {
+          // NOTE: HANDLE RESPONSE EMAIL NOT FOUND
+          if (result['data']['customer_email'] == null ||
+              result['data']['customer_email'] == '') {
+            Get.dialog(
+              AlertDialogNoAction(
+                title: "Signin success",
+                lotties: AssetConfigFLdev.lottieSuccess,
+                content: "You don't have email, please enter your email",
+              ),
+              barrierDismissible: false,
+            );
+            Future.delayed(
+              const Duration(seconds: 2),
+              () {
+                String customerId = result['data']['customer_id'];
+                Get.back();
+                Future.delayed(
+                  const Duration(seconds: 2),
+                  () {
+                    Get.toNamed(Routes.addEmail, arguments: customerId);
+                  },
+                );
+              },
+            );
+            return;
+          }
+
+          // NOTE: HANDLE RESPONSE SUCCCESS
+          Get.dialog(
+            AlertDialogNoAction(
+              title: "Sign Success",
+              lotties: AssetConfigFLdev.lottieSuccess,
+              content: "Welcome to Mmimobile",
+            ),
+            barrierDismissible: false,
+          );
+
+          Future.delayed(
+            const Duration(seconds: 3),
+            () {
+              User user = User.fromJson(result['data']);
+              SessionUserFLdev.saveUser(user);
               Get.back();
               Future.delayed(
                 const Duration(seconds: 2),
                 () {
-                  Get.toNamed(Routes.addEmail, arguments: customerId);
+                  Get.toNamed(Routes.appMain, arguments: user);
+                  isLoading.value = false;
+                  update();
                 },
               );
             },
           );
+          // isLoading.value = false;
+          // update();
           return;
         }
-
-        // NOTE: HANDLE RESPONSE SUCCCESS
+      } else {
+        // NOTE: HANDLE RESPONSE NOT REGISTERED
         Get.dialog(
           AlertDialogNoAction(
-            title: "Sign Success",
-            lotties: AssetConfigFLdev.lottieSuccess,
-            content: "Welcome to Mmimobile",
+            title: "Sign in Failed",
+            lotties: AssetConfigFLdev.lottieFailed,
+            content: "Your not resgisterd",
           ),
           barrierDismissible: false,
         );
 
         Future.delayed(
           const Duration(seconds: 3),
-          () {
-            User user = User.fromJson(result['data']);
-            SessionUserFLdev.saveUser(user);
-            Get.back();
-            Future.delayed(
-              const Duration(seconds: 2),
-              () {
-                Get.toNamed(Routes.appMain, arguments: user);
-                isLoading.value = false;
-                update();
-              },
-            );
-          },
+          () => Get.back(),
         );
-        isLoading.value = false;
-        update();
-        return;
       }
-    } else {
-      // NOTE: HANDLE RESPONSE NOT REGISTERED
-      Get.dialog(
-        AlertDialogNoAction(
-          title: "Sign in Failed",
-          lotties: AssetConfigFLdev.lottieFailed,
-          content: "Your not resgisterd",
-        ),
-        barrierDismissible: false,
-      );
-
-      Future.delayed(
-        const Duration(seconds: 3),
-        () => Get.back(),
-      );
+    } catch (e) {
+      DMethod.printTitle("Try ~ signInProvider", e.toString());
+    } finally {
+      isLoading.value = false;
+      update();
     }
-    // } catch (e) {
-    //   DMethod.printTitle("Try ~ signInProvider", e.toString());
-    // }
     isLoading.value = false;
     update();
   }

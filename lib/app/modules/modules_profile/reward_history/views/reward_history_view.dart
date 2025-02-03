@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 
 import '../controllers/reward_history_controller.dart';
 
@@ -12,18 +13,8 @@ class RewardHistoryView extends GetView<RewardHistoryController> {
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back,
-            color: ColorApps.reward,
-          ),
-        ),
-        centerTitle: true,
-        title:
-            Text("History Reward", style: reward600.copyWith(fontSize: 20.0)),
-        scrolledUnderElevation: 0.0,
+      appBar: AppBarAppFLdev(
+        title: "History Reward",
       ),
       body: SizedBox(
           height: sizeScreen.height,
@@ -32,7 +23,7 @@ class RewardHistoryView extends GetView<RewardHistoryController> {
             itemBuilder: (context, index) {
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 4.0),
-                decoration: const BoxDecoration(color: ColorApps.reward),
+                decoration: const BoxDecoration(color: ColorApps.primary),
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
