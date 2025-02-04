@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -62,7 +63,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                     () => TwoItemProfileSetting(
                       onTap: () => Get.toNamed(Routes.profileUpdatePhone),
                       title: "Phone",
-                      value: maskText(
+                      value: HelperFldev.maskText(
                           userController.user.customerPhone ?? "No Phone"),
                       onTapTwo: () => Get.toNamed(Routes.profileEditPassword),
                       titleTwo: "Password",
@@ -85,14 +86,4 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
           )),
         ));
   }
-}
-
-String maskText(String text) {
-  if (text.length <= 4) {
-    return text; // Jika teks kurang dari atau sama dengan 4 karakter, tidak perlu masking.
-  }
-  String visiblePart = text.substring(0, 4); // Ambil 4 huruf pertama.
-  String maskedPart =
-      '*' * (text.length - 4); // Ganti sisa teks dengan bintang.
-  return '$visiblePart$maskedPart';
 }

@@ -35,7 +35,7 @@ class ItemList extends StatelessWidget {
                           color: label == "Sign Out"
                               ? ColorApps.error
                               : ColorApps.disable2,
-                          size: 22.0,
+                          size: 24.0,
                         )
                       : Image.asset(
                           iconImage!,

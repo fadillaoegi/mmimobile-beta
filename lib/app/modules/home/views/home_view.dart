@@ -48,7 +48,10 @@ class HomeView extends GetView<HomeController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const ImageCircle(size: 40.0),
+                              const ImageCircle(
+                                size: 40.0,
+                                edit: false,
+                              ),
                               const SizedBox(width: 10.0),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
