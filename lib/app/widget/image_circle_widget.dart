@@ -16,7 +16,7 @@ class ImageCircle extends StatelessWidget {
         height: size,
         width: size,
         child: Stack(
-          clipBehavior: Clip.none, // Agar icon edit tidak terpotong
+          clipBehavior: Clip.none, // Agar icon edit tidak terpotongI
           children: [
             ClipOval(
               child: CircleAvatar(
