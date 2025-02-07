@@ -1,4 +1,5 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -53,6 +54,8 @@ import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
 import '../modules/profile_update_address/bindings/profile_update_address_binding.dart';
 import '../modules/profile_update_address/views/profile_update_address_view.dart';
+import '../modules/rating_services/bindings/rating_services_binding.dart';
+import '../modules/rating_services/views/rating_services_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
@@ -222,6 +225,11 @@ class AppPages {
       name: _Paths.profileUpdateAddress,
       page: () => const ProfileUpdateAddressView(),
       binding: ProfileUpdateAddressBinding(),
+    ),
+    GetPage(
+      name: _Paths.ratingService,
+      page: () => const RatingServicesView(),
+      binding: RatingServicesBinding(),
     ),
   ];
 }

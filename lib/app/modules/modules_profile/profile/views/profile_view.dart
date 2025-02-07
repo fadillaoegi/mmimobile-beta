@@ -141,17 +141,17 @@ class ProfileView extends GetView<ProfileController> {
                             iconImage: AssetConfigFLdev.iconWebsite,
                           ),
                           ItemList(
-                            onTap: () => Get.toNamed(Routes.privacyPolicy),
+                            onTap: () => Get.toNamed(Routes.underDevelopment),
                             label: "Notification setting",
                             icon: Icons.notification_important_outlined,
                           ),
                           ItemList(
-                            onTap: () => Get.toNamed(Routes.privacyPolicy),
+                            onTap: () => Get.toNamed(Routes.underDevelopment),
                             label: "Language setting",
                             icon: Icons.book_outlined,
                           ),
                           ItemList(
-                            onTap: () => Get.toNamed(Routes.privacyPolicy),
+                            onTap: () => Get.toNamed(Routes.underDevelopment),
                             label: "Help center",
                             icon: Icons.help_outline,
                           ),
@@ -166,7 +166,7 @@ class ProfileView extends GetView<ProfileController> {
                             iconImage: AssetConfigFLdev.iconFaq,
                           ),
                           ItemList(
-                            onTap: () => Get.toNamed(Routes.faq),
+                            onTap: () => Get.toNamed(Routes.ratingService),
                             label: "Rating business development services",
                             icon: Icons.star_border,
                             // iconImage: AssetConfigFLdev.iconFaq,

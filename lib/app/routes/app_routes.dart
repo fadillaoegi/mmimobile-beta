@@ -41,6 +41,7 @@ abstract class Routes {
   static const profileUpdateEmail = _Paths.profileUpdateEmail;
   static const profileUpdatePhone = _Paths.profileUpdatePhone;
   static const profileUpdateAddress = _Paths.profileUpdateAddress;
+  static const ratingService = _Paths.ratingService;
 }
 
 abstract class _Paths {
@@ -86,4 +87,5 @@ abstract class _Paths {
   static const profileUpdateEmail = '/profile-update-email';
   static const profileUpdatePhone = '/profile-update-phone';
   static const profileUpdateAddress = '/profile-update-address';
+  static const ratingService = '/rating-services';
 }
