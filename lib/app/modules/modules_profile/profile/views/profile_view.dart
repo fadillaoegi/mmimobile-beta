@@ -167,12 +167,12 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                           ItemList(
                             onTap: () => Get.toNamed(Routes.ratingService),
-                            label: "Rating business development services",
+                            label: "Rating business services",
                             icon: Icons.star_border,
                             // iconImage: AssetConfigFLdev.iconFaq,
                           ),
                           ItemList(
-                            onTap: () => Get.toNamed(Routes.faq),
+                            onTap: () => Get.toNamed(Routes.underDevelopment),
                             label: "Rating mmimobile",
                             icon: Icons.star_border,
                             // iconImage: AssetConfigFLdev.iconFaq,
