@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/item_history_widget.dart';
-
 import '../controllers/history_controller.dart';
 
 class HistoryView extends GetView<HistoryController> {
@@ -12,6 +13,7 @@ class HistoryView extends GetView<HistoryController> {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
+    final controller = Get.put(HistoryController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

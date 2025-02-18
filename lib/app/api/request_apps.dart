@@ -27,7 +27,7 @@ class RequestApp {
   }
 
   static Future<Response?> postFutureDio(String url, FormData formData) async {
-    try {
+    // try {
       Response dioRes = await dio.post(
         url,
         data: formData,
@@ -37,12 +37,12 @@ class RequestApp {
       );
       DMethod.printTitle("Try ~ $url", dioRes.data.toString());
       return dioRes;
-    } on DioException catch (e) {
-      DMethod.printTitle("Try ~ $url", e.toString());
-    } catch (e) {
-      DMethod.printTitle("Try ~ $url", e.toString());
-      return null;
-    }
-    return null;
+    // } on DioException catch (e) {
+    //   DMethod.printTitle("Try ~ $url", e.toString());
+    // } catch (e) {
+    //   DMethod.printTitle("Try ~ $url", e.toString());
+    //   return null;
+    // }
+    // return null;
   }
 }
