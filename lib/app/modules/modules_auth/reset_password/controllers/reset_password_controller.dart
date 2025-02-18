@@ -53,7 +53,14 @@ class ResetPasswordController extends GetxController {
 
         result!.isNotEmpty ? result : null;
 
-        if (result['data']['customer_type_id'] != 1) {
+        // bool checkCustomer =
+        //     int.parse(result['data']['customer_type_id']) > 1 ? false : true;
+        bool customerType =
+            int.tryParse(result['data']['customer_type_id'])! > 1
+                ? true
+                : false;
+        print(customerType);
+        if (customerType) {
           Get.dialog(
             const AlertDialogNoAction(
               title: "Reset password failed",
@@ -73,7 +80,8 @@ class ResetPasswordController extends GetxController {
           return;
         }
 
-        if (!result['data']['customer_email']) {
+        if (result['data']['customer_email'].toString().isEmpty ||
+            result['data']['customer_email'].toString() == '-') {
           print(result['data']['customer_email'].toString());
           Get.dialog(
             const AlertDialogNoAction(

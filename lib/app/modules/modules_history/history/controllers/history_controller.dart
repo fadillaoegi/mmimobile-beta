@@ -40,7 +40,8 @@ class HistoryController extends GetxController {
     isLoading(true);
     try {
       final formData = FormData.fromMap({
-        'customer_id': "4284",
+        'customer_id': customerId,
+        // 'customer_id': "4284",
         'limit': limit.value,
       });
 

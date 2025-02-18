@@ -53,7 +53,7 @@ class AddEmailView extends GetView<AddEmailController> {
                       height: 40.0,
                     ),
                     Text(
-                      "Add Your Email $customerId",
+                      "Add Your Email",
                       style: primary600.copyWith(fontSize: 20.0),
                     ),
                     const SizedBox(

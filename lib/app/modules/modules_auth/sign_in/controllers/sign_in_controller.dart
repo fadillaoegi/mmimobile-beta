@@ -146,7 +146,7 @@ class SignInController extends GetxController {
         } else {
           // NOTE: HANDLE RESPONSE EMAIL NOT FOUND
           if (result['data']['customer_email'] == null ||
-              result['data']['customer_email'] == '') {
+              result['data']['customer_email'].toString() == '-') {
             Get.dialog(
               AlertDialogNoAction(
                 title: "Signin success",

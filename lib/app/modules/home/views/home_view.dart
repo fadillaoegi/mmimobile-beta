@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -56,13 +57,20 @@ class HomeView extends GetView<HomeController> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Obx(
-                                    () => Text(
-                                      userController.user.customerName ??
-                                          "Guest",
+                                  Obx(() {
+                                    String formattedText =
+                                        HelperFldev.formatText(
+                                            userController.user.customerName ??
+                                                "Guest",
+                                            20);
+                                    return Text(
+                                      formattedText.length > 20
+                                          ? formattedText.substring(0, 20) +
+                                              "..."
+                                          : formattedText,
                                       style: white600.copyWith(fontSize: 14.0),
-                                    ),
-                                  ),
+                                    );
+                                  }),
                                   Row(
                                     children: [
                                       Text(

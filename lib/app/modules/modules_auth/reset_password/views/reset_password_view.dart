@@ -52,7 +52,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       height: 40.0,
                     ),
                     Text(
-                      "Reset Your Password $customerId",
+                      "Reset Your Password",
                       style: primary600.copyWith(fontSize: 16.0),
                     ),
                     const SizedBox(

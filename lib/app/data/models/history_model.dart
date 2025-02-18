@@ -9,25 +9,33 @@ HistorySo historySoFromJson(String str) => HistorySo.fromJson(json.decode(str));
 String historySoToJson(HistorySo data) => json.encode(data.toJson());
 
 class HistorySo {
-  DateTime? date;
+  DateTime? dateSo;
   String? nameSo;
+  String? typeSo;
+  String? categorySo;
   String? totalSo;
 
   HistorySo({
-    this.date,
+    this.dateSo,
     this.nameSo,
+    this.typeSo,
+    this.categorySo,
     this.totalSo,
   });
 
   factory HistorySo.fromJson(Map<String, dynamic> json) => HistorySo(
-        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        dateSo: json["dateSo"] == null ? null : DateTime.parse(json["dateSo"]),
         nameSo: json["nameSo"],
+        typeSo: json["typeSo"],
+        categorySo: json["categorySo"],
         totalSo: json["totalSo"],
       );
 
   Map<String, dynamic> toJson() => {
-        "date": date?.toIso8601String(),
+        "dateSo": dateSo?.toIso8601String(),
         "nameSo": nameSo,
+        "typeSo": typeSo,
+        "categorySo": categorySo,
         "totalSo": totalSo,
       };
 }

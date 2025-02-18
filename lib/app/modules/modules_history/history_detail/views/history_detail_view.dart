@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
@@ -14,6 +15,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.sizeOf(context);
+    final dataSo = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -29,23 +31,23 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ListBetween(
+              ListBetween(
                 field: "IDTransaksi : ",
-                value: "SO-230800092",
+                value: dataSo['nameSo'],
               ),
               const SizedBox(
                 height: 10.0,
               ),
-              const ListBetween(
+              ListBetween(
                 field: "Category : ",
-                value: "Ro-Kemasan / New",
+                value: dataSo['categorySo'],
               ),
               const SizedBox(
                 height: 10.0,
               ),
-              const ListBetween(
+              ListBetween(
                 field: "Type : ",
-                value: "ODM / OEM",
+                value: dataSo['typeSo'],
               ),
               const SizedBox(
                 height: 30.0,
