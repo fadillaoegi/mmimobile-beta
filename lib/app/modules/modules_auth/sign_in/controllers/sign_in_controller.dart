@@ -188,11 +188,9 @@ class SignInController extends GetxController {
               SessionUserFLdev.saveUser(user);
               Get.back();
               Future.delayed(
-                const Duration(seconds: 2),
+                const Duration(seconds: 1),
                 () {
-                  Get.toNamed(Routes.appMain, arguments: user);
-                  isLoading.value = false;
-                  update();
+                  Get.offAllNamed(Routes.appMain);
                 },
               );
             },
@@ -220,8 +218,13 @@ class SignInController extends GetxController {
     } catch (e) {
       DMethod.printTitle("Try ~ signInProvider", e.toString());
     } finally {
-      isLoading.value = false;
-      update();
+      Future.delayed(
+        const Duration(seconds: 3),
+        () {
+          isLoading.value = false;
+          update();
+        },
+      );
     }
     isLoading.value = false;
     update();
