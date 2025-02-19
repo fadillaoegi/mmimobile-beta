@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/item_history_widget.dart';
 import 'package:mmimobile/app/widget/list_between_widget.dart';
-
 import '../controllers/history_detail_controller.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 class HistoryDetailView extends GetView<HistoryDetailController> {
   const HistoryDetailView({super.key});
@@ -32,7 +31,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListBetween(
-                field: "IDTransaksi : ",
+                field: "ID : ",
                 value: dataSo['nameSo'],
               ),
               const SizedBox(
@@ -63,6 +62,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                   isDetail: true,
                   shadow: false,
                   nameSO: "SO-24-007191",
+                  brandSO: "brandSO",
                   productCount: 10,
                   date: "01-October-2024",
                 ),

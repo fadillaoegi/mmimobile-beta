@@ -8,71 +8,78 @@ import 'package:mmimobile/app/data/models/history_model.dart';
 class HistoryController extends GetxController {
   final isLoading = false.obs;
   final historyList = <HistorySo>[].obs;
-  final offset = 0.obs;
-  final limit = 5.obs; // Default 10 items per request
-  final hasMoreData = true.obs;
+  final offset = 0.obs; // Awal offset diatur ke 0
+  final limit = 5.obs; // Limit jumlah data per fetch
+  final hasMoreData =
+      true.obs; // Untuk memeriksa apakah masih ada data tambahan
 
   @override
   void onInit() {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  Future<void> fetchHistory(String customerId,
+  Future<void> fetchHistory(String customerId, String? search,
       {bool isLoadMore = false}) async {
-    if (isLoadMore && !hasMoreData.value) return;
+    if (isLoadMore && !hasMoreData.value)
+      return; // Hentikan jika tidak ada data tambahan
 
     if (!isLoadMore) {
-      // Reset offset and data for refresh
+      // Reset data saat refresh
       offset.value = 0;
       historyList.clear();
       hasMoreData.value = true;
     }
+
     isLoading(true);
     try {
       final formData = FormData.fromMap({
         'customer_id': customerId,
-        // 'customer_id': "4284",
         'limit': limit.value,
+        'offset': offset.value, // send offset for pagination
+        'search': search,
       });
 
       final response =
           await RequestApp.postFutureDio(ApiApps.history, formData);
 
-      if (response!.statusCode == 200) {
-        final jsonResponse = response.data;
+      if (response?.statusCode == 200) {
+        final jsonResponse = response!.data;
 
         if (jsonResponse["status"] == true) {
           final data = List<HistorySo>.from(
             jsonResponse["data"].map((item) => HistorySo.fromJson(item)),
           );
 
-          if (isLoadMore) {
-            historyList.addAll(data);
+          if (data.isNotEmpty) {
+            if (isLoadMore) {
+              historyList.addAll(data);
+            } else {
+              historyList.assignAll(data);
+            }
+
+            // Perbarui offset untuk load berikutnya
+            offset.value += data.length;
+
+            // Periksa apakah masih ada data tambahan
+            if (data.length < limit.value) {
+              hasMoreData(
+                  false); // Tidak ada data tambahan jika data yang dimuat kurang dari limit
+            }
           } else {
-            historyList.assignAll(data);
+            // Tidak ada data baru
+            hasMoreData(false);
           }
-          // Update offset for the next load
-          offset.value = jsonResponse["nextOffset"] ?? 0;
         } else {
           print("Error: ${jsonResponse["message"] ?? 'Unknown error'}");
           hasMoreData(false);
         }
       } else {
-        print("Failed to fetch history. Status code: ${response.statusCode}");
+        print("Failed to fetch history. Status code: ${response?.statusCode}");
         hasMoreData(false);
       }
     } catch (e) {
       print("Error: $e");
+      hasMoreData(false);
     } finally {
       isLoading(false);
     }

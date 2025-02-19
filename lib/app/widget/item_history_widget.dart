@@ -8,6 +8,7 @@ class ItemHistory extends StatelessWidget {
     super.key,
     this.onTap,
     this.nameSO = "",
+    this.brandSO = "",
     this.date = "",
     this.shadow = true,
     this.productCount = 0,
@@ -19,6 +20,7 @@ class ItemHistory extends StatelessWidget {
   final bool? shadow;
   final bool? isDetail;
   final String? nameSO;
+  final String? brandSO;
   final int? count;
   final int? productCount;
   final String? date;
@@ -39,8 +41,8 @@ class ItemHistory extends StatelessWidget {
             boxShadow: [
               shadow!
                   ? BoxShadow(
-                      color:
-                          ColorApps.black.withValues(alpha: 0.10), // Warna bayangan
+                      color: ColorApps.black
+                          .withValues(alpha: 0.10), // Warna bayangan
                       spreadRadius: 0, // Seberapa jauh shadow menyebar
                       blurRadius: 0.6, // Seberapa halus blur shadow
                       offset: const Offset(0, 5), // Offset shadow (X, Y)
@@ -56,7 +58,8 @@ class ItemHistory extends StatelessWidget {
               width: 60.0,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(AssetConfigFLdev.logo), fit: BoxFit.cover),
+                      image: AssetImage(AssetConfigFLdev.logo),
+                      fit: BoxFit.cover),
                   borderRadius: BorderRadius.all(Radius.circular(20.0))),
             ),
             const SizedBox(
@@ -71,14 +74,21 @@ class ItemHistory extends StatelessWidget {
                   style: black600.copyWith(fontSize: 14.0),
                 ),
                 const SizedBox(
-                  height: 8.0,
+                  height: 6.0,
+                ),
+                Text(
+                  "$brandSO",
+                  style: black400.copyWith(fontSize: 13.0),
+                ),
+                const SizedBox(
+                  height: 6.0,
                 ),
                 Text(
                   "x$productCount Product",
                   style: disable400.copyWith(fontSize: 12.0),
                 ),
                 const SizedBox(
-                  height: 8.0,
+                  height: 6.0,
                 ),
                 Text(
                   "$date",

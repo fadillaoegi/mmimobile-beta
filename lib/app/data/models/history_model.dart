@@ -11,6 +11,7 @@ String historySoToJson(HistorySo data) => json.encode(data.toJson());
 class HistorySo {
   DateTime? dateSo;
   String? nameSo;
+  String? brandSo;
   String? typeSo;
   String? categorySo;
   String? totalSo;
@@ -18,6 +19,7 @@ class HistorySo {
   HistorySo({
     this.dateSo,
     this.nameSo,
+    this.brandSo,
     this.typeSo,
     this.categorySo,
     this.totalSo,
@@ -26,6 +28,7 @@ class HistorySo {
   factory HistorySo.fromJson(Map<String, dynamic> json) => HistorySo(
         dateSo: json["dateSo"] == null ? null : DateTime.parse(json["dateSo"]),
         nameSo: json["nameSo"],
+        brandSo: json["brandSo"],
         typeSo: json["typeSo"],
         categorySo: json["categorySo"],
         totalSo: json["totalSo"],
@@ -34,6 +37,7 @@ class HistorySo {
   Map<String, dynamic> toJson() => {
         "dateSo": dateSo?.toIso8601String(),
         "nameSo": nameSo,
+        "brandSo": brandSo,
         "typeSo": typeSo,
         "categorySo": categorySo,
         "totalSo": totalSo,
