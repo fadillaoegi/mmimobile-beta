@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/configs/format_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 
 class ItemHistory extends StatelessWidget {
-  const ItemHistory({
-    super.key,
-    this.onTap,
-    this.nameSO = "",
-    this.brandSO = "",
-    this.date = "",
-    this.shadow = true,
-    this.productCount = 0,
-    this.count = 0,
-    this.isDetail = false,
-  });
+  const ItemHistory(
+      {super.key,
+      this.onTap,
+      this.nameSO = "",
+      this.brandName = "",
+      this.productName = "",
+      this.date = "",
+      this.shadow = true,
+      this.productCount = 0,
+      this.count = 0,
+      this.isDetail = false,
+      this.qty = 0,
+      this.priceProduct = 0});
 
   final VoidCallback? onTap;
   final bool? shadow;
   final bool? isDetail;
   final String? nameSO;
-  final String? brandSO;
+  final int? priceProduct;
+  final int? qty;
   final int? count;
+  final String? productName;
   final int? productCount;
   final String? date;
+  final String? brandName;
 
   @override
   Widget build(BuildContext context) {
@@ -69,47 +75,53 @@ class ItemHistory extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "$nameSO",
-                  style: black600.copyWith(fontSize: 14.0),
-                ),
-                const SizedBox(
-                  height: 6.0,
-                ),
-                Text(
-                  "$brandSO",
-                  style: black400.copyWith(fontSize: 13.0),
-                ),
-                const SizedBox(
-                  height: 6.0,
-                ),
-                Text(
-                  "x$productCount Product",
-                  style: disable400.copyWith(fontSize: 12.0),
-                ),
-                const SizedBox(
-                  height: 6.0,
-                ),
-                Text(
-                  "$date",
-                  style: disable400.copyWith(fontSize: 12.0),
-                ),
-                isDetail!
-                    ? const SizedBox(
-                        height: 8.0,
-                      )
+                nameSO!.isNotEmpty
+                    ? contentItem("$nameSO", black600, 14.0)
                     : const SizedBox(),
-                isDetail!
-                    ? Text(
-                        "Total Rp. $count",
-                        style: primary500.copyWith(fontSize: 12.0),
-                      )
-                    : const SizedBox()
+                productName!.isNotEmpty
+                    ? contentItem("$productName", black600, 14.0)
+                    : const SizedBox(),
+                brandName!.isNotEmpty
+                    ? contentItem("$brandName", disable2400, 12.0)
+                    : const SizedBox(),
+                contentItem("$date", disable2400, 12.0),
+                priceProduct! != 0
+                    ? contentItem(
+                        "${FormatAppsFLdev.currency(priceProduct.toString())} /pcs",
+                        disable2400,
+                        12.0)
+                    : const SizedBox(),
+                productCount! != 0
+                    ? contentItem("x$productCount Product", disable2400, 12.0)
+                    : const SizedBox(),
+                qty! != 0
+                    ? contentItem("x$qty Pcs", disable2400, 12.0)
+                    : const SizedBox(),
+                count! != 0
+                    ? contentItem(
+                        "${FormatAppsFLdev.currency(count.toString())}",
+                        primary500,
+                        12.0)
+                    : const SizedBox(),
               ],
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget contentItem(String text, TextStyle style, double fontSize) {
+    return Column(
+      children: [
+        Text(
+          "$text",
+          style: style.copyWith(fontSize: 14.0),
+        ),
+        const SizedBox(
+          height: 6.0,
+        ),
+      ],
     );
   }
 }

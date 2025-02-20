@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -12,6 +13,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/modules/modules_history/history/controllers/history_controller.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 
 class HistoryView extends GetView<HistoryController> {
   const HistoryView({super.key});
@@ -21,10 +23,9 @@ class HistoryView extends GetView<HistoryController> {
     final controller = Get.put(HistoryController());
     final user = Get.put(UserController());
     final customerId = user.user.customerId;
-    final searchController =
-        TextEditingController(); // Kontroler untuk input pencarian
+    final searchController = TextEditingController();
 
-    // Fetch data saat pertama kali view dimuat
+    // NOTE: Fetch data
     controller.fetchHistory(customerId!, null);
 
     return Scaffold(
@@ -77,8 +78,8 @@ class HistoryView extends GetView<HistoryController> {
       body: SafeArea(
         child: Obx(() {
           if (controller.isLoading.value && controller.historyList.isEmpty) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: LoadingApps(),
             );
           }
 
@@ -110,7 +111,7 @@ class HistoryView extends GetView<HistoryController> {
             child: controller.historyList.isEmpty
                 ? Center(
                     child: Text(
-                      "No history available.",
+                      "You don't have any history yet",
                       style: primary500.copyWith(fontSize: 16.0),
                     ),
                   )
@@ -131,7 +132,7 @@ class HistoryView extends GetView<HistoryController> {
                         },
                         shadow: false,
                         nameSO: item.nameSo ?? "No name SO",
-                        brandSO: item.brandSo ?? "No brand name SO",
+                        brandName: item.brandSo ?? "No brand name SO",
                         productCount: int.tryParse(item.totalSo ?? "0") ?? 0,
                         date: date.isNotEmpty ? date : "date has not been set",
                       );

@@ -30,19 +30,19 @@ class RequestApp {
 
   static Future<Response?> postFutureDio(String url, FormData formData) async {
     // try {
-    Response dioRes = await dio.post(
-      url,
-      data: formData,
-      options: Options(
-        headers: {
-          headerKey: headerValue,
-        },
-        sendTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
-      ),
-    );
-    DMethod.printTitle("Try ~ $url", dioRes.data.toString());
-    return dioRes;
+      Response dioRes = await dio.post(
+        url,
+        data: formData,
+        options: Options(
+          headers: {
+            headerKey: headerValue,
+          },
+          sendTimeout: const Duration(seconds: 10),
+          receiveTimeout: const Duration(seconds: 10),
+        ),
+      );
+      DMethod.printTitle("Try ~ $url", dioRes.data.toString());
+      return dioRes;
     // } on DioException catch (e) {
     //   DMethod.printTitle("Try ~ $url", e.toString());
     // } catch (e) {
