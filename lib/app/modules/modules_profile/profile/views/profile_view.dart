@@ -56,7 +56,6 @@ class ProfileView extends GetView<ProfileController> {
                                   formattedText.length > 20
                                       ? formattedText.substring(0, 20) + "..."
                                       : formattedText,
-                                  // userController.user.customerName ?? "Guest",
                                   style: primary600.copyWith(fontSize: 16.0),
                                 );
                               }),
@@ -164,7 +163,7 @@ class ProfileView extends GetView<ProfileController> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       boxShadow: boxShadow,
-                      color: ColorApps.white,
+                      color: ColorApps.cardTransparan,
                     ),
                     child: Column(
                       children: [

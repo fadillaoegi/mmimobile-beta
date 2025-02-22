@@ -30,7 +30,7 @@ class HistoryView extends GetView<HistoryController> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ColorApps.bg,
+        backgroundColor: ColorApps.white,
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0.0,
         centerTitle: false,

@@ -5,7 +5,7 @@ import 'package:mmimobile/app/styles/color.dart';
 class ThemeConfigFLdev {
   static themeData() {
     return ThemeData(
-      scaffoldBackgroundColor: ColorApps.bg,
+      scaffoldBackgroundColor: ColorApps.white,
       textTheme: GoogleFonts.poppinsTextTheme(),
       indicatorColor: ColorApps.secondary,
       appBarTheme: const AppBarTheme(
