@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
-import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
-import 'package:mmimobile/app/widget/banner_information_widget.dart';
-import 'package:mmimobile/app/widget/image_circle_widget.dart';
-import 'package:mmimobile/app/widget/transparant_card_widget.dart';
 import '../controllers/home_controller.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:mmimobile/app/widget/image_circle_widget.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:mmimobile/app/widget/transparant_card_widget.dart';
+import 'package:mmimobile/app/widget/banner_information_widget.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -17,7 +21,6 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final userController = Get.put(UserController());
     final sizeScreen = MediaQuery.of(context).size;
-    print(userController.user.customerName);
 
     return Scaffold(
       body: SizedBox(
@@ -26,19 +29,19 @@ class HomeView extends GetView<HomeController> {
         child: Stack(
           children: [
             Container(
-              height: sizeScreen.height / 2.5,
+              height: sizeScreen.height,
               width: sizeScreen.width,
               decoration: const BoxDecoration(
-                color: ColorApps.primary,
+                color: ColorApps.white,
                 borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(30.0),
-                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(0.0),
+                  bottomLeft: Radius.circular(0.0),
                 ),
               ),
             ),
             SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(14.0),
+                padding: const EdgeInsets.symmetric(horizontal: 14.0),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -50,7 +53,7 @@ class HomeView extends GetView<HomeController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const ImageCircle(
-                                size: 40.0,
+                                size: 60.0,
                                 edit: false,
                               ),
                               const SizedBox(width: 10.0),
@@ -68,7 +71,8 @@ class HomeView extends GetView<HomeController> {
                                           ? formattedText.substring(0, 20) +
                                               "..."
                                           : formattedText,
-                                      style: white600.copyWith(fontSize: 14.0),
+                                      style:
+                                          primary700.copyWith(fontSize: 14.0),
                                     );
                                   }),
                                   Row(
@@ -76,23 +80,23 @@ class HomeView extends GetView<HomeController> {
                                       Text(
                                         "Diamond",
                                         style:
-                                            white300.copyWith(fontSize: 12.0),
+                                            primary400.copyWith(fontSize: 12.0),
                                       ),
                                       Text(
                                         "*",
                                         style:
-                                            white300.copyWith(fontSize: 12.0),
+                                            primary400.copyWith(fontSize: 12.0),
                                       ),
                                       const SizedBox(width: 10.0),
                                       Text(
                                         "200 ",
                                         style:
-                                            white300.copyWith(fontSize: 12.0),
+                                            primary400.copyWith(fontSize: 12.0),
                                       ),
                                       Text(
                                         "Point",
                                         style:
-                                            white300.copyWith(fontSize: 12.0),
+                                            primary400.copyWith(fontSize: 12.0),
                                       ),
                                     ],
                                   ),
@@ -104,24 +108,24 @@ class HomeView extends GetView<HomeController> {
                             onPressed: () => Get.toNamed(Routes.notification),
                             icon: const Icon(
                               Icons.notifications_none_sharp,
-                              color: ColorApps.white,
+                              color: ColorApps.primary,
                               size: 30.0,
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: sizeScreen.height / 25),
-                      SizedBox(height: sizeScreen.height / 30),
                       // Transparant Card Section 2
                       TransparantCard(
                         width: sizeScreen.width,
-                        opacity: 1,
+                        color: ColorApps.cardTransparan,
+                        // opacity: 3,
                         childern: [
                           for (var i = 0; i < 3; i++)
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text("Informasi", style: black500),
+                                Text("Informasi", style: primary400),
                                 const SizedBox(height: 60.0),
                               ],
                             ),

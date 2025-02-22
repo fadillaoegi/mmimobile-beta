@@ -8,7 +8,6 @@ class AppMainView extends GetView<AppMainController> {
   const AppMainView({super.key});
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.find<AppMainController>();
     final controller = Get.put(AppMainController());
     return Obx(
       () => Scaffold(
@@ -19,10 +18,10 @@ class AppMainView extends GetView<AppMainController> {
         bottomNavigationBar: Material(
           elevation: 10.0,
           child: BottomNavigationBar(
-            selectedItemColor: ColorApps.primary,
+            selectedItemColor: ColorApps.secondary,
             elevation: 20.0,
             type: BottomNavigationBarType.fixed,
-            backgroundColor: ColorApps.white,
+            backgroundColor: ColorApps.cardTransparan,
             currentIndex: controller.currentIndex.value,
             onTap: (index) {
               controller.currentIndex.value = index;

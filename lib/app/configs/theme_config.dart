@@ -5,13 +5,12 @@ import 'package:mmimobile/app/styles/color.dart';
 class ThemeConfigFLdev {
   static themeData() {
     return ThemeData(
-        scaffoldBackgroundColor: Color(0xffFDFDFD),
-        textTheme: GoogleFonts.poppinsTextTheme(),
-        indicatorColor: ColorApps.primary,
-        appBarTheme: const AppBarTheme(
-            iconTheme: IconThemeData(color: ColorApps.primary),
-            backgroundColor: ColorApps.white),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: ColorApps.white));
+      scaffoldBackgroundColor: ColorApps.bg,
+      textTheme: GoogleFonts.poppinsTextTheme(),
+      indicatorColor: ColorApps.secondary,
+      appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: ColorApps.secondary),
+          backgroundColor: ColorApps.bg),
+    );
   }
 }

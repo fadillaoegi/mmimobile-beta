@@ -7,8 +7,10 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
+import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -35,68 +37,37 @@ class SignInView extends GetView<SignInController> {
                     minHeight: constraints.maxHeight,
                   ),
                   child: IntrinsicHeight(
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              width: constraints.maxWidth,
-                              height: constraints.maxHeight / 2,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                      AssetConfigFLdev.bgLogin3,
-                                    ),
-                                    fit: BoxFit.cover),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 20.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Center(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 30.0),
-                                        child: Image.asset(
-                                          AssetConfigFLdev.logo5,
-                                          height: 50.0,
-                                        ),
-                                      ),
-                                    ),
-                                    Text.rich(TextSpan(children: [
-                                      TextSpan(
-                                        text: "Sign in to your account\n",
-                                        style:
-                                            white600.copyWith(fontSize: 26.0),
-                                      ),
-                                      TextSpan(
-                                        text: "Welcome to MMI Mobile",
-                                        style:
-                                            white300.copyWith(fontSize: 22.0),
-                                      ),
-                                    ])),
-                                  ],
+                    child: CanvaApps(
+                      bg: AssetConfigFLdev.bgLoginNew,
+                      widget: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: constraints.maxHeight / 2.8,
+                          ),
+                          Text.rich(
+                            textAlign: TextAlign.start,
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "Selamat datang di Mmimobile\n",
+                                  style: primary600.copyWith(fontSize: 20.0),
                                 ),
-                              ),
+                                TextSpan(
+                                  text: "Masuk untuk melanjutkan",
+                                  style: primary400.copyWith(fontSize: 16.0),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Form(
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          Form(
                             key: controller.formKey,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
                                 IntlPhoneField(
                                   controller: controller.phoneController.value,
                                   validator: (p0) {
@@ -107,6 +78,9 @@ class SignInView extends GetView<SignInController> {
                                   },
                                   decoration: InputDecoration(
                                     labelText: 'Phone Number',
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: ColorApps.primary)),
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(),
                                     ),
@@ -116,19 +90,8 @@ class SignInView extends GetView<SignInController> {
                                     print(phone.completeNumber);
                                   },
                                 ),
-                                // FormAppsTwo(
-                                //   controller: controller.phoneController.value,
-                                //   labelText: "Phone",
-                                //   keybooardType: TextInputType.phone,
-                                //   validator: (p0) {
-                                //     if (p0!.isEmpty || p0 == "") {
-                                //       return "Phone is required ";
-                                //     }
-                                //     return null;
-                                //   },
-                                // ),
                                 const SizedBox(
-                                  height: 20.0,
+                                  height: 10.0,
                                 ),
                                 Obx(
                                   () => FormAppsTwo(
@@ -148,7 +111,7 @@ class SignInView extends GetView<SignInController> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 10.0,
+                                  height: 6.0,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
@@ -158,50 +121,42 @@ class SignInView extends GetView<SignInController> {
                                           Get.toNamed(Routes.forgotPassword);
                                         },
                                         child: Text(
-                                          "Forgot Password",
-                                          style: primary600.copyWith(
+                                          "Lupa Password",
+                                          style: secondary600.copyWith(
                                               fontSize: 13.0),
                                         ))
                                   ],
                                 ),
                                 const SizedBox(
-                                  height: 10.0,
+                                  height: 6.0,
                                 ),
                                 BtnApps(
                                   onPress: () => controller.signIn(context),
-                                  text: "Sign in",
+                                  text: "Masuk",
                                 ),
                                 const SizedBox(
                                   height: 40,
                                 ),
 
                                 // NOTE: UNCOMMENT IF YOU NEED THIS FEATURE
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.center,
-                                //   children: [
-                                //     Text(
-                                //       "Don’t have an account?",
-                                //       style: black500.copyWith(fontSize: 13.0),
-                                //     ),
-                                //     TextButton(
-                                //       onPressed: () {
-                                //         // Navigator.pushNamed(
-                                //         //     context, RouteScreen.codeReveral);
-                                //         goRouter.goNamed(RouteScreen.codeReveral);
-                                //       },
-                                //       child: Text(
-                                //         "Sign up",
-                                //         style:
-                                //             primary700.copyWith(fontSize: 13.0),
-                                //       ),
-                                //     ),
-                                //   ],
-                                // ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "www.mashmoshem.co.id",
+                                        style:
+                                            disable500.copyWith(fontSize: 14.0),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

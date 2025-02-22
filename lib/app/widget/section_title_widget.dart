@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 
 class SectionTittle extends StatelessWidget {
-  const SectionTittle({super.key, this.title, this.onTap});
+  const SectionTittle({
+    super.key,
+    this.title,
+    this.onTap,
+    this.size = 14.0,
+  });
   final String? title;
   final VoidCallback? onTap;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class SectionTittle extends StatelessWidget {
             onPressed: onTap,
             child: Text(
               "See Others",
-              style: primary600,
+              style: white600.copyWith(fontSize: size),
             ))
       ],
     );

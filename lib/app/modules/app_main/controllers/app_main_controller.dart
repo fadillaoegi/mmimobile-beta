@@ -4,6 +4,7 @@ import 'package:mmimobile/app/modules/modules_history/history/views/history_view
 import 'package:mmimobile/app/modules/home/views/home_view.dart';
 import 'package:mmimobile/app/modules/modules_profile/profile/views/profile_view.dart';
 import 'package:mmimobile/app/modules/modules_system_support/system_support/views/system_support_view.dart';
+import 'package:mmimobile/app/modules/rating_services/views/rating_services_view.dart';
 
 class AppMainController extends GetxController {
   @override
@@ -16,6 +17,7 @@ class AppMainController extends GetxController {
   final pages = [
     const HomeView(),
     const SystemSupportView(),
+    const RatingServicesView(),
     const HistoryView(),
     const ProfileView()
   ].obs;
@@ -23,19 +25,23 @@ class AppMainController extends GetxController {
   final items = const [
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      label: 'Home',
+      label: 'Beranda',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.book),
       label: 'Support',
     ),
     BottomNavigationBarItem(
+      icon: Icon(Icons.star_border_purple500),
+      label: 'Survey',
+    ),
+    BottomNavigationBarItem(
       icon: Icon(Icons.history),
-      label: 'History',
+      label: 'Riwayat',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      label: 'Profile',
+      label: 'Profil',
     ),
   ];
 }

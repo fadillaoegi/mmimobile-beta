@@ -9,35 +9,40 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title = "",
     this.checkClick = false,
+    this.backRoute = true,
     this.onTap,
   });
 
   final String? title;
   final bool? checkClick;
+  final bool? backRoute;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
+      backgroundColor: Color(0x0077bba2),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              IconButton(
-                onPressed: () => Get.back(),
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  size: 26.0,
-                ),
-              ),
-              const SizedBox(
-                width: 10.0,
+              backRoute!
+                  ? IconButton(
+                      onPressed: () => Get.back(),
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 26.0,
+                      ),
+                    )
+                  : const SizedBox(),
+              SizedBox(
+                width: backRoute! ? 10.0 : 0.0,
               ),
               Text(
                 title.toString(),
-                style: primary600.copyWith(fontSize: 20.0),
+                style: secondary600.copyWith(fontSize: 20.0),
               ),
             ],
           ),
@@ -46,7 +51,7 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: onTap,
                   icon: const Icon(
                     Icons.check_outlined,
-                    color: ColorApps.primary,
+                    color: ColorApps.secondary,
                     size: 26.0,
                   ),
                 )

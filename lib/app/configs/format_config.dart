@@ -37,4 +37,14 @@ class FormatAppsFLdev {
       return "Rp. 0.00";
     }
   }
+
+  // Format poin tanpa simbol dan tanpa angka di belakang koma
+  static String point(String value) {
+    try {
+      double amount = double.parse(value);
+      return NumberFormat("#,##0", "id_ID").format(amount); // Hanya angka bulat
+    } catch (e) {
+      return "0"; // Jika parsing gagal, kembalikan "0"
+    }
+  }
 }

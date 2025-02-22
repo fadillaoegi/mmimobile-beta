@@ -37,7 +37,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                         width: sizeScreen.width,
                         height: sizeScreen.height / 4,
                         decoration:
-                            const BoxDecoration(color: ColorApps.primary),
+                            const BoxDecoration(color: ColorApps.secondary),
                         child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,

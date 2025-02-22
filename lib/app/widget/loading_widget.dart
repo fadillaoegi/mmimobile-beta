@@ -8,7 +8,7 @@ class LoadingApps extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoActivityIndicator(
       radius: 14.0,
-      color: ColorApps.primary,
+      color: ColorApps.secondary,
       animating: true,
     );
   }

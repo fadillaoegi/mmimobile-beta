@@ -1,40 +1,62 @@
-import 'package:get/get.dart';
+import 'package:dio/dio.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:mmimobile/app/api/api.dart';
+import 'package:mmimobile/app/api/request_apps.dart';
+import 'package:mmimobile/app/data/models/history_detail_model.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HistoryDetailController extends GetxController {
-  final RxList<Map<String, dynamic>> items =
-      <Map<String, dynamic>>[].obs; // Semua data
-  final RxInt displayedItemCount = 2.obs; // Jumlah data yang terlihat
-  final int incrementCount = 2; // Jumlah tambahan data setiap "See More"
+  final RxList<HistoryDetail> items = <HistoryDetail>[].obs; // Data dari API
+  final RxBool isLoading = false.obs; // Status loading
+  final RxString errorMessage = ''.obs; // Pesan error, jika ada
+
+  late String customerId; // Diambil dari UserController
+  late String soId; // Diterima sebagai argumen
+
+  final UserController userController = Get.find<UserController>();
 
   @override
   void onInit() {
     super.onInit();
-    fetchItems(); // Memuat data awal
+    customerId = userController.user.customerId ?? '';
+    soId = Get.arguments['nameSo'] ?? '';
+    fetchHistoryDetail();
   }
 
-  void fetchItems() {
-    // Simulasi data
-    items.addAll(List.generate(
-      10,
-      (index) => {
-        "productName": "Product $index",
-        "brandName": "Brand $index",
-        "date": "01-October-2024",
-        "priceProduct": 10 + index,
-        "qty": 5 + index,
-        "count": (10 + index) * (5 + index),
-      },
-    ));
-  }
+  Future<void> fetchHistoryDetail() async {
+    if (soId.isEmpty) {
+      errorMessage.value = 'SO ID is missing';
+      return;
+    }
+    isLoading.value = true;
 
-  void toggleSeeMore() {
-    // Menambah jumlah data yang terlihat jika belum semua ditampilkan
-    if (displayedItemCount.value < items.length) {
-      displayedItemCount.value =
-          (displayedItemCount.value + incrementCount).clamp(0, items.length);
-    } else {
-      displayedItemCount.value =
-          2; // Reset ke data awal jika semua sudah terlihat
+    final formData =
+        FormData.fromMap({'customer_id': customerId, 'name_so': soId});
+
+    try {
+      final response =
+          await RequestApp.postFutureDio(ApiApps.historyDetail, formData);
+
+      if (response != null && response.statusCode == 200) {
+        final jsonData = response.data['data'];
+
+        if (jsonData is List) {
+          items.assignAll(
+              jsonData.map((item) => HistoryDetail.fromJson(item)).toList());
+        } else {
+          errorMessage.value = 'Invalid data format received';
+        }
+      } else {
+        errorMessage.value = 'Failed to fetch data. Please try again later.';
+      }
+    } catch (e) {
+      errorMessage.value = 'Error: ${e.toString()}';
+    } finally {
+      isLoading.value = false;
     }
   }
 }

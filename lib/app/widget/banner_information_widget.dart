@@ -23,7 +23,7 @@ class BannerInformation extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
           boxShadow: boxShadow,
-          color: ColorApps.primary.withValues(alpha: 0.2),
+          color: ColorApps.card2,
           borderRadius: BorderRadius.circular(10.0)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +32,7 @@ class BannerInformation extends StatelessWidget {
             children: [
               Text(
                 "Promotion this month",
-                style: white400.copyWith(fontSize: 18.0),
+                style: secondary600.copyWith(fontSize: 16.0),
               ),
               const Icon(
                 Icons.keyboard_arrow_right_rounded,
@@ -51,7 +51,7 @@ class BannerInformation extends StatelessWidget {
                 children: List.generate(
                   7,
                   (index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 6.0),
                     child: TransparantCard(
                       width: sizeScreen.width / 1.3,
                       padding: 0.0,
@@ -72,7 +72,8 @@ class BannerInformation extends StatelessWidget {
                                   //     topRight:
                                   //         Radius.circular(10.0)),
                                   image: DecorationImage(
-                                      image: AssetImage(AssetConfigFLdev.examplePromo),
+                                      image: AssetImage(
+                                          AssetConfigFLdev.examplePromo),
                                       fit: BoxFit.fill)),
                             )
                           ],

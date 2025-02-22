@@ -56,7 +56,6 @@ class ItemClass extends StatelessWidget {
       child: Container(
         width: sizeScreen.width,
         margin: const EdgeInsets.only(bottom: 12.0),
-        height: 242.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: boxShadow,

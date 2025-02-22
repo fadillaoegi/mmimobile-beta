@@ -14,7 +14,10 @@ class RatingServicesView extends GetView<RatingServicesController> {
   Widget build(BuildContext context) {
     final controller = Get.put(RatingServicesController());
     return Scaffold(
-      appBar: AppBarAppFLdev(title: 'Rating Apps'),
+      appBar: AppBarAppFLdev(
+        title: 'Rating Apps',
+        backRoute: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import '../controllers/system_support_controller.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/system_support/carousel_widget.dart';
@@ -11,16 +12,11 @@ class SystemSupportView extends GetView<SystemSupportController> {
 
   @override
   Widget build(BuildContext context) {
-    final sizeScreen = MediaQuery.of(context).size;
     final controller = Get.put(SystemSupportController());
-
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          height: sizeScreen.height,
-          width: sizeScreen.width,
-          padding: const EdgeInsets.all(14.0),
-          child: SingleChildScrollView(
+        body: CanvaApps(
+          widget: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,7 +51,9 @@ class SystemSupportView extends GetView<SystemSupportController> {
 
   Widget buildHorizontalList(List<String> items) {
     if (items.isEmpty) {
-      return const Center(child: Text("No items available"));
+      return const Center(
+        child: Text("No items available"),
+      );
     }
     return SizedBox(
       height: 200.0,

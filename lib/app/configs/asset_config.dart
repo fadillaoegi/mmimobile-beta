@@ -1,10 +1,10 @@
 class AssetConfigFLdev {
+  // NOTE: IMAGES NEW
+  static const bgNew = "assets/images/new/bgNew.png";
+  static const bgLoginNew = "assets/images/new/bgLoginNew.png";
+  static const iconCoinNew = "assets/images/new/iconCoinNew.png";
+
   // NOTE: IMAGES
-  static const logo = "assets/images/logo.png";
-  static const logo2 = "assets/images/logo2.png";
-  static const logo3 = "assets/images/logo3.png";
-  static const logo4 = "assets/images/logo4.png";
-  static const logo5 = "assets/images/logo5.png";
   static const bgLogin3 = "assets/images/bg.png";
   static const bgLogin = "assets/images/bgLogin.png";
   static const bgLogin2 = "assets/images/bgLogin2.png";
@@ -14,6 +14,13 @@ class AssetConfigFLdev {
   static const examplePromo = "assets/images/examplePromo.png";
   static const ilForgotPass = "assets/images/il_forgotPass.png";
   static const bannerSystemSupport = "assets/images/bannerSystemSupport.png";
+
+  // NOTE: LOGO
+  static const logo = "assets/images/logo/logo.png";
+  static const logo2 = "assets/images/logo/logo2.png";
+  static const logo3 = "assets/images/logo/logo3.png";
+  static const logo4 = "assets/images/logo/logo4.png";
+  static const logo5 = "assets/images/logo/logo5.png";
 
   // NOTE: ICON
   static const iconFaq = "assets/images/iconFaq.png";

@@ -8,9 +8,9 @@ import 'package:mmimobile/app/styles/color.dart';
 
 class CarouselSystemSupport extends StatelessWidget {
   const CarouselSystemSupport({
-    super.key,
+    Key? key,
     required this.controller,
-  });
+  }) : super(key: key);
 
   final SystemSupportController controller;
 
@@ -18,18 +18,19 @@ class CarouselSystemSupport extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () {
-        // NOTE: Validasi jika imageUrl kosong
+        // Validasi jika imageUrl kosong
         if (controller.imageUrl.isEmpty) {
           return const Center(
             child: Text(
               "No images available",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.grey, fontSize: 16),
             ),
           );
         }
 
         return Column(
           children: [
+            // Carousel Slider
             Material(
               elevation: 4.0,
               borderRadius: BorderRadius.circular(10.0),
@@ -39,7 +40,7 @@ class CarouselSystemSupport extends StatelessWidget {
                   final url = controller.imageUrl[index];
                   return Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 2.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -63,35 +64,40 @@ class CarouselSystemSupport extends StatelessWidget {
                 },
                 options: CarouselOptions(
                   height: MediaQuery.of(context).size.height * 0.20,
-                  viewportFraction: 1.0,
-                  autoPlay: true,
+                  viewportFraction: 1.0, // Mengisi seluruh viewport
+                  autoPlay: true, // Mengaktifkan auto play
                   autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 1000),
-                  autoPlayCurve: Curves.decelerate,
-                  enlargeCenterPage: true,
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn, // Animasi halus
+                  enlargeCenterPage: false, // Tidak memperbesar slide tengah
                   onPageChanged: (index, reason) =>
                       controller.onPageChanged(index, reason),
                 ),
               ),
             ),
             const SizedBox(height: 10),
+
+            // Indicator
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 controller.imageUrl.length,
                 (index) => GestureDetector(
-                  onTap: () => controller.currentIndex.value = index,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    width: 10.0,
-                    height: 10.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: controller.currentIndex.value == index
-                          ? ColorApps.primary
-                          : ColorApps.disable,
+                  child: Obx(
+                    () => AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      width: 12.0,
+                      height: 12.0,
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 4.0,
+                      ),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: controller.currentIndex.value == index
+                            ? Color.fromARGB(255, 45, 127, 97)
+                            : ColorApps.white,
+                      ),
                     ),
                   ),
                 ),

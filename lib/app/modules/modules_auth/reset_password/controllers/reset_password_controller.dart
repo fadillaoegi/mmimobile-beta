@@ -80,7 +80,7 @@ class ResetPasswordController extends GetxController {
           return;
         }
 
-        if (result['data']['customer_email'].toString().isEmpty ||
+        if (result['data']['customer_email'].toString().isEmpty &&
             result['data']['customer_email'].toString() == '-') {
           print(result['data']['customer_email'].toString());
           Get.dialog(

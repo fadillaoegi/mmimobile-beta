@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -8,6 +7,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
+import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/item_history_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -30,116 +30,160 @@ class HistoryView extends GetView<HistoryController> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorApps.bg,
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0.0,
         centerTitle: false,
         title: Text(
           "History",
-          style: primary700.copyWith(fontSize: 20.0),
-        ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(60.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-              controller: searchController,
-              onChanged: (value) {
-                // Jika teks dihapus, reset data tanpa pencarian
-                if (value.isEmpty) {
-                  controller.fetchHistory(customerId, null);
-                }
-              },
-              autofocus: false,
-              decoration: InputDecoration(
-                hintText: 'Search history...',
-                suffixIcon: GestureDetector(
-                  onTap: () {
-                    // Kirim pencarian saat ikon diklik
-                    controller.fetchHistory(
-                      customerId,
-                      searchController.text.isEmpty
-                          ? null
-                          : searchController.text,
-                    );
-                  },
-                  child: Icon(
-                    Icons.search,
-                    color: ColorApps.primary,
-                    size: 30.0,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: ColorApps.primary)),
-              ),
-            ),
-          ),
+          style: secondary700.copyWith(fontSize: 20.0),
         ),
       ),
-      body: SafeArea(
-        child: Obx(() {
-          if (controller.isLoading.value && controller.historyList.isEmpty) {
-            return Center(
-              child: LoadingApps(),
-            );
-          }
+      body: CanvaApps(
+        widget: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Search Bar di dalam Body
+            SearchFLdev(
+                searchController: searchController,
+                controller: controller,
+                customerId: customerId),
 
-          return EasyRefresh(
-            header: const ClassicHeader(),
-            footer: controller.hasMoreData.value
-                ? const ClassicFooter() // Footer hanya ditampilkan jika masih ada data tambahan
-                : null,
-            onRefresh: () async {
-              // Refresh data
-              await controller.fetchHistory(
-                customerId,
-                searchController.text.isEmpty ? null : searchController.text,
-                isLoadMore: false,
-              );
-            },
-            onLoad: controller.hasMoreData.value
-                ? () async {
-                    // Load data tambahan
+            const SizedBox(
+              height: 20.0,
+            ),
+
+            // Konten History
+            Expanded(
+              child: Obx(() {
+                if (controller.isLoading.value &&
+                    controller.historyList.isEmpty) {
+                  return Center(
+                    child: LoadingApps(),
+                  );
+                }
+
+                return EasyRefresh(
+                  header: const ClassicHeader(),
+                  footer: controller.hasMoreData.value
+                      ? const ClassicFooter()
+                      : null,
+                  onRefresh: () async {
                     await controller.fetchHistory(
                       customerId,
                       searchController.text.isEmpty
                           ? null
                           : searchController.text,
-                      isLoadMore: true,
+                      isLoadMore: false,
                     );
-                  }
-                : null,
-            child: controller.historyList.isEmpty
-                ? Center(
-                    child: Text(
-                      "You don't have any history yet",
-                      style: primary500.copyWith(fontSize: 16.0),
-                    ),
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.all(14.0),
-                    itemCount: controller.historyList.length,
-                    itemBuilder: (context, index) {
-                      final item = controller.historyList[index];
-                      final date =
-                          FormatAppsFLdev.dateFull(item.dateSo.toString());
-                      return ItemHistory(
-                        onTap: () {
-                          Get.toNamed(Routes.historyDetail, arguments: {
-                            'nameSo': item.nameSo?.toString() ?? "",
-                            'categorySo': item.categorySo?.toString() ?? "",
-                            'typeSo': item.typeSo?.toString() ?? "",
-                          });
-                        },
-                        shadow: false,
-                        nameSO: item.nameSo ?? "No name SO",
-                        brandName: item.brandSo ?? "No brand name SO",
-                        productCount: int.tryParse(item.totalSo ?? "0") ?? 0,
-                        date: date.isNotEmpty ? date : "date has not been set",
-                      );
-                    },
-                  ),
-          );
-        }),
+                  },
+                  onLoad: controller.hasMoreData.value
+                      ? () async {
+                          await controller.fetchHistory(
+                            customerId,
+                            searchController.text.isEmpty
+                                ? null
+                                : searchController.text,
+                            isLoadMore: true,
+                          );
+                        }
+                      : null,
+                  child: controller.historyList.isEmpty
+                      ? Center(
+                          child: Text(
+                            "You don't have any history yet",
+                            style: primary500.copyWith(fontSize: 16.0),
+                          ),
+                        )
+                      : ListView.builder(
+                          itemCount: controller.historyList.length,
+                          itemBuilder: (context, index) {
+                            final item = controller.historyList[index];
+                            final date = FormatAppsFLdev.dateFull(
+                                item.dateSo.toString());
+                            return ItemHistory(
+                              onTap: () {
+                                Get.toNamed(Routes.historyDetail, arguments: {
+                                  'nameSo': item.nameSo?.toString() ?? "",
+                                  'categorySo':
+                                      item.categorySo?.toString() ?? "",
+                                  'typeSo': item.typeSo?.toString() ?? "",
+                                });
+                              },
+                              shadow: true,
+                              nameSO: item.nameSo ?? "No name SO",
+                              brandName: item.brandSo ?? "No brand name SO",
+                              productCount:
+                                  int.tryParse(item.totalSo ?? "0") ?? 0,
+                              date: date.isNotEmpty
+                                  ? date
+                                  : "date has not been set",
+                            );
+                          },
+                        ),
+                );
+              }),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SearchFLdev extends StatelessWidget {
+  const SearchFLdev({
+    super.key,
+    required this.searchController,
+    required this.controller,
+    required this.customerId,
+  });
+
+  final TextEditingController searchController;
+  final HistoryController controller;
+  final String? customerId;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: searchController,
+      // onChanged: (value) {
+      //   if (value.isEmpty) {
+      //     controller.fetchHistory(customerId, null);
+      //   }
+      // },
+      onSubmitted: (value) {
+        // FocusScope.of(context).unfocus();
+        controller.fetchHistory(
+          customerId!,
+          searchController.text.isEmpty ? null : searchController.text,
+        );
+      },
+      autofocus: false,
+      decoration: InputDecoration(
+        hintText: 'Search history...',
+        hintStyle: disable2400,
+        suffixIcon: GestureDetector(
+          onTap: () {
+            // FocusScope.of(context).unfocus();
+            controller.fetchHistory(
+              customerId!,
+              searchController.text.isEmpty ? null : searchController.text,
+            );
+          },
+          child: Icon(
+            Icons.search,
+            color: ColorApps.secondary,
+            size: 30.0,
+          ),
+        ),
+        enabled: true,
+        enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorApps.primary)),
+        border: UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorApps.primary)),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorApps.secondary)),
       ),
     );
   }

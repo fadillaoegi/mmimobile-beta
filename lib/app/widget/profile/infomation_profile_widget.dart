@@ -21,7 +21,8 @@ class InformationProfile extends StatelessWidget {
       width: width!.width,
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-          color: ColorApps.white,
+          color: ColorApps.card,
+          // color: Color(0x7077bba2),
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
           boxShadow: boxShadow),
       child: Column(
@@ -34,7 +35,7 @@ class InformationProfile extends StatelessWidget {
                 children: [
                   Text(
                     "Level",
-                    style: black400.copyWith(fontSize: 14.0),
+                    style: white700.copyWith(fontSize: 14.0),
                   ),
                   const SizedBox(
                     height: 12.0,
@@ -51,7 +52,7 @@ class InformationProfile extends StatelessWidget {
                         const SizedBox(width: 6.0),
                         Text(
                           "Gold",
-                          style: black500.copyWith(fontSize: 14.0),
+                          style: white700.copyWith(fontSize: 14.0),
                         ),
                       ],
                     ),
@@ -65,7 +66,7 @@ class InformationProfile extends StatelessWidget {
                 children: [
                   Text(
                     "Point",
-                    style: black400.copyWith(fontSize: 14.0),
+                    style: white700.copyWith(fontSize: 14.0),
                   ),
                   const SizedBox(
                     height: 12.0,
@@ -83,7 +84,7 @@ class InformationProfile extends StatelessWidget {
                         const SizedBox(width: 6.0),
                         Text(
                           "455",
-                          style: black500.copyWith(fontSize: 14.0),
+                          style: white700.copyWith(fontSize: 14.0),
                         )
                       ],
                     ),
@@ -119,12 +120,12 @@ class InformationProfile extends StatelessWidget {
             selectedGradientColor: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [ColorApps.blue, ColorApps.blue],
+              colors: [ColorApps.primary, ColorApps.blue],
             ),
             unselectedGradientColor: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [ColorApps.icon, ColorApps.icon],
+              colors: [ColorApps.icon, ColorApps.white],
             ),
           ),
           const SizedBox(
@@ -132,7 +133,7 @@ class InformationProfile extends StatelessWidget {
           ),
           Text(
             "Levelmu semakin dekat dengan level diamond",
-            style: black400.copyWith(fontSize: 12.0),
+            style: white400.copyWith(fontSize: 12.0),
           )
         ],
       ),
