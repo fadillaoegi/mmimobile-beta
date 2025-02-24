@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import '../controllers/home_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mmimobile/app/helper/helper_fldev.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
-import '../controllers/home_controller.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:mmimobile/app/helper/helper_fldev.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:mmimobile/app/widget/transparant_card_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/banner_information_widget.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -40,13 +39,14 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      // SECTION 1
-                      Row(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // SECTION 1
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14.0, vertical: 14.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
@@ -114,31 +114,11 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ],
                       ),
-                      SizedBox(height: sizeScreen.height / 25),
-                      // Transparant Card Section 2
-                      TransparantCard(
-                        width: sizeScreen.width,
-                        color: ColorApps.cardTransparan,
-                        // opacity: 3,
-                        childern: [
-                          for (var i = 0; i < 3; i++)
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text("Informasi", style: primary400),
-                                const SizedBox(height: 60.0),
-                              ],
-                            ),
-                        ],
-                      ),
-                      const SizedBox(height: 20.0),
+                    ),
 
-                      // Banner Information
-                      BannerInformation(sizeScreen: sizeScreen),
-                      const SizedBox(height: 20.0),
-                      BannerInformation(sizeScreen: sizeScreen),
-                    ],
-                  ),
+                    // Banner Information
+                    BannerInformation(sizeScreen: sizeScreen),
+                  ],
                 ),
               ),
             ),

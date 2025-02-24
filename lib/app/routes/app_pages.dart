@@ -4,6 +4,8 @@ import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/modules_profile/language_setting/bindings/language_setting_binding.dart';
+import '../modules/modules_profile/language_setting/views/language_setting_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -230,6 +232,11 @@ class AppPages {
       name: _Paths.ratingService,
       page: () => const RatingServicesView(),
       binding: RatingServicesBinding(),
+    ),
+    GetPage(
+      name: _Paths.LANGUAGE_SETTING,
+      page: () => const LanguageSettingView(),
+      binding: LanguageSettingBinding(),
     ),
   ];
 }

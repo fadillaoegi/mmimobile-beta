@@ -24,15 +24,15 @@ class AppMainController extends GetxController {
 
   final items = const [
     BottomNavigationBarItem(
-      icon: Icon(Icons.home),
+      icon: Icon(Icons.home_outlined),
       label: 'Beranda',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.book),
+      icon: Icon(Icons.book_outlined),
       label: 'Support',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.star_border_purple500),
+      icon: Icon(Icons.assignment_outlined),
       label: 'Survey',
     ),
     BottomNavigationBarItem(
@@ -40,7 +40,7 @@ class AppMainController extends GetxController {
       label: 'Riwayat',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.person),
+      icon: Icon(Icons.person_outline),
       label: 'Profil',
     ),
   ];

@@ -42,6 +42,8 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
               value: dataSo['typeSo'] ?? "Unknown",
             ),
             const SizedBox(height: 20.0),
+
+            // LIST HISTORY
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.value) {
@@ -58,27 +60,66 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                 if (controller.items.isEmpty) {
                   return const Center(child: Text("No history available."));
                 }
-                return ListView.builder(
-                  itemCount: controller.items.length,
-                  itemBuilder: (context, index) {
-                    final item = controller.items[index];
-                    return ItemHistory(
-                      onTap: () {
-                        Get.toNamed('/product-detail');
-                      },
-                      isDetail: true,
-                      shadow: false,
-                      productName: item.productName!,
-                      brandName: item.brandName!,
-                      qty: int.parse(item.productQty!),
-                      count: int.parse(item.productTotal!),
-                      priceProduct: int.parse(item.productPrice!),
-                      date: FormatAppsFLdev.dateFull(item.dateSo.toString()),
-                    );
-                  },
+
+                // Ambil item sesuai jumlah yang diizinkan
+                final visibleItems = controller.items
+                    .take(controller.visibleItemCount.value)
+                    .toList();
+
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: visibleItems.length,
+                        itemBuilder: (context, index) {
+                          final item = visibleItems[index];
+                          return ItemHistory(
+                            onTap: () {
+                              Get.toNamed('/product-detail');
+                            },
+                            isDetail: true,
+                            shadow: false,
+                            productName: item.productName!,
+                            brandName: item.brandName!,
+                            qty: int.parse(item.productQty!),
+                            count: int.parse(item.productTotal!),
+                            priceProduct: int.parse(item.productPrice!),
+                            date: FormatAppsFLdev.dateFull(
+                                item.dateSo.toString()),
+                          );
+                        },
+                      ),
+
+                      // Tombol "See More" atau "See Less"
+                      if (controller.items.length > 2)
+                        TextButton(
+                          onPressed: () {
+                            if (controller.isExpanded.value) {
+                              // Jika sedang menampilkan semua data, kembali ke 2 item
+                              controller.visibleItemCount.value = 2;
+                              controller.isExpanded.value = false;
+                            } else {
+                              // Jika hanya menampilkan 2 item, tampilkan semua
+                              controller.visibleItemCount.value =
+                                  controller.items.length;
+                              controller.isExpanded.value = true;
+                            }
+                          },
+                          child: Text(
+                            controller.isExpanded.value
+                                ? "See Less"
+                                : "See More",
+                            style: const TextStyle(color: ColorApps.primary),
+                          ),
+                        ),
+                    ],
+                  ),
                 );
               }),
             ),
+
             const Divider(color: ColorApps.primary),
             const SizedBox(height: 10.0),
             const ListBetween(

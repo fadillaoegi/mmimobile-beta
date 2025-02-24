@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
-import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/transparant_card_widget.dart';
 
 class BannerInformation extends StatelessWidget {
@@ -22,7 +21,6 @@ class BannerInformation extends StatelessWidget {
       height: sizeScreen.height / 2.5,
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-          boxShadow: boxShadow,
           color: ColorApps.card2,
           borderRadius: BorderRadius.circular(10.0)),
       child: Column(

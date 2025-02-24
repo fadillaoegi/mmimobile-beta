@@ -188,13 +188,14 @@ class SignInController extends GetxController {
               SessionUserFLdev.saveUser(user);
               Get.back();
               Future.delayed(
-                const Duration(seconds: 1),
+                const Duration(milliseconds: 1),
                 () {
                   Get.offAllNamed(Routes.appMain);
                 },
               );
             },
           );
+
           // isLoading.value = false;
           // update();
           return;

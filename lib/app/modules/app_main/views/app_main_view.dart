@@ -19,6 +19,8 @@ class AppMainView extends GetView<AppMainController> {
           elevation: 10.0,
           child: BottomNavigationBar(
             selectedItemColor: ColorApps.secondary,
+            selectedFontSize: 13.0,
+            iconSize: 24.0,
             elevation: 20.0,
             type: BottomNavigationBarType.fixed,
             backgroundColor: ColorApps.cardTransparan,

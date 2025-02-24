@@ -13,9 +13,13 @@ class HistoryDetailController extends GetxController {
   final RxList<HistoryDetail> items = <HistoryDetail>[].obs; // Data dari API
   final RxBool isLoading = false.obs; // Status loading
   final RxString errorMessage = ''.obs; // Pesan error, jika ada
-
   late String customerId; // Diambil dari UserController
   late String soId; // Diterima sebagai argumen
+
+  // Tambahkan RxInt untuk mengontrol jumlah item yang ditampilkan
+  final RxInt visibleItemCount = 3.obs;
+  final RxBool isExpanded =
+      false.obs; // Untuk melacak apakah list terbuka penuh atau tidak
 
   final UserController userController = Get.find<UserController>();
 
