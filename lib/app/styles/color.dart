@@ -4,9 +4,9 @@ class ColorApps {
   // static const primary = Color(0xFF77bba2);
   // static const secondary = Color(0xff3c7962);
   static const primary = Color(0xFF6C8524);
-  static const secondary = Color(0xff41AB5D);
+  static const secondary = Color(0xFF6C8524);
   static const card = Color(0x90ECEADE);
-  static const card2 = Color(0x90D0F2AC);
+  static const card2 = Color(0x80D0F2AC);
   static const cardTransparan = Color(0x70ffffff);
   static const bg = Color(0xffd1e2dd);
   static const icon = Color(0xffAFAFAF);

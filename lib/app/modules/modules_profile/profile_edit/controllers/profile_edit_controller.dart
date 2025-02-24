@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class LanguageSettingController extends GetxController {
+class ProfileEditController extends GetxController {
 
   final count = 0.obs;
   @override

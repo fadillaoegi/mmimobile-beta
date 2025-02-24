@@ -4,8 +4,6 @@ import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/modules_profile/language_setting/bindings/language_setting_binding.dart';
-import '../modules/modules_profile/language_setting/views/language_setting_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -26,6 +24,8 @@ import '../modules/modules_profile/account_setting/bindings/account_setting_bind
 import '../modules/modules_profile/account_setting/views/account_setting_view.dart';
 import '../modules/modules_profile/faq/bindings/faq_binding.dart';
 import '../modules/modules_profile/faq/views/faq_view.dart';
+import '../modules/modules_profile/language_setting/bindings/language_setting_binding.dart';
+import '../modules/modules_profile/language_setting/views/language_setting_view.dart';
 import '../modules/modules_profile/privacy_policy/bindings/privacy_policy_binding.dart';
 import '../modules/modules_profile/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/modules_profile/profile/bindings/profile_binding.dart';
@@ -54,6 +54,8 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
+import '../modules/modules_profile/profile_edit/bindings/profile_edit_binding.dart';
+import '../modules/modules_profile/profile_edit/views/profile_edit_view.dart';
 import '../modules/profile_update_address/bindings/profile_update_address_binding.dart';
 import '../modules/profile_update_address/views/profile_update_address_view.dart';
 import '../modules/rating_services/bindings/rating_services_binding.dart';
@@ -234,9 +236,14 @@ class AppPages {
       binding: RatingServicesBinding(),
     ),
     GetPage(
-      name: _Paths.LANGUAGE_SETTING,
+      name: _Paths.languageSetting,
       page: () => const LanguageSettingView(),
       binding: LanguageSettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.profileEdit,
+      page: () => const ProfileEditView(),
+      binding: ProfileEditBinding(),
     ),
   ];
 }

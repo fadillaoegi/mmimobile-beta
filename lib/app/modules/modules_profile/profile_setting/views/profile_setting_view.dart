@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/configs/session_config.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
+import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
+import 'package:mmimobile/app/widget/out_btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/profile/two_item_profile_widget.dart';
 import '../controllers/profile_setting_controller.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
@@ -79,6 +83,40 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                     onTapTwo: () => Get.toNamed(Routes.profileEditPassword),
                     titleTwo: "Password",
                     valueTwo: "********",
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        OutBtnApps(
+                          onPress: () {
+                            Get.dialog(
+                                AlertDialogApps(
+                                  lotties: AssetConfigFLdev.lottieWarning,
+                                  title: 'Are you sure ?',
+                                  content: 'Logout from apps',
+                                  textBtn: 'yes',
+                                  onTap: () {
+                                    SessionUserFLdev.clearUser();
+                                    Get.offAllNamed(Routes.signIn);
+                                    Get.back();
+                                  },
+                                ),
+                                barrierDismissible: false);
+                          },
+                          text: 'Logout',
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        // OutBtnApps(
+                        //   onPress: () {
+
+                        //   },
+                        //   text: 'Delete account',
+                        // ),
+                      ],
+                    ),
                   ),
                 ],
               ),

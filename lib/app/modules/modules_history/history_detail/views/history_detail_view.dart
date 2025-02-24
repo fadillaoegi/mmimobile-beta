@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:mmimobile/app/configs/format_config.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
-import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-import 'package:mmimobile/app/widget/loading_widget.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import '../controllers/history_detail_controller.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:mmimobile/app/configs/format_config.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/item_history_widget.dart';
 import 'package:mmimobile/app/widget/list_between_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class HistoryDetailView extends GetView<HistoryDetailController> {
   const HistoryDetailView({super.key});
@@ -29,16 +33,21 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
           children: [
             ListBetween(
               field: "ID : ",
-              value: dataSo['nameSo'] ?? "Unknown",
+              value: dataSo['idSo'] ?? "Unknown",
             ),
             const SizedBox(height: 10.0),
             ListBetween(
-              field: "Category : ",
+              field: "Tanggal : ",
+              value: FormatAppsFLdev.dateFull(dataSo['dateSo'].toString()),
+            ),
+            const SizedBox(height: 10.0),
+            ListBetween(
+              field: "Kategori : ",
               value: dataSo['categorySo'] ?? "Unknown",
             ),
             const SizedBox(height: 10.0),
             ListBetween(
-              field: "Type : ",
+              field: "Tipe : ",
               value: dataSo['typeSo'] ?? "Unknown",
             ),
             const SizedBox(height: 20.0),
@@ -82,12 +91,9 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                             isDetail: true,
                             shadow: false,
                             productName: item.productName!,
-                            brandName: item.brandName!,
                             qty: int.parse(item.productQty!),
                             count: int.parse(item.productTotal!),
                             priceProduct: int.parse(item.productPrice!),
-                            date: FormatAppsFLdev.dateFull(
-                                item.dateSo.toString()),
                           );
                         },
                       ),

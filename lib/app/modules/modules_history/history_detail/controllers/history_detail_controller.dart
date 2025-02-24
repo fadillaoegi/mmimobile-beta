@@ -27,7 +27,7 @@ class HistoryDetailController extends GetxController {
   void onInit() {
     super.onInit();
     customerId = userController.user.customerId ?? '';
-    soId = Get.arguments['nameSo'] ?? '';
+    soId = Get.arguments['idSo'] ?? '';
     fetchHistoryDetail();
   }
 
@@ -38,8 +38,7 @@ class HistoryDetailController extends GetxController {
     }
     isLoading.value = true;
 
-    final formData =
-        FormData.fromMap({'customer_id': customerId, 'name_so': soId});
+    final formData = FormData.fromMap({'so_id': soId});
 
     try {
       final response =

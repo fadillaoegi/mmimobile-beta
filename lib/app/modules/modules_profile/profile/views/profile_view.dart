@@ -121,9 +121,10 @@ class ProfileView extends GetView<ProfileController> {
                                 children: [
                                   Image.asset(
                                     AssetConfigFLdev.iconCoinNew,
-                                    height: 80.0,
-                                    width: 80.0,
+                                    height: 50.0,
+                                    width: 50.0,
                                   ),
+                                  const SizedBox(width: 10.0),
                                   Text(FormatAppsFLdev.point("100000"),
                                       style: black400.copyWith(fontSize: 20.0))
                                 ],
@@ -168,8 +169,8 @@ class ProfileView extends GetView<ProfileController> {
                     child: Column(
                       children: [
                         ItemList(
-                          onTap: () => Get.toNamed(Routes.underDevelopment),
-                          label: "Perbarui Profil",
+                          onTap: () => Get.toNamed(Routes.profileSetting),
+                          label: "Pengaturan Profile",
                           icon: Icons.person_outline,
                         ),
                         ItemList(

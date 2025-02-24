@@ -9,7 +9,7 @@ class ItemHistory extends StatelessWidget {
   const ItemHistory({
     super.key,
     this.onTap,
-    this.nameSO = "",
+    this.idSo = "",
     this.brandName = "",
     this.productName = "",
     this.date = "",
@@ -25,7 +25,7 @@ class ItemHistory extends StatelessWidget {
   final VoidCallback? onTap;
   final bool shadow;
   final bool isDetail;
-  final String nameSO;
+  final String idSo;
   final String productName;
   final String date;
   final String brandName;
@@ -43,7 +43,7 @@ class ItemHistory extends StatelessWidget {
       child: Container(
         width: sizeScreen.width,
         padding: const EdgeInsets.all(14.0),
-        margin: const EdgeInsets.only(bottom: 20.0),
+        margin: const EdgeInsets.only(bottom: 10.0),
         decoration: BoxDecoration(
           // border: Border.all(color: const Color(0x7077bba2)),
           boxShadow: boxShadow,
@@ -76,13 +76,13 @@ class ItemHistory extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        if (nameSO.isNotEmpty)
-                          contentItem(nameSO, black600, 14.0),
+                        // if (idSo.isNotEmpty)
+                        //   contentItem(nameSO, black600, 14.0),
                         if (productName.isNotEmpty)
                           contentItem(productName, black600, 14.0),
                         if (brandName.isNotEmpty)
                           contentItem(brandName, black400, 12.0),
-                        contentItem(date, black400, 12.0),
+                        if (date.isNotEmpty) contentItem(date, black400, 12.0),
                         if (priceProduct != 0)
                           contentItem(
                               "${FormatAppsFLdev.currency(priceProduct.toString())} /pcs",

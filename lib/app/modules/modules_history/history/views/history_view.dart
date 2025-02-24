@@ -104,14 +104,15 @@ class HistoryView extends GetView<HistoryController> {
                             return ItemHistory(
                               onTap: () {
                                 Get.toNamed(Routes.historyDetail, arguments: {
-                                  'nameSo': item.nameSo?.toString() ?? "",
+                                  'idSo': item.nameSo?.toString() ?? "",
                                   'categorySo':
                                       item.categorySo?.toString() ?? "",
                                   'typeSo': item.typeSo?.toString() ?? "",
+                                  'dateSo': item.dateSo?.toString() ?? "",
                                 });
                               },
                               shadow: true,
-                              nameSO: item.nameSo ?? "No name SO",
+                              idSo: item.nameSo ?? "No id SO",
                               brandName: item.brandSo ?? "No brand name SO",
                               productCount:
                                   int.tryParse(item.totalSo ?? "0") ?? 0,
