@@ -10,7 +10,7 @@ class ThemeConfigFLdev {
       indicatorColor: ColorApps.secondary,
       appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: ColorApps.secondary),
-          backgroundColor: ColorApps.bg),
+          backgroundColor: ColorApps.white),
     );
   }
 }

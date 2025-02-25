@@ -36,7 +36,7 @@ class AlertDialogNoAction extends StatelessWidget {
                       height: 80.0,
                     ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
             child: Column(
               children: [
                 Text(

@@ -39,7 +39,7 @@ class ItemDailyReward extends StatelessWidget {
             height: 16.0,
           ),
           Image.asset(
-            AssetConfigFLdev.iconPoint,
+            AssetConfigFLdev.iconCoinNew,
             height: 22.0,
             width: 22.0,
           ),

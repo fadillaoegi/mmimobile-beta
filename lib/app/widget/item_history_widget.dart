@@ -76,8 +76,7 @@ class ItemHistory extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // if (idSo.isNotEmpty)
-                        //   contentItem(nameSO, black600, 14.0),
+                        if (idSo.isNotEmpty) contentItem(idSo, black600, 14.0),
                         if (productName.isNotEmpty)
                           contentItem(productName, black600, 14.0),
                         if (brandName.isNotEmpty)

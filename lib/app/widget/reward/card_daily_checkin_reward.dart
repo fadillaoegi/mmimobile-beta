@@ -37,7 +37,7 @@ class CardDailyCheckInReward extends StatelessWidget {
               Row(
                 children: [
                   Image.asset(
-                    AssetConfigFLdev.iconPoint,
+                    AssetConfigFLdev.iconCoinNew,
                     height: 24.0,
                     width: 24.0,
                   ),

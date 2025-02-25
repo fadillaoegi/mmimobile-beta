@@ -77,7 +77,7 @@ class InformationProfile extends StatelessWidget {
                     child: Row(
                       children: [
                         Image.asset(
-                          AssetConfigFLdev.iconPoint,
+                          AssetConfigFLdev.iconCoinNew,
                           height: 20.0,
                           width: 20.0,
                         ),

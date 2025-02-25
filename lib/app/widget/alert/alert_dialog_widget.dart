@@ -44,7 +44,7 @@ class AlertDialogApps extends StatelessWidget {
                       height: 120.0,
                     ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.only(bottom: 20.0),
             child: Column(
               children: [
                 Text(

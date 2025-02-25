@@ -1,20 +1,20 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:d_method/d_method.dart';
 import 'package:mmimobile/app/api/api.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/configs/session_config.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
-import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class ProfileEditNameController extends GetxController {
   late final UserController dataUser;

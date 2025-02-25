@@ -128,9 +128,12 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
 
             const Divider(color: ColorApps.primary),
             const SizedBox(height: 10.0),
-            const ListBetween(
-              field: "Total : ",
-              value: "Rp. 0",
+            Obx(
+              () => ListBetween(
+                field: "Total : ",
+                value:
+                    FormatAppsFLdev.currency(controller.sum.value.toString()),
+              ),
             ),
           ],
         ),

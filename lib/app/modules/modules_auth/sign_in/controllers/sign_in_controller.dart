@@ -219,13 +219,8 @@ class SignInController extends GetxController {
     } catch (e) {
       DMethod.printTitle("Try ~ signInProvider", e.toString());
     } finally {
-      Future.delayed(
-        const Duration(seconds: 3),
-        () {
-          isLoading.value = false;
-          update();
-        },
-      );
+      isLoading.value = false;
+      update();
     }
     isLoading.value = false;
     update();

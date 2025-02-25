@@ -24,7 +24,6 @@ class AssetConfigFLdev {
 
   // NOTE: ICON
   static const iconFaq = "assets/images/iconFaq.png";
-  static const iconPoint = "assets/images/iconPoint.png";
   static const iconWebsite = "assets/images/iconWebsite.png";
   static const iconPartners = "assets/images/iconPartners.png";
   static const iconCopyright = "assets/images/iconCopyright.png";

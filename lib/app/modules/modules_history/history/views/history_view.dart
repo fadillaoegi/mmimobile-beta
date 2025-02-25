@@ -26,7 +26,7 @@ class HistoryView extends GetView<HistoryController> {
     final searchController = TextEditingController();
 
     // NOTE: Fetch data
-    controller.fetchHistory(customerId!, null);
+    controller.fetchHistory(customerId ?? "", null);
 
     return Scaffold(
       appBar: AppBar(
@@ -70,7 +70,7 @@ class HistoryView extends GetView<HistoryController> {
                       : null,
                   onRefresh: () async {
                     await controller.fetchHistory(
-                      customerId,
+                      customerId ?? "",
                       searchController.text.isEmpty
                           ? null
                           : searchController.text,
@@ -80,7 +80,7 @@ class HistoryView extends GetView<HistoryController> {
                   onLoad: controller.hasMoreData.value
                       ? () async {
                           await controller.fetchHistory(
-                            customerId,
+                            customerId ?? "",
                             searchController.text.isEmpty
                                 ? null
                                 : searchController.text,

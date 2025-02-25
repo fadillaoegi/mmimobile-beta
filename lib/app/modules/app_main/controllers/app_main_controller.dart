@@ -7,41 +7,51 @@ import 'package:mmimobile/app/modules/modules_system_support/system_support/view
 import 'package:mmimobile/app/modules/rating_services/views/rating_services_view.dart';
 
 class AppMainController extends GetxController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
   Rx<int> currentIndex = 0.obs;
 
-  final pages = [
-    const HomeView(),
-    const SystemSupportView(),
-    const RatingServicesView(),
-    const HistoryView(),
-    const ProfileView()
+  final pages = <Widget>[
+    HomeView(),
+    SystemSupportView(),
+    RatingServicesView(),
+    HistoryView(),
+    ProfileView()
   ].obs;
 
-  final items = const [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home_outlined),
+  final items = <BottomNavigationBarItem>[
+    const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.home_outlined,
+        // color: ColorApps.white,
+      ),
       label: 'Beranda',
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.book_outlined),
+    const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.book_outlined,
+        // color: ColorApps.white,
+      ),
       label: 'Support',
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.assignment_outlined),
+    const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.assignment_outlined,
+        // color: ColorApps.white,
+      ),
       label: 'Survey',
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.history),
+    const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.history,
+        // color: ColorApps.white,
+      ),
       label: 'Riwayat',
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person_outline),
+    const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.person_outline,
+        // color: ColorApps.white,
+      ),
       label: 'Profil',
     ),
-  ];
+  ].obs;
 }

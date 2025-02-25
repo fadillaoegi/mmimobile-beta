@@ -36,7 +36,7 @@ class AddEmailView extends GetView<AddEmailController> {
                           InkWell(
                             onTap: () => Get.back(),
                             child: const Icon(
-                              Icons.arrow_back,
+                              Icons.arrow_back_ios_new_rounded,
                               color: ColorApps.primary,
                             ),
                           )
@@ -53,7 +53,8 @@ class AddEmailView extends GetView<AddEmailController> {
                       height: 40.0,
                     ),
                     Text(
-                      "Add Your Email",
+                      "Your account doesn't have an email, \nplease enter your email",
+                      textAlign: TextAlign.center,
                       style: primary600.copyWith(fontSize: 20.0),
                     ),
                     const SizedBox(

@@ -1,18 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:mmimobile/app/api/api.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/data/models/history_detail_model.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HistoryDetailController extends GetxController {
   final RxList<HistoryDetail> items = <HistoryDetail>[].obs; // Data dari API
-  final RxBool isLoading = false.obs; // Status loading
-  final RxString errorMessage = ''.obs; // Pesan error, jika ada
+  final RxBool isLoading = false.obs;
+  final RxString errorMessage = ''.obs;
+  final sum = 0.obs;
   late String customerId; // Diambil dari UserController
   late String soId; // Diterima sebagai argumen
 
@@ -46,6 +47,8 @@ class HistoryDetailController extends GetxController {
 
       if (response != null && response.statusCode == 200) {
         final jsonData = response.data['data'];
+
+        sum.value = jsonData.fold(0, (sum, item) => sum + int.parse(item["productTotal"]));
 
         if (jsonData is List) {
           items.assignAll(
