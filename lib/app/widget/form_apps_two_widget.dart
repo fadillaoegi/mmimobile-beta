@@ -47,8 +47,8 @@ class FormAppsTwo extends StatelessWidget {
                 )
               : const SizedBox(),
           border: const OutlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.primary),
-          ),
+              borderSide: BorderSide(color: ColorApps.primary),
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: ColorApps.primary, width: 2.0),
           )),

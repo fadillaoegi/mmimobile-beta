@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
-
 import '../controllers/app_main_controller.dart';
 
 class AppMainView extends GetView<AppMainController> {
@@ -16,12 +15,11 @@ class AppMainView extends GetView<AppMainController> {
           index: controller.currentIndex.value,
           children: controller.pages,
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(18.0),
           child: Container(
-            // elevation: 10.0,
-            padding: const EdgeInsets.all(6.0),
+            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(40.0)),
                 color: ColorApps.bottom,

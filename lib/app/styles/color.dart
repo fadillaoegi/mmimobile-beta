@@ -7,7 +7,7 @@ class ColorApps {
   static const secondary = Color(0xFF6C8524);
   static const card = Color(0x90ECEADE);
   static const card2 = Color(0x80D0F2AC);
-  static const bottom = Color(0xffD0F2AC);
+  static const bottom = Color(0x97D0F2AC);
   static const cardTransparan = Color(0x70ffffff);
   static const icon = Color(0xffAFAFAF);
   static const icon2 = Color(0xff5E5E5E);

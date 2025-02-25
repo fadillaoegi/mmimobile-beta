@@ -8,6 +8,7 @@ import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
+import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/banner_information_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -53,7 +54,7 @@ class HomeView extends GetView<HomeController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const ImageCircle(
-                                size: 60.0,
+                                size: 70.0,
                                 edit: false,
                               ),
                               const SizedBox(width: 10.0),
@@ -72,7 +73,7 @@ class HomeView extends GetView<HomeController> {
                                               "..."
                                           : formattedText,
                                       style:
-                                          primary700.copyWith(fontSize: 14.0),
+                                          primary700.copyWith(fontSize: 16.0),
                                     );
                                   }),
                                   Row(
@@ -80,14 +81,15 @@ class HomeView extends GetView<HomeController> {
                                       Text(
                                         "Diamond",
                                         style:
-                                            primary400.copyWith(fontSize: 12.0),
+                                            primary400.copyWith(fontSize: 14.0),
                                       ),
+                                      const SizedBox(width: 6.0),
                                       Text(
-                                        "*",
+                                        "|",
                                         style:
-                                            primary400.copyWith(fontSize: 12.0),
+                                            primary400.copyWith(fontSize: 14.0),
                                       ),
-                                      const SizedBox(width: 10.0),
+                                      const SizedBox(width: 6.0),
                                       Text(
                                         "200 ",
                                         style:
@@ -106,6 +108,9 @@ class HomeView extends GetView<HomeController> {
                           ),
                           IconButton(
                             onPressed: () => Get.toNamed(Routes.notification),
+                            // onPressed: () => SnackbarFLdev.snackShow(
+                            //     title: "Welcome to MMI mobile",
+                            //     message: "Signin success"),
                             icon: const Icon(
                               Icons.notifications_none_sharp,
                               color: ColorApps.primary,
@@ -113,6 +118,19 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 14.0),
+                      child: SectionTittle(
+                        title: "Sorotan Bulan Ini",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 14.0),
+                      child: SectionTittle(
+                        title: "Sorotan Bulan Ini",
                       ),
                     ),
 

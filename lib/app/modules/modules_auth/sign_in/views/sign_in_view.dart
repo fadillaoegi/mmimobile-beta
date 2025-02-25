@@ -50,7 +50,8 @@ class SignInView extends GetView<SignInController> {
                             TextSpan(
                               children: [
                                 TextSpan(
-                                  text: "Selamat datang di Mmimobile\n",
+                                  text: "Selamat datang di MMI Apps\n",
+                                  // text: "Masuk\n",
                                   style: primary600.copyWith(fontSize: 20.0),
                                 ),
                                 TextSpan(
@@ -134,8 +135,8 @@ class SignInView extends GetView<SignInController> {
                                   onPress: () => controller.signIn(context),
                                   text: "Masuk",
                                 ),
-                                const SizedBox(
-                                  height: 40,
+                                SizedBox(
+                                  height: 60,
                                 ),
 
                                 // NOTE: UNCOMMENT IF YOU NEED THIS FEATURE

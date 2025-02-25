@@ -1,17 +1,18 @@
 import 'dart:async';
-import 'package:d_method/d_method.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:d_method/d_method.dart';
 import 'package:mmimobile/app/api/api.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/configs/session_config.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
-import 'package:mmimobile/app/data/sources/source_apps.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
+import 'package:mmimobile/app/data/sources/source_apps.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
 
 class SignInController extends GetxController {
@@ -22,8 +23,8 @@ class SignInController extends GetxController {
   final emailController = TextEditingController().obs;
   final passController = TextEditingController().obs;
   final isObsecure = true.obs;
-
   Rx<bool> isLoading = false.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -117,7 +118,7 @@ class SignInController extends GetxController {
               barrierDismissible: false,
             );
             Future.delayed(
-              const Duration(seconds: 3),
+              const Duration(seconds: 2),
               () => Get.back(),
             );
             isLoading.value = false;
@@ -132,6 +133,11 @@ class SignInController extends GetxController {
             ),
             barrierDismissible: false,
           );
+          // Get.snackbar(result['message'], "Sign in success");
+
+          // String customerId = result['data']['customer_id'];
+          // Get.back();
+          // Get.toNamed(Routes.resetPassword, arguments: customerId.toString());
 
           Future.delayed(
             Duration(seconds: 2),
@@ -172,32 +178,13 @@ class SignInController extends GetxController {
           }
 
           // NOTE: HANDLE RESPONSE SUCCCESS
-          Get.dialog(
-            AlertDialogNoAction(
-              title: "Sign Success",
-              lotties: AssetConfigFLdev.lottieSuccess,
-              content: "Welcome to Mmimobile",
-            ),
-            barrierDismissible: false,
-          );
+          SnackbarFLdev.snackShow(
+              title: "Welcome to Mmimobile", message: "Sigin Success");
 
-          Future.delayed(
-            const Duration(seconds: 3),
-            () {
-              User user = User.fromJson(result['data']);
-              SessionUserFLdev.saveUser(user);
-              Get.back();
-              Future.delayed(
-                const Duration(milliseconds: 1),
-                () {
-                  Get.offAllNamed(Routes.appMain);
-                },
-              );
-            },
-          );
+          User user = User.fromJson(result['data']);
+          SessionUserFLdev.saveUser(user);
+          Get.offAllNamed(Routes.appMain);
 
-          // isLoading.value = false;
-          // update();
           return;
         }
       } else {

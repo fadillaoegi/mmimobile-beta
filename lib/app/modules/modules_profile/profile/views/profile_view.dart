@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
+import 'package:mmimobile/app/configs/session_config.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
+import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import '../controllers/profile_controller.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -9,7 +11,6 @@ import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
-import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:mmimobile/app/widget/item_list_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
@@ -41,7 +42,9 @@ class ProfileView extends GetView<ProfileController> {
                               onTap: () => Get.toNamed(Routes.profileSetting),
                               child: Stack(
                                 children: [
-                                  const ImageCircle(),
+                                  const ImageCircle(
+                                    edit: false,
+                                  ),
                                 ],
                               )),
                           const SizedBox(width: 10.0),
@@ -170,14 +173,20 @@ class ProfileView extends GetView<ProfileController> {
                       children: [
                         ItemList(
                           onTap: () => Get.toNamed(Routes.profileSetting),
-                          label: "Pengaturan Profile",
+                          label: "Ubah Profile",
                           icon: Icons.person_outline,
+                        ),
+                        ItemList(
+                          onTap: () => Get.toNamed(Routes.underDevelopment),
+                          label: "Voucher Saya",
+                          icon: Icons.assistant,
                         ),
                         ItemList(
                           onTap: () => Get.toNamed(Routes.underDevelopment),
                           label: "Pengaturan Notifikasi",
                           icon: Icons.notification_important_outlined,
                         ),
+
                         ItemList(
                           onTap: () => Get.toNamed(Routes.underDevelopment),
                           label: "Pengaturan Bahasa",
@@ -188,46 +197,79 @@ class ProfileView extends GetView<ProfileController> {
                           label: "Akun & keamanan",
                           icon: Icons.security_outlined,
                         ),
-                        ItemList(
-                          onTap: () async {
-                            await EasyLauncher.url(
-                              url: "https://mashmoshem.co.id/",
-                              mode: Mode.inAppWeb,
-                            );
-                          },
-                          label: "Website",
-                          iconImage: AssetConfigFLdev.iconWebsite,
-                        ),
                         // ItemList(
-                        //   onTap: () => Get.toNamed(Routes.underDevelopment),
-                        //   label: "Help center",
-                        //   icon: Icons.help_outline,
-                        // ),
-                        // ItemList(
-                        //   onTap: () => Get.toNamed(Routes.privacyPolicy),
-                        //   label: "Privacy Policy",
-                        //   iconImage: AssetConfigFLdev.iconPrivacyPolicy,
-                        // ),
-                        // ItemList(
-                        //   onTap: () => Get.toNamed(Routes.faq),
-                        //   label: "FAQ",
-                        //   iconImage: AssetConfigFLdev.iconFaq,
-                        // ),
-                        // ItemList(
-                        //   onTap: () => Get.toNamed(Routes.ratingService),
-                        //   label: "Rating business services",
-                        //   icon: Icons.star_border,
-                        //   // iconImage: AssetConfigFLdev.iconFaq,
+                        //   onTap: () async {
+                        //     await EasyLauncher.url(
+                        //       url: "https://mashmoshem.co.id/",
+                        //       mode: Mode.inAppWeb,
+                        //     );
+                        //   },
+                        //   label: "Website",
+                        //   iconImage: AssetConfigFLdev.iconWebsite,
                         // ),
                         ItemList(
                           onTap: () => Get.toNamed(Routes.underDevelopment),
-                          label: "Rating mmimobile",
+                          label: "Rating Aplikasi",
                           icon: Icons.star_border,
+                          // iconImage: AssetConfigFLdev.iconFaq,
+                        ),
+                        ItemList(
+                          onTap: () {
+                            Get.dialog(
+                                AlertDialogApps(
+                                  lotties: AssetConfigFLdev.lottieWarning,
+                                  title: 'Are you sure ?',
+                                  content: 'Logout from apps',
+                                  textBtn: 'yes',
+                                  onTap: () {
+                                    SessionUserFLdev.clearUser();
+                                    Get.offAllNamed(Routes.signIn);
+                                    Get.back();
+                                  },
+                                ),
+                                barrierDismissible: false);
+                          },
+                          label: "Keluar",
+                          icon: Icons.logout,
                           // iconImage: AssetConfigFLdev.iconFaq,
                         ),
                       ],
                     ),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(10.0),
+                  //   child: Column(
+                  //     children: [
+                  //       OutBtnApps(
+                  //         onPress: () {
+                  //           Get.dialog(
+                  //               AlertDialogApps(
+                  //                 lotties: AssetConfigFLdev.lottieWarning,
+                  //                 title: 'Are you sure ?',
+                  //                 content: 'Logout from apps',
+                  //                 textBtn: 'yes',
+                  //                 onTap: () {
+                  //                   SessionUserFLdev.clearUser();
+                  //                   Get.offAllNamed(Routes.signIn);
+                  //                   Get.back();
+                  //                 },
+                  //               ),
+                  //               barrierDismissible: false);
+                  //         },
+                  //         text: 'Logout',
+                  //       ),
+                  //       const SizedBox(
+                  //         height: 10.0,
+                  //       ),
+                  //       // OutBtnApps(
+                  //       //   onPress: () {
+
+                  //       //   },
+                  //       //   text: 'Delete account',
+                  //       // ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),

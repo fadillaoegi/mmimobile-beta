@@ -96,7 +96,7 @@ class CarouselSystemSupport extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: controller.currentIndex.value == index
                             ? Color.fromARGB(255, 45, 127, 97)
-                            : ColorApps.white,
+                            : ColorApps.disable,
                       ),
                     ),
                   ),

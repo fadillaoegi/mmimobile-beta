@@ -26,7 +26,7 @@ class HistoryView extends GetView<HistoryController> {
     final searchController = TextEditingController();
 
     // NOTE: Fetch data
-    controller.fetchHistory(customerId ?? "", null);
+    // controller.fetchHistory(customerId ?? "", null);
 
     return Scaffold(
       appBar: AppBar(
@@ -166,7 +166,7 @@ class SearchFLdev extends StatelessWidget {
         hintStyle: disable2400,
         suffixIcon: GestureDetector(
           onTap: () {
-            // FocusScope.of(context).unfocus();
+            FocusScope.of(context).unfocus();
             controller.fetchHistory(
               customerId!,
               searchController.text.isEmpty ? null : searchController.text,
