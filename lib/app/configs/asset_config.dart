@@ -3,6 +3,18 @@ class AssetConfigFLdev {
   static const bgNew = "assets/images/new/bgNew.png";
   static const bgLoginNew = "assets/images/new/bgLoginNew.png";
   static const iconCoinNew = "assets/images/new/iconCoinNew.png";
+  static const silverCard = "assets/images/new/silverCard.png";
+  static const silverCard2 = "assets/images/new/silverCard2.png";
+  static const silverBgCard = "assets/images/new/silverBgCard.png";
+  static const goldCard = "assets/images/new/goldCard.png";
+  static const goldCard2 = "assets/images/new/goldCard2.png";
+  static const goldBgCard = "assets/images/new/goldBgCard.png";
+  static const platinumCard = "assets/images/new/platinumCard.png";
+  static const platinumCard2 = "assets/images/new/platinumCard2.png";
+  static const platinumBgCard = "assets/images/new/platinumBgCard.png";
+  static const prioritasCard = "assets/images/new/prioritasCard.png";
+  static const prioritasCard2 = "assets/images/new/prioritasCard2.png";
+  static const prioritasBgCard = "assets/images/new/prioritasBgCard.png";
 
   // NOTE: IMAGES
   static const bgLogin3 = "assets/images/bg.png";
@@ -23,11 +35,17 @@ class AssetConfigFLdev {
   static const logo5 = "assets/images/logo/logo5.png";
 
   // NOTE: ICON
-  static const iconFaq = "assets/images/iconFaq.png";
-  static const iconWebsite = "assets/images/iconWebsite.png";
-  static const iconPartners = "assets/images/iconPartners.png";
-  static const iconCopyright = "assets/images/iconCopyright.png";
-  static const iconPrivacyPolicy = "assets/images/iconPrivacyPolicy.png";
+  static const iconFaq = "assets/images/icons/iconFaq.png";
+  static const iconWebsite = "assets/images/icons/iconWebsite.png";
+  static const iconPartners = "assets/images/icons/iconPartners.png";
+  static const iconCopyright = "assets/images/icons/iconCopyright.png";
+  static const iconPrivacyPolicy = "assets/images/icons/iconPrivacyPolicy.png";
+  static const iconServiceBusiness =
+      "assets/images/icons/iconServiceBusiness.png";
+  static const iconQualityProduct =
+      "assets/images/icons/iconQualityProduct.png";
+  static const iconComplainService =
+      "assets/images/icons/iconComplainService.png";
 
   // NOTE: LEVEL
   static const iconRatingGold = "assets/images/iconRatingGold.png";

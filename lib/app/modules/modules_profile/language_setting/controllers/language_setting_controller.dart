@@ -1,22 +1,9 @@
 import 'package:get/get.dart';
 
 class LanguageSettingController extends GetxController {
+  final language = 'id'.obs; // Default Indonesia
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void languageChanged(String selectedLanguage) {
+    language.value = selectedLanguage; // Update bahasa yang dipilih
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

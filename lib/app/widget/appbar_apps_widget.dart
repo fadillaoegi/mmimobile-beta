@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mmimobile/app/styles/color.dart';
-import 'package:mmimobile/app/styles/fonts.dart';
 
 class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
   const AppBarAppFLdev({
@@ -11,18 +11,24 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
     this.checkClick = false,
     this.backRoute = true,
     this.onTap,
+    this.color = ColorApps.card3,
+    this.colorFontIcon = ColorApps.white,
   });
 
   final String? title;
   final bool? checkClick;
   final bool? backRoute;
   final VoidCallback? onTap;
+  final Color? color;
+  final Color? colorFontIcon;
+  // final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Color(0x0077bba2),
+      // backgroundColor: Color(0x0077bba2),
+      backgroundColor: color,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -31,27 +37,31 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
               backRoute!
                   ? IconButton(
                       onPressed: () => Get.back(),
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_ios,
-                        size: 26.0,
+                        size: 24.0,
+                        color: colorFontIcon,
                       ),
                     )
                   : const SizedBox(),
               SizedBox(
-                width: backRoute! ? 10.0 : 0.0,
+                width: backRoute! ? 00.0 : 0.0,
               ),
               Text(
                 title.toString(),
-                style: secondary600.copyWith(fontSize: 20.0),
+                style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w600,
+                    color: colorFontIcon,
+                    fontSize: 20.0),
               ),
             ],
           ),
           checkClick!
               ? IconButton(
                   onPressed: onTap,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.check_outlined,
-                    color: ColorApps.secondary,
+                    color: colorFontIcon,
                     size: 26.0,
                   ),
                 )

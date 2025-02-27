@@ -183,7 +183,9 @@ class SignInController extends GetxController {
 
           User user = User.fromJson(result['data']);
           SessionUserFLdev.saveUser(user);
-          Get.offAllNamed(Routes.appMain);
+          Future.delayed(const Duration(seconds: 1), () {
+            Get.offAllNamed(Routes.appMain);
+          });
 
           return;
         }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-
 import '../controllers/reward_history_controller.dart';
 
 class RewardHistoryView extends GetView<RewardHistoryController> {
@@ -30,11 +28,11 @@ class RewardHistoryView extends GetView<RewardHistoryController> {
                   children: [
                     Text(
                       "100+",
-                      style: white500.copyWith(),
+                      style: secondary500.copyWith(),
                     ),
                     Text(
                       "Daily Sign in",
-                      style: white500.copyWith(),
+                      style: secondary500.copyWith(),
                     ),
                   ],
                 ),

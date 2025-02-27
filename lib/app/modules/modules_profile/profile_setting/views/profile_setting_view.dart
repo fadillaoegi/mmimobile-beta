@@ -21,6 +21,8 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
         appBar: AppBarAppFLdev(
           title: "Setting Profile",
           checkClick: true,
+          color: ColorApps.white,
+          colorFontIcon: ColorApps.secondary,
           onTap: () {},
         ),
         body: LayoutBuilder(
@@ -80,7 +82,6 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                     titleTwo: "Password",
                     valueTwo: "********",
                   ),
-                  
                 ],
               ),
             ),

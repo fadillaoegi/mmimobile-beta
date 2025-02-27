@@ -4,7 +4,7 @@ import 'package:mmimobile/app/modules/modules_history/history/views/history_view
 import 'package:mmimobile/app/modules/home/views/home_view.dart';
 import 'package:mmimobile/app/modules/modules_profile/profile/views/profile_view.dart';
 import 'package:mmimobile/app/modules/modules_system_support/system_support/views/system_support_view.dart';
-import 'package:mmimobile/app/modules/rating_services/views/rating_services_view.dart';
+import 'package:mmimobile/app/modules/survey/views/survey_view.dart';
 
 class AppMainController extends GetxController {
   Rx<int> currentIndex = 0.obs;
@@ -12,7 +12,7 @@ class AppMainController extends GetxController {
   final pages = <Widget>[
     HomeView(),
     SystemSupportView(),
-    RatingServicesView(),
+    SurveyView(),
     HistoryView(),
     ProfileView()
   ].obs;
@@ -37,7 +37,7 @@ class AppMainController extends GetxController {
         Icons.assignment_outlined,
         // color: ColorApps.white,
       ),
-      label: 'Survey',
+      label: 'Survei',
     ),
     const BottomNavigationBarItem(
       icon: Icon(

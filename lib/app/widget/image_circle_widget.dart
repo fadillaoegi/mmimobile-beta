@@ -44,7 +44,7 @@ class ImageCircle extends StatelessWidget {
                         ],
                       ),
                       child: const Icon(Icons.edit,
-                          size: 14, color: ColorApps.primary),
+                          size: 14, color: ColorApps.secondary),
                     ),
                   )
                 : const SizedBox(),

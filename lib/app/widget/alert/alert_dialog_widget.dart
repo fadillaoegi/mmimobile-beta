@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/out_btn_apps_widget.dart';
@@ -78,6 +79,7 @@ class AlertDialogApps extends StatelessWidget {
               Expanded(
                   child: OutBtnApps(
                 text: textBtn,
+                color: ColorApps.secondary,
                 onPress: onTap,
               ))
             ],

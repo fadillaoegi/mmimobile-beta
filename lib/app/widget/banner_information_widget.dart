@@ -21,20 +21,19 @@ class BannerInformation extends StatelessWidget {
       height: sizeScreen.height / 2.5,
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-          color: ColorApps.card2,
-          borderRadius: BorderRadius.circular(10.0)),
+          color: ColorApps.white, borderRadius: BorderRadius.circular(10.0)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Text(
-                "Promotion this month",
+                "Sorotan bulan ini",
                 style: secondary600.copyWith(fontSize: 16.0),
               ),
               const Icon(
                 Icons.keyboard_arrow_right_rounded,
-                color: ColorApps.white,
+                color: ColorApps.secondary,
               )
             ],
           ),
@@ -50,33 +49,26 @@ class BannerInformation extends StatelessWidget {
                   7,
                   (index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                    child: TransparantCard(
+                    child: CardFLdev(
                       width: sizeScreen.width / 1.3,
                       padding: 0.0,
                       height: 200.0,
-                      childern: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: sizeScreen.width / 1.3,
-                              height: 200.0,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0)),
-                                  // borderRadius: BorderRadius.only(
-                                  //     topLeft:
-                                  //         Radius.circular(10.0),
-                                  //     topRight:
-                                  //         Radius.circular(10.0)),
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          AssetConfigFLdev.examplePromo),
-                                      fit: BoxFit.fill)),
-                            )
-                          ],
-                        ),
-                      ],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: sizeScreen.width / 1.3,
+                            height: 200.0,
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        AssetConfigFLdev.examplePromo),
+                                    fit: BoxFit.fill)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

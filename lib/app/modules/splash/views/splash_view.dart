@@ -33,14 +33,14 @@ class SplashView extends GetView<SplashController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const CupertinoActivityIndicator(
-                    color: ColorApps.primary,
+                    color: ColorApps.secondary,
                   ),
                   const SizedBox(
                     width: 10.0,
                   ),
                   Text(
                     controller.message.value,
-                    style: primary500.copyWith(fontSize: 14.0),
+                    style: secondary500.copyWith(fontSize: 14.0),
                   ),
                 ],
               ),

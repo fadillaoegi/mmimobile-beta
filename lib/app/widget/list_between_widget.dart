@@ -21,7 +21,7 @@ class ListBetween extends StatelessWidget {
         ),
         Text(
           "$value",
-          style: primary400.copyWith(fontSize: 16.0),
+          style: secondary400.copyWith(fontSize: 16.0),
         ),
       ],
     );

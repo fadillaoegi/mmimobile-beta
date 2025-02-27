@@ -24,7 +24,7 @@ class ItemDailyReward extends StatelessWidget {
           color: const Color.fromARGB(28, 109, 133, 36),
           border: Border.all(
               color: isChacked!
-                  ? ColorApps.primary
+                  ? ColorApps.secondary
                   : const Color.fromARGB(100, 175, 175, 175)),
           borderRadius: const BorderRadius.all(Radius.circular(10.0))),
       child: Column(
@@ -33,7 +33,7 @@ class ItemDailyReward extends StatelessWidget {
         children: [
           Text(
             "+$point",
-            style: primary500.copyWith(fontSize: 12.0),
+            style: secondary500.copyWith(fontSize: 12.0),
           ),
           const SizedBox(
             height: 16.0,

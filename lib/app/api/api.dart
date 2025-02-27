@@ -1,9 +1,9 @@
 class ApiApps {
   // NOTE: ROOT API
-  // static const root = "https://mmi.entis.app/api";
+  static const root = "https://mmi.entis.app/api";
 
   // NOTE: ROOT LOCAL
-  static const root = "http://190.110.0.32/EntIS-MMI/api";
+  // static const root = "http://190.110.0.38/EntIS-MMI/api";
 
   // NOTE: CUSTOMER AUTH API
   static const signIn = "$root/signin";

@@ -7,6 +7,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/item_history_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -29,15 +30,9 @@ class HistoryView extends GetView<HistoryController> {
     // controller.fetchHistory(customerId ?? "", null);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ColorApps.white,
-        automaticallyImplyLeading: false,
-        scrolledUnderElevation: 0.0,
-        centerTitle: false,
-        title: Text(
-          "History",
-          style: secondary700.copyWith(fontSize: 20.0),
-        ),
+      appBar: AppBarAppFLdev(
+        title: "Riwayat",
+        backRoute: false,
       ),
       body: CanvaApps(
         widget: Column(
@@ -162,8 +157,8 @@ class SearchFLdev extends StatelessWidget {
       },
       autofocus: false,
       decoration: InputDecoration(
-        hintText: 'Search history...',
-        hintStyle: disable2400,
+        hintText: 'Cari riwayat...',
+        hintStyle: secondary300,
         suffixIcon: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();

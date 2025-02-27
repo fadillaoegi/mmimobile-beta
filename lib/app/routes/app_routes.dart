@@ -44,6 +44,9 @@ abstract class Routes {
   static const ratingService = _Paths.ratingService;
   static const languageSetting = _Paths.languageSetting;
   static const profileEdit = _Paths.profileEdit;
+  static const membership = _Paths.membership;
+  static const DETAIL_MEMBERSHIP = _Paths.DETAIL_MEMBERSHIP;
+  static const SURVEY = _Paths.SURVEY;
 }
 
 abstract class _Paths {
@@ -92,4 +95,7 @@ abstract class _Paths {
   static const ratingService = '/rating-services';
   static const languageSetting = '/language-setting';
   static const profileEdit = '/profile-edit';
+  static const membership = '/membership';
+  static const DETAIL_MEMBERSHIP = '/detail-membership';
+  static const SURVEY = '/survey';
 }

@@ -23,7 +23,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
               padding: const EdgeInsets.all(8.0),
               height: sizeScreen.height / 2.2,
               decoration: const BoxDecoration(
-                  color: ColorApps.primary,
+                  color: ColorApps.secondary,
                   image: DecorationImage(
                       image: AssetImage(AssetConfigFLdev.imageProduct),
                       fit: BoxFit.cover)),
@@ -43,7 +43,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
                             borderRadius: BorderRadius.all(
                               Radius.circular(100.0),
                             ),
-                            color: ColorApps.primary),
+                            color: ColorApps.secondary),
                         child: const Center(
                           child: Icon(
                             Icons.arrow_back,
@@ -74,7 +74,7 @@ class ProductDetailView extends GetView<ProductDetailController> {
                   children: [
                     Text(
                       "Optimaze Shine By Antika",
-                      style: primary600.copyWith(fontSize: 20.0),
+                      style: secondary700.copyWith(fontSize: 20.0),
                     ),
                     const SizedBox(
                       height: 10.0,

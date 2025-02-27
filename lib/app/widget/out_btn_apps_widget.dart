@@ -29,7 +29,7 @@ class OutBtnApps extends StatelessWidget {
           child: Text(
             text!,
             textAlign: TextAlign.center,
-            style: primary500.copyWith(fontSize: sizeText),
+            style: secondary500.copyWith(fontSize: sizeText),
           ),
         ),
       ),

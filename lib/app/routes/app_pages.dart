@@ -1,9 +1,14 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-
+import 'package:mmimobile/app/modules/modules_profile/profile_update_address/bindings/profile_update_address_binding.dart';
+import 'package:mmimobile/app/modules/modules_profile/profile_update_address/views/profile_update_address_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
+import '../modules/detail_membership/bindings/detail_membership_binding.dart';
+import '../modules/detail_membership/views/detail_membership_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/membership/bindings/membership_binding.dart';
+import '../modules/membership/views/membership_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -30,6 +35,8 @@ import '../modules/modules_profile/privacy_policy/bindings/privacy_policy_bindin
 import '../modules/modules_profile/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/modules_profile/profile/bindings/profile_binding.dart';
 import '../modules/modules_profile/profile/views/profile_view.dart';
+import '../modules/modules_profile/profile_edit/bindings/profile_edit_binding.dart';
+import '../modules/modules_profile/profile_edit/views/profile_edit_view.dart';
 import '../modules/modules_profile/profile_edit_name/bindings/profile_edit_name_binding.dart';
 import '../modules/modules_profile/profile_edit_name/views/profile_edit_name_view.dart';
 import '../modules/modules_profile/profile_edit_password/bindings/profile_edit_password_binding.dart';
@@ -54,14 +61,12 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
-import '../modules/modules_profile/profile_edit/bindings/profile_edit_binding.dart';
-import '../modules/modules_profile/profile_edit/views/profile_edit_view.dart';
-import '../modules/profile_update_address/bindings/profile_update_address_binding.dart';
-import '../modules/profile_update_address/views/profile_update_address_view.dart';
 import '../modules/rating_services/bindings/rating_services_binding.dart';
 import '../modules/rating_services/views/rating_services_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/survey/bindings/survey_binding.dart';
+import '../modules/survey/views/survey_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
 
@@ -244,6 +249,21 @@ class AppPages {
       name: _Paths.profileEdit,
       page: () => const ProfileEditView(),
       binding: ProfileEditBinding(),
+    ),
+    GetPage(
+      name: _Paths.membership,
+      page: () => const MembershipView(),
+      binding: MembershipBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_MEMBERSHIP,
+      page: () => const DetailMembershipView(),
+      binding: DetailMembershipBinding(),
+    ),
+    GetPage(
+      name: _Paths.SURVEY,
+      page: () => const SurveyView(),
+      binding: SurveyBinding(),
     ),
   ];
 }

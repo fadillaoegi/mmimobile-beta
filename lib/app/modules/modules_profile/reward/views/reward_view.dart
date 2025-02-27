@@ -29,7 +29,7 @@ class RewardView extends GetView<RewardController> {
             "Reward",
             style: white600.copyWith(fontSize: 20.0),
           ),
-          backgroundColor: ColorApps.reward,
+          backgroundColor: ColorApps.secondary,
           automaticallyImplyLeading: false,
           actionsIconTheme: const IconThemeData(color: ColorApps.white),
         ),
@@ -39,7 +39,7 @@ class RewardView extends GetView<RewardController> {
               height: sizeScreen.height / 5,
               width: sizeScreen.width,
               decoration: const BoxDecoration(
-                  color: ColorApps.reward,
+                  color: ColorApps.secondary,
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(30.0),
                     bottomLeft: Radius.circular(30.0),
@@ -136,7 +136,7 @@ class RewardView extends GetView<RewardController> {
                             borderRadius: 50.0,
                             onPress: () {},
                             text: "Check-in Today",
-                            color: ColorApps.reward,
+                            color: ColorApps.secondary,
                           ),
                         ],
                       ),

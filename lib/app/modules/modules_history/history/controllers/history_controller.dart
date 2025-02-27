@@ -21,7 +21,8 @@ class HistoryController extends GetxController {
     super.onInit();
     final user = Get.put(UserController());
     final customerId = user.user.customerId;
-    fetchHistory(customerId ?? "", null);
+    print(customerId);
+    fetchHistory(customerId!, null);
   }
 
   Future<void> fetchHistory(String customerId, String? search,

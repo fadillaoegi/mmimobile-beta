@@ -3,17 +3,22 @@ import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 
 class ItemList extends StatelessWidget {
-  const ItemList({
-    super.key,
-    this.icon,
-    this.iconImage = "",
-    this.label = "",
-    this.onTap,
-  });
+  const ItemList(
+      {super.key,
+      this.icon,
+      this.iconImage = "",
+      this.label = "",
+      this.onTap,
+      this.fontColor,
+      this.iconSize = 22.0,
+      this.fontSize = 14.0});
   final String? label;
   final IconData? icon;
   final String? iconImage;
   final VoidCallback? onTap;
+  final Color? fontColor;
+  final double? fontSize;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -32,31 +37,32 @@ class ItemList extends StatelessWidget {
                   iconImage == ""
                       ? Icon(
                           icon,
-                          color: label == "Sign Out"
+                          color: label == "Sign Out" || label == "Keluar"
                               ? ColorApps.error
                               : ColorApps.disable2,
-                          size: 22.0,
+                          size: iconSize,
                         )
                       : Image.asset(
                           iconImage!,
-                          height: 22.0,
-                          width: 22.0,
+                          height: iconSize,
+                          width: iconSize,
                         ),
                   const SizedBox(
                     width: 10.0,
                   ),
                   Text(
                     "$label",
-                    style: label == "Sign Out"
-                        ? error400.copyWith(fontSize: 13.0)
-                        : disable2400.copyWith(fontSize: 13.0),
+                    style: label == "Sign Out" || label == "Keluar"
+                        ? error400.copyWith(fontSize: fontSize)
+                        : disable2400.copyWith(fontSize: fontSize),
                   ),
                 ],
               ),
               Icon(
                 Icons.keyboard_arrow_right_outlined,
-                color:
-                    label == "Sign Out" ? ColorApps.error : ColorApps.disable2,
+                color: label == "Sign Out" || label == "Keluar"
+                    ? ColorApps.error
+                    : ColorApps.disable2,
                 size: 22.0,
               ),
             ],
@@ -66,7 +72,9 @@ class ItemList extends StatelessWidget {
           height: 8.0,
         ),
         Divider(
-          color: label == "Sign Out" ? ColorApps.error : ColorApps.disable2,
+          color: label == "Sign Out" || label == "Keluar"
+              ? ColorApps.error
+              : ColorApps.disable2,
           thickness: 0.1,
         ),
       ],

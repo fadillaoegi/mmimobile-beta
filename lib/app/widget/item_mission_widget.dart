@@ -71,13 +71,14 @@ class ItemMission extends StatelessWidget {
                   const EdgeInsets.symmetric(vertical: 8.0, horizontal: 14.0),
               decoration: BoxDecoration(
                 border: Border.all(
-                    color: claimed! ? ColorApps.disable : ColorApps.primary,
+                    color: claimed! ? ColorApps.disable : ColorApps.secondary,
                     width: 1.0),
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: Text(
                 "Claim",
-                style: claimed! ? disable400.copyWith() : primary400.copyWith(),
+                style:
+                    claimed! ? disable400.copyWith() : secondary400.copyWith(),
               ),
             ),
           ),

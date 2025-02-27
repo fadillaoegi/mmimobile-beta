@@ -52,11 +52,11 @@ class SignInView extends GetView<SignInController> {
                                 TextSpan(
                                   text: "Selamat datang di MMI Apps\n",
                                   // text: "Masuk\n",
-                                  style: primary600.copyWith(fontSize: 20.0),
+                                  style: secondary700.copyWith(fontSize: 20.0),
                                 ),
                                 TextSpan(
                                   text: "Masuk untuk melanjutkan",
-                                  style: primary400.copyWith(fontSize: 16.0),
+                                  style: secondary400.copyWith(fontSize: 16.0),
                                 ),
                               ],
                             ),

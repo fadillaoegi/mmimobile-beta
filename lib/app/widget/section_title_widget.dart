@@ -7,12 +7,14 @@ class SectionTittle extends StatelessWidget {
     this.title,
     this.onTap,
     this.size = 14.0,
+    this.seeMoreActive = false,
     // this.textStyle = black700,
   });
 
   final String? title;
   final VoidCallback? onTap;
   final double size;
+  final bool seeMoreActive;
   // final TextStyle textStyle;
 
   @override
@@ -22,15 +24,17 @@ class SectionTittle extends StatelessWidget {
       children: [
         Text(
           title?.isNotEmpty == true ? title! : "Question?",
-          style: black700.copyWith(fontSize: 16.0),
+          style: black700.copyWith(fontSize: size),
         ),
-        TextButton(
-          onPressed: onTap,
-          child: Text(
-            "See Others",
-            style: primary400.copyWith(fontSize: size),
-          ),
-        ),
+        seeMoreActive
+            ? TextButton(
+                onPressed: onTap,
+                child: Text(
+                  "See Others",
+                  style: secondary400.copyWith(fontSize: size - 2),
+                ),
+              )
+            : const SizedBox(),
       ],
     );
   }

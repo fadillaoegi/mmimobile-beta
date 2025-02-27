@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class HelperFldev {
-  static String formatText(String text, int maxLength) {
+  static String newParagraphText(String text, int maxLength) {
     List<String> chunks = [];
     for (int i = 0; i < text.length; i += maxLength) {
       chunks.add(text.substring(i, min(i + maxLength, text.length)));
@@ -17,4 +17,11 @@ class HelperFldev {
     String maskedPart = ''.padRight(text.length - 4, '*');
     return '$visiblePart$maskedPart';
   }
+
+  static String dotOverflowText(String text, {int maxLength = 16}) {
+    return (text.length > maxLength)
+        ? '${text.substring(0, maxLength)}...'
+        : text;
+  }
+
 }

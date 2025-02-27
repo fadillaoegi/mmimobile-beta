@@ -15,8 +15,7 @@ class RatingServicesView extends GetView<RatingServicesController> {
     final controller = Get.put(RatingServicesController());
     return Scaffold(
       appBar: AppBarAppFLdev(
-        title: 'Rating Apps',
-        backRoute: false,
+        title: 'Penilaian pelayanan',
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

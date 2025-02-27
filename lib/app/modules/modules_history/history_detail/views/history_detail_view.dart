@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import '../controllers/history_detail_controller.dart';
@@ -22,7 +23,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
 
     return Scaffold(
       appBar: AppBarAppFLdev(
-        title: "Detail History",
+        title: "Rincian riwayat",
       ),
       body: Container(
         height: sizeScreen.height,
@@ -86,7 +87,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                           final item = visibleItems[index];
                           return ItemHistory(
                             onTap: () {
-                              Get.toNamed('/product-detail');
+                              Get.toNamed(Routes.underDevelopment);
                             },
                             isDetail: true,
                             shadow: false,
@@ -126,7 +127,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
               }),
             ),
 
-            const Divider(color: ColorApps.primary),
+            const Divider(color: ColorApps.secondary),
             const SizedBox(height: 10.0),
             Obx(
               () => ListBetween(
