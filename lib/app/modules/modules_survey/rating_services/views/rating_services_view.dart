@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
+import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
+import 'package:mmimobile/app/widget/canva_apps_widget.dart';
+import '../controllers/rating_services_controller.dart';
+
+class RatingServicesView extends GetView<RatingServicesController> {
+  const RatingServicesView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(RatingServicesController());
+
+    return Scaffold(
+      appBar: AppBarAppFLdev(
+        title: 'Penilaian Pelayanan',
+      ),
+      body: CanvaApps(
+        widget: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Obx(() {
+                // Cegah error jika ratings masih kosong
+                if (controller.ratings.isEmpty) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                return ListView.builder(
+                  itemCount: controller.questionsSurveyRatings.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.questionsSurveyRatings[index],
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 10),
+                          Obx(() => RatingBar.builder(
+                                initialRating: controller.ratings[index],
+                                minRating: 1,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                itemCount: 5,
+                                itemSize: 40.0,
+                                itemPadding:
+                                    const EdgeInsets.symmetric(horizontal: 4.0),
+                                itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                onRatingUpdate: (value) =>
+                                    controller.updateRating(index, value),
+                              )),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              }),
+            ),
+            BtnApps(
+              text: "Kirim",
+              onPress: () => controller.submitReview(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -97,17 +97,35 @@ class SectionOneMembershipDetail extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Image.asset(AssetConfigFLdev.silverCard)),
+              Expanded(
+                  child: Material(
+                      elevation: 10.0,
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(
+                        AssetConfigFLdev.silverCard,
+                      ))),
               const SizedBox(width: 10.0),
-              Expanded(child: Image.asset(AssetConfigFLdev.goldCard)),
+              Expanded(
+                  child: Material(
+                      elevation: 4.0,
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(AssetConfigFLdev.goldCard))),
             ],
           ),
           const SizedBox(height: 10.0),
           Row(
             children: [
-              Expanded(child: Image.asset(AssetConfigFLdev.platinumCard)),
+              Expanded(
+                  child: Material(
+                      elevation: 4.0,
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(AssetConfigFLdev.platinumCard))),
               const SizedBox(width: 10.0),
-              Expanded(child: Image.asset(AssetConfigFLdev.prioritasCard)),
+              Expanded(
+                  child: Material(
+                      elevation: 10.0,
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image.asset(AssetConfigFLdev.prioritasCard))),
             ],
           ),
         ],
