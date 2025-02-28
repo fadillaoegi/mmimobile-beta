@@ -6,15 +6,15 @@ import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
-import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/item_history_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/modules/modules_history/history/controllers/history_controller.dart';
-import 'package:mmimobile/app/widget/loading_widget.dart';
 
 class HistoryView extends GetView<HistoryController> {
   const HistoryView({super.key});
@@ -158,7 +158,7 @@ class SearchFLdev extends StatelessWidget {
       autofocus: false,
       decoration: InputDecoration(
         hintText: 'Cari riwayat...',
-        hintStyle: secondary300,
+        hintStyle: secondary400,
         suffixIcon: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -175,9 +175,9 @@ class SearchFLdev extends StatelessWidget {
         ),
         enabled: true,
         enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.primary)),
+            borderSide: BorderSide(color: ColorApps.secondary)),
         border: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.primary)),
+            borderSide: BorderSide(color: ColorApps.secondary)),
         focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: ColorApps.secondary)),
       ),

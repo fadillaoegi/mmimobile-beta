@@ -1,6 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:mmimobile/app/modules/modules_profile/profile_update_address/bindings/profile_update_address_binding.dart';
-import 'package:mmimobile/app/modules/modules_profile/profile_update_address/views/profile_update_address_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/detail_membership/bindings/detail_membership_binding.dart';
@@ -43,6 +41,8 @@ import '../modules/modules_profile/profile_edit_password/bindings/profile_edit_p
 import '../modules/modules_profile/profile_edit_password/views/profile_edit_password_view.dart';
 import '../modules/modules_profile/profile_setting/bindings/profile_setting_binding.dart';
 import '../modules/modules_profile/profile_setting/views/profile_setting_view.dart';
+import '../modules/modules_profile/profile_update_address/bindings/profile_update_address_binding.dart';
+import '../modules/modules_profile/profile_update_address/views/profile_update_address_view.dart';
 import '../modules/modules_profile/profile_update_email/bindings/profile_update_email_binding.dart';
 import '../modules/modules_profile/profile_update_email/views/profile_update_email_view.dart';
 import '../modules/modules_profile/profile_update_phone/bindings/profile_update_phone_binding.dart';
@@ -65,8 +65,10 @@ import '../modules/rating_services/bindings/rating_services_binding.dart';
 import '../modules/rating_services/views/rating_services_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/survey/bindings/survey_binding.dart';
-import '../modules/survey/views/survey_view.dart';
+import '../modules/modules_survey/survey/bindings/survey_binding.dart';
+import '../modules/modules_survey/survey/views/survey_view.dart';
+import '../modules/modules_survey/survey_complain/bindings/survey_complain_binding.dart';
+import '../modules/modules_survey/survey_complain/views/survey_complain_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
 
@@ -256,14 +258,19 @@ class AppPages {
       binding: MembershipBinding(),
     ),
     GetPage(
-      name: _Paths.DETAIL_MEMBERSHIP,
+      name: _Paths.detailMembership,
       page: () => const DetailMembershipView(),
       binding: DetailMembershipBinding(),
     ),
     GetPage(
-      name: _Paths.SURVEY,
+      name: _Paths.survey,
       page: () => const SurveyView(),
       binding: SurveyBinding(),
+    ),
+    GetPage(
+      name: _Paths.surveyComplain,
+      page: () => const SurveyComplainView(),
+      binding: SurveyComplainBinding(),
     ),
   ];
 }

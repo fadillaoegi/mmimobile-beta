@@ -32,7 +32,7 @@ class ProfileView extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // NOTE: SECTION 1
-                  sectionOneProfile(userController),
+                  sectionOneProfile(userController, "Prioritas"),
 
                   const SizedBox(height: 20.0),
 
@@ -150,7 +150,6 @@ class ProfileView extends GetView<ProfileController> {
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -198,7 +197,7 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 
-  Widget sectionOneProfile(UserController userController) {
+  Widget sectionOneProfile(UserController userController, String membership) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -239,7 +238,30 @@ class ProfileView extends GetView<ProfileController> {
           child: Container(
             padding: const EdgeInsets.all(14.0),
             decoration: BoxDecoration(
-              color: ColorApps.goldMember,
+              // color: ColorApps.goldMember,
+              gradient: LinearGradient(colors: [
+                membership == "Gold"
+                    ? ColorApps.goldMember
+                    : membership == "Platinum"
+                        ? ColorApps.platinumMember
+                        : membership == "Prioritas"
+                            ? ColorApps.prioritasMember
+                            : ColorApps.silverMember,
+                membership == "Gold"
+                    ? ColorApps.goldMember2
+                    : membership == "Platinum"
+                        ? ColorApps.platinumMember2
+                        : membership == "Prioritas"
+                            ? ColorApps.prioritasMember2
+                            : ColorApps.silverMember2,
+              ]),
+              // color: membership == "Gold"
+              //     ? ColorApps.goldMember
+              //     : membership == "Platinum"
+              //         ? ColorApps.platinumMember
+              //         : membership == "Prioritas"
+              //             ? ColorApps.prioritasMember
+              //             : ColorApps.silverMember,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Row(
@@ -248,7 +270,13 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 const SizedBox(width: 2.0),
                 Text(
-                  "Gold",
+                  membership == "Gold"
+                      ? "Gold"
+                      : membership == "Platinum"
+                          ? "Platinum"
+                          : membership == "Prioritas"
+                              ? "Prioritas"
+                              : "Silver",
                   style: white500,
                 ),
                 const SizedBox(width: 2.0),

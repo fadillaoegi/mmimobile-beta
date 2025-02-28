@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/card_comment_fldev_widget.dart';
 import 'package:mmimobile/app/widget/dashboard_rating_fdldev_widget.dart';
+import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
 import '../controllers/rating_services_controller.dart';
 
 class RatingServicesView extends GetView<RatingServicesController> {
@@ -36,6 +37,10 @@ class RatingServicesView extends GetView<RatingServicesController> {
             ],
           ),
         ),
+      ),
+      bottomSheet: Container(
+        padding: const EdgeInsets.all(10.0),
+        child: FormAppsTwo(labelText: 'Beri penilaian ...'),
       ),
     );
   }

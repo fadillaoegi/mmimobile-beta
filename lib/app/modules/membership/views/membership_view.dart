@@ -24,9 +24,10 @@ class MembershipView extends GetView<MembershipController> {
     final sizeScreen = MediaQuery.sizeOf(context);
     final userData = Get.put(UserController());
     final controller = Get.put(MembershipController());
+    final membership = "Prioritas";
     return Scaffold(
         appBar: AppBarAppFLdev(
-          title: "Keanggotaan",
+          title: "Membership",
           color: ColorApps.white,
           colorFontIcon: ColorApps.secondary,
         ),
@@ -39,114 +40,7 @@ class MembershipView extends GetView<MembershipController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // NOTE: SECTION 1
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
-                  width: sizeScreen.width,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      ColorApps.goldMember,
-                      Color(0xff6E5B1D),
-                    ], begin: Alignment.bottomRight, end: Alignment.topLeft),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "GOLD",
-                            style: white700.copyWith(
-                                fontSize: 28.0, shadows: boxShadow),
-                          ),
-                          GestureDetector(
-                            onTap: () => Get.toNamed(Routes.underDevelopment),
-                            child: Row(
-                              children: [
-                                Text(
-                                  "Lihat semua level",
-                                  style: white600,
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  color: ColorApps.white,
-                                  size: 16.0,
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        HelperFldev.dotOverflowText(
-                            userData.user.customerName.toString()),
-                        style: white700.copyWith(
-                            fontSize: 16.0, shadows: boxShadow),
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 14.0),
-                        decoration: BoxDecoration(
-                            color: ColorApps.white,
-                            boxShadow: boxShadow,
-                            borderRadius: BorderRadius.circular(10.0)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Rp 1.000.000.001 - 5.000.000.000 transaksi",
-                              style: secondary400.copyWith(fontSize: 14.0),
-                            ),
-                            const SizedBox(
-                              height: 10.0,
-                            ),
-                            const StepProgressIndicator(
-                              totalSteps: 100,
-                              currentStep: 32,
-                              size: 8,
-                              padding: 0,
-                              // selectedColor: Colors.yellow,
-                              // unselectedColor: Colors.cyan,
-                              roundedEdges: Radius.circular(10),
-                              selectedGradientColor: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  ColorApps.primary,
-                                  ColorApps.secondary
-                                ],
-                              ),
-                              unselectedGradientColor: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  ColorApps.icon,
-                                  ColorApps.white,
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10.0,
-                            ),
-                            Text(
-                              "Tingkatkan pembelanjaan anda hingga 30.06.2025 untuk tetap berada di Platinum",
-                              style: secondary400.copyWith(
-                                fontSize: 14.0,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                sectionOneMembership(sizeScreen, membership, userData),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -220,5 +114,130 @@ class MembershipView extends GetView<MembershipController> {
             ),
           ),
         ));
+  }
+
+  Container sectionOneMembership(
+      Size sizeScreen, String membership, UserController userData) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      width: sizeScreen.width,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          // ColorApps.goldMember,
+          // Color(0xff6E5B1D),
+          membership == "Gold"
+              ? ColorApps.goldMember2
+              : membership == "Platinum"
+                  ? ColorApps.platinumMember2
+                  : membership == "Prioritas"
+                      ? ColorApps.prioritasMember2
+                      : ColorApps.silverMember2,
+          membership == "Gold"
+              ? ColorApps.goldMember
+              : membership == "Platinum"
+                  ? ColorApps.platinumMember
+                  : membership == "Prioritas"
+                      ? ColorApps.prioritasMember
+                      : ColorApps.silverMember,
+        ], begin: Alignment.bottomRight, end: Alignment.topLeft),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                membership == "Gold"
+                    ? "Gold"
+                    : membership == "Platinum"
+                        ? "Platinum"
+                        : membership == "Prioritas"
+                            ? "Prioritas"
+                            : "Silver",
+                style: white700.copyWith(fontSize: 28.0, shadows: boxShadow),
+              ),
+              GestureDetector(
+                onTap: () => Get.toNamed(Routes.detailMembership),
+                child: Row(
+                  children: [
+                    Text(
+                      "Lihat semua level",
+                      style: white600,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: ColorApps.white,
+                      size: 16.0,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Text(
+            HelperFldev.dotOverflowText(userData.user.customerName.toString()),
+            style: white700.copyWith(fontSize: 16.0, shadows: boxShadow),
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 14.0),
+            decoration: BoxDecoration(
+                color: ColorApps.white,
+                boxShadow: boxShadow,
+                borderRadius: BorderRadius.circular(10.0)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Rp 1.000.000.001 - 5.000.000.000 transaksi",
+                  style: secondary400.copyWith(fontSize: 14.0),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const StepProgressIndicator(
+                  totalSteps: 100,
+                  currentStep: 32,
+                  size: 8,
+                  padding: 0,
+                  // selectedColor: Colors.yellow,
+                  // unselectedColor: Colors.cyan,
+                  roundedEdges: Radius.circular(10),
+                  selectedGradientColor: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [ColorApps.primary, ColorApps.secondary],
+                  ),
+                  unselectedGradientColor: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      ColorApps.icon,
+                      ColorApps.white,
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                  "Tingkatkan pembelanjaan anda hingga 30.06.2025 untuk tetap berada di Platinum",
+                  style: secondary400.copyWith(
+                    fontSize: 14.0,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

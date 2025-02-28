@@ -4,7 +4,7 @@ import 'package:mmimobile/app/modules/modules_history/history/views/history_view
 import 'package:mmimobile/app/modules/home/views/home_view.dart';
 import 'package:mmimobile/app/modules/modules_profile/profile/views/profile_view.dart';
 import 'package:mmimobile/app/modules/modules_system_support/system_support/views/system_support_view.dart';
-import 'package:mmimobile/app/modules/survey/views/survey_view.dart';
+import 'package:mmimobile/app/modules/modules_survey/survey/views/survey_view.dart';
 
 class AppMainController extends GetxController {
   Rx<int> currentIndex = 0.obs;

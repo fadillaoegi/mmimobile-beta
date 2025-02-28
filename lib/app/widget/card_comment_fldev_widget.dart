@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 
@@ -28,6 +29,13 @@ class CardCommentFLdev extends StatelessWidget {
                   Text(
                     'Alifah',
                     style: black600.copyWith(fontSize: 12.0),
+                  ),
+                  RatingBarIndicator(
+                    rating: (1 + 1).toDouble(),
+                    itemBuilder: (context, _) =>
+                        Icon(Icons.star, color: Colors.amber),
+                    itemCount: 5,
+                    itemSize: 20.0,
                   ),
                   Text(
                     '10-Februari-2025',

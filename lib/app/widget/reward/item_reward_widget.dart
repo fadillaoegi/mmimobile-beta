@@ -36,7 +36,7 @@ class ItemDailyReward extends StatelessWidget {
             style: secondary500.copyWith(fontSize: 12.0),
           ),
           const SizedBox(
-            height: 16.0,
+            height: 10.0,
           ),
           Image.asset(
             AssetConfigFLdev.iconCoinNew,

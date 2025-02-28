@@ -6,9 +6,9 @@ class CanvaApps extends StatelessWidget {
       {super.key,
       this.widget,
       this.bottom = 0.0,
-      this.left = 14.0,
-      this.right = 14.0,
-      this.top = 14.0,
+      this.left = 10.0,
+      this.right = 10.0,
+      this.top = 10.0,
       this.bg = "",
       this.color = ColorApps.white});
 

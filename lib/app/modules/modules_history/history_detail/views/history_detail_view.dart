@@ -87,7 +87,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                           final item = visibleItems[index];
                           return ItemHistory(
                             onTap: () {
-                              Get.toNamed(Routes.underDevelopment);
+                              Get.toNamed(Routes.productDetail);
                             },
                             isDetail: true,
                             shadow: false,

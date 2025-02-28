@@ -20,9 +20,12 @@ class ColorApps {
   static const disable = Color(0xffAFAFAF);
   static const disable2 = Color(0xff5E5E5E);
   static const silverMember = Color(0xffa6a6a6);
+  static const silverMember2 = Color(0xffFFFFFF);
   static const goldMember = Color(0xffe1c340);
-  static const goldMember2 = Color(0xffe1c340);
-  static const platinumMember = Color(0xff5E5E5E);
+  static const goldMember2 = Color(0xff6E5B1D);
+  static const platinumMember = Color(0xff0097B2);
+  static const platinumMember2 = Color(0xff7ED957);
   static const prioritasMember = Color(0xff3533cd);
+  static const prioritasMember2 = Color(0xff000000);
   static const whiteBlur = Color.fromARGB(30, 255, 250, 245);
 }

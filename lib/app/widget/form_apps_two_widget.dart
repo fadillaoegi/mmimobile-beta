@@ -32,6 +32,7 @@ class FormAppsTwo extends StatelessWidget {
       enabled: enabled,
       obscureText: obscure,
       keyboardType: keybooardType,
+      autofocus: false,
       decoration: InputDecoration(
           labelText: labelText,
           labelStyle: black400.copyWith(fontSize: 13.0),
@@ -50,7 +51,7 @@ class FormAppsTwo extends StatelessWidget {
               borderSide: BorderSide(color: ColorApps.primary),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.primary, width: 2.0),
+            borderSide: BorderSide(color: ColorApps.secondary, width: 2.0),
           )),
     );
   }

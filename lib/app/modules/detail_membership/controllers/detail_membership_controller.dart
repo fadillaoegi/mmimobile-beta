@@ -1,22 +1,14 @@
 import 'package:get/get.dart';
 
 class DetailMembershipController extends GetxController {
-
-  final count = 0.obs;
+  final categoryMembership = ["Silver", "Gold", "Platinum", "Prioritas"].obs;
+  final selectedCategory = "Silver".obs; // Kategori awal
   @override
   void onInit() {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void setCategory(String category) {
+    selectedCategory.value = category;
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
