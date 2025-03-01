@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
-
 import '../controllers/survey_complain_controller.dart';
 
 class SurveyComplainView extends GetView<SurveyComplainController> {
@@ -47,26 +46,26 @@ class SurveyComplainView extends GetView<SurveyComplainController> {
             //   ),
             // ),
             const SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             FormAppsTwo(
               labelText: "Email",
             ),
             const SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             FormAppsTwo(
               labelText: "Nama brand",
             ),
             const SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             SectionTittle(
               title: "Unggah gambar",
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10.0),
             GestureDetector(
-              onTap: () => controller.pickImage,
+              onTap: () => controller.pickImage(),
               child: Container(
                 height: 100,
                 width: double.infinity,

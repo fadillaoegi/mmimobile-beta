@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
-import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/detail_membership/controllers/detail_membership_controller.dart';
 
 class DetailMembershipView extends GetView<DetailMembershipController> {
