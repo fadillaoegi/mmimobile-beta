@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/myboo/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/myboo/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/myboo/Project/mobile/mmimobile-beta/android/app/.cxx/Debug/3t3f6y2v/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/myboo/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/myboo/Project/mobile/mmimobile-beta/android/app/.cxx/Debug/3t3f6y2v/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
