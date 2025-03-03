@@ -72,11 +72,11 @@ class ProfileView extends GetView<ProfileController> {
             label: "Voucher Saya",
             icon: Icons.assistant,
           ),
-          ItemList(
-            onTap: () => Get.toNamed(Routes.underDevelopment),
-            label: "Pengaturan Notifikasi",
-            icon: Icons.notification_important_outlined,
-          ),
+          // ItemList(
+          //   onTap: () => Get.toNamed(Routes.underDevelopment),
+          //   label: "Pengaturan Notifikasi",
+          //   icon: Icons.notification_important_outlined,
+          // ),
 
           ItemList(
             onTap: () => Get.toNamed(Routes.languageSetting),

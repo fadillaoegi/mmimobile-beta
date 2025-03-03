@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:get/get.dart';
-import 'package:mmimobile/app/styles/fonts.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
+import 'package:mmimobile/app/widget/section_title_widget.dart';
 import '../controllers/rating_services_controller.dart';
 
 class RatingServicesView extends GetView<RatingServicesController> {
@@ -37,10 +40,14 @@ class RatingServicesView extends GetView<RatingServicesController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            controller.questionsSurveyRatings[index],
-                            style: black600.copyWith(fontSize: 14.0),
+                          SectionTittle(
+                            title: controller.questionsSurveyRatings[index],
+                            size: 14.0,
                           ),
+                          // Text(
+                          //   controller.questionsSurveyRatings[index],
+                          //   style: black600.copyWith(fontSize: 14.0),
+                          // ),
                           const SizedBox(height: 10),
                           Obx(() => RatingBar.builder(
                                 initialRating: controller.ratings[index],

@@ -48,6 +48,7 @@ abstract class Routes {
   static const detailMembership = _Paths.detailMembership;
   static const survey = _Paths.survey;
   static const surveyComplain = _Paths.surveyComplain;
+  static const ratingProduct = _Paths.ratingProduct;
 }
 
 abstract class _Paths {
@@ -100,4 +101,5 @@ abstract class _Paths {
   static const detailMembership = '/detail-membership';
   static const survey = '/survey';
   static const surveyComplain = '/survey-complain';
+  static const ratingProduct = '/rating-product';
 }

@@ -53,6 +53,12 @@ import '../modules/modules_profile/reward_history/bindings/reward_history_bindin
 import '../modules/modules_profile/reward_history/views/reward_history_view.dart';
 import '../modules/modules_profile/website/bindings/website_binding.dart';
 import '../modules/modules_profile/website/views/website_view.dart';
+import '../modules/modules_survey/rating_services/bindings/rating_services_binding.dart';
+import '../modules/modules_survey/rating_services/views/rating_services_view.dart';
+import '../modules/modules_survey/survey/bindings/survey_binding.dart';
+import '../modules/modules_survey/survey/views/survey_view.dart';
+import '../modules/modules_survey/survey_complain/bindings/survey_complain_binding.dart';
+import '../modules/modules_survey/survey_complain/views/survey_complain_view.dart';
 import '../modules/modules_system_support/support_system_class/bindings/support_system_class_binding.dart';
 import '../modules/modules_system_support/support_system_class/views/support_system_class_view.dart';
 import '../modules/modules_system_support/system_support/bindings/system_support_binding.dart';
@@ -61,14 +67,10 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
-import '../modules/modules_survey/rating_services/bindings/rating_services_binding.dart';
-import '../modules/modules_survey/rating_services/views/rating_services_view.dart';
+import '../modules/rating_product/bindings/rating_product_binding.dart';
+import '../modules/rating_product/views/rating_product_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/modules_survey/survey/bindings/survey_binding.dart';
-import '../modules/modules_survey/survey/views/survey_view.dart';
-import '../modules/modules_survey/survey_complain/bindings/survey_complain_binding.dart';
-import '../modules/modules_survey/survey_complain/views/survey_complain_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
 
@@ -77,7 +79,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.profileEdit;
+  static const initial = Routes.splash;
   static const mainApp = Routes.appMain;
 
   static final routes = [
@@ -271,6 +273,11 @@ class AppPages {
       name: _Paths.surveyComplain,
       page: () => const SurveyComplainView(),
       binding: SurveyComplainBinding(),
+    ),
+    GetPage(
+      name: _Paths.ratingProduct,
+      page: () => const RatingProductView(),
+      binding: RatingProductBinding(),
     ),
   ];
 }
