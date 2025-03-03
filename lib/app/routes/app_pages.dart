@@ -77,7 +77,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.splash;
+  static const initial = Routes.profileEdit;
   static const mainApp = Routes.appMain;
 
   static final routes = [

@@ -3,10 +3,15 @@ import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 
 class ImageCircle extends StatelessWidget {
-  const ImageCircle({super.key, this.size = 60.0, this.edit = true});
+  const ImageCircle(
+      {super.key,
+      this.size = 60.0,
+      this.edit = true,
+      this.image = AssetConfigFLdev.logo});
 
   final double size;
   final bool edit;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class ImageCircle extends StatelessWidget {
             ClipOval(
               child: CircleAvatar(
                 radius: size / 2,
-                backgroundImage: AssetImage(AssetConfigFLdev.logo),
+                backgroundImage: AssetImage(image),
               ),
             ),
             edit

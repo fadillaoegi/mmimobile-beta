@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
@@ -13,6 +15,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
   const ProfileEditView({super.key});
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProfileEditController());
     return Scaffold(
       appBar: AppBarAppFLdev(
         title: "Ubah profil",
@@ -25,11 +28,11 @@ class ProfileEditView extends GetView<ProfileEditController> {
               child: CanvaApps(
                 widget: Column(
                   children: [
-                    ImageCircle(
-                      size: 80.0,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: ImageCircle(
+                        size: 80.0,
+                      ),
                     ),
                     FormAppsTwo(
                       labelText: "Email",
@@ -43,9 +46,23 @@ class ProfileEditView extends GetView<ProfileEditController> {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    FormAppsTwo(
-                      labelText: "Tanggal lahir",
-                    ),
+                    // FormAppsTwo(
+                    //   labelText: "Tanggal lahir",
+                    // ),
+                    Obx(() => TextFormField(
+                          readOnly: true,
+                          controller: TextEditingController(
+                              text: controller.selectedDate.value),
+                          decoration: InputDecoration(
+                            hintText: "DD-MM-YYYY",
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.calendar_today),
+                              onPressed: () => controller.pickDate(context),
+                            ),
+                            border: OutlineInputBorder(),
+                          ),
+                        )),
+
                     const SizedBox(
                       height: 20.0,
                     ),
@@ -61,14 +78,17 @@ class ProfileEditView extends GetView<ProfileEditController> {
                     const SizedBox(
                       height: 20.0,
                     ),
+                    SectionTittle(
+                      title: "Alamat kirim",
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
                     FormAppsTwo(
-                      labelText: "Nama",
+                      maxLines: 3,
                     ),
                     const SizedBox(
                       height: 20.0,
-                    ),
-                    FormAppsTwo(
-                      labelText: "Nama",
                     ),
                   ],
                 ),
