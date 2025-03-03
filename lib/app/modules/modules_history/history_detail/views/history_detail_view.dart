@@ -118,7 +118,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                             controller.isExpanded.value
                                 ? "See Less"
                                 : "See More",
-                            style: const TextStyle(color: ColorApps.primary),
+                            style: const TextStyle(color: ColorApps.secondary),
                           ),
                         ),
                     ],
