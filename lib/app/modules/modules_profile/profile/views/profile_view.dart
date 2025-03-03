@@ -63,7 +63,7 @@ class ProfileView extends GetView<ProfileController> {
       child: Column(
         children: [
           ItemList(
-            onTap: () => Get.toNamed(Routes.profileSetting),
+            onTap: () => Get.toNamed(Routes.profileEdit),
             label: "Ubah Profile",
             icon: Icons.person_outline,
           ),

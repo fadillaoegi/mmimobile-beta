@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
@@ -38,8 +39,7 @@ class RatingServicesView extends GetView<RatingServicesController> {
                         children: [
                           Text(
                             controller.questionsSurveyRatings[index],
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                            style: black600.copyWith(fontSize: 14.0),
                           ),
                           const SizedBox(height: 10),
                           Obx(() => RatingBar.builder(
@@ -69,6 +69,7 @@ class RatingServicesView extends GetView<RatingServicesController> {
               text: "Kirim",
               onPress: () => controller.submitReview(),
             ),
+            const SizedBox(height: 20.0)
           ],
         ),
       ),

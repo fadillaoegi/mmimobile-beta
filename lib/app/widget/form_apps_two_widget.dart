@@ -11,6 +11,7 @@ class FormAppsTwo extends StatelessWidget {
     this.validator,
     this.enabled = true,
     this.suffixIcon = false,
+    this.maxLines = 1,
     this.onTap,
     this.keybooardType = TextInputType.emailAddress,
   });
@@ -18,6 +19,7 @@ class FormAppsTwo extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscure;
   final bool enabled;
+  final int maxLines;
   final bool suffixIcon;
   final String labelText;
   final String? Function(String?)? validator;
@@ -28,6 +30,7 @@ class FormAppsTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
+      maxLines: maxLines,
       controller: controller,
       enabled: enabled,
       obscureText: obscure,
