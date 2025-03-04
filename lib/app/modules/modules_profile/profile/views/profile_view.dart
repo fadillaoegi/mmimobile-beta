@@ -67,11 +67,11 @@ class ProfileView extends GetView<ProfileController> {
             label: "Ubah Profile",
             icon: Icons.person_outline,
           ),
-          ItemList(
-            onTap: () => Get.toNamed(Routes.underDevelopment),
-            label: "Voucher Saya",
-            icon: Icons.assistant,
-          ),
+          // ItemList(
+          //   onTap: () => Get.toNamed(Routes.underDevelopment),
+          //   label: "Voucher Saya",
+          //   icon: Icons.assistant,
+          // ),
           // ItemList(
           //   onTap: () => Get.toNamed(Routes.underDevelopment),
           //   label: "Pengaturan Notifikasi",
@@ -236,7 +236,7 @@ class ProfileView extends GetView<ProfileController> {
         GestureDetector(
           onTap: () => Get.toNamed(Routes.membership),
           child: Container(
-            padding: const EdgeInsets.all(14.0),
+            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               // color: ColorApps.goldMember,
               gradient: LinearGradient(colors: [
@@ -277,7 +277,7 @@ class ProfileView extends GetView<ProfileController> {
                           : membership == "Prioritas"
                               ? "Prioritas"
                               : "Silver",
-                  style: white500,
+                  style: white500.copyWith(fontSize: 14.0),
                 ),
                 const SizedBox(width: 2.0),
                 Icon(

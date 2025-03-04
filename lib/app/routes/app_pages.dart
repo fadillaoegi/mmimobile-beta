@@ -1,12 +1,15 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+
+import '../modules/account_security/bindings/account_security_binding.dart';
+import '../modules/account_security/views/account_security_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
-import '../modules/detail_membership/bindings/detail_membership_binding.dart';
-import '../modules/detail_membership/views/detail_membership_view.dart';
+import '../modules/modules_profile/detail_membership/bindings/detail_membership_binding.dart';
+import '../modules/modules_profile/detail_membership/views/detail_membership_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/membership/bindings/membership_binding.dart';
-import '../modules/membership/views/membership_view.dart';
+import '../modules/modules_profile/membership/bindings/membership_binding.dart';
+import '../modules/modules_profile/membership/views/membership_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -278,6 +281,11 @@ class AppPages {
       name: _Paths.ratingProduct,
       page: () => const RatingProductView(),
       binding: RatingProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNT_SECURITY,
+      page: () => const AccountSecurityView(),
+      binding: AccountSecurityBinding(),
     ),
   ];
 }

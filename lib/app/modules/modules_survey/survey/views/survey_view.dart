@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
-import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import '../controllers/survey_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -35,8 +34,10 @@ class SurveyView extends GetView<SurveyController> {
                 child: Text(
                   "Selamat datang di halaman\nsurvei",
                   textAlign: TextAlign.center,
-                  style:
-                      secondary700.copyWith(fontSize: 24.0, shadows: boxShadow),
+                  style: secondary700.copyWith(
+                    fontSize: 20.0,
+                    // shadows: boxShadow,
+                  ),
                 ),
               ),
               // const SizedBox(
@@ -74,8 +75,10 @@ class SurveyView extends GetView<SurveyController> {
               Text(
                 "Dapatkan poin di setiap rating yang\nAnda berikan",
                 textAlign: TextAlign.center,
-                style:
-                    secondary500.copyWith(fontSize: 20.0, shadows: boxShadow),
+                style: secondary500.copyWith(
+                  fontSize: 18.0,
+                  // shadows: boxShadow,
+                ),
               ),
             ],
           ),
