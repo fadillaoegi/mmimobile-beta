@@ -22,6 +22,7 @@ class SignInView extends GetView<SignInController> {
   Widget build(BuildContext context) {
     final controller = Get.find<SignInController>();
     // final sizeScreen = MediaQuery.sizeOf(context);
+
     return Obx(
       () => ModalProgressHUD(
         inAsyncCall: controller.isLoading.value,
@@ -77,8 +78,8 @@ class SignInView extends GetView<SignInController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       IntlPhoneField(
-                                        controller:
-                                            controller.phoneController.value,
+                                        // controller:
+                                        //     controller.phoneController.value,
                                         validator: (p0) {
                                           if (p0!.toString().isEmpty ||
                                               p0 == "") {
@@ -90,14 +91,18 @@ class SignInView extends GetView<SignInController> {
                                           labelText: 'Phone Number',
                                           focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                  color: ColorApps.primary)),
+                                                  color: ColorApps.secondary)),
                                           border: OutlineInputBorder(
                                             borderSide: BorderSide(),
                                           ),
                                         ),
                                         initialCountryCode: 'ID',
                                         onChanged: (phone) {
-                                          print(phone.completeNumber);
+                                          // print(phone.completeNumber);
+                                          controller.phoneController.value
+                                              .text = phone.completeNumber;
+                                          print(controller
+                                              .phoneController.value.text);
                                         },
                                       ),
                                       const SizedBox(
@@ -134,7 +139,7 @@ class SignInView extends GetView<SignInController> {
                                                     Routes.forgotPassword);
                                               },
                                               child: Text(
-                                                "Lupa Password",
+                                                "Lupa password",
                                                 style: secondary600.copyWith(
                                                     fontSize: 13.0),
                                               ))
@@ -144,8 +149,10 @@ class SignInView extends GetView<SignInController> {
                                         height: 6.0,
                                       ),
                                       BtnApps(
-                                        onPress: () =>
-                                            controller.signIn(context),
+                                        onPress: () => controller.signIn(
+                                            context,
+                                            controller
+                                                .phoneController.value.text),
                                         text: "Masuk",
                                       ),
                                     ],

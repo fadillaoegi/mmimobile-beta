@@ -16,10 +16,9 @@ class RatingServicesView extends GetView<RatingServicesController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(RatingServicesController());
-
     return Scaffold(
       appBar: AppBarAppFLdev(
-        title: 'Penilaian Pelayanan',
+        title: 'Rating layanan\nbusiness development',
       ),
       body: CanvaApps(
         widget: Column(

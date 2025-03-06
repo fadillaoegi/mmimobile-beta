@@ -26,6 +26,9 @@ class AssetConfigFLdev {
   static const examplePromo = "assets/images/examplePromo.png";
   static const ilForgotPass = "assets/images/il_forgotPass.png";
   static const bannerSystemSupport = "assets/images/bannerSystemSupport.png";
+  static const example1 = "assets/images/example1.png";
+  static const example2 = "assets/images/example2.png";
+  static const example3 = "assets/images/example3.png";
 
   // NOTE: LOGO
   static const logo = "assets/images/logo/logo.png";

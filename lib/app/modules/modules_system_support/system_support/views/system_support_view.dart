@@ -1,11 +1,13 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
+import 'package:get/get_instance/get_instance.dart';
 import '../controllers/system_support_controller.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/system_support/item_system_support_widget.dart';
 
 class SystemSupportView extends GetView<SystemSupportController> {

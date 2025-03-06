@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:mmimobile/app/modules/modules_system_support/system_support/controllers/system_support_controller.dart';
-import 'package:mmimobile/app/styles/color.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:mmimobile/app/modules/home/controllers/home_controller.dart';
 
 class CarouselSystemSupport extends StatelessWidget {
   const CarouselSystemSupport({
@@ -12,7 +11,7 @@ class CarouselSystemSupport extends StatelessWidget {
     required this.controller,
   }) : super(key: key);
 
-  final SystemSupportController controller;
+  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +41,10 @@ class CarouselSystemSupport extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 4.0),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(4.0),
                       child: CachedNetworkImage(
                         imageUrl: url,
                         fit: BoxFit.cover,
@@ -63,7 +62,7 @@ class CarouselSystemSupport extends StatelessWidget {
                   );
                 },
                 options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height * 0.20,
+                  height: MediaQuery.of(context).size.height * 0.26,
                   viewportFraction: 1.0, // Mengisi seluruh viewport
                   autoPlay: true, // Mengaktifkan auto play
                   autoPlayInterval: const Duration(seconds: 3),
@@ -78,31 +77,31 @@ class CarouselSystemSupport extends StatelessWidget {
             const SizedBox(height: 10),
 
             // Indicator
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                controller.imageUrl.length,
-                (index) => GestureDetector(
-                  child: Obx(
-                    () => AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      width: 12.0,
-                      height: 12.0,
-                      margin: const EdgeInsets.symmetric(
-                        vertical: 8.0,
-                        horizontal: 4.0,
-                      ),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: controller.currentIndex.value == index
-                            ? Color.fromARGB(255, 45, 127, 97)
-                            : ColorApps.disable,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: List.generate(
+            //     controller.imageUrl.length,
+            //     (index) => GestureDetector(
+            //       child: Obx(
+            //         () => AnimatedContainer(
+            //           duration: const Duration(milliseconds: 300),
+            //           width: 12.0,
+            //           height: 12.0,
+            //           margin: const EdgeInsets.symmetric(
+            //             vertical: 8.0,
+            //             horizontal: 4.0,
+            //           ),
+            //           decoration: BoxDecoration(
+            //             shape: BoxShape.circle,
+            //             color: controller.currentIndex.value == index
+            //                 ? Color.fromARGB(255, 45, 127, 97)
+            //                 : ColorApps.disable,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         );
       },

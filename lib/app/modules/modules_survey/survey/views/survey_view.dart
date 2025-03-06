@@ -32,7 +32,7 @@ class SurveyView extends GetView<SurveyController> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 50.0),
                 child: Text(
-                  "Selamat datang di halaman\nsurvei",
+                  "Selamat datang di halaman\nsurvey",
                   textAlign: TextAlign.center,
                   style: secondary700.copyWith(
                     fontSize: 20.0,
@@ -50,13 +50,13 @@ class SurveyView extends GetView<SurveyController> {
                 child: Column(
                   children: [
                     ItemList(
-                      label: "Penilaian layanan bisnis",
+                      label: "Rating layanan\nbusiness development",
                       iconImage: AssetConfigFLdev.iconServiceBusiness,
                       iconSize: 40.0,
                       onTap: () => Get.toNamed(Routes.ratingService),
                     ),
                     ItemList(
-                      label: "Penilaian kualitas produk",
+                      label: "Rating kualitas produk kami",
                       iconImage: AssetConfigFLdev.iconQualityProduct,
                       iconSize: 40.0,
                     ),

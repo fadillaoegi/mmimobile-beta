@@ -8,33 +8,36 @@ class SectionTittle extends StatelessWidget {
     this.onTap,
     this.size = 14.0,
     this.seeMoreActive = false,
-    // this.textStyle = black700,
   });
 
   final String? title;
   final VoidCallback? onTap;
   final double size;
   final bool seeMoreActive;
-  // final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment:
+          CrossAxisAlignment.start, // Agar teks bisa turun ke bawah
       children: [
-        Text(
-          title?.isNotEmpty == true ? title! : "Question?",
-          style: black700.copyWith(fontSize: size),
+        // **Gunakan Expanded agar teks bisa wrap otomatis**
+        Expanded(
+          child: Text(
+            title?.isNotEmpty == true ? title! : "Question?",
+            style: black700.copyWith(fontSize: size),
+            softWrap: true, // **Pastikan teks wrap ke bawah**
+            overflow: TextOverflow.visible, // **Agar tidak terpotong**
+          ),
         ),
-        seeMoreActive
-            ? TextButton(
-                onPressed: onTap,
-                child: Text(
-                  "See Others",
-                  style: secondary400.copyWith(fontSize: size - 2),
-                ),
-              )
-            : const SizedBox(),
+        if (seeMoreActive) // **Hanya tampilkan tombol jika aktif**
+          TextButton(
+            onPressed: onTap,
+            child: Text(
+              "See Others",
+              style: secondary400.copyWith(fontSize: size - 2),
+            ),
+          ),
       ],
     );
   }

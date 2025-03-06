@@ -46,16 +46,16 @@ class SignInController extends GetxController {
     // update();
   }
 
-  void signIn(BuildContext context) async {
+  void signIn(BuildContext context, String completePhone) async {
     if (!formKey.currentState!.validate()) {
       return;
     }
-    String phone = phoneController.value.text.trim();
+    // String phone = phoneController.value.text.trim();
     String pass = passController.value.text.trim();
 
     isLoading.value = true;
     update();
-    if (phone.isEmpty && pass.isEmpty) {
+    if (completePhone.isEmpty && pass.isEmpty) {
       Get.dialog(
         AlertDialogNoAction(
           title: "Sign in failed",
@@ -74,7 +74,7 @@ class SignInController extends GetxController {
     }
     try {
       final formData = FormData.fromMap({
-        "phone": phone,
+        "phone": completePhone,
         "password": pass,
       });
 

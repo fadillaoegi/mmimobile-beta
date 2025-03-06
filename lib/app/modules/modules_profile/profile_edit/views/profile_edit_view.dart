@@ -22,115 +22,104 @@ class ProfileEditView extends GetView<ProfileEditController> {
       appBar: AppBarAppFLdev(
         title: "Ubah profil",
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) => SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: constraints.maxHeight,
-            ),
-            child: IntrinsicHeight(
-              child: CanvaApps(
-                widget: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 18.0),
-                        child: ImageCircle(
-                          size: 100.0,
-                        ),
-                      ),
-                      FormAppsTwo(
-                        labelText: "Nama",
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      FormAppsTwo(
-                        labelText: "Email",
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      IntlPhoneField(
-                        // controller: controller.phoneController.value,
-                        validator: (p0) {
-                          if (p0!.toString().isEmpty || p0 == "") {
-                            return "Phone is required ";
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: ColorApps.primary)),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(),
-                          ),
-                        ),
-                        initialCountryCode: 'ID',
-                        onChanged: (phone) {
-                          print(phone.completeNumber);
-                        },
-                      ),
-                      // FormAppsTwo(
-                      //   labelText: "Tanggal lahir",
-                      // ),
-                      SectionTittle(
-                        title: "Tanggal lahir",
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Obx(() => TextFormField(
-                            readOnly: true,
-                            controller: TextEditingController(
-                                text: controller.selectedDate.value),
-                            decoration: InputDecoration(
-                              hintText: "DD-MM-YYYY",
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.calendar_today),
-                                onPressed: () => controller.pickDate(context),
-                              ),
-                              border: OutlineInputBorder(),
-                            ),
-                          )),
-
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      SectionTittle(
-                        title: "Alamat penagihan",
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      FormAppsTwo(
-                        maxLines: 3,
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      SectionTittle(
-                        title: "Alamat kirim",
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      FormAppsTwo(
-                        maxLines: 3,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 0.0),
-                        child: BtnApps(
-                          onPress: () {},
-                          text: "Simpan",
-                        ),
-                      ),
-                    ],
-                  ),
+      body: CanvaApps(
+        widget: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 18.0),
+                child: ImageCircle(
+                  size: 100.0,
                 ),
               ),
-            ),
+              FormAppsTwo(
+                labelText: "Nama",
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              FormAppsTwo(
+                labelText: "Email",
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              IntlPhoneField(
+                // controller: controller.phoneController.value,
+                validator: (p0) {
+                  if (p0!.toString().isEmpty || p0 == "") {
+                    return "Phone is required ";
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: 'Phone Number',
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: ColorApps.primary)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(),
+                  ),
+                ),
+                initialCountryCode: 'ID',
+                onChanged: (phone) {
+                  print(phone.completeNumber);
+                },
+              ),
+              // FormAppsTwo(
+              //   labelText: "Tanggal lahir",
+              // ),
+              SectionTittle(
+                title: "Tanggal lahir",
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Obx(() => TextFormField(
+                    readOnly: true,
+                    controller: TextEditingController(
+                        text: controller.selectedDate.value),
+                    decoration: InputDecoration(
+                      hintText: "DD-MM-YYYY",
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.calendar_today),
+                        onPressed: () => controller.pickDate(context),
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                  )),
+
+              const SizedBox(
+                height: 20.0,
+              ),
+              SectionTittle(
+                title: "Alamat penagihan",
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              FormAppsTwo(
+                maxLines: 3,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              SectionTittle(
+                title: "Alamat kirim",
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              FormAppsTwo(
+                maxLines: 3,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: BtnApps(
+                  onPress: () {},
+                  text: "Simpan",
+                ),
+              ),
+            ],
           ),
         ),
       ),
