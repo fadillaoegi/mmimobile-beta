@@ -38,92 +38,94 @@ class HomeView extends GetView<HomeController> {
       //       ),
       //     ),
       //   ),
-      body: SizedBox(
-        height: sizeScreen.height,
-        width: sizeScreen.width,
-        child: Stack(
-          children: [
-            Container(
-              height: sizeScreen.height,
-              width: sizeScreen.width,
-              decoration: const BoxDecoration(
-                color: ColorApps.white,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(0.0),
-                  bottomLeft: Radius.circular(0.0),
+      body: SafeArea(
+        child: SizedBox(
+          height: sizeScreen.height,
+          width: sizeScreen.width,
+          child: Stack(
+            children: [
+              Container(
+                height: sizeScreen.height,
+                width: sizeScreen.width,
+                decoration: const BoxDecoration(
+                  color: ColorApps.white,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(0.0),
+                    bottomLeft: Radius.circular(0.0),
+                  ),
                 ),
               ),
-            ),
-            CanvaApps(
-              top: sizeScreen.height / 26.0,
-              widget: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    // NOTE: SECTION 1
-                    sectionOneHome(userController),
-                    const SizedBox(height: 20.0),
+              CanvaApps(
+                // top: sizeScreen.height / 26.0,
+                widget: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // NOTE: SECTION 1
+                      sectionOneHome(userController),
+                      const SizedBox(height: 20.0),
 
-                    // NOTE: SECTION 2
-                    CarouselHome(controller: controller),
-                    const SizedBox(height: 20.0),
+                      // NOTE: SECTION 2
+                      CarouselHome(controller: controller),
+                      const SizedBox(height: 20.0),
 
-                    // NOTE: SECTION 3
-                    SectionTittle(
-                      title: "Best Ingredients for ODM",
-                    ),
-                    const SizedBox(height: 10.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        highlight(
-                          () {},
-                          image: AssetConfigFLdev.example1,
-                        ),
-                        highlight(
-                          () {},
-                          image: AssetConfigFLdev.example2,
-                        ),
-                        highlight(
-                          () {},
-                          image: AssetConfigFLdev.example3,
-                        ),
-                      ],
-                    ),
+                      // NOTE: SECTION 3
+                      SectionTittle(
+                        title: "Best Ingredients for ODM",
+                      ),
+                      const SizedBox(height: 10.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          highlight(
+                            () {},
+                            image: AssetConfigFLdev.example1,
+                          ),
+                          highlight(
+                            () {},
+                            image: AssetConfigFLdev.example2,
+                          ),
+                          highlight(
+                            () {},
+                            image: AssetConfigFLdev.example3,
+                          ),
+                        ],
+                      ),
 
-                    const SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
 
-                    // NOTE: ECTION 4
-                    SectionTittle(
-                      title: "Ready to go OEM",
-                    ),
-                    const SizedBox(height: 10.0),
+                      // NOTE: ECTION 4
+                      SectionTittle(
+                        title: "Ready to go OEM",
+                      ),
+                      const SizedBox(height: 10.0),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        highlight(
-                          () {},
-                          image: AssetConfigFLdev.example1,
-                        ),
-                        highlight(
-                          () {},
-                          image: AssetConfigFLdev.example2,
-                        ),
-                        highlight(
-                          () {},
-                          image: AssetConfigFLdev.example3,
-                        ),
-                      ],
-                    ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          highlight(
+                            () {},
+                            image: AssetConfigFLdev.example1,
+                          ),
+                          highlight(
+                            () {},
+                            image: AssetConfigFLdev.example2,
+                          ),
+                          highlight(
+                            () {},
+                            image: AssetConfigFLdev.example3,
+                          ),
+                        ],
+                      ),
 
-                    // BannerInformation(sizeScreen: sizeScreen),
-                    // BannerInformation(sizeScreen: sizeScreen),
-                    // BannerInformation(sizeScreen: sizeScreen),
-                  ],
+                      // BannerInformation(sizeScreen: sizeScreen),
+                      // BannerInformation(sizeScreen: sizeScreen),
+                      // BannerInformation(sizeScreen: sizeScreen),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -137,7 +139,7 @@ class HomeView extends GetView<HomeController> {
           onTap: onTap,
           child: Container(
             height: 100.0,
-            width: 110.0,
+            width: 130.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: boxShadow,

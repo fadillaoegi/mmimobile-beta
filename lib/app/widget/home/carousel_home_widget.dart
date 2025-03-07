@@ -1,15 +1,16 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:mmimobile/app/modules/home/controllers/home_controller.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:mmimobile/app/modules/home/controllers/home_controller.dart';
+import 'package:mmimobile/app/styles/shadow.dart';
 
 class CarouselHome extends StatelessWidget {
   const CarouselHome({
@@ -38,53 +39,60 @@ class CarouselHome extends StatelessWidget {
         return Stack(
           children: [
             // Carousel Slider
-            Material(
-              elevation: 4.0,
-              borderRadius: BorderRadius.circular(10.0),
-              child: CarouselSlider.builder(
-                itemCount: controller.imageUrl.length,
-                itemBuilder: (context, index, _) {
-                  final url = controller.imageUrl[index];
-                  return Container(
-                    // width: MediaQuery.of(context).size.width,,
-                    margin: const EdgeInsets.all(4.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: ClipRRect(
+            Center(
+              child: Container(
+                // elevation: 4.0,
+                width: 380.0,
+                decoration: BoxDecoration(
+                  color: ColorApps.white,
+                  boxShadow: boxShadow,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: CarouselSlider.builder(
+                  itemCount: controller.imageUrl.length,
+                  itemBuilder: (context, index, _) {
+                    final url = controller.imageUrl[index];
+                    return Container(
+                      margin: const EdgeInsets.all(4.0),
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.0),
-                        child: Image.asset(
-                          url,
-                          fit: BoxFit.cover,
-                        )
+                      ),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4.0),
+                          child: Image.asset(
+                            url,
+                            fit: BoxFit.cover,
+                          )
 
-                        // CachedNetworkImage(
-                        //   imageUrl: url,
-                        //   // fit: BoxFit.cover,
-                        //   placeholder: (context, url) => const Center(
-                        //     child: CupertinoActivityIndicator(),
-                        //   ),
-                        //   errorWidget: (context, url, error) => const Center(
-                        //     child: Icon(
-                        //       Icons.broken_image,
-                        //       color: Colors.grey,
-                        //     ),
-                        //   ),
-                        // ),
-                        ),
-                  );
-                },
-                options: CarouselOptions(
-                  // height: MediaQuery.of(context).size.height * 0.26,
-                  // height: 180.0,
-                  viewportFraction: 1.0, // Mengisi seluruh viewport
-                  autoPlay: true, // Mengaktifkan auto play
-                  autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn, // Animasi halus
-                  enlargeCenterPage: false, // Tidak memperbesar slide tengah
-                  onPageChanged: (index, reason) =>
-                      controller.onPageChanged(index, reason),
+                          // CachedNetworkImage(
+                          //   imageUrl: url,
+                          //   // fit: BoxFit.cover,
+                          //   placeholder: (context, url) => const Center(
+                          //     child: CupertinoActivityIndicator(),
+                          //   ),
+                          //   errorWidget: (context, url, error) => const Center(
+                          //     child: Icon(
+                          //       Icons.broken_image,
+                          //       color: Colors.grey,
+                          //     ),
+                          //   ),
+                          // ),
+                          ),
+                    );
+                  },
+                  options: CarouselOptions(
+                    // height: MediaQuery.of(context).size.height * 0.26,
+                    height: 180.0,
+                    viewportFraction: 1.0, // Mengisi seluruh viewport
+                    autoPlay: true, // Mengaktifkan auto play
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn, // Animasi halus
+                    enlargeCenterPage: false, // Tidak memperbesar slide tengah
+                    onPageChanged: (index, reason) =>
+                        controller.onPageChanged(index, reason),
+                  ),
                 ),
               ),
             ),
