@@ -59,6 +59,7 @@ class SurveyView extends GetView<SurveyController> {
                       label: "Rating kualitas produk kami",
                       iconImage: AssetConfigFLdev.iconQualityProduct,
                       iconSize: 40.0,
+                      onTap: () => Get.toNamed(Routes.ratingProduct),
                     ),
                     ItemList(
                       label: "Layanan komplain pelanggan",

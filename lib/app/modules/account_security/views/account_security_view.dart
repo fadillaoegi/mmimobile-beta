@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -10,7 +11,6 @@ import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/item_list_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
-
 import '../controllers/account_security_controller.dart';
 
 class AccountSecurityView extends GetView<AccountSecurityController> {

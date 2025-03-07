@@ -4,12 +4,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:mmimobile/app/modules/modules_system_support/system_support/controllers/system_support_controller.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:mmimobile/app/modules/modules_system_support/system_support/controllers/system_support_controller.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class CarouselSystemSupport extends StatelessWidget {
   const CarouselSystemSupport({
@@ -98,7 +98,7 @@ class CarouselSystemSupport extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Lainya",
+                          "More",
                           style: white700.copyWith(fontSize: 13.0),
                         ),
                         Icon(

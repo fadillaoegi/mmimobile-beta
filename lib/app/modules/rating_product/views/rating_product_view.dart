@@ -37,7 +37,7 @@ class RatingProductView extends GetView<RatingProductController> {
                       height: 10.0,
                     ),
                     FormAppsTwo(
-                      maxLines: 4,
+                      maxLines: 3,
                     )
                   ],
                 ),

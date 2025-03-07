@@ -58,7 +58,7 @@ class ProfileView extends GetView<ProfileController> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: boxShadow,
-        color: ColorApps.cardTransparan,
+        color: ColorApps.white,
       ),
       child: Column(
         children: [

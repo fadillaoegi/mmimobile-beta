@@ -55,7 +55,7 @@ class CarouselHome extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.0),
                       child: CachedNetworkImage(
                         imageUrl: url,
-                        fit: BoxFit.cover,
+                        // fit: BoxFit.cover,
                         placeholder: (context, url) => const Center(
                           child: CupertinoActivityIndicator(),
                         ),
@@ -99,7 +99,7 @@ class CarouselHome extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Lainya",
+                          "More",
                           style: white700.copyWith(fontSize: 13.0),
                         ),
                         Icon(

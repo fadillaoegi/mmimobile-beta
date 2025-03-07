@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/styles/color.dart';
+import 'package:mmimobile/app/styles/shadow.dart';
 
 class CanvaApps extends StatelessWidget {
-  const CanvaApps(
-      {super.key,
-      this.widget,
-      this.bottom = 0.0,
-      this.left = 10.0,
-      this.right = 10.0,
-      this.top = 10.0,
-      this.bg = "",
-      this.color = ColorApps.white});
+  const CanvaApps({
+    super.key,
+    this.widget,
+    this.bottom = 0.0,
+    this.left = 10.0,
+    this.right = 10.0,
+    this.top = 10.0,
+    this.bg = "",
+    this.color = ColorApps.white,
+  });
 
   final Widget? widget;
   final double? top;
@@ -31,8 +33,12 @@ class CanvaApps extends StatelessWidget {
           top: top!, bottom: bottom!, left: left!, right: right!),
       decoration: bg!.isNotEmpty
           ? BoxDecoration(
+              boxShadow: boxShadow,
               image: DecorationImage(image: AssetImage(bg!), fit: BoxFit.cover))
-          : BoxDecoration(color: color),
+          : BoxDecoration(
+              // color: color,
+              color: const Color.fromARGB(33, 158, 158, 158),
+            ),
       child:
           Container(margin: const EdgeInsets.only(bottom: 4.0), child: widget),
     );
