@@ -29,6 +29,9 @@ class AssetConfigFLdev {
   static const example1 = "assets/images/example1.png";
   static const example2 = "assets/images/example2.png";
   static const example3 = "assets/images/example3.png";
+  static const banner1 = "assets/images/banner1.png";
+  static const banner2 = "assets/images/banner2.png";
+  static const banner3 = "assets/images/banner3.png";
 
   // NOTE: LOGO
   static const logo = "assets/images/logo/logo.png";

@@ -86,8 +86,8 @@ class HistoryView extends GetView<HistoryController> {
                   child: controller.historyList.isEmpty
                       ? Center(
                           child: Text(
-                            "You don't have any history yet",
-                            style: primary500.copyWith(fontSize: 16.0),
+                            "Anda belum mempunyai riwayat pembelian",
+                            style: secondary500.copyWith(fontSize: 16.0),
                           ),
                         )
                       : ListView.builder(
