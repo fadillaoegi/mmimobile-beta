@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/app/widget/home/carousel_home_widget.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -12,7 +13,6 @@ import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
-import 'package:mmimobile/app/widget/system_support/carousel_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
@@ -64,7 +64,7 @@ class HomeView extends GetView<HomeController> {
                       const SizedBox(height: 20.0),
 
                       // NOTE: SECTION 2
-                      CarouselSystemSupport(controller: controller),
+                      CarouselHome(controller: controller),
                       const SizedBox(height: 20.0),
 
                       // NOTE: SECTION 3

@@ -49,7 +49,7 @@ abstract class Routes {
   static const survey = _Paths.survey;
   static const surveyComplain = _Paths.surveyComplain;
   static const ratingProduct = _Paths.ratingProduct;
-  static const ACCOUNT_SECURITY = _Paths.ACCOUNT_SECURITY;
+  static const accountSecurity = _Paths.accountSecurity;
 }
 
 abstract class _Paths {
@@ -103,5 +103,5 @@ abstract class _Paths {
   static const survey = '/survey';
   static const surveyComplain = '/survey-complain';
   static const ratingProduct = '/rating-product';
-  static const ACCOUNT_SECURITY = '/account-security';
+  static const accountSecurity = '/account-security';
 }

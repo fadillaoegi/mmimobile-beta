@@ -11,7 +11,8 @@ class ItemList extends StatelessWidget {
       this.onTap,
       this.fontColor,
       this.iconSize = 22.0,
-      this.fontSize = 14.0});
+      this.fontSize = 14.0,
+      this.widget});
   final String? label;
   final IconData? icon;
   final String? iconImage;
@@ -19,6 +20,7 @@ class ItemList extends StatelessWidget {
   final Color? fontColor;
   final double? fontSize;
   final double? iconSize;
+  final Widget? widget;
 
   @override
   Widget build(BuildContext context) {
@@ -52,19 +54,25 @@ class ItemList extends StatelessWidget {
                   ),
                   Text(
                     "$label",
-                    style: label == "Sign Out" || label == "Keluar"
+                    style: label == "Sign Out" ||
+                            label == "Keluar" ||
+                            label == "Hapus akun"
                         ? error400.copyWith(fontSize: fontSize)
                         : disable2400.copyWith(fontSize: fontSize),
                   ),
                 ],
               ),
-              Icon(
-                Icons.keyboard_arrow_right_outlined,
-                color: label == "Sign Out" || label == "Keluar"
-                    ? ColorApps.error
-                    : ColorApps.disable2,
-                size: 22.0,
-              ),
+              widget == null
+                  ? Icon(
+                      Icons.keyboard_arrow_right_outlined,
+                      color: label == "Sign Out" ||
+                              label == "Keluar" ||
+                              label == "Hapus akun"
+                          ? ColorApps.error
+                          : ColorApps.disable2,
+                      size: 22.0,
+                    )
+                  : widget!
             ],
           ),
         ),
@@ -72,9 +80,10 @@ class ItemList extends StatelessWidget {
           height: 8.0,
         ),
         Divider(
-          color: label == "Sign Out" || label == "Keluar"
-              ? ColorApps.error
-              : ColorApps.disable2,
+          color:
+              label == "Sign Out" || label == "Keluar" || label == "Hapus akun"
+                  ? ColorApps.error
+                  : ColorApps.disable2,
           thickness: 0.1,
         ),
       ],

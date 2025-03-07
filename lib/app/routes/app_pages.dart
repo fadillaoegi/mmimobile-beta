@@ -283,7 +283,7 @@ class AppPages {
       binding: RatingProductBinding(),
     ),
     GetPage(
-      name: _Paths.ACCOUNT_SECURITY,
+      name: _Paths.accountSecurity,
       page: () => const AccountSecurityView(),
       binding: AccountSecurityBinding(),
     ),

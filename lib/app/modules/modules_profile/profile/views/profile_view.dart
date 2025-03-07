@@ -84,7 +84,7 @@ class ProfileView extends GetView<ProfileController> {
             icon: Icons.book_outlined,
           ),
           ItemList(
-            onTap: () => Get.toNamed(Routes.underDevelopment),
+            onTap: () => Get.toNamed(Routes.accountSecurity),
             label: "Akun & keamanan",
             icon: Icons.security_outlined,
           ),
