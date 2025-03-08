@@ -5,9 +5,10 @@ import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
-import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -116,7 +117,6 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ],
                       ),
-
                       // BannerInformation(sizeScreen: sizeScreen),
                       // BannerInformation(sizeScreen: sizeScreen),
                       // BannerInformation(sizeScreen: sizeScreen),
@@ -139,7 +139,7 @@ class HomeView extends GetView<HomeController> {
           onTap: onTap,
           child: Container(
             height: 100.0,
-            width: 130.0,
+            width: 120.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: boxShadow,
@@ -214,9 +214,9 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
         IconButton(
-          // onPressed: () => Get.toNamed(Routes.notification),
-          onPressed: () => SnackbarFLdev.snackShow(
-              title: "Welcome to MMI mobile", message: "Signin success"),
+          onPressed: () => Get.toNamed(Routes.supportDetail),
+          // onPressed: () => SnackbarFLdev.snackShow(
+          //     title: "Welcome to MMI mobile", message: "Signin success"),
           icon: const Icon(
             Icons.notifications_none_sharp,
             color: ColorApps.secondary,

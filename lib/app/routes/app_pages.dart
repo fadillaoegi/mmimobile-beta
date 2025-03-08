@@ -4,12 +4,8 @@ import '../modules/account_security/bindings/account_security_binding.dart';
 import '../modules/account_security/views/account_security_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
-import '../modules/modules_profile/detail_membership/bindings/detail_membership_binding.dart';
-import '../modules/modules_profile/detail_membership/views/detail_membership_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/modules_profile/membership/bindings/membership_binding.dart';
-import '../modules/modules_profile/membership/views/membership_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -28,10 +24,14 @@ import '../modules/modules_history/history_detail/bindings/history_detail_bindin
 import '../modules/modules_history/history_detail/views/history_detail_view.dart';
 import '../modules/modules_profile/account_setting/bindings/account_setting_binding.dart';
 import '../modules/modules_profile/account_setting/views/account_setting_view.dart';
+import '../modules/modules_profile/detail_membership/bindings/detail_membership_binding.dart';
+import '../modules/modules_profile/detail_membership/views/detail_membership_view.dart';
 import '../modules/modules_profile/faq/bindings/faq_binding.dart';
 import '../modules/modules_profile/faq/views/faq_view.dart';
 import '../modules/modules_profile/language_setting/bindings/language_setting_binding.dart';
 import '../modules/modules_profile/language_setting/views/language_setting_view.dart';
+import '../modules/modules_profile/membership/bindings/membership_binding.dart';
+import '../modules/modules_profile/membership/views/membership_view.dart';
 import '../modules/modules_profile/privacy_policy/bindings/privacy_policy_binding.dart';
 import '../modules/modules_profile/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/modules_profile/profile/bindings/profile_binding.dart';
@@ -56,6 +56,8 @@ import '../modules/modules_profile/reward_history/bindings/reward_history_bindin
 import '../modules/modules_profile/reward_history/views/reward_history_view.dart';
 import '../modules/modules_profile/website/bindings/website_binding.dart';
 import '../modules/modules_profile/website/views/website_view.dart';
+import '../modules/modules_survey/rating_product/bindings/rating_product_binding.dart';
+import '../modules/modules_survey/rating_product/views/rating_product_view.dart';
 import '../modules/modules_survey/rating_services/bindings/rating_services_binding.dart';
 import '../modules/modules_survey/rating_services/views/rating_services_view.dart';
 import '../modules/modules_survey/survey/bindings/survey_binding.dart';
@@ -70,10 +72,10 @@ import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
-import '../modules/rating_product/bindings/rating_product_binding.dart';
-import '../modules/rating_product/views/rating_product_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/support_detail/bindings/support_detail_binding.dart';
+import '../modules/support_detail/views/support_detail_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
 
@@ -286,6 +288,11 @@ class AppPages {
       name: _Paths.accountSecurity,
       page: () => const AccountSecurityView(),
       binding: AccountSecurityBinding(),
+    ),
+    GetPage(
+      name: _Paths.supportDetail,
+      page: () => const SupportDetailView(),
+      binding: SupportDetailBinding(),
     ),
   ];
 }

@@ -9,7 +9,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initializeDateFormatting("id_ID");
-
+  
   // NOTE: Ambil data sesi pengguna sebelum menjalankan aplikasi
   User? currentUser = await SessionUserFLdev.getUser();
 
