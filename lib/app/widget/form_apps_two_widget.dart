@@ -39,6 +39,7 @@ class FormAppsTwo extends StatelessWidget {
       decoration: InputDecoration(
           labelText: labelText,
           labelStyle: black400.copyWith(fontSize: 13.0),
+          fillColor: ColorApps.white,
           suffixIcon: suffixIcon
               ? InkWell(
                   onTap: onTap,

@@ -51,6 +51,7 @@ abstract class Routes {
   static const ratingProduct = _Paths.ratingProduct;
   static const accountSecurity = _Paths.accountSecurity;
   static const supportDetail = _Paths.supportDetail;
+  static const listSupport = _Paths.listSupport;
 }
 
 abstract class _Paths {
@@ -106,4 +107,5 @@ abstract class _Paths {
   static const ratingProduct = '/rating-product';
   static const accountSecurity = '/account-security';
   static const supportDetail = '/support-detail';
+  static const listSupport = '/list-support';
 }

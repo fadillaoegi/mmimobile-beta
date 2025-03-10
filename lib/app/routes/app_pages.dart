@@ -6,6 +6,8 @@ import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/list_support/bindings/list_support_binding.dart';
+import '../modules/list_support/views/list_support_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -293,6 +295,11 @@ class AppPages {
       name: _Paths.supportDetail,
       page: () => const SupportDetailView(),
       binding: SupportDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.listSupport,
+      page: () => const ListSupportView(),
+      binding: ListSupportBinding(),
     ),
   ];
 }

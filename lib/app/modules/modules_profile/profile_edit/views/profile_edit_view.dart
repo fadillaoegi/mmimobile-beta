@@ -55,7 +55,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: ColorApps.primary)),
+                      borderSide: BorderSide(color: ColorApps.secondary)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(),
                   ),
@@ -80,6 +80,8 @@ class ProfileEditView extends GetView<ProfileEditController> {
                         text: controller.selectedDate.value),
                     decoration: InputDecoration(
                       hintText: "DD-MM-YYYY",
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: ColorApps.secondary)),
                       suffixIcon: IconButton(
                         icon: Icon(Icons.calendar_today),
                         onPressed: () => controller.pickDate(context),

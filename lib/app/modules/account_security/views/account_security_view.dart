@@ -44,7 +44,7 @@ class AccountSecurityView extends GetView<AccountSecurityController> {
                   children: [
                     ItemList(
                       onTap: () => Get.toNamed(Routes.underDevelopment),
-                      label: "Username : \t\tNabila",
+                      label: "Email : \t\t nabila@gmail.com",
                       iconSize: 0.0,
                     ),
                     ItemList(
