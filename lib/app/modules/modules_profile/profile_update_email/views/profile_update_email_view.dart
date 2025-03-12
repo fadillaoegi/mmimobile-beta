@@ -9,7 +9,7 @@ import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/alert/alert_form_pass_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -74,7 +74,7 @@ class ProfileUpdateEmailView extends GetView<ProfileUpdateEmailController> {
                               child: Column(
                                 children: [
                                   Obx(
-                                    () => FormAppsTwo(
+                                    () => FormAppsFLdev(
                                       controller:
                                           controller.emailController.value,
                                       labelText: userController

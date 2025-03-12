@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import '../controllers/rating_product_controller.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 
@@ -64,7 +64,7 @@ class RatingProductView extends GetView<RatingProductController> {
               size: 14.0,
             ),
             const SizedBox(height: 10.0),
-            FormAppsTwo(
+            FormAppsFLdev(
               maxLines: 3,
             ),
             const SizedBox(height: 20.0),

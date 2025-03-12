@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
@@ -214,9 +213,10 @@ class HomeView extends GetView<HomeController> {
           ],
         ),
         IconButton(
-          onPressed: () => Get.toNamed(Routes.supportDetail),
-          // onPressed: () => SnackbarFLdev.snackShow(
-          //     title: "Welcome to MMI mobile", message: "Signin success"),
+          // onPressed: () => Get.toNamed(Routes.supportDetail),
+          // onPressed: () => print(userController.user.customerMembershipName),
+          onPressed: () => SnackbarFLdev.snackShow(
+              title: "Welcome to MMI mobile", message: "Signin success"),
           icon: const Icon(
             Icons.notifications_none_sharp,
             color: ColorApps.secondary,

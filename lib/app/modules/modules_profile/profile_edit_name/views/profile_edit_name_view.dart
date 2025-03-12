@@ -11,7 +11,7 @@ import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../controllers/profile_edit_name_controller.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class ProfileEditNameView extends GetView<ProfileEditNameController> {
@@ -75,7 +75,7 @@ class ProfileEditNameView extends GetView<ProfileEditNameController> {
                                 child: Column(
                                   children: [
                                     Obx(
-                                      () => FormAppsTwo(
+                                      () => FormAppsFLdev(
                                         controller:
                                             controller.newNameController.value,
                                         labelText: userController

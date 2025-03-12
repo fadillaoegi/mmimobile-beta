@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/styles/fonts.dart';
 import '../controllers/profile_edit_controller.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -32,13 +33,13 @@ class ProfileEditView extends GetView<ProfileEditController> {
                   size: 100.0,
                 ),
               ),
-              FormAppsTwo(
+              FormAppsFLdev(
                 labelText: "Nama",
               ),
               const SizedBox(
                 height: 20.0,
               ),
-              FormAppsTwo(
+              FormAppsFLdev(
                 labelText: "Email",
               ),
               const SizedBox(
@@ -54,10 +55,17 @@ class ProfileEditView extends GetView<ProfileEditController> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Phone Number',
+                  fillColor: ColorApps.white,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorApps.disable, width: 2.0)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: ColorApps.secondary)),
+                      borderSide:
+                          BorderSide(color: ColorApps.secondary, width: 2.0)),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(),
+                    borderSide:
+                        BorderSide(color: ColorApps.secondary, width: 2.0),
                   ),
                 ),
                 initialCountryCode: 'ID',
@@ -65,31 +73,36 @@ class ProfileEditView extends GetView<ProfileEditController> {
                   print(phone.completeNumber);
                 },
               ),
-              // FormAppsTwo(
-              //   labelText: "Tanggal lahir",
-              // ),
               SectionTittle(
                 title: "Tanggal lahir",
               ),
               const SizedBox(
                 height: 10.0,
               ),
-              Obx(() => TextFormField(
-                    readOnly: true,
-                    controller: TextEditingController(
-                        text: controller.selectedDate.value),
-                    decoration: InputDecoration(
-                      hintText: "DD-MM-YYYY",
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: ColorApps.secondary)),
-                      suffixIcon: IconButton(
-                        icon: Icon(Icons.calendar_today),
-                        onPressed: () => controller.pickDate(context),
-                      ),
-                      border: OutlineInputBorder(),
+              Obx(
+                () => TextFormField(
+                  readOnly: true,
+                  controller: TextEditingController(
+                      text: controller.selectedDate.value),
+                  decoration: InputDecoration(
+                    hintText: "DD-MM-YYYY",
+                    filled: true,
+                    fillColor: ColorApps.white,
+                    labelStyle: secondary500,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorApps.disable, width: 2.0)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorApps.secondary, width: 2.0)),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.calendar_today),
+                      onPressed: () => controller.pickDate(context),
                     ),
-                  )),
-
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 20.0,
               ),
@@ -99,7 +112,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
               const SizedBox(
                 height: 10.0,
               ),
-              FormAppsTwo(
+              FormAppsFLdev(
                 maxLines: 3,
               ),
               const SizedBox(
@@ -111,7 +124,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
               const SizedBox(
                 height: 10.0,
               ),
-              FormAppsTwo(
+              FormAppsFLdev(
                 maxLines: 3,
               ),
               Padding(

@@ -6,7 +6,7 @@ import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 
 import '../controllers/add_email_controller.dart';
 
@@ -64,7 +64,7 @@ class AddEmailView extends GetView<AddEmailController> {
                     const SizedBox(
                       height: 18.0,
                     ),
-                    FormAppsTwo(
+                    FormAppsFLdev(
                       controller: controller.emailController.value,
                       labelText: "Email",
                       validator: (p0) {

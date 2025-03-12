@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
-import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-
 import '../controllers/list_support_controller.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 
 class ListSupportView extends GetView<ListSupportController> {
   const ListSupportView({super.key});

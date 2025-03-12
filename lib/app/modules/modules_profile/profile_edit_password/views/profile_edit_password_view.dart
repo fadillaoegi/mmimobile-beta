@@ -7,7 +7,7 @@ import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 
 import '../controllers/profile_edit_password_controller.dart';
 
@@ -54,7 +54,7 @@ class ProfileEditPasswordView extends GetView<ProfileEditPasswordController> {
                                 height: 20.0,
                               ),
                               Obx(
-                                () => FormAppsTwo(
+                                () => FormAppsFLdev(
                                   controller:
                                       controller.oldPassController.value,
                                   labelText: "Old Password",
@@ -73,7 +73,7 @@ class ProfileEditPasswordView extends GetView<ProfileEditPasswordController> {
                                 height: 20.0,
                               ),
                               Obx(
-                                () => FormAppsTwo(
+                                () => FormAppsFLdev(
                                   controller:
                                       controller.newPassController.value,
                                   labelText: "New Password",
@@ -92,7 +92,7 @@ class ProfileEditPasswordView extends GetView<ProfileEditPasswordController> {
                                 height: 20.0,
                               ),
                               Obx(
-                                () => FormAppsTwo(
+                                () => FormAppsFLdev(
                                   controller:
                                       controller.confirmPassController.value,
                                   labelText: "Confirm new Password",

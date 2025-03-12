@@ -5,7 +5,7 @@ import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import '../controllers/survey_complain_controller.dart';
 
@@ -38,7 +38,7 @@ class SurveyComplainView extends GetView<SurveyComplainController> {
                         ),
                       ),
                       // NOTE: NAME
-                      FormAppsTwo(
+                      FormAppsFLdev(
                         labelText: "Nama",
                       ),
                       const SizedBox(
@@ -46,7 +46,7 @@ class SurveyComplainView extends GetView<SurveyComplainController> {
                       ),
 
                       // NOTE: EMAIL FORM
-                      FormAppsTwo(
+                      FormAppsFLdev(
                         labelText: "Email",
                       ),
                       const SizedBox(
@@ -54,7 +54,7 @@ class SurveyComplainView extends GetView<SurveyComplainController> {
                       ),
 
                       // NOTE: BRAND NAME FORM
-                      FormAppsTwo(
+                      FormAppsFLdev(
                         labelText: "Nama brand",
                       ),
                       const SizedBox(
@@ -101,7 +101,7 @@ class SurveyComplainView extends GetView<SurveyComplainController> {
                       ),
                       const SizedBox(height: 10.0),
 
-                      FormAppsTwo(
+                      FormAppsFLdev(
                         maxLines: 5,
                       ),
                       const SizedBox(

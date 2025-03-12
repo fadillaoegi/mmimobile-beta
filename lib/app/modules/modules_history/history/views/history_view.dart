@@ -106,14 +106,16 @@ class HistoryView extends GetView<HistoryController> {
                                   'dateSo': item.dateSo?.toString() ?? "",
                                 });
                               },
-                              shadow: true,
+                              shadow: true, isDetail: false,
+                              // statusName: item.statusNameSo.toString(),
+                              // statusId: item.statusSo.toString(),
                               idSo: item.nameSo ?? "No id SO",
                               brandName: item.brandSo ?? "No brand name SO",
                               productCount:
                                   int.tryParse(item.totalSo ?? "0") ?? 0,
                               date: date.isNotEmpty
                                   ? date
-                                  : "date has not been set",
+                                  : "date has not been set",statusSo: item.statusSo.toString(),
                             );
                           },
                         ),
@@ -158,7 +160,9 @@ class SearchFLdev extends StatelessWidget {
       autofocus: false,
       decoration: InputDecoration(
         hintText: 'Cari riwayat...',
-        hintStyle: secondary400,
+        fillColor: ColorApps.white,
+        filled: true,
+        hintStyle: disable500,
         suffixIcon: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -174,12 +178,15 @@ class SearchFLdev extends StatelessWidget {
           ),
         ),
         enabled: true,
-        enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.secondary)),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ColorApps.disable, width: 2.0),
+            borderRadius: BorderRadius.circular(50.0)),
         border: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.secondary)),
-        focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorApps.secondary)),
+            borderSide: BorderSide(color: ColorApps.secondary, width: 2.0),
+            borderRadius: BorderRadius.circular(50.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ColorApps.secondary, width: 2.0),
+            borderRadius: BorderRadius.circular(50.0)),
       ),
     );
   }

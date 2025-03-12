@@ -10,6 +10,8 @@ class ColorApps {
   static const card3 = Color.fromARGB(204, 109, 133, 36);
   static const bottom = Color(0x97D0F2AC);
   static const cardTransparan = Color(0x70ffffff);
+  static const done = Color(0xff28a745);
+  static const process = Color(0xff22794);
   static const icon = Color(0xffAFAFAF);
   static const icon2 = Color(0xff5E5E5E);
   static const black = Color(0xff181717);

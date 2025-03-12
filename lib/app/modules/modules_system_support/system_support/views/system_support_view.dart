@@ -29,7 +29,7 @@ class SystemSupportView extends GetView<SystemSupportController> {
             children: [
               SectionTittle(
                 title: "Professional Development\nTraining Programs",
-                size: 18.0,
+                size: 20.0,
               ),
               // Center(
               //   child: Text(
@@ -43,11 +43,11 @@ class SystemSupportView extends GetView<SystemSupportController> {
               ),
               CarouselSystemSupport(controller: controller),
               const SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Text(
                 "Make Up Your Brand",
-                style: black700.copyWith(
+                style: black500.copyWith(
                   fontSize: 16.0,
                 ),
               ),
@@ -56,11 +56,11 @@ class SystemSupportView extends GetView<SystemSupportController> {
               ),
               CarouselSystemSupport(controller: controller),
               const SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Text(
                 "How to Build Your Personal Branding",
-                style: black700.copyWith(
+                style: black500.copyWith(
                   fontSize: 16.0,
                 ),
               ),

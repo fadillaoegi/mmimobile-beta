@@ -4,7 +4,7 @@ import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import '../controllers/reset_password_controller.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 
 class ResetPasswordView extends GetView<ResetPasswordController> {
@@ -67,7 +67,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       height: 18.0,
                     ),
                     Obx(
-                      () => FormAppsTwo(
+                      () => FormAppsFLdev(
                         controller: controller.passController.value,
                         labelText: "New password",
                         obscure: controller.isObsecure.value,
@@ -87,7 +87,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       height: 20.0,
                     ),
                     Obx(
-                      () => FormAppsTwo(
+                      () => FormAppsFLdev(
                         controller: controller.confirmPassController.value,
                         labelText: "Confirm Password",
                         obscure: controller.isObsecureSecond.value,

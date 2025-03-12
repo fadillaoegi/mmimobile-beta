@@ -11,7 +11,7 @@ import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
-import 'package:mmimobile/app/widget/form_apps_two_widget.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../controllers/sign_in_controller.dart';
@@ -89,11 +89,20 @@ class SignInView extends GetView<SignInController> {
                                         },
                                         decoration: InputDecoration(
                                           labelText: 'Phone Number',
+                                          fillColor: ColorApps.white,
+                                          filled: true,
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: ColorApps.disable,
+                                                  width: 2.0)),
                                           focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                  color: ColorApps.secondary)),
+                                                  color: ColorApps.secondary,
+                                                  width: 2.0)),
                                           border: OutlineInputBorder(
-                                            borderSide: BorderSide(),
+                                            borderSide: BorderSide(
+                                                color: ColorApps.secondary,
+                                                width: 2.0),
                                           ),
                                         ),
                                         initialCountryCode: 'ID',
@@ -109,7 +118,7 @@ class SignInView extends GetView<SignInController> {
                                         height: 10.0,
                                       ),
                                       Obx(
-                                        () => FormAppsTwo(
+                                        () => FormAppsFLdev(
                                           controller:
                                               controller.passController.value,
                                           labelText: "Password",

@@ -14,6 +14,8 @@ class HistorySo {
   String? brandSo;
   String? typeSo;
   String? categorySo;
+  String? statusSo;
+  String? statusNameSo;
   String? totalSo;
 
   HistorySo({
@@ -22,6 +24,8 @@ class HistorySo {
     this.brandSo,
     this.typeSo,
     this.categorySo,
+    this.statusSo,
+    this.statusNameSo,
     this.totalSo,
   });
 
@@ -31,6 +35,8 @@ class HistorySo {
         brandSo: json["brandSo"],
         typeSo: json["typeSo"],
         categorySo: json["categorySo"],
+        statusSo: json["statusSo"],
+        statusNameSo: json["statusNameSo"],
         totalSo: json["totalSo"],
       );
 
@@ -40,6 +46,8 @@ class HistorySo {
         "brandSo": brandSo,
         "typeSo": typeSo,
         "categorySo": categorySo,
+        "statusSo": statusSo,
+        "statusNameSo": statusNameSo,
         "totalSo": totalSo,
       };
 }

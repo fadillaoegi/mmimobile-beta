@@ -104,6 +104,7 @@ abstract class _Paths {
   static const detailMembership = '/detail-membership';
   static const survey = '/survey';
   static const surveyComplain = '/survey-complain';
+  
   static const ratingProduct = '/rating-product';
   static const accountSecurity = '/account-security';
   static const supportDetail = '/support-detail';

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 
-class FormAppsTwo extends StatelessWidget {
-  const FormAppsTwo({
+class FormAppsFLdev extends StatelessWidget {
+  const FormAppsFLdev({
     super.key,
     this.controller,
     this.obscure = false,
@@ -13,15 +13,19 @@ class FormAppsTwo extends StatelessWidget {
     this.suffixIcon = false,
     this.maxLines = 1,
     this.onTap,
+    this.readOnly = false,
+    this.hintText = "",
     this.keybooardType = TextInputType.emailAddress,
   });
 
   final TextEditingController? controller;
   final bool obscure;
   final bool enabled;
+  final bool readOnly;
   final int maxLines;
   final bool suffixIcon;
   final String labelText;
+  final String hintText;
   final String? Function(String?)? validator;
   final VoidCallback? onTap;
   final TextInputType? keybooardType;
@@ -29,6 +33,7 @@ class FormAppsTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly,
       validator: validator,
       maxLines: maxLines,
       controller: controller,
@@ -38,8 +43,10 @@ class FormAppsTwo extends StatelessWidget {
       autofocus: false,
       decoration: InputDecoration(
           labelText: labelText,
+          hintText: hintText,
           labelStyle: black400.copyWith(fontSize: 13.0),
           fillColor: ColorApps.white,
+          filled: true,
           suffixIcon: suffixIcon
               ? InkWell(
                   onTap: onTap,
@@ -51,8 +58,11 @@ class FormAppsTwo extends StatelessWidget {
                   ),
                 )
               : const SizedBox(),
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: ColorApps.disable, width: 2.0),
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
           border: const OutlineInputBorder(
-              borderSide: BorderSide(color: ColorApps.primary),
+              borderSide: BorderSide(color: ColorApps.secondary, width: 2.0),
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: ColorApps.secondary, width: 2.0),
