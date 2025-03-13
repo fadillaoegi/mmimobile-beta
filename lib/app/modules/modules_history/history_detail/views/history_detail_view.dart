@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import '../controllers/history_detail_controller.dart';
@@ -87,7 +86,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
                           final item = visibleItems[index];
                           return ItemHistory(
                             onTap: () {
-                              Get.toNamed(Routes.productDetail);
+                              // Get.toNamed(Routes.productDetail);
                             },
                             isDetail: true,
                             shadow: false,

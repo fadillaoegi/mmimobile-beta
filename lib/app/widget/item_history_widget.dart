@@ -162,13 +162,14 @@ class ItemHistory extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             vertical: 6.0, horizontal: 10.0),
                         decoration: BoxDecoration(
-                          color:
-                              statusSo == "3" ? ColorApps.done : ColorApps.blue,
+                          color: statusSo == "3"
+                              ? ColorApps.done
+                              : ColorApps.process,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Text(
                           statusSo == "3" ? "Selesai" : "Proses",
-                          style: white600.copyWith(fontSize: 14.0),
+                          style: white700.copyWith(fontSize: 14.0),
                         ),
                       )
                     ],

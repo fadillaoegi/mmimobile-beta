@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
@@ -17,6 +19,7 @@ class AccountSecurityView extends GetView<AccountSecurityController> {
   const AccountSecurityView({super.key});
   @override
   Widget build(BuildContext context) {
+    final userData = Get.put(UserController());
     return Scaffold(
       appBar: AppBarAppFLdev(
         title: "Akun & Keamanan",
@@ -43,8 +46,8 @@ class AccountSecurityView extends GetView<AccountSecurityController> {
                 child: Column(
                   children: [
                     ItemList(
-                      onTap: () => Get.toNamed(Routes.underDevelopment),
-                      label: "Email : \t\t nabila@gmail.com",
+                      onTap: () => Get.toNamed(Routes.profileUpdateEmail),
+                      label: "Email : \t\t ${userData.user.customerEmail}",
                       iconSize: 0.0,
                     ),
                     ItemList(

@@ -115,7 +115,8 @@ class HistoryView extends GetView<HistoryController> {
                                   int.tryParse(item.totalSo ?? "0") ?? 0,
                               date: date.isNotEmpty
                                   ? date
-                                  : "date has not been set",statusSo: item.statusSo.toString(),
+                                  : "date has not been set",
+                              statusSo: item.statusSo.toString(),
                             );
                           },
                         ),

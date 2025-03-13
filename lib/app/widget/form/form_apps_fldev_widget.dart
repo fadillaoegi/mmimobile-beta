@@ -15,6 +15,7 @@ class FormAppsFLdev extends StatelessWidget {
     this.onTap,
     this.readOnly = false,
     this.hintText = "",
+    // this.initialValue,
     this.keybooardType = TextInputType.emailAddress,
   });
 
@@ -26,6 +27,7 @@ class FormAppsFLdev extends StatelessWidget {
   final bool suffixIcon;
   final String labelText;
   final String hintText;
+  // final String? initialValue;
   final String? Function(String?)? validator;
   final VoidCallback? onTap;
   final TextInputType? keybooardType;
@@ -35,6 +37,7 @@ class FormAppsFLdev extends StatelessWidget {
     return TextFormField(
       readOnly: readOnly,
       validator: validator,
+      // initialValue: initialValue,
       maxLines: maxLines,
       controller: controller,
       enabled: enabled,

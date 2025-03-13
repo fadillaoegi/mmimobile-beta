@@ -11,7 +11,7 @@ class ColorApps {
   static const bottom = Color(0x97D0F2AC);
   static const cardTransparan = Color(0x70ffffff);
   static const done = Color(0xff28a745);
-  static const process = Color(0xff22794);
+  static const process = Color(0xffffc107);
   static const icon = Color(0xffAFAFAF);
   static const icon2 = Color(0xff5E5E5E);
   static const black = Color(0xff181717);
