@@ -22,6 +22,7 @@ class User {
   String? customerMembership;
   String? customerMembershipName;
   String? customerAddressRecipient;
+  String? customerPhotoProfil;
 
   User({
     this.provinceId,
@@ -37,6 +38,7 @@ class User {
     this.customerMembership,
     this.customerMembershipName,
     this.customerAddressRecipient,
+    this.customerPhotoProfil,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -53,6 +55,7 @@ class User {
         customerMembership: json["customer_membership"],
         customerMembershipName: json["customer_membership_name"],
         customerAddressRecipient: json["customer_address_recipient"],
+        customerPhotoProfil: json["customer_photo_profil"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,5 +72,6 @@ class User {
         "customer_membership": customerMembership,
         "customer_membership_name": customerMembershipName,
         "customer_address_recipient": customerAddressRecipient,
+        "customer_photo_profil": customerPhotoProfil,
       };
 }

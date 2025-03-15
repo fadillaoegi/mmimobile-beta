@@ -6,8 +6,8 @@ import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/list_support/bindings/list_support_binding.dart';
-import '../modules/list_support/views/list_support_view.dart';
+import '../modules/modules_system_support/list_support/bindings/list_support_binding.dart';
+import '../modules/modules_system_support/list_support/views/list_support_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -66,8 +66,6 @@ import '../modules/modules_survey/survey/bindings/survey_binding.dart';
 import '../modules/modules_survey/survey/views/survey_view.dart';
 import '../modules/modules_survey/survey_complain/bindings/survey_complain_binding.dart';
 import '../modules/modules_survey/survey_complain/views/survey_complain_view.dart';
-import '../modules/modules_system_support/support_system_class/bindings/support_system_class_binding.dart';
-import '../modules/modules_system_support/support_system_class/views/support_system_class_view.dart';
 import '../modules/modules_system_support/system_support/bindings/system_support_binding.dart';
 import '../modules/modules_system_support/system_support/views/system_support_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
@@ -80,7 +78,6 @@ import '../modules/support_detail/bindings/support_detail_binding.dart';
 import '../modules/support_detail/views/support_detail_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
-
 part 'app_routes.dart';
 
 class AppPages {
@@ -207,11 +204,6 @@ class AppPages {
       binding: ResetPasswordBinding(),
     ),
     GetPage(
-      name: _Paths.systemSupportClass,
-      page: () => const SupportSystemClassView(),
-      binding: SupportSystemClassBinding(),
-    ),
-    GetPage(
       name: _Paths.privacyPolicy,
       page: () => const PrivacyPolicyView(),
       binding: PrivacyPolicyBinding(),
@@ -258,7 +250,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.profileEdit,
-      page: () => const ProfileEditView(),
+      page: () => ProfileEditView(),
       binding: ProfileEditBinding(),
     ),
     GetPage(

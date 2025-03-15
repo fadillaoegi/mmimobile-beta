@@ -59,7 +59,7 @@ class ProfileEditNameController extends GetxController {
       passController.value.clear();
       try {
         final result =
-            await SourceApps.hitApiToMap(ApiApps.updateName, formData);
+            await SourceApps.hitApiToMap(ApiApps.updateProfileFull, formData);
 
         // NOTE: HANDLE RESPONSE ID EMPTY
         if (!result!['status']) {

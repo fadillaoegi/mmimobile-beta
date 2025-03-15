@@ -30,7 +30,6 @@ abstract class Routes {
   static const productDetail = _Paths.productDetail;
   static const appMain = _Paths.appMain;
   static const resetPassword = _Paths.resetPassword;
-  static const systemSupportClass = _Paths.systemSupportClass;
   static const privacyPolicy = _Paths.privacyPolicy;
   static const website = _Paths.website;
   static const notification = _Paths.notification;
@@ -86,7 +85,6 @@ abstract class _Paths {
   // NOTE: MODULE SYTEM SUPPORT
   static const systemSupport = '/system-support';
   static const productDetail = '/product-detail';
-  static const systemSupportClass = '/support-system-class';
   static const privacyPolicy = '/privacy-policy';
   static const website = '/website';
   static const notification = '/notification';
@@ -104,7 +102,7 @@ abstract class _Paths {
   static const detailMembership = '/detail-membership';
   static const survey = '/survey';
   static const surveyComplain = '/survey-complain';
-  
+
   static const ratingProduct = '/rating-product';
   static const accountSecurity = '/account-security';
   static const supportDetail = '/support-detail';
