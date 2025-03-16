@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
+import 'package:mmimobile/app/utils/image_converter_fldev.dart';
 import '../controllers/profile_controller.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
@@ -11,7 +12,6 @@ import 'package:mmimobile/app/widget/item_list_widget.dart';
 import 'package:mmimobile/app/configs/session_config.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
-import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
@@ -22,6 +22,7 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.of(context).size;
     final userController = Get.put(UserController());
+    final imageConvert = Get.put(ImageConverterFldev());
     return Scaffold(
         body: CanvaApps(
       widget: Stack(
@@ -32,7 +33,7 @@ class ProfileView extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // NOTE: SECTION 1
-                  sectionOneProfile(userController, "Prioritas"),
+                  sectionOneProfile(userController),
 
                   const SizedBox(height: 20.0),
 
@@ -197,7 +198,7 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 
-  Widget sectionOneProfile(UserController userController, String membership) {
+  Widget sectionOneProfile(UserController userController) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -207,9 +208,11 @@ class ProfileView extends GetView<ProfileController> {
             GestureDetector(
                 child: Stack(
               children: [
-                const ImageCircle(
-                  edit: false,
-                ),
+                // ImageCircle(
+                //   edit: false,
+                //   image: NetworkImage(
+                //       "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/logo.png"),
+                // ),
               ],
             )),
             const SizedBox(width: 10.0),
@@ -240,20 +243,22 @@ class ProfileView extends GetView<ProfileController> {
             decoration: BoxDecoration(
               // color: ColorApps.goldMember,
               gradient: LinearGradient(colors: [
-                membership == "Gold"
+                userController.user.customerMembershipName == "Gold"
                     ? ColorApps.goldMember
-                    : membership == "Platinum"
+                    : userController.user.customerMembershipName == "Platinum"
                         ? ColorApps.platinumMember
-                        : membership == "Prioritas"
+                        : userController.user.customerMembershipName ==
+                                "Prioritas"
                             ? ColorApps.prioritasMember
                             : ColorApps.silverMember,
-                membership == "Gold"
+                userController.user.customerMembershipName == "Gold"
                     ? ColorApps.goldMember2
-                    : membership == "Platinum"
+                    : userController.user.customerMembershipName == "Platinum"
                         ? ColorApps.platinumMember2
-                        : membership == "Prioritas"
+                        : userController.user.customerMembershipName ==
+                                "Prioritas"
                             ? ColorApps.prioritasMember2
-                            : ColorApps.silverMember2,
+                            : const Color.fromARGB(255, 190, 187, 187),
               ]),
               // color: membership == "Gold"
               //     ? ColorApps.goldMember
@@ -270,11 +275,12 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 const SizedBox(width: 2.0),
                 Text(
-                  membership == "Gold"
+                  userController.user.customerMembershipName == "Gold"
                       ? "Gold"
-                      : membership == "Platinum"
+                      : userController.user.customerMembershipName == "Platinum"
                           ? "Platinum"
-                          : membership == "Prioritas"
+                          : userController.user.customerMembershipName ==
+                                  "Prioritas"
                               ? "Prioritas"
                               : "Silver",
                   style: white500.copyWith(fontSize: 14.0),

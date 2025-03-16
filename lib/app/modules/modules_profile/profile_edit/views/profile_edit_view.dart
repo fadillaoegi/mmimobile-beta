@@ -22,6 +22,8 @@ class ProfileEditView extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileEditController());
     final imageController = Get.put(ImageConverterFldev());
+    print(
+        "DATA INI DARI MODEL, ${controller.userData.user.customerPhotoProfil}");
 
     return Scaffold(
       appBar: AppBarAppFLdev(title: "Ubah Profil"),
@@ -56,10 +58,10 @@ class ProfileEditView extends StatelessWidget {
 
                   return ImageCircle(
                     onTap: () =>
-                        imageController.pickImageCropper(ImageSource.gallery),
+                        imageController.pickImageCropper(ImageSource.camera),
                     size: 100.0,
                     image: imageBytes != null
-                        ? MemoryImage(imageBytes!) as ImageProvider
+                        ? MemoryImage(imageBytes) as ImageProvider
                         : NetworkImage(controller
                                 .userData.user.customerPhotoProfil ??
                             "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/logo.png"),
@@ -141,8 +143,11 @@ class ProfileEditView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 child: BtnApps(
-                  onPress: () => controller
-                      .updateProfile(imageController.dataImageBase64.value),
+                  onPress: () => controller.updateProfile(
+                      imageController.dataImageBase64.value.isNotEmpty
+                          ? imageController.dataImageBase64.value
+                          : controller.userData.user.customerPhotoProfil
+                              .toString()),
                   text: "Simpan",
                 ),
               ),
