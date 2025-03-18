@@ -36,6 +36,7 @@ class RequestApp {
         options: Options(
           headers: {
             headerKey: headerValue,
+            'Content-Type': 'multipart/form-data'
           },
           sendTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 10),

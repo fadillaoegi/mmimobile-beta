@@ -36,7 +36,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                             },
                             child: const Icon(
                               Icons.arrow_back,
-                              color: ColorApps.primary,
+                              color: ColorApps.secondary,
                             ),
                           )
                         ],
@@ -53,7 +53,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                     ),
                     Text(
                       "Reset Your Password",
-                      style: primary600.copyWith(fontSize: 16.0),
+                      style: secondary600.copyWith(fontSize: 16.0),
                     ),
                     const SizedBox(
                       height: 18.0,

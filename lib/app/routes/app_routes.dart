@@ -36,7 +36,6 @@ abstract class Routes {
   static const underDevelopment = _Paths.underDevelopment;
   static const addEmail = _Paths.addEmail;
   static const accountSetting = _Paths.accountSetting;
-  static const profileEditName = _Paths.profileEditName;
   static const profileUpdateEmail = _Paths.profileUpdateEmail;
   static const profileUpdatePhone = _Paths.profileUpdatePhone;
   static const profileUpdateAddress = _Paths.profileUpdateAddress;
@@ -91,7 +90,6 @@ abstract class _Paths {
   static const underDevelopment = '/underdevelopment';
   static const addEmail = '/add-email';
   static const accountSetting = '/account-setting';
-  static const profileEditName = '/profile-edit-name';
   static const profileUpdateEmail = '/profile-update-email';
   static const profileUpdatePhone = '/profile-update-phone';
   static const profileUpdateAddress = '/profile-update-address';

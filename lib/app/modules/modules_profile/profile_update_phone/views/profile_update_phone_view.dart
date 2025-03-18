@@ -67,7 +67,8 @@ class ProfileUpdatePhoneView extends GetView<ProfileUpdatePhoneController> {
                                   boxShadow: boxShadow),
                               child: Obx(
                                 () => IntlPhoneField(
-                                  controller: controller.phoneController.value,
+                                  // controller: controller.phoneController.value,
+                                  keyboardType: TextInputType.phone,
                                   decoration: InputDecoration(
                                     labelText: 'Phone Number',
                                     border: OutlineInputBorder(
@@ -77,6 +78,8 @@ class ProfileUpdatePhoneView extends GetView<ProfileUpdatePhoneController> {
                                   initialCountryCode: 'ID',
                                   onChanged: (phone) {
                                     print(phone.completeNumber);
+                                    controller.phoneController.value.text =
+                                        phone.completeNumber;
                                   },
                                 ),
                               ),

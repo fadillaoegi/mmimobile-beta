@@ -168,9 +168,13 @@ class HomeView extends GetView<HomeController> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const ImageCircle(
+            ImageCircle(
               size: 70.0,
               edit: false,
+              imageUrl: userController.user.customerPhotoProfil ??
+                  "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png"
+              // "http://190.110.0.10/EntIS-MMI/uploads/customers/35037_nameupdatetest.jpg",
+              ,
             ),
             const SizedBox(width: 10.0),
             Column(

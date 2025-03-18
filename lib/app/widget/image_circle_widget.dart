@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:mmimobile/app/styles/color.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 
 class ImageCircle extends StatelessWidget {
-  const ImageCircle(
-      {super.key, this.size = 60.0, this.edit = true, this.image, this.onTap});
+  const ImageCircle({
+    super.key,
+    this.size = 60.0,
+    this.edit = true,
+    required this.imageUrl,
+    this.onTap,
+  });
 
   final double size;
   final bool edit;
-  final ImageProvider<Object>? image;
+  final String imageUrl;
   final VoidCallback? onTap;
 
   @override
@@ -18,41 +25,61 @@ class ImageCircle extends StatelessWidget {
         height: size,
         width: size,
         child: Stack(
-          clipBehavior: Clip.none, // Agar icon edit tidak terpotongI
+          clipBehavior: Clip.none,
           children: [
             ClipOval(
-              child: CircleAvatar(
-                radius: size / 2,
-                backgroundImage: image,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                width: size,
+                height: size,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => Container(
+                  width: size,
+                  height: size,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey[300],
+                  ),
+                  child: LoadingApps(),
+                ),
+                errorWidget: (context, url, error) => Container(
+                  width: size,
+                  height: size,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey,
+                  ),
+                  child: Icon(Icons.error, color: Colors.red, size: size / 2),
+                ),
               ),
             ),
-            edit
-                ? Positioned(
-                    bottom: -3, // Posisikan sedikit keluar dari lingkaran
-                    right: -3,
-                    child: GestureDetector(
-                      onTap: onTap,
-                      child: Container(
-                        height: 24.0,
-                        width: 24.0,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(174, 255, 255, 255),
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color.fromARGB(56, 0, 0, 0),
-                              blurRadius: 5,
-                              spreadRadius: 1,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
+            if (edit)
+              Positioned(
+                bottom: -3,
+                right: -3,
+                child: GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    height: 24.0,
+                    width: 24.0,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(174, 255, 255, 255),
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(56, 0, 0, 0),
+                          blurRadius: 5,
+                          spreadRadius: 1,
+                          offset: const Offset(0, 2),
                         ),
-                        child: const Icon(Icons.edit,
-                            size: 14, color: ColorApps.secondary),
-                      ),
+                      ],
                     ),
-                  )
-                : const SizedBox(),
+                    child: const Icon(Icons.edit,
+                        size: 14, color: ColorApps.secondary),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

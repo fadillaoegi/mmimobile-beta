@@ -24,7 +24,7 @@ class MembershipView extends GetView<MembershipController> {
     final sizeScreen = MediaQuery.sizeOf(context);
     final userData = Get.put(UserController());
     final controller = Get.put(MembershipController());
-    final membership = "Prioritas";
+    // final membership = "Prioritas";
     return Scaffold(
         appBar: AppBarAppFLdev(
           title: "Membership",
@@ -40,7 +40,7 @@ class MembershipView extends GetView<MembershipController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // NOTE: SECTION 1
-                sectionOneMembership(sizeScreen, membership, userData),
+                sectionOneMembership(sizeScreen, userData),
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -116,8 +116,7 @@ class MembershipView extends GetView<MembershipController> {
         ));
   }
 
-  Container sectionOneMembership(
-      Size sizeScreen, String membership, UserController userData) {
+  Container sectionOneMembership(Size sizeScreen, UserController userData) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       width: sizeScreen.width,
@@ -125,18 +124,18 @@ class MembershipView extends GetView<MembershipController> {
         gradient: LinearGradient(colors: [
           // ColorApps.goldMember,
           // Color(0xff6E5B1D),
-          membership == "Gold"
+          userData.user.customerMembershipName == "Gold"
               ? ColorApps.goldMember2
-              : membership == "Platinum"
+              : userData.user.customerMembershipName == "Platinum"
                   ? ColorApps.platinumMember2
-                  : membership == "Prioritas"
+                  : userData.user.customerMembershipName == "Prioritas"
                       ? ColorApps.prioritasMember2
                       : ColorApps.silverMember2,
-          membership == "Gold"
+          userData.user.customerMembershipName == "Gold"
               ? ColorApps.goldMember
-              : membership == "Platinum"
+              : userData.user.customerMembershipName == "Platinum"
                   ? ColorApps.platinumMember
-                  : membership == "Prioritas"
+                  : userData.user.customerMembershipName == "Prioritas"
                       ? ColorApps.prioritasMember
                       : ColorApps.silverMember,
         ], begin: Alignment.bottomRight, end: Alignment.topLeft),
@@ -148,11 +147,11 @@ class MembershipView extends GetView<MembershipController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                membership == "Gold"
+                userData.user.customerMembershipName == "Gold"
                     ? "Gold"
-                    : membership == "Platinum"
+                    : userData.user.customerMembershipName == "Platinum"
                         ? "Platinum"
-                        : membership == "Prioritas"
+                        : userData.user.customerMembershipName == "Prioritas"
                             ? "Prioritas"
                             : "Silver",
                 style: white700.copyWith(fontSize: 28.0, shadows: boxShadow),

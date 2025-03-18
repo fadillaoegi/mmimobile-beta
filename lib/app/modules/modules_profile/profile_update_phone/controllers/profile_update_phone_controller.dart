@@ -13,7 +13,7 @@ import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
-import 'package:mmimobile/app/widget/snackbar_wiget.dart';
+// import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class ProfileUpdatePhoneController extends GetxController {
   late final UserController dataUser;
@@ -61,9 +61,9 @@ class ProfileUpdatePhoneController extends GetxController {
       if (!result!['status']) {
         Get.dialog(
           AlertDialogNoAction(
-            title: "Update phone failed",
+            title: "Gagal",
             lotties: AssetConfigFLdev.lottieFailed,
-            content: result['message'],
+            content: "Silahkan masukan password",
           ),
           barrierDismissible: false,
         );
@@ -82,9 +82,9 @@ class ProfileUpdatePhoneController extends GetxController {
       if (result['message'] == 'Invalid password') {
         Get.dialog(
           AlertDialogNoAction(
-            title: "Update phone failed",
+            title: "Password Salah",
             lotties: AssetConfigFLdev.lottieFailed,
-            content: result['message'],
+            content: "",
           ),
           barrierDismissible: false,
         );
@@ -107,8 +107,22 @@ class ProfileUpdatePhoneController extends GetxController {
           SessionUserFLdev.saveUser(user);
         },
       );
-      SnackbarFLdev.snackShow(
-          title: "Success update", message: "Phone updated");
+
+      Get.dialog(
+        AlertDialogNoAction(
+          title: "Berhasil",
+          lotties: AssetConfigFLdev.lottieSuccess,
+          content: "Ubah Profil",
+        ),
+        barrierDismissible: false,
+      );
+
+      Future.delayed(
+        Duration(seconds: 2),
+        () => Get.back(),
+      );
+      // SnackbarFLdev.snackShow(
+      //     title: "Success update", message: "Phone updated");
 
       isLoading.value = false;
       update();

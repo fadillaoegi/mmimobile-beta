@@ -1,7 +1,12 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/utils/image_converter_fldev.dart';
+import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import '../controllers/profile_controller.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
@@ -23,6 +28,7 @@ class ProfileView extends GetView<ProfileController> {
     final sizeScreen = MediaQuery.of(context).size;
     final userController = Get.put(UserController());
     final imageConvert = Get.put(ImageConverterFldev());
+
     return Scaffold(
         body: CanvaApps(
       widget: Stack(
@@ -33,7 +39,7 @@ class ProfileView extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // NOTE: SECTION 1
-                  sectionOneProfile(userController),
+                  sectionOneProfile(userController, imageConvert),
 
                   const SizedBox(height: 20.0),
 
@@ -198,7 +204,10 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 
-  Widget sectionOneProfile(UserController userController) {
+  Widget sectionOneProfile(
+    UserController userController,
+    ImageConverterFldev imageConvert,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -208,11 +217,11 @@ class ProfileView extends GetView<ProfileController> {
             GestureDetector(
                 child: Stack(
               children: [
-                // ImageCircle(
-                //   edit: false,
-                //   image: NetworkImage(
-                //       "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/logo.png"),
-                // ),
+                ImageCircle(
+                  edit: false,
+                  imageUrl: userController.user.customerPhotoProfil ??
+                      "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png",
+                ),
               ],
             )),
             const SizedBox(width: 10.0),

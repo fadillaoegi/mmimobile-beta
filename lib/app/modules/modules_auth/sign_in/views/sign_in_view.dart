@@ -80,15 +80,17 @@ class SignInView extends GetView<SignInController> {
                                       IntlPhoneField(
                                         // controller:
                                         //     controller.phoneController.value,
+                                        keyboardType: TextInputType.phone,
                                         validator: (p0) {
                                           if (p0!.toString().isEmpty ||
                                               p0 == "") {
-                                            return "Phone is required ";
+                                            return "Nomor harus di isi";
                                           }
                                           return null;
                                         },
                                         decoration: InputDecoration(
-                                          labelText: 'Phone Number',
+                                          labelText: 'Nomor HP',
+                                          hintText: "81234xxxxx",
                                           fillColor: ColorApps.white,
                                           filled: true,
                                           enabledBorder: OutlineInputBorder(
@@ -126,9 +128,9 @@ class SignInView extends GetView<SignInController> {
                                           suffixIcon: true,
                                           validator: (p0) {
                                             if (p0!.isEmpty || p0 == "") {
-                                              return "Password is required ";
+                                              return "Password harus di isi ";
                                             } else if (p0.length < 8) {
-                                              return "Password must be 8 characters ";
+                                              return "Password harus 8 Karakter ";
                                             }
                                             return null;
                                           },

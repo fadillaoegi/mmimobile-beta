@@ -3,7 +3,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -15,7 +14,20 @@ class ImageConverterFldev extends GetxController {
   var dataImageBase64 = "".obs;
   var imageFile = Rx<File?>(null);
 
-  /// **Ambil gambar dari galeri atau kamera**
+  // NOTE: Konversi Base64 ke Uint8List
+  void convertBase64ToUint8List() {
+    if (dataImageBase64.value.isNotEmpty) {
+      try {
+        Uint8List bytes = base64Decode(dataImageBase64.value);
+        dataImageByte.value = bytes;
+        update();
+      } catch (e) {
+        print("Error converting base64 to Uint8List: $e");
+      }
+    }
+  }
+
+  // NOTE: Ambil gambar dari galeri atau kamera
   Future<void> pickImage(ImageSource imageSource) async {
     try {
       final XFile? image = await ImagePicker().pickImage(
@@ -42,7 +54,7 @@ class ImageConverterFldev extends GetxController {
     }
   }
 
-  /// **Hapus gambar yang dipilih**
+  // NOTE: Hapus gambar yang dipilih
   void clearImagePicker() {
     dataImageName.value = "";
     dataImageByte.value = null;
@@ -51,7 +63,7 @@ class ImageConverterFldev extends GetxController {
     update();
   }
 
-  /// **Pilih dan crop gambar**
+  // NOTE: Pilih dan crop gambar
   Future<void> pickImageCropper(ImageSource source) async {
     try {
       final XFile? pickedImage = await ImagePicker().pickImage(source: source);

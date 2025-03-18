@@ -18,11 +18,11 @@ class OutBtnApps extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
-              side: const BorderSide(color: ColorApps.primary),
+              side: const BorderSide(color: ColorApps.secondary, width: 1.5),
             ),
             child: Text(
               text!,
-              style: primary600.copyWith(fontSize: sizeText),
+              style: secondary600.copyWith(fontSize: sizeText),
             )));
   }
 }

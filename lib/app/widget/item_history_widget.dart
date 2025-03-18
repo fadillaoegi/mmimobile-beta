@@ -89,6 +89,8 @@ class ItemHistory extends StatelessWidget {
                               contentItem(brandName, black400, 12.0),
                             if (date.isNotEmpty)
                               contentItem(date, black400, 12.0),
+                            if (qty != 0)
+                              contentItem("x $qty Pcs", black400, 12.0),
                             if (priceProduct != 0)
                               contentItem(
                                   "${FormatAppsFLdev.currency(priceProduct.toString())} /pcs",
@@ -97,8 +99,6 @@ class ItemHistory extends StatelessWidget {
                             if (productCount != 0)
                               contentItem(
                                   "x $productCount Product", black400, 12.0),
-                            if (qty != 0)
-                              contentItem("x $qty Pcs", black400, 12.0),
                             if (count != 0)
                               contentItem(
                                   "${FormatAppsFLdev.currency(count.toString())}",

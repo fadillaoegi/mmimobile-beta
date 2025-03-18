@@ -29,17 +29,19 @@ class AddEmailView extends GetView<AddEmailController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
+                      padding: const EdgeInsets.only(
+                        top: 14.0,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           InkWell(
                             onTap: () => Get.back(),
-                            child: const Icon(
+                            child: Icon(
                               Icons.arrow_back_ios_new_rounded,
-                              color: ColorApps.primary,
+                              color: ColorApps.secondary,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -55,14 +57,14 @@ class AddEmailView extends GetView<AddEmailController> {
                     Text(
                       "Your account doesn't have an email, \nplease enter your email",
                       textAlign: TextAlign.center,
-                      style: primary600.copyWith(fontSize: 20.0),
+                      style: secondary600.copyWith(fontSize: 20.0),
                     ),
                     const SizedBox(
                       height: 18.0,
                     ),
                     Lottie.asset(AssetConfigFLdev.lottieEmail),
                     const SizedBox(
-                      height: 18.0,
+                      height: 10.0,
                     ),
                     FormAppsFLdev(
                       controller: controller.emailController.value,

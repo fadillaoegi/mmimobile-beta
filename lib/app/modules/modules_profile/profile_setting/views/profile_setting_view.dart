@@ -1,12 +1,16 @@
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:mmimobile/app/helper/helper_fldev.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/styles/color.dart';
-import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-import 'package:mmimobile/app/widget/profile/two_item_profile_widget.dart';
+import 'package:mmimobile/app/routes/app_pages.dart';
+import 'package:mmimobile/app/helper/helper_fldev.dart';
 import '../controllers/profile_setting_controller.dart';
-import 'package:mmimobile/app/widget/image_circle_widget.dart';
+import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:mmimobile/app/widget/profile/two_item_profile_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class ProfileSettingView extends GetView<ProfileSettingController> {
@@ -44,7 +48,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            ImageCircle(size: 80.0),
+                            // ImageCircle(size: 80.0, ),
                           ],
                         ),
                       ),
@@ -52,7 +56,7 @@ class ProfileSettingView extends GetView<ProfileSettingController> {
                   ),
                   const SizedBox(height: 20.0),
                   Obx(() => TwoItemProfileSetting(
-                        onTap: () => Get.toNamed(Routes.profileEditName),
+                        onTap: () => Get.toNamed(Routes.profileUpdateEmail),
                         title: "Name",
                         value: userController.user.customerName ?? "Unknown",
                         onTapTwo: () => Get.toNamed(Routes.profileUpdateEmail),

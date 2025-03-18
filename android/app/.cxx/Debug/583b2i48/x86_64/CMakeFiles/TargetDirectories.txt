@@ -1,0 +1,2 @@
+D:/project/mobile/flutter/mmimobile-beta/android/app/.cxx/Debug/583b2i48/x86_64/CMakeFiles/edit_cache.dir
+D:/project/mobile/flutter/mmimobile-beta/android/app/.cxx/Debug/583b2i48/x86_64/CMakeFiles/rebuild_cache.dir

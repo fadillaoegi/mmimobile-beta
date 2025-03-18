@@ -40,8 +40,6 @@ import '../modules/modules_profile/profile/bindings/profile_binding.dart';
 import '../modules/modules_profile/profile/views/profile_view.dart';
 import '../modules/modules_profile/profile_edit/bindings/profile_edit_binding.dart';
 import '../modules/modules_profile/profile_edit/views/profile_edit_view.dart';
-import '../modules/modules_profile/profile_edit_name/bindings/profile_edit_name_binding.dart';
-import '../modules/modules_profile/profile_edit_name/views/profile_edit_name_view.dart';
 import '../modules/modules_profile/profile_edit_password/bindings/profile_edit_password_binding.dart';
 import '../modules/modules_profile/profile_edit_password/views/profile_edit_password_view.dart';
 import '../modules/modules_profile/profile_setting/bindings/profile_setting_binding.dart';
@@ -175,11 +173,6 @@ class AppPages {
       name: _Paths.accountSetting,
       page: () => const AccountSettingView(),
       binding: AccountSettingBinding(),
-    ),
-    GetPage(
-      name: _Paths.profileEditName,
-      page: () => const ProfileEditNameView(),
-      binding: ProfileEditNameBinding(),
     ),
 
     // NOTE: MODULE SYSTEM SUPPORT

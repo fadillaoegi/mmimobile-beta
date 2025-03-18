@@ -1,29 +1,23 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mmimobile/app/styles/color.dart';
-import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:mmimobile/app/utils/image_converter_fldev.dart';
+import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
-
 import '../controllers/profile_edit_controller.dart';
 
 class ProfileEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileEditController());
-    final imageController = Get.put(ImageConverterFldev());
-    print(
-        "DATA INI DARI MODEL, ${controller.userData.user.customerPhotoProfil}");
 
     return Scaffold(
       appBar: AppBarAppFLdev(title: "Ubah Profil"),
@@ -34,120 +28,122 @@ class ProfileEditView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 18.0),
                 child: Obx(() {
-                  Uint8List? imageBytes;
-
-                  // Jika user mengunggah gambar, gunakan gambar dari Base64
-                  if (imageController.dataImageBase64.value.isNotEmpty) {
-                    try {
-                      imageBytes =
-                          base64Decode(imageController.dataImageBase64.value);
-                    } catch (e) {
-                      imageBytes = null; // Handle error decoding
-                    }
-                  } else if (controller.userData.user.customerPhotoProfil !=
-                          null &&
-                      controller
-                          .userData.user.customerPhotoProfil!.isNotEmpty) {
-                    try {
-                      imageBytes = base64Decode(
-                          controller.userData.user.customerPhotoProfil!);
-                    } catch (e) {
-                      imageBytes = null; // Handle error jika tidak valid Base64
-                    }
-                  }
-
                   return ImageCircle(
-                    onTap: () =>
-                        imageController.pickImageCropper(ImageSource.camera),
+                    onTap: () {
+                      Get.dialog(
+                        AlertDialog(
+                          content: Container(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    controller.pickImage(ImageSource.camera);
+                                    Get.back();
+                                  },
+                                  icon: Icon(Icons.camera_alt_outlined,
+                                      size: 60.0),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    controller.pickImage(ImageSource.gallery);
+                                    Get.back();
+                                  },
+                                  icon: Icon(Icons.photo_outlined, size: 60.0),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                     size: 100.0,
-                    image: imageBytes != null
-                        ? MemoryImage(imageBytes) as ImageProvider
-                        : NetworkImage(controller
-                                .userData.user.customerPhotoProfil ??
-                            "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/logo.png"),
+                    imageUrl: controller.selectedImagePath.value ??
+                        controller.userData.user.customerPhotoProfil ??
+                        "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/logo.png",
                   );
                 }),
               ),
-              FormAppsFLdev(
-                labelText: "Nama",
-                controller: controller.nameController,
-              ),
-              const SizedBox(height: 20.0),
-              FormAppsFLdev(
-                labelText: "Email",
-                controller: controller.emailController,
-                readOnly: true,
-              ),
               const SizedBox(height: 20.0),
               IntlPhoneField(
-                controller: controller.phoneController,
-                validator: (value) {
-                  if (value == null || value.completeNumber.isEmpty) {
-                    return "Nomor telepon harus diisi";
+                readOnly: true,
+                keyboardType: TextInputType.phone,
+                validator: (p0) {
+                  if (p0!.toString().isEmpty || p0 == "") {
+                    return "Nomor harus di isi";
                   }
                   return null;
                 },
-                readOnly: true,
+                showCursor: false,
                 decoration: InputDecoration(
-                  labelText: 'Nomor Telepon',
-                  fillColor: ColorApps.white,
+                  // labelText: controller.phoneController.value.text,
+                  hintText: "${controller.phoneController.value.text}",
+                  fillColor: const Color.fromARGB(137, 175, 175, 175),
                   filled: true,
                   enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorApps.disable, width: 2.0),
-                  ),
+                      borderSide:
+                          BorderSide(color: ColorApps.disable, width: 2.0)),
                   focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorApps.disable, width: 2.0)),
+                  border: OutlineInputBorder(
                     borderSide:
                         BorderSide(color: ColorApps.secondary, width: 2.0),
                   ),
-                  border: OutlineInputBorder(),
                 ),
                 initialCountryCode: 'ID',
                 onChanged: (phone) {
-                  print(phone.completeNumber);
-                  controller.phoneController.text = phone.completeNumber;
+                  print(controller.phoneController.value.text);
                 },
               ),
-              SectionTittle(title: "Tanggal Lahir"),
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 20.0),
+              FormAppsFLdev(
+                  labelText: "Nama", controller: controller.nameController),
+              const SizedBox(height: 20.0),
+              FormAppsFLdev(
+                  labelText: "Email",
+                  controller: controller.emailController,
+                  readOnly: true),
+              const SizedBox(height: 20.0),
               TextFormField(
-                readOnly: true,
                 controller: controller.bornController,
+                onChanged: (value) {},
+                readOnly: true,
                 decoration: InputDecoration(
-                  filled: true,
+                  labelText: "Tanggal Lahir",
                   fillColor: ColorApps.white,
-                  labelStyle: secondary500,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorApps.disable, width: 2.0),
+                  filled: true,
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.calendar_today),
+                    onPressed: () => controller.selectDate(context),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorApps.disable, width: 2.0)),
                   focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: ColorApps.secondary, width: 2.0)),
+                  border: OutlineInputBorder(
                     borderSide:
                         BorderSide(color: ColorApps.secondary, width: 2.0),
                   ),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.calendar_today),
-                    onPressed: () => controller.pickDate(context),
-                  ),
-                  border: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 20.0),
               SectionTittle(title: "Alamat Penagihan"),
+              const SizedBox(height: 6.0),
               FormAppsFLdev(
                   maxLines: 3, controller: controller.addressController),
               const SizedBox(height: 20.0),
               SectionTittle(title: "Alamat Kirim"),
+              const SizedBox(height: 6.0),
               FormAppsFLdev(
                   maxLines: 3, controller: controller.addressSendController),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
                 child: BtnApps(
-                  onPress: () => controller.updateProfile(
-                      imageController.dataImageBase64.value.isNotEmpty
-                          ? imageController.dataImageBase64.value
-                          : controller.userData.user.customerPhotoProfil
-                              .toString()),
+                  onPress: () => controller.updateProfile(),
                   text: "Simpan",
                 ),
               ),
