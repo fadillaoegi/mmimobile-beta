@@ -158,18 +158,24 @@ class MembershipView extends GetView<MembershipController> {
               ),
               GestureDetector(
                 onTap: () => Get.toNamed(Routes.detailMembership),
-                child: Row(
-                  children: [
-                    Text(
-                      "Lihat semua level",
-                      style: white600,
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: ColorApps.white,
-                      size: 16.0,
-                    )
-                  ],
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(98, 16, 16, 16),
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Lihat semua level",
+                        style: white600,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: ColorApps.white,
+                        size: 16.0,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

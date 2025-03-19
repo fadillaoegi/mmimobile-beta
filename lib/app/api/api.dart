@@ -3,7 +3,7 @@ class ApiApps {
   // static const root = "https://mmi.entis.app/api";
 
   // NOTE: ROOT LOCAL
-  static const root = "http://190.110.0.10/EntIS-MMI/api";
+  static const root = "http://190.110.0.35/EntIS-MMI/api";
 
   // NOTE: CUSTOMER AUTH API
   static const signIn = "$root/signin";
@@ -18,4 +18,8 @@ class ApiApps {
   // NOTE: CUSTONER HISTORY
   static const history = "$root/historySO";
   static const historyDetail = "$root/historyDetail";
+
+  // NOTE: MEMBESHIP
+  static const membershipData = "$root/membershipData";
+  static const membershipDataId = "$root/membershipDataId";
 }

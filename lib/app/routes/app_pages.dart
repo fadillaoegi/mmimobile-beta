@@ -1,7 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../modules/account_security/bindings/account_security_binding.dart';
-import '../modules/account_security/views/account_security_view.dart';
+import '../modules/modules_profile/account_security/bindings/account_security_binding.dart';
+import '../modules/modules_profile/account_security/views/account_security_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -72,8 +72,8 @@ import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/support_detail/bindings/support_detail_binding.dart';
-import '../modules/support_detail/views/support_detail_view.dart';
+import '../modules/modules_system_support/support_detail/bindings/support_detail_binding.dart';
+import '../modules/modules_system_support/support_detail/views/support_detail_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
 part 'app_routes.dart';
