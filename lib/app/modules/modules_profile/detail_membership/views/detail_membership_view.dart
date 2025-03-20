@@ -98,12 +98,14 @@ class SectionOneMembershipDetail extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                  child: Material(
-                      elevation: 10.0,
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(
-                        AssetConfigFLdev.silverCard,
-                      ))),
+                child: Material(
+                  elevation: 10.0,
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.asset(
+                    AssetConfigFLdev.silverCard,
+                  ),
+                ),
+              ),
               const SizedBox(width: 10.0),
               Expanded(
                   child: Material(
@@ -129,6 +131,45 @@ class SectionOneMembershipDetail extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CardMembership extends StatelessWidget {
+  const CardMembership({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(10.0),
+        height: 100.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          gradient: LinearGradient(colors: [
+            ColorApps.platinumMember2,
+            ColorApps.platinumMember,
+          ], begin: Alignment.bottomRight, end: Alignment.topLeft),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Membership",
+              style: white700.copyWith(fontSize: 14.0),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              "min - max",
+              style: white700.copyWith(fontSize: 14.0),
+            ),
+          ],
+        ),
       ),
     );
   }

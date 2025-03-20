@@ -14,7 +14,7 @@ import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/item_list_widget.dart';
-import 'package:mmimobile/app/configs/session_config.dart';
+import 'package:mmimobile/app/session/user_session.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';

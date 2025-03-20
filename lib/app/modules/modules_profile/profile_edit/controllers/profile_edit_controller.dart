@@ -15,7 +15,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 // import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
-import 'package:mmimobile/app/configs/session_config.dart';
+import 'package:mmimobile/app/session/user_session.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -186,7 +186,6 @@ class ProfileEditController extends GetxController {
             barrierDismissible: false,
           );
           Future.delayed(const Duration(seconds: 3), Get.back);
-
           // SnackbarFLdev.snackShow(
           //     title: "Berhasil", message: "Profil diperbarui");
         } catch (e) {

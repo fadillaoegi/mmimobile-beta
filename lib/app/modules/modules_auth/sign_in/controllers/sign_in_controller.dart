@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:d_method/d_method.dart';
 import 'package:mmimobile/app/api/api.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:mmimobile/app/configs/session_config.dart';
+import 'package:mmimobile/app/session/user_session.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';

@@ -7,7 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/data/models/user_model.dart';
-import 'package:mmimobile/app/configs/session_config.dart';
+import 'package:mmimobile/app/session/user_session.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
