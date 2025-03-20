@@ -109,7 +109,7 @@ class ProfileView extends GetView<ProfileController> {
                     lotties: AssetConfigFLdev.lottieWarning,
                     title: 'Anda yakin ? ',
                     content: 'Keluar dari aplikasi',
-                    textBtn: 'yes',
+                    textBtn: 'Ya',
                     onTap: () {
                       SessionUserFLdev.clearUser();
                       Get.offAllNamed(Routes.signIn);

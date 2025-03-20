@@ -4,16 +4,16 @@ class AssetConfigFLdev {
   static const bgLoginNew = "assets/images/new/bgLoginNew.png";
   static const iconCoinNew = "assets/images/new/iconCoinNew.png";
   static const silverCard = "assets/images/new/silverCard.png";
-  static const silverCard2 = "assets/images/new/silverCard2.png";
+  // static const silverCard2 = "assets/images/new/silverCard2.png";
   static const silverBgCard = "assets/images/new/silverBgCard.png";
   static const goldCard = "assets/images/new/goldCard.png";
-  static const goldCard2 = "assets/images/new/goldCard2.png";
+  // static const goldCard2 = "assets/images/new/goldCard2.png";
   static const goldBgCard = "assets/images/new/goldBgCard.png";
   static const platinumCard = "assets/images/new/platinumCard.png";
-  static const platinumCard2 = "assets/images/new/platinumCard2.png";
+  // static const platinumCard2 = "assets/images/new/platinumCard2.png";
   static const platinumBgCard = "assets/images/new/platinumBgCard.png";
   static const prioritasCard = "assets/images/new/prioritasCard.png";
-  static const prioritasCard2 = "assets/images/new/prioritasCard2.png";
+  // static const prioritasCard2 = "assets/images/new/prioritasCard2.png";
   static const prioritasBgCard = "assets/images/new/prioritasBgCard.png";
 
   // NOTE: IMAGES

@@ -130,7 +130,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
             const SizedBox(height: 10.0),
             Obx(
               () => ListBetween(
-                field: "Total : ",
+                field: "Grand total : ",
                 value:
                     FormatAppsFLdev.currency(controller.sum.value.toString()),
               ),

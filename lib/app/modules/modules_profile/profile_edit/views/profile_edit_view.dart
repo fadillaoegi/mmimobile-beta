@@ -1,16 +1,19 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mmimobile/app/styles/color.dart';
-import 'package:mmimobile/app/widget/image_circle_widget.dart';
+import 'package:get/get_instance/get_instance.dart';
 import '../controllers/profile_edit_controller.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
+import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class ProfileEditView extends StatelessWidget {
   @override
@@ -92,12 +95,15 @@ class ProfileEditView extends StatelessWidget {
                   fillColor: const Color.fromARGB(137, 175, 175, 175),
                   filled: true,
                   enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                       borderSide:
                           BorderSide(color: ColorApps.disable, width: 2.0)),
                   focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                       borderSide:
                           BorderSide(color: ColorApps.disable, width: 2.0)),
                   border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
                     borderSide:
                         BorderSide(color: ColorApps.secondary, width: 2.0),
                   ),

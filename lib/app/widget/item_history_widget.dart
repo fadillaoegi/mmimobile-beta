@@ -87,23 +87,56 @@ class ItemHistory extends StatelessWidget {
                               contentItem(productName, black600, 14.0),
                             if (brandName.isNotEmpty)
                               contentItem(brandName, black400, 12.0),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
                             if (date.isNotEmpty)
                               contentItem(date, black400, 12.0),
                             if (qty != 0)
-                              contentItem("x $qty Pcs", black400, 12.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Qty ",
+                                    style: black400.copyWith(fontSize: 14.0),
+                                  ),
+                                  contentItem("$qty Pcs", black400, 14.0),
+                                ],
+                              ),
                             if (priceProduct != 0)
-                              contentItem(
-                                  "${FormatAppsFLdev.currency(priceProduct.toString())} /pcs",
-                                  black400,
-                                  12.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Harga: ",
+                                    style: black400.copyWith(fontSize: 14.0),
+                                  ),
+                                  contentItem(
+                                      "${FormatAppsFLdev.currency(priceProduct.toString())} /pcs",
+                                      black400,
+                                      14.0),
+                                ],
+                              ),
                             if (productCount != 0)
                               contentItem(
                                   "x $productCount Product", black400, 12.0),
                             if (count != 0)
-                              contentItem(
-                                  "${FormatAppsFLdev.currency(count.toString())}",
-                                  secondary500,
-                                  12.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Total: ",
+                                    style: black400.copyWith(fontSize: 14.0),
+                                  ),
+                                  contentItem(
+                                      "${FormatAppsFLdev.currency(count.toString())}",
+                                      secondary500,
+                                      14.0),
+                                ],
+                              ),
                           ],
                         ),
                       ),
@@ -148,7 +181,14 @@ class ItemHistory extends StatelessWidget {
                                 contentItem(
                                     "x $productCount Product", black400, 12.0),
                               if (qty != 0)
-                                contentItem("x $qty Pcs", black400, 12.0),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Qty"),
+                                    contentItem("x $qty Pcs", black400, 12.0),
+                                  ],
+                                ),
                               if (count != 0)
                                 contentItem(
                                     "${FormatAppsFLdev.currency(count.toString())}",
