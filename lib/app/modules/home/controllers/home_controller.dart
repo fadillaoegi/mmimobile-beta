@@ -11,8 +11,16 @@ class HomeController extends GetxController {
   // Index saat ini dari carousel
   final currentIndex = 0.obs;
 
+  // NOTE: Url image for high light
+  final urlImageHighLight = <String>[
+    AssetConfigFLdev.example1,
+    AssetConfigFLdev.example2,
+    AssetConfigFLdev.example3,
+    AssetConfigFLdev.example1,
+  ].obs;
+
   // Daftar URL gambar untuk carousel
-  final imageUrl = [
+  final urlImageCarousel = <String>[
     AssetConfigFLdev.banner1,
     AssetConfigFLdev.banner2,
     AssetConfigFLdev.banner3,
@@ -27,18 +35,19 @@ class HomeController extends GetxController {
     // 'https://mashmoshem.co.id/wp-content/uploads/2022/12/cara-membuat-brand-skincare.webp',
   ].obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    print("WOKWOKWOK");
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   // Fungsi untuk mengubah halaman carousel
   void onPageChanged(int index, CarouselPageChangedReason reason) {
     currentIndex.value = index;
   }
-
-  // Fungsi untuk berpindah ke slide sebelumnya
-  // void previousSlide() {
-  //   carouselController.previousPage();
-  // }
-
-  // // Fungsi untuk berpindah ke slide berikutnya
-  // void nextSlide() {
-  //   carouselController.nextPage();
-  // }
 }

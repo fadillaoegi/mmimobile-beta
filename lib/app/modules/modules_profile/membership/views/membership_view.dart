@@ -47,67 +47,80 @@ class MembershipView extends GetView<MembershipController> {
 
                 // NOTE SECTION 2
                 Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Obx(
-                      () => Column(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Obx(
+                    () {
+                      if (controller.isLoading.value) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SectionTittle(
-                            title: "Hak Istimewa",
-                            size: 20.0,
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          Container(
-                            width: sizeScreen.width,
-                            decoration: BoxDecoration(
-                              boxShadow: boxShadow,
+                          SectionTittle(title: "Hak Istimewa", size: 20.0),
+                          const SizedBox(height: 10.0),
+                          if (controller.membershipDataId.isEmpty)
+                            Center(
+                              child: Text(
+                                "Tidak ada data privilege.",
+                                style: black400.copyWith(fontSize: 14.0),
+                              ),
+                            )
+                          else
+                            ListView.builder(
+                              itemCount: controller.membershipDataId.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                final membership =
+                                    controller.membershipDataId[index];
+                                return Obx(() => ItemPrivilege(
+                                      claimed: controller.privilage.value,
+                                      onTap: () => controller.claimPrivilage(),
+                                      privilagenName: membership
+                                              .customerMembershipBenefit ??
+                                          "Tidak ada benefit",
+                                    ));
+                              },
                             ),
-                            child: Row(
-                              children: [],
-                            ),
-                          ),
-                          ItemPrivilege(
-                            claimed: controller.privilage.value,
-                            onTap: () => controller.claimPrivilage(),
-                            privilagenName:
-                                "Professional Development Training Programs",
-                            privilagecount: "4x",
-                          ),
-                          ItemPrivilege(
-                            // claimed: controller.privilage.value,
-                            // onTap: () => controller.claimPrivilage(),
-                            privilagenName: "Succes Kit",
-                            privilagecount: "1x",
-                          ),
-                          ItemPrivilege(
-                            // claimed: controller.privilage.value,
-                            // onTap: () => controller.claimPrivilage(),
-                            privilagenName: "Birthday Gift Set",
-                            privilagecount: "1x",
-                          ),
-                          ItemPrivilege(
-                            // claimed: controller.privilage.value,
-                            // onTap: () => controller.claimPrivilage(),
-                            privilagenName:
-                                "Gift Cosmetic Products + BPOM Certificate",
-                            privilagecount: "10%",
-                          ),
-                          ItemPrivilege(
-                            claimed: controller.privilage.value,
-                            onTap: () => controller.claimPrivilage(),
-                            privilagenName: "Eid Gift",
-                            privilagecount: "1x",
-                          ),
-                          ItemPrivilege(
-                            claimed: controller.privilage.value,
-                            onTap: () => controller.claimPrivilage(),
-                            privilagenName: "Exclusive Merchandise",
-                            privilagecount: "5Pcs",
-                          ),
                         ],
-                      ),
-                    ))
+                      );
+                    },
+                  ),
+                )
+
+                // Padding(
+                //     padding: const EdgeInsets.all(10.0),
+                //     child: Obx(
+                //       () => Column(
+                //         children: [
+                //           SectionTittle(
+                //             title: "Hak Istimewa",
+                //             size: 20.0,
+                //           ),
+                //           const SizedBox(
+                //             height: 10.0,
+                //           ),
+                //           ListView.builder(
+                //             itemCount: controller.membershipPrivilage.length,
+                //             shrinkWrap: true,
+                //             physics: const NeverScrollableScrollPhysics(),
+                //             itemBuilder: (context, index) {
+                //               final privilege =
+                //                   controller.membershipPrivilage[index];
+                //               return ItemPrivilege(
+                //                 claimed: controller.privilage.value,
+                //                 onTap: () => controller.claimPrivilage(),
+                //                 privilagenName: privilege.toString(),
+                //                 // privilagecount: "4x",
+                //               );
+                //             },
+                //           )
+                //         ],
+                //       ),
+                //     ))
 
                 // NOTE SECTION 3
               ],
@@ -121,24 +134,11 @@ class MembershipView extends GetView<MembershipController> {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       width: sizeScreen.width,
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          // ColorApps.goldMember,
-          // Color(0xff6E5B1D),
-          userData.user.customerMembershipName == "Gold"
-              ? ColorApps.goldMember2
-              : userData.user.customerMembershipName == "Platinum"
-                  ? ColorApps.platinumMember2
-                  : userData.user.customerMembershipName == "Prioritas"
-                      ? ColorApps.prioritasMember2
-                      : ColorApps.silverMember2,
-          userData.user.customerMembershipName == "Gold"
-              ? ColorApps.goldMember
-              : userData.user.customerMembershipName == "Platinum"
-                  ? ColorApps.platinumMember
-                  : userData.user.customerMembershipName == "Prioritas"
-                      ? ColorApps.prioritasMember
-                      : ColorApps.silverMember,
-        ], begin: Alignment.bottomRight, end: Alignment.topLeft),
+        gradient: LinearGradient(
+            colors: _getMembershipColors(
+                userData.user.customerMembershipName.toString()),
+            begin: Alignment.bottomRight,
+            end: Alignment.topLeft),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +185,10 @@ class MembershipView extends GetView<MembershipController> {
           ),
           Text(
             HelperFldev.dotOverflowText(userData.user.customerName.toString()),
-            style: white700.copyWith(fontSize: 16.0, shadows: boxShadow),
+            style: white700.copyWith(
+              fontSize: 16.0,
+              // shadows: boxShadow,
+            ),
           ),
           const SizedBox(
             height: 20.0,
@@ -244,5 +247,18 @@ class MembershipView extends GetView<MembershipController> {
         ],
       ),
     );
+  }
+
+  List<Color> _getMembershipColors(String? membership) {
+    switch (membership) {
+      case "Gold":
+        return [ColorApps.goldMember2, ColorApps.goldMember];
+      case "Platinum":
+        return [ColorApps.platinumMember2, ColorApps.platinumMember];
+      case "Prioritas":
+        return [ColorApps.prioritasMember2, ColorApps.prioritasMember];
+      default:
+        return [ColorApps.silverMember2, ColorApps.silverMember];
+    }
   }
 }

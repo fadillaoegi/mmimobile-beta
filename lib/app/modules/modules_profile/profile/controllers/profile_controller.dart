@@ -1,11 +1,13 @@
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:mmimobile/app/data/models/user_model.dart';
+import 'package:mmimobile/app/session/user_session.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class ProfileController extends GetxController {
-  final emailController = TextEditingController().obs;
-  final GlobalKey<FormState> formKey = GlobalKey();
-  final focusNode = FocusNode().obs;
-  // final _emailStatic = "example@gmail.com".obs;
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -15,6 +17,24 @@ class ProfileController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> refreshUserData() async {
+    try {
+      isLoading.value = true;
+
+      // Ambil data terbaru dari session (bisa dari API)
+      User? updatedUser = await SessionUserFLdev.getUser();
+
+      if (updatedUser != null) {
+        final userController = Get.put(UserController());
+        userController.setData(updatedUser);
+      }
+    } catch (e) {
+      print("Error refreshing user data: $e");
+    } finally {
+      isLoading.value = false;
+    }
   }
 
 // NOTE: FUNCTION

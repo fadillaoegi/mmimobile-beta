@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
@@ -7,13 +8,15 @@ class ItemPrivilege extends StatelessWidget {
   const ItemPrivilege(
       {super.key,
       this.privilagenName = "",
-      this.privilagecount = "0",
+      this.privilagecount = "",
       this.pointPrice = 0,
       this.claimed = false,
+      this.image = AssetConfigFLdev.logo,
       this.onTap});
 
   final String privilagenName;
   final String privilagecount;
+  final String image;
   final int pointPrice;
   final bool? claimed;
   final VoidCallback? onTap;
@@ -37,18 +40,27 @@ class ItemPrivilege extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 12.0),
+                  height: privilagecount.isEmpty ? 60.0 : 60.0,
+                  width: privilagecount.isEmpty ? 60.0 : 60.0,
+                  padding: privilagecount.isNotEmpty
+                      ? const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 12.0)
+                      : const EdgeInsets.all(0.0),
                   decoration: BoxDecoration(
                       // color: const Color.fromARGB(180, 109, 133, 36),
+                      image: privilagecount.isEmpty
+                          ? DecorationImage(image: AssetImage(image))
+                          : null,
                       color: ColorApps.primary,
                       borderRadius: BorderRadius.circular(100.0)),
-                  child: Center(
-                    child: Text(
-                      privilagecount,
-                      style: secondary700.copyWith(fontSize: 20.0),
-                    ),
-                  ),
+                  child: privilagecount.isNotEmpty
+                      ? Center(
+                          child: Text(
+                            privilagecount,
+                            style: secondary700.copyWith(fontSize: 20.0),
+                          ),
+                        )
+                      : const SizedBox(),
                 ),
                 // Image.asset(
                 //   AssetConfigFLdev.logo,

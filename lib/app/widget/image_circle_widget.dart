@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 
@@ -30,6 +31,8 @@ class ImageCircle extends StatelessWidget {
             ClipOval(
               child: CachedNetworkImage(
                 imageUrl: imageUrl,
+                cacheKey: imageUrl + DateTime.now().microsecond.toString(),
+                // cacheManager: ,
                 width: size,
                 height: size,
                 fit: BoxFit.cover,
@@ -84,5 +87,17 @@ class ImageCircle extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class CustomCacheManager extends CacheManager {
+  static const key = "customCacheKey";
+
+  static final instance = CustomCacheManager._();
+
+  CustomCacheManager._() : super(Config(key));
+
+  static Future<void> clearCache() async {
+    await instance.emptyCache();
   }
 }

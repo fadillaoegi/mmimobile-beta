@@ -57,7 +57,7 @@ class AccountSecurityView extends GetView<AccountSecurityController> {
                     ),
                     ItemList(
                       onTap: () => Get.toNamed(Routes.underDevelopment),
-                      label: "Kemanan biometri",
+                      label: "Keamanan biometri",
                       iconSize: 0.0,
                     ),
                   ],

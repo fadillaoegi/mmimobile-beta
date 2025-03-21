@@ -17,7 +17,7 @@ class ListSupportView extends GetView<ListSupportController> {
     final sizeScreen = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBarAppFLdev(
-        title: "title List",
+        title: "Kumpulan support",
       ),
       // body: const UnderdevelopmentScreen(),
       body: Container(

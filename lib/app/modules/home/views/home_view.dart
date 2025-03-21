@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mmimobile/app/widget/snackbar_wiget.dart';
+import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/home/carousel_home_widget.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -21,110 +16,153 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    final userController = Get.put(UserController());
+    final userData = Get.put(UserController());
     final controller = Get.put(HomeController());
     final sizeScreen = MediaQuery.of(context).size;
 
     return Scaffold(
-      //  appBar: PreferredSize(
-      //     preferredSize:
-      //         const Size.fromHeight(120.0), // Tinggi AppBar diperpanjang
-      //     child: AppBar(
-      //       backgroundColor: ColorApps.white,
-      //       elevation: 0.0,
-      //       titleSpacing: 0.0,
-      //       flexibleSpace: SafeArea(
-      //         child: sectionOneHome(userController),
-      //       ),
-      //     ),
-      //   ),
       body: SafeArea(
-        child: SizedBox(
-          height: sizeScreen.height,
-          width: sizeScreen.width,
-          child: Stack(
-            children: [
-              Container(
-                height: sizeScreen.height,
-                width: sizeScreen.width,
-                decoration: const BoxDecoration(
-                  color: ColorApps.white,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(0.0),
-                    bottomLeft: Radius.circular(0.0),
-                  ),
-                ),
+        child: Stack(
+          children: [
+            Container(
+              width: sizeScreen.width,
+              decoration: const BoxDecoration(
+                color: ColorApps.white,
               ),
-              CanvaApps(
-                // top: sizeScreen.height / 26.0,
-                widget: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      // NOTE: SECTION 1
-                      sectionOneHome(userController),
-                      const SizedBox(height: 20.0),
-
-                      // NOTE: SECTION 2
-                      CarouselHome(controller: controller),
-                      const SizedBox(height: 20.0),
-
-                      // NOTE: SECTION 3
-                      SectionTittle(
-                        title: "Best Ingredients for ODM",
-                      ),
-                      const SizedBox(height: 10.0),
-                      Row(
+            ),
+            CanvaApps(
+              widget: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          highlight(
-                            () {},
-                            image: AssetConfigFLdev.example1,
+                          Row(
+                            children: [
+                              ImageCircle(
+                                size: 70.0,
+                                edit: false,
+                                imageUrl: userData.user.customerPhotoProfil ??
+                                    "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png",
+                              ),
+                              const SizedBox(width: 10.0),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Obx(() {
+                                    String formattedText =
+                                        HelperFldev.newParagraphText(
+                                      (userData.user.customerName ?? "Guest")
+                                          .toLowerCase(),
+                                      20,
+                                    );
+
+                                    return Text(
+                                      formattedText.length > 20
+                                          ? "${formattedText.substring(0, 20)}..."
+                                          : formattedText,
+                                      style:
+                                          secondary700.copyWith(fontSize: 16.0),
+                                    );
+                                  }),
+                                  const SizedBox(height: 4.0),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0, vertical: 2.0),
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: _getMembershipColors(
+                                                userData.user
+                                                    .customerMembershipName),
+                                            begin: Alignment.bottomRight,
+                                            end: Alignment.topLeft,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(6.0),
+                                        ),
+                                        child: Text(
+                                          userData.user.customerMembershipName
+                                              .toString(),
+                                          style:
+                                              white600.copyWith(fontSize: 12.0),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 6.0),
+                                      Text("|",
+                                          style: secondary500.copyWith(
+                                              fontSize: 14.0)),
+                                      const SizedBox(width: 6.0),
+                                      Text("0 Point",
+                                          style: secondary500.copyWith(
+                                              fontSize: 14.0)),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
                           ),
-                          highlight(
-                            () {},
-                            image: AssetConfigFLdev.example2,
-                          ),
-                          highlight(
-                            () {},
-                            image: AssetConfigFLdev.example3,
+                          IconButton(
+                            onPressed: () => Get.snackbar(
+                              "Welcome to MMI mobile",
+                              "Signin success",
+                              snackPosition: SnackPosition.TOP,
+                            ),
+                            icon: const Icon(
+                              Icons.notifications_none_sharp,
+                              color: ColorApps.secondary,
+                              size: 30.0,
+                            ),
                           ),
                         ],
                       ),
-
-                      const SizedBox(height: 20.0),
-
-                      // NOTE: ECTION 4
-                      SectionTittle(
-                        title: "Ready to go OEM",
+                    ),
+                    const SizedBox(height: 20.0),
+                    CarouselHome(controller: controller),
+                    const SizedBox(height: 20.0),
+                    SectionTittle(title: "Best Ingredients for ODM"),
+                    const SizedBox(height: 10.0),
+                    SizedBox(
+                      height: 130.0,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.urlImageHighLight.length,
+                        itemBuilder: (context, index) {
+                          final image = controller.urlImageHighLight[index];
+                          return highlight(
+                            () {},
+                            image: image.toString(),
+                          );
+                        },
                       ),
-                      const SizedBox(height: 10.0),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          highlight(
+                    ),
+                    const SizedBox(height: 20.0),
+                    SectionTittle(title: "Ready to go OEM"),
+                    const SizedBox(height: 10.0),
+                    SizedBox(
+                      height: 160.0,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.urlImageHighLight.length,
+                        itemBuilder: (context, index) {
+                          final image = controller.urlImageHighLight[index];
+                          return highlight(
                             () {},
-                            image: AssetConfigFLdev.example1,
-                          ),
-                          highlight(
-                            () {},
-                            image: AssetConfigFLdev.example2,
-                          ),
-                          highlight(
-                            () {},
-                            image: AssetConfigFLdev.example3,
-                          ),
-                        ],
+                            image: image.toString(),
+                          );
+                        },
                       ),
-                      // BannerInformation(sizeScreen: sizeScreen),
-                      // BannerInformation(sizeScreen: sizeScreen),
-                      // BannerInformation(sizeScreen: sizeScreen),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 10.0),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -139,20 +177,18 @@ class HomeView extends GetView<HomeController> {
           child: Container(
             height: 100.0,
             width: 120.0,
+            margin: const EdgeInsets.only(right: 20.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: boxShadow,
               image: DecorationImage(
-                  image: AssetImage(
-                    image,
-                  ),
-                  fit: BoxFit.cover),
+                image: AssetImage(image),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        const SizedBox(height: 10.0),
         Text(
           title,
           style: black500.copyWith(fontSize: 14.0),
@@ -161,73 +197,16 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget sectionOneHome(UserController userController) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ImageCircle(
-              size: 70.0,
-              edit: false,
-              imageUrl: userController.user.customerPhotoProfil ??
-                  "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png"
-              // "http://190.110.0.10/EntIS-MMI/uploads/customers/35037_nameupdatetest.jpg",
-              ,
-            ),
-            const SizedBox(width: 10.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Obx(() {
-                  String formattedText = HelperFldev.newParagraphText(
-                      userController.user.customerName ?? "Guest", 20);
-                  return Text(
-                    formattedText.length > 20
-                        ? formattedText.substring(0, 20) + "..."
-                        : formattedText,
-                    style: secondary700.copyWith(fontSize: 16.0),
-                  );
-                }),
-                Row(
-                  children: [
-                    Text(
-                      "Diamond",
-                      style: secondary500.copyWith(fontSize: 14.0),
-                    ),
-                    const SizedBox(width: 6.0),
-                    Text(
-                      "|",
-                      style: secondary500.copyWith(fontSize: 14.0),
-                    ),
-                    const SizedBox(width: 6.0),
-                    Text(
-                      "200 ",
-                      style: secondary500.copyWith(fontSize: 12.0),
-                    ),
-                    Text(
-                      "Point",
-                      style: secondary500.copyWith(fontSize: 12.0),
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ],
-        ),
-        IconButton(
-          // onPressed: () => Get.toNamed(Routes.supportDetail),
-          // onPressed: () => print(userController.user.customerMembershipName),
-          onPressed: () => SnackbarFLdev.snackShow(
-              title: "Welcome to MMI mobile", message: "Signin success"),
-          icon: const Icon(
-            Icons.notifications_none_sharp,
-            color: ColorApps.secondary,
-            size: 30.0,
-          ),
-        ),
-      ],
-    );
+  List<Color> _getMembershipColors(String? membership) {
+    switch (membership) {
+      case "Gold":
+        return [ColorApps.goldMember2, ColorApps.goldMember];
+      case "Platinum":
+        return [ColorApps.platinumMember2, ColorApps.platinumMember];
+      case "Prioritas":
+        return [ColorApps.prioritasMember2, ColorApps.prioritasMember];
+      default:
+        return [ColorApps.silverMember, ColorApps.silverMember];
+    }
   }
 }

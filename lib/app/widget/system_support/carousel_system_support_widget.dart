@@ -55,32 +55,35 @@ class CarouselSystemSupport extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.0),
                     ),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
-                        child: Image.asset(
-                          url,
-                          fit: BoxFit.cover,
-                        )
+                    child: GestureDetector(
+                      onTap: () => Get.toNamed(Routes.listSupport),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4.0),
+                          child: Image.asset(
+                            url,
+                            fit: BoxFit.cover,
+                          )
 
-                        // CachedNetworkImage(
-                        //   imageUrl: url,
-                        //   fit: BoxFit.cover,
-                        //   placeholder: (context, url) => const Center(
-                        //     child: CupertinoActivityIndicator(),
-                        //   ),
-                        //   errorWidget: (context, url, error) => const Center(
-                        //     child: Icon(
-                        //       Icons.broken_image,
-                        //       color: Colors.grey,
-                        //     ),
-                        //   ),
-                        // ),
-                        ),
+                          // CachedNetworkImage(
+                          //   imageUrl: url,
+                          //   fit: BoxFit.cover,
+                          //   placeholder: (context, url) => const Center(
+                          //     child: CupertinoActivityIndicator(),
+                          //   ),
+                          //   errorWidget: (context, url, error) => const Center(
+                          //     child: Icon(
+                          //       Icons.broken_image,
+                          //       color: Colors.grey,
+                          //     ),
+                          //   ),
+                          // ),
+                          ),
+                    ),
                   );
                 },
                 options: CarouselOptions(
                   // height: MediaQuery.of(context).size.height * 0.26,
-                  // height: 180.0,
+                  height: 180.0,
                   viewportFraction: 1.0, // Mengisi seluruh viewport
                   autoPlay: true, // Mengaktifkan auto play
                   autoPlayInterval: const Duration(seconds: 3),
@@ -92,52 +95,8 @@ class CarouselSystemSupport extends StatelessWidget {
                 ),
               ),
             ),
-            // Material(
-            //   elevation: 4.0,
-            //   borderRadius: BorderRadius.circular(10.0),
-            //   child: CarouselSlider.builder(
-            //     itemCount: controller.imageUrl.length,
-            //     itemBuilder: (context, index, _) {
-            //       final url = controller.imageUrl[index];
-            //       return Container(
-            //         width: MediaQuery.of(context).size.width,
-            //         margin: const EdgeInsets.symmetric(horizontal: 4.0),
-            //         decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(4.0),
-            //         ),
-            //         child: ClipRRect(
-            //           borderRadius: BorderRadius.circular(4.0),
-            //           child: CachedNetworkImage(
-            //             imageUrl: url,
-            //             fit: BoxFit.cover,
-            //             placeholder: (context, url) => const Center(
-            //               child: CupertinoActivityIndicator(),
-            //             ),
-            //             errorWidget: (context, url, error) => const Center(
-            //               child: Icon(
-            //                 Icons.broken_image,
-            //                 color: Colors.grey,
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //       );
-            //     },
-            //     options: CarouselOptions(
-            //       // height: MediaQuery.of(context).size.height * 0.26,
-            //       viewportFraction: 1.0, // Mengisi seluruh viewport
-            //       autoPlay: true, // Mengaktifkan auto play
-            //       autoPlayInterval: const Duration(seconds: 3),
-            //       autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            //       autoPlayCurve: Curves.fastOutSlowIn, // Animasi halus
-            //       enlargeCenterPage: false, // Tidak memperbesar slide tengah
-            //       onPageChanged: (index, reason) =>
-            //           controller.onPageChanged(index, reason),
-            //     ),
-            //   ),
-            // ),
 
-            // NOTE:
+            // NOTE: BTN button
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

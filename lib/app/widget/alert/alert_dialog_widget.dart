@@ -71,7 +71,7 @@ class AlertDialogApps extends StatelessWidget {
                 onPress: () {
                   Get.back();
                 },
-                text: "Tidak",
+                text: "No",
               )),
               const SizedBox(
                 width: 8.0,

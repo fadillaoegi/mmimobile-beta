@@ -27,7 +27,7 @@ class CarouselHome extends StatelessWidget {
     return Obx(
       () {
         // Validasi jika imageUrl kosong
-        if (controller.imageUrl.isEmpty) {
+        if (controller.urlImageCarousel.isEmpty) {
           return const Center(
             child: Text(
               "No images available",
@@ -49,35 +49,38 @@ class CarouselHome extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: CarouselSlider.builder(
-                  itemCount: controller.imageUrl.length,
+                  itemCount: controller.urlImageCarousel.length,
                   itemBuilder: (context, index, _) {
-                    final url = controller.imageUrl[index];
+                    final url = controller.urlImageCarousel[index];
                     return Container(
                       margin: const EdgeInsets.all(4.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.0),
                       ),
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4.0),
-                          child: Image.asset(
-                            url,
-                            fit: BoxFit.cover,
-                          )
+                      child: GestureDetector(
+                        onTap: () => Get.toNamed(Routes.listSupport),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4.0),
+                            child: Image.asset(
+                              url,
+                              fit: BoxFit.cover,
+                            )
 
-                          // CachedNetworkImage(
-                          //   imageUrl: url,
-                          //   // fit: BoxFit.cover,
-                          //   placeholder: (context, url) => const Center(
-                          //     child: CupertinoActivityIndicator(),
-                          //   ),
-                          //   errorWidget: (context, url, error) => const Center(
-                          //     child: Icon(
-                          //       Icons.broken_image,
-                          //       color: Colors.grey,
-                          //     ),
-                          //   ),
-                          // ),
-                          ),
+                            // CachedNetworkImage(
+                            //   imageUrl: url,
+                            //   // fit: BoxFit.cover,
+                            //   placeholder: (context, url) => const Center(
+                            //     child: CupertinoActivityIndicator(),
+                            //   ),
+                            //   errorWidget: (context, url, error) => const Center(
+                            //     child: Icon(
+                            //       Icons.broken_image,
+                            //       color: Colors.grey,
+                            //     ),
+                            //   ),
+                            // ),
+                            ),
+                      ),
                     );
                   },
                   options: CarouselOptions(

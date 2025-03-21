@@ -86,9 +86,9 @@ class SignInController extends GetxController {
       if (result['message'] == 'Invalid password') {
         Get.dialog(
           AlertDialogNoAction(
-            title: "Sign in failed",
+            title: "Gagal Masuk",
             lotties: AssetConfigFLdev.lottieFailed,
-            content: result['message'],
+            content: "Password Anda salah",
           ),
           barrierDismissible: false,
         );
@@ -111,9 +111,9 @@ class SignInController extends GetxController {
           if (!customerStatus) {
             Get.dialog(
               AlertDialogNoAction(
-                title: "Sign in failed",
+                title: "Gagal Masuk",
                 lotties: AssetConfigFLdev.lottieFailed,
-                content: "You are not yet a customer.",
+                content: "Anda belum menjadi customer",
               ),
               barrierDismissible: false,
             );
@@ -179,7 +179,7 @@ class SignInController extends GetxController {
 
           // NOTE: HANDLE RESPONSE SUCCCESS
           SnackbarFLdev.snackShow(
-              title: "Welcome to Mmimobile", message: "Sigin Success");
+              title: "Selamat datang di MMI Mobile", message: "Masuk Berhasil");
 
           User user = User.fromJson(result['data']);
           SessionUserFLdev.saveUser(user);
@@ -193,9 +193,9 @@ class SignInController extends GetxController {
         // NOTE: HANDLE RESPONSE NOT REGISTERED
         Get.dialog(
           AlertDialogNoAction(
-            title: "Sign in Failed",
+            title: "Gagal Masuk",
             lotties: AssetConfigFLdev.lottieFailed,
-            content: "Your not resgisterd",
+            content: "Anda belum terdaftar",
           ),
           barrierDismissible: false,
         );

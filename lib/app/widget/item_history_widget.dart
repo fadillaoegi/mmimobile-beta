@@ -98,7 +98,7 @@ class ItemHistory extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Qty ",
+                                    "Qty",
                                     style: black400.copyWith(fontSize: 14.0),
                                   ),
                                   contentItem("$qty Pcs", black400, 14.0),
@@ -110,7 +110,7 @@ class ItemHistory extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Harga: ",
+                                    "Harga",
                                     style: black400.copyWith(fontSize: 14.0),
                                   ),
                                   contentItem(
@@ -128,7 +128,7 @@ class ItemHistory extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Total: ",
+                                    "Total",
                                     style: black400.copyWith(fontSize: 14.0),
                                   ),
                                   contentItem(

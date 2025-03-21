@@ -34,26 +34,29 @@ class ProfileView extends GetView<ProfileController> {
       widget: Stack(
         children: [
           SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // NOTE: SECTION 1
-                  sectionOneProfile(userController, imageConvert),
+              child: Obx(
+            () => RefreshIndicator(
+              onRefresh: () => controller.refreshUserData(),
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // NOTE: SECTION 1
+                    sectionOneProfile(userController, imageConvert),
+                    const SizedBox(height: 20.0),
 
-                  const SizedBox(height: 20.0),
+                    // NOTE: SECTION 2
+                    sectionTwoProfile(sizeScreen),
+                    const SizedBox(height: 20.0),
 
-                  // NOTE: SECTION 2
-                  sectionTwoProfile(sizeScreen),
-
-                  const SizedBox(height: 20.0),
-
-                  // NOTE: SECTION 3
-                  sectionThreeProfile(),
-                ],
+                    // NOTE: SECTION 3
+                    sectionThreeProfile(),
+                  ],
+                ),
               ),
             ),
-          ),
+          )),
         ],
       ),
     ));
@@ -109,6 +112,7 @@ class ProfileView extends GetView<ProfileController> {
                     lotties: AssetConfigFLdev.lottieWarning,
                     title: 'Anda yakin ? ',
                     content: 'Keluar dari aplikasi',
+                    // positive: false,
                     textBtn: 'Ya',
                     onTap: () {
                       SessionUserFLdev.clearUser();
@@ -233,7 +237,7 @@ class ProfileView extends GetView<ProfileController> {
                       userController.user.customerName ?? "Guest", 12);
                   return Text(
                     formattedText.length > 20
-                        ? formattedText.substring(0, 20) + "..."
+                        ? formattedText.substring(0, 12) + "..."
                         : formattedText,
                     style: secondary700.copyWith(fontSize: 16.0),
                   );
