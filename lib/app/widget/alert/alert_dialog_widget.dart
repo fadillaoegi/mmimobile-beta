@@ -15,7 +15,8 @@ class AlertDialogApps extends StatelessWidget {
       this.onTap,
       this.colorIcon,
       this.textBtn = "",
-      this.lotties = ""});
+      this.lotties = "",
+      this.postive = false});
 
   final IconData? icon;
   final String? lotties;
@@ -24,6 +25,7 @@ class AlertDialogApps extends StatelessWidget {
   final String? textBtn;
   final VoidCallback? onTap;
   final Color? colorIcon;
+  final bool? postive;
 
   @override
   Widget build(BuildContext context) {
@@ -64,26 +66,44 @@ class AlertDialogApps extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            children: [
-              Expanded(
-                  child: BtnApps(
-                onPress: () {
-                  Get.back();
-                },
-                text: "No",
-              )),
-              const SizedBox(
-                width: 8.0,
-              ),
-              Expanded(
-                  child: OutBtnApps(
-                text: textBtn,
-                color: ColorApps.secondary,
-                onPress: onTap,
-              ))
-            ],
-          )
+          postive!
+              ? Row(
+                  children: [
+                    Expanded(
+                        child: OutBtnApps(
+                      text: "Tidak",
+                      color: ColorApps.secondary,
+                      onPress: () => Get.back(),
+                    )),
+                    const SizedBox(
+                      width: 8.0,
+                    ),
+                    Expanded(
+                        child: BtnApps(
+                      onPress: onTap,
+                      text: "Ya",
+                    )),
+                  ],
+                )
+              : Row(
+                  children: [
+                    Expanded(
+                        child: BtnApps(
+                      color: ColorApps.secondary,
+                      onPress: () => Get.back(),
+                      text: "Tidak",
+                    )),
+                    const SizedBox(
+                      width: 8.0,
+                    ),
+                    Expanded(
+                        child: OutBtnApps(
+                      text: "Ya",
+                      color: ColorApps.secondary,
+                      onPress: onTap,
+                    ))
+                  ],
+                )
         ],
       ),
       scrollable: true,

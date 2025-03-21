@@ -131,6 +131,7 @@ class ProfileEditController extends GetxController {
   Future<void> updateProfile() async {
     Get.dialog(AlertDialogApps(
       lotties: AssetConfigFLdev.lottieWarning,
+      postive: true,
       title: 'Anda yakin ? ',
       content: 'Memperbarui profil',
       textBtn: 'Ya',
