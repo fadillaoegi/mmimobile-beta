@@ -36,14 +36,14 @@ class HomeView extends GetView<HomeController> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 0.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
                               ImageCircle(
-                                size: 70.0,
+                                size: 60.0,
                                 edit: false,
                                 imageUrl: userData.user.customerPhotoProfil ??
                                     "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png",

@@ -49,11 +49,12 @@ class ImageCircle extends StatelessWidget {
                 errorWidget: (context, url, error) => Container(
                   width: size,
                   height: size,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.grey,
+                    color: Color.fromARGB(139, 255, 255, 255),
                   ),
-                  child: Icon(Icons.error, color: Colors.red, size: size / 2),
+                  child: Icon(Icons.image_not_supported_outlined,
+                      color: ColorApps.disable2, size: size / 2),
                 ),
               ),
             ),
