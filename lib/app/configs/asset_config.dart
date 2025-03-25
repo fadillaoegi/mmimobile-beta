@@ -66,4 +66,14 @@ class AssetConfigFLdev {
   static const lottieLogout = "assets/lotties/logoutFldev.json";
   static const lottieWarning = "assets/lotties/warningFldev.json";
   static const lottieSuccess = "assets/lotties/successFldev.json";
+
+  // NOTE: NETWORKIMAGE
+  static const logoNetwork =
+      "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png";
+  static const bannerExampleNetwork =
+      "https://mashmoshem.co.id/wp-content/uploads/2024/08/MMI-Banner-2.webp";
+  static const highLight =
+      "https://mashmoshem.co.id/wp-content/uploads/2024/09/Clay-Mask.webp";
+  static const highLight2 =
+      "https://mashmoshem.co.id/wp-content/uploads/2024/09/Clay-Mask.webp";
 }

@@ -51,7 +51,7 @@ class ImageCircle extends StatelessWidget {
                   height: size,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Color.fromARGB(139, 255, 255, 255),
+                    color: Color.fromARGB(255, 255, 255, 255),
                   ),
                   child: Icon(Icons.image_not_supported_outlined,
                       color: ColorApps.disable2, size: size / 2),

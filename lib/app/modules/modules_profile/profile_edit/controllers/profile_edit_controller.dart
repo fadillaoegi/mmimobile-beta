@@ -175,6 +175,8 @@ class ProfileEditController extends GetxController {
             return;
           }
 
+          
+
           User user = User.fromJson(result['data']);
           SessionUserFLdev.saveUser(user);
 

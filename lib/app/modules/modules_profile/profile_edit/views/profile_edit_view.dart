@@ -75,7 +75,8 @@ class ProfileEditView extends StatelessWidget {
                       : ImageCircle(
                           imageUrl: (imageUrl != null && imageUrl.isNotEmpty)
                               ? imageUrl
-                              : "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png",
+                              : "https://ui-avatars.com/api/?name=${controller.userData.user.customerName}",
+                          // : "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png",
                         ),
                 );
               }),

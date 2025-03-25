@@ -26,7 +26,7 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     final sizeScreen = MediaQuery.of(context).size;
-    final userController = Get.put(UserController());
+    final userData = Get.put(UserController());
     final imageConvert = Get.put(ImageConverterFldev());
 
     return Scaffold(
@@ -43,7 +43,7 @@ class ProfileView extends GetView<ProfileController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // NOTE: SECTION 1
-                    sectionOneProfile(userController, imageConvert),
+                    sectionOneProfile(userData, imageConvert),
                     const SizedBox(height: 20.0),
 
                     // NOTE: SECTION 2
@@ -220,11 +220,20 @@ class ProfileView extends GetView<ProfileController> {
             GestureDetector(
                 child: Stack(
               children: [
-                ImageCircle(
-                  edit: false,
-                  imageUrl: userController.user.customerPhotoProfil ??
-                      "https://raw.githubusercontent.com/fadillaoegi/APIMyAssets/refs/heads/master/logo/Icon-Loader-Mmi.png",
-                ),
+                userController.user.customerPhotoProfil!.isNotEmpty
+                    ? ImageCircle(
+                        size: 60.0,
+                        edit: false,
+                        imageUrl: userController.user.customerPhotoProfil!,
+                        // AssetConfigFLdev.logoNetwork,
+                      )
+                    : ImageCircle(
+                        size: 60.0,
+                        edit: false,
+                        imageUrl:
+                            "https://ui-avatars.com/api/?name=${userController.user.customerName}",
+                        // AssetConfigFLdev.logoNetwork,
+                      ),
               ],
             )),
             const SizedBox(width: 10.0),

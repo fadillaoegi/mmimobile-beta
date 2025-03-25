@@ -7,6 +7,7 @@ import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:mmimobile/app/widget/item_privilege_widget.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import '../controllers/membership_controller.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -52,7 +53,7 @@ class MembershipView extends GetView<MembershipController> {
                     () {
                       if (controller.isLoading.value) {
                         return const Center(
-                          child: CircularProgressIndicator(),
+                          child: LoadingApps(),
                         );
                       }
 
