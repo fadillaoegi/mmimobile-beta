@@ -83,7 +83,7 @@ class AddEmailView extends GetView<AddEmailController> {
                     BtnApps(
                       // onPress: () {},
                       onPress: () => controller.addEmail(context, customerId),
-                      text: "Submit",
+                      text: "Kirim",
                     ),
                   ],
                 ),
