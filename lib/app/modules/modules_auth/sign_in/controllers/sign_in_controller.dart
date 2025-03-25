@@ -58,9 +58,9 @@ class SignInController extends GetxController {
     if (completePhone.isEmpty && pass.isEmpty) {
       Get.dialog(
         AlertDialogNoAction(
-          title: "Sign in failed",
+          title: "Gagal masuk",
           lotties: AssetConfigFLdev.lottieFailed,
-          content: "Phone and password are required",
+          content: "Nomor dan password harus di isi",
         ),
         barrierDismissible: false,
       );
@@ -127,9 +127,10 @@ class SignInController extends GetxController {
           }
           Get.dialog(
             AlertDialogNoAction(
-              title: "Sign in success",
+              title: "Masuk berhasil",
               lotties: AssetConfigFLdev.lottieSuccess,
-              content: result['message'],
+              // content: result['message'],
+              content: "Password masih default, silahkan ubah password Anda",
             ),
             barrierDismissible: false,
           );

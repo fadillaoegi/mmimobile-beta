@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
 import '../controllers/home_controller.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
@@ -55,7 +54,7 @@ class HomeView extends GetView<HomeController> {
                                       size: 60.0,
                                       edit: false,
                                       imageUrl:
-                                          "https://ui-avatars.com/api/?name=${userData.user.customerName}",
+                                          "https://ui-avatars.com/api/?name=${userData.user.customerName}&background=6C8524",
                                       // AssetConfigFLdev.logoNetwork,
                                     ),
                               const SizedBox(width: 10.0),

@@ -135,7 +135,7 @@ class User {
         membershipId: json["membership_id"],
         customerMembershipName: json["customer_membership_name"],
         customerAddressRecipient: json["customer_address_recipient"],
-        customerPhotoProfil: json["customer_photo_profil"],
+        customerPhotoProfil: json["customer_photo_profil"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

@@ -83,9 +83,9 @@ class ResetPasswordController extends GetxController {
         if (customerEmail.trim().isEmpty || customerEmail == '-') {
           Get.dialog(
             const AlertDialogNoAction(
-              title: "Password updated successfully",
+              title: "Pembaruan password berhasil",
               lotties: AssetConfigFLdev.lottieSuccess,
-              content: "Please enter your email.",
+              content: "Anda belum punya email, siahkan daftarkan email Anda",
             ),
             barrierDismissible: false,
           );
@@ -102,9 +102,9 @@ class ResetPasswordController extends GetxController {
 
         Get.dialog(
           const AlertDialogNoAction(
-            title: "Welcome to MMIMobile",
+            title: "Selamat datang di MMI Mobile",
             lotties: AssetConfigFLdev.lottieSuccess,
-            content: "Reset password success",
+            content: "Pembaruan password berhasil",
           ),
           barrierDismissible: false,
         );

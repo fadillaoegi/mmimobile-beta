@@ -55,14 +55,15 @@ class AddEmailView extends GetView<AddEmailController> {
                       height: 40.0,
                     ),
                     Text(
-                      "Your account doesn't have an email, \nplease enter your email",
+                      // "Your account doesn't have an email, \nplease enter your email",
+                      "Akun belum mempunyai email,\nSilakan masukkan email Anda",
                       textAlign: TextAlign.center,
-                      style: secondary600.copyWith(fontSize: 20.0),
+                      style: secondary600.copyWith(fontSize: 18.0),
                     ),
                     const SizedBox(
                       height: 18.0,
                     ),
-                    Lottie.asset(AssetConfigFLdev.lottieEmail),
+                    Lottie.asset(AssetConfigFLdev.lottieEmail, height: 250.0),
                     const SizedBox(
                       height: 10.0,
                     ),

@@ -220,7 +220,7 @@ class ProfileView extends GetView<ProfileController> {
             GestureDetector(
                 child: Stack(
               children: [
-                userController.user.customerPhotoProfil!.isNotEmpty
+                userController.user.customerPhotoProfil! == ""
                     ? ImageCircle(
                         size: 60.0,
                         edit: false,
