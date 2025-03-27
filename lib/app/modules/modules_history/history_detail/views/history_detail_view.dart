@@ -7,7 +7,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
-import 'package:mmimobile/app/widget/item_history_widget.dart';
+import 'package:mmimobile/app/widget/History/item_history_widget.dart';
 import 'package:mmimobile/app/widget/list_between_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
