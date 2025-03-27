@@ -23,7 +23,9 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
         widget: Column(
           children: [
             // NOTE: SECTION 1
-            const SectionOneMembershipDetail(),
+            SectionOneMembershipDetail(
+              controller: controller,
+            ),
             const SizedBox(
               height: 20.0,
             ),
@@ -82,58 +84,70 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
 }
 
 class SectionOneMembershipDetail extends StatelessWidget {
-  const SectionOneMembershipDetail({super.key});
-
+  const SectionOneMembershipDetail({super.key, this.controller});
+  final DetailMembershipController? controller;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        boxShadow: boxShadow,
-        color: ColorApps.white,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Material(
-                  elevation: 10.0,
+        padding: const EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          boxShadow: boxShadow,
+          color: ColorApps.white,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: 5,
+          shrinkWrap: true,
+          itemBuilder: (context, index) => Expanded(
+              child: Material(
+                  elevation: 4.0,
                   borderRadius: BorderRadius.circular(10.0),
-                  child: Image.asset(
-                    AssetConfigFLdev.silverCard,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10.0),
-              Expanded(
-                  child: Material(
-                      elevation: 4.0,
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(AssetConfigFLdev.goldCard))),
-            ],
-          ),
-          const SizedBox(height: 10.0),
-          Row(
-            children: [
-              Expanded(
-                  child: Material(
-                      elevation: 4.0,
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(AssetConfigFLdev.platinumCard))),
-              const SizedBox(width: 10.0),
-              Expanded(
-                  child: Material(
-                      elevation: 10.0,
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(AssetConfigFLdev.prioritasCard))),
-            ],
-          ),
-        ],
-      ),
-    );
+                  child: Image.asset(AssetConfigFLdev.goldCard))),
+        ));
   }
 }
 
-
+        // Column(
+        //   children: [
+        //     Row(
+        //       children: [
+        //         Expanded(
+        //           child: Material(
+        //             elevation: 10.0,
+        //             borderRadius: BorderRadius.circular(10.0),
+        //             child: Image.asset(
+        //               AssetConfigFLdev.silverCard,
+        //             ),
+        //           ),
+        //         ),
+        //         const SizedBox(width: 10.0),
+        //         Expanded(
+        //             child: Material(
+        //                 elevation: 4.0,
+        //                 borderRadius: BorderRadius.circular(10.0),
+        //                 child: Image.asset(AssetConfigFLdev.goldCard))),
+        //       ],
+        //     ),
+        //     const SizedBox(height: 10.0),
+        //     Row(
+        //       children: [
+        //         Expanded(
+        //             child: Material(
+        //                 elevation: 4.0,
+        //                 borderRadius: BorderRadius.circular(10.0),
+        //                 child: Image.asset(AssetConfigFLdev.platinumCard))),
+        //         const SizedBox(width: 10.0),
+        //         Expanded(
+        //             child: Material(
+        //                 elevation: 10.0,
+        //                 borderRadius: BorderRadius.circular(10.0),
+        //                 child: Image.asset(AssetConfigFLdev.prioritasCard))),
+        //       ],
+        //     ),
+        //   ],
+        // ),
+//         );
+//   }
+// }

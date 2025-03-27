@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helper/helper_fldev.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/home/carousel_home_widget.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -19,6 +23,7 @@ class HomeView extends GetView<HomeController> {
     final userData = Get.put(UserController());
     final controller = Get.put(HomeController());
     final sizeScreen = MediaQuery.of(context).size;
+    final imageUrlUser = userData.user.customerPhotoProfil ?? "";
 
     return Scaffold(
       body: SafeArea(
@@ -42,19 +47,18 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Row(
                             children: [
-                              userData.user.customerPhotoProfil!.isNotEmpty
+                              imageUrlUser.isNotEmpty
                                   ? ImageCircle(
                                       size: 60.0,
                                       edit: false,
-                                      imageUrl:
-                                          userData.user.customerPhotoProfil!,
+                                      imageUrl: imageUrlUser,
                                       // AssetConfigFLdev.logoNetwork,
                                     )
                                   : ImageCircle(
                                       size: 60.0,
                                       edit: false,
                                       imageUrl:
-                                          "https://ui-avatars.com/api/?name=${userData.user.customerName}&background=6C8524",
+                                          "https://ui-avatars.com/api/?name=${userData.user.customerName}&background=6C8524&font-size=0.30&color=ffffff",
                                       // AssetConfigFLdev.logoNetwork,
                                     ),
                               const SizedBox(width: 10.0),

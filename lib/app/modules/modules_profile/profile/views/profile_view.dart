@@ -28,6 +28,8 @@ class ProfileView extends GetView<ProfileController> {
     final sizeScreen = MediaQuery.of(context).size;
     final userData = Get.put(UserController());
     final imageConvert = Get.put(ImageConverterFldev());
+    final imageUrlUser = userData.user.customerPhotoProfil ?? "";
+
 
     return Scaffold(
         body: CanvaApps(
