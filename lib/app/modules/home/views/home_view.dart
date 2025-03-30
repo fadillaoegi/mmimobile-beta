@@ -40,103 +40,109 @@ class HomeView extends GetView<HomeController> {
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              imageUrlUser.isNotEmpty
-                                  ? ImageCircle(
-                                      size: 60.0,
-                                      edit: false,
-                                      imageUrl: imageUrlUser,
-                                      // AssetConfigFLdev.logoNetwork,
-                                    )
-                                  : ImageCircle(
-                                      size: 60.0,
-                                      edit: false,
-                                      imageUrl:
-                                          "https://ui-avatars.com/api/?name=${userData.user.customerName}&background=6C8524&font-size=0.30&color=ffffff",
-                                      // AssetConfigFLdev.logoNetwork,
-                                    ),
-                              const SizedBox(width: 10.0),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Obx(() {
-                                    String formattedText =
-                                        HelperFldev.newParagraphText(
-                                      (userData.user.customerName ?? "Guest")
-                                          .toLowerCase(),
-                                      20,
-                                    );
-
-                                    return Text(
-                                      formattedText.length > 20
-                                          ? "${formattedText.substring(0, 20)}..."
-                                          : formattedText,
-                                      style:
-                                          secondary700.copyWith(fontSize: 16.0),
-                                    );
-                                  }),
-                                  const SizedBox(height: 4.0),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10.0, vertical: 2.0),
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                            colors: _getMembershipColors(
-                                                userData.user
-                                                    .customerMembershipName),
-                                            begin: Alignment.bottomRight,
-                                            end: Alignment.topLeft,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(6.0),
-                                        ),
-                                        child: Text(
-                                          userData.user.customerMembershipName
-                                              .toString(),
-                                          style:
-                                              white600.copyWith(fontSize: 12.0),
-                                        ),
+                    Obx(
+                      () => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                imageUrlUser.isNotEmpty
+                                    ? ImageCircle(
+                                        size: 60.0,
+                                        edit: false,
+                                        imageUrl: imageUrlUser,
+                                        // AssetConfigFLdev.logoNetwork,
+                                      )
+                                    : ImageCircle(
+                                        size: 60.0,
+                                        edit: false,
+                                        imageUrl:
+                                            "https://ui-avatars.com/api/?name=${userData.user.customerName}&background=6C8524&font-size=0.30&color=ffffff",
+                                        // AssetConfigFLdev.logoNetwork,
                                       ),
-                                      const SizedBox(width: 6.0),
-                                      Text("|",
-                                          style: secondary500.copyWith(
-                                              fontSize: 14.0)),
-                                      const SizedBox(width: 6.0),
-                                      Text("0 Point",
-                                          style: secondary500.copyWith(
-                                              fontSize: 14.0)),
-                                    ],
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          IconButton(
-                            onPressed: () => Get.snackbar(
-                              "Welcome to MMI mobile",
-                              "Signin success",
-                              snackPosition: SnackPosition.TOP,
+                                const SizedBox(width: 10.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Obx(() {
+                                      String formattedText =
+                                          HelperFldev.newParagraphText(
+                                        (userData.user.customerName ?? "Guest")
+                                            .toLowerCase(),
+                                        20,
+                                      );
+
+                                      return Text(
+                                        formattedText.length > 20
+                                            ? "${formattedText.substring(0, 20)}..."
+                                            : formattedText,
+                                        style: secondary700.copyWith(
+                                            fontSize: 16.0),
+                                      );
+                                    }),
+                                    const SizedBox(height: 4.0),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10.0, vertical: 2.0),
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: _getMembershipColors(
+                                                  userData.user
+                                                      .customerMembershipName),
+                                              begin: Alignment.bottomRight,
+                                              end: Alignment.topLeft,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(6.0),
+                                          ),
+                                          child: Text(
+                                            userData.user.customerMembershipName
+                                                .toString(),
+                                            style: white600.copyWith(
+                                                fontSize: 12.0),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6.0),
+                                        Text("|",
+                                            style: secondary500.copyWith(
+                                                fontSize: 14.0)),
+                                        const SizedBox(width: 6.0),
+                                        Text("0 Point",
+                                            style: secondary500.copyWith(
+                                                fontSize: 14.0)),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
-                            icon: const Icon(
-                              Icons.notifications_none_sharp,
-                              color: ColorApps.secondary,
-                              size: 30.0,
+                            IconButton(
+                              onPressed: () => Get.snackbar(
+                                "Welcome to MMI mobile",
+                                "Signin success",
+                                snackPosition: SnackPosition.TOP,
+                              ),
+                              icon: const Icon(
+                                Icons.notifications_none_sharp,
+                                color: ColorApps.secondary,
+                                size: 30.0,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20.0),
+
+                    // NOTE: CAROUSEL HOME
                     CarouselHome(controller: controller),
                     const SizedBox(height: 20.0),
+
+                    // NOTE: HIGH LIGHT
                     SectionTittle(title: "Best Ingredients for ODM"),
                     const SizedBox(height: 10.0),
                     SizedBox(

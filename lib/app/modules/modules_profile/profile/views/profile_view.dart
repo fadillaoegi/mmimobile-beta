@@ -28,8 +28,6 @@ class ProfileView extends GetView<ProfileController> {
     final sizeScreen = MediaQuery.of(context).size;
     final userData = Get.put(UserController());
     final imageConvert = Get.put(ImageConverterFldev());
-    final imageUrlUser = userData.user.customerPhotoProfil ?? "";
-
 
     return Scaffold(
         body: CanvaApps(
@@ -46,6 +44,9 @@ class ProfileView extends GetView<ProfileController> {
                   children: [
                     // NOTE: SECTION 1
                     sectionOneProfile(userData, imageConvert),
+                    // Obx(
+                    //   () => sectionOneProfile(userData, imageConvert),
+                    // ),
                     const SizedBox(height: 20.0),
 
                     // NOTE: SECTION 2
@@ -213,6 +214,8 @@ class ProfileView extends GetView<ProfileController> {
     UserController userController,
     ImageConverterFldev imageConvert,
   ) {
+    final imageUrlUser = userController.user.customerPhotoProfil ?? "";
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -222,18 +225,18 @@ class ProfileView extends GetView<ProfileController> {
             GestureDetector(
                 child: Stack(
               children: [
-                userController.user.customerPhotoProfil! == ""
+                imageUrlUser.isNotEmpty
                     ? ImageCircle(
                         size: 60.0,
                         edit: false,
-                        imageUrl: userController.user.customerPhotoProfil!,
+                        imageUrl: imageUrlUser,
                         // AssetConfigFLdev.logoNetwork,
                       )
                     : ImageCircle(
                         size: 60.0,
                         edit: false,
                         imageUrl:
-                            "https://ui-avatars.com/api/?name=${userController.user.customerName}",
+                            "https://ui-avatars.com/api/?name=${userController.user.customerName}&background=6C8524&font-size=0.30&color=ffffff",
                         // AssetConfigFLdev.logoNetwork,
                       ),
               ],
