@@ -6,7 +6,7 @@ import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mmimobile/app/helper/helper_fldev.dart';
+import 'package:mmimobile/app/helpers/helper_fldev.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -68,11 +68,20 @@ class HomeView extends GetView<HomeController> {
                                   children: [
                                     Obx(() {
                                       String formattedText =
-                                          HelperFldev.newParagraphText(
+                                          HelperFldev.capitalizeFirstLetter(
+                                              HelperFldev.newParagraphText(
                                         (userData.user.customerName ?? "Guest")
-                                            .toLowerCase(),
+                                            .toString(),
                                         20,
-                                      );
+                                      ));
+
+                                      // formattedText =
+                                      //     HelperFldev.capitalizeFirstLetter(
+                                      //         HelperFldev.newParagraphText(
+                                      //   (userData.user.customerName ?? "Guest")
+                                      //       .toString(),
+                                      //   20,
+                                      // ));
 
                                       return Text(
                                         formattedText.length > 20
@@ -82,6 +91,23 @@ class HomeView extends GetView<HomeController> {
                                             fontSize: 16.0),
                                       );
                                     }),
+
+                                    // Obx(() {
+                                    //   String formattedText =
+                                    //       HelperFldev.newParagraphText(
+                                    //     (userData.user.customerName ?? "Guest")
+                                    //        .toString(),
+                                    //     20,
+                                    //   );
+
+                                    //   return Text(
+                                    //     formattedText.length > 20
+                                    //         ? "${formattedText.substring(0, 20)}..."
+                                    //         : formattedText,
+                                    //     style: secondary700.copyWith(
+                                    //         fontSize: 16.0),
+                                    //   );
+                                    // }),
                                     const SizedBox(height: 4.0),
                                     Row(
                                       children: [

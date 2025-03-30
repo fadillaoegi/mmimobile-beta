@@ -16,14 +16,14 @@ class MembershipController extends GetxController {
   final userData = Get.put(UserController());
   final isLoading = false.obs;
 
-  final membershipPrivilage = [
-    "Professional Development Training Programs",
-    "Succes Kit",
-    "Birthday Gift Set",
-    "Gift Cosmetic Products + BPOM Certificate",
-    "Eid Gift",
-    "Exclusive Merchandise",
-  ].obs;
+  // final membershipPrivilage = [
+  //   "Professional Development Training Programs",
+  //   "Succes Kit",
+  //   "Birthday Gift Set",
+  //   "Gift Cosmetic Products + BPOM Certificate",
+  //   "Eid Gift",
+  //   "Exclusive Merchandise",
+  // ].obs;
   @override
   void onInit() {
     super.onInit();

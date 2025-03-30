@@ -11,7 +11,7 @@ import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import '../controllers/membership_controller.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:mmimobile/app/helper/helper_fldev.dart';
+import 'package:mmimobile/app/helpers/helper_fldev.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';

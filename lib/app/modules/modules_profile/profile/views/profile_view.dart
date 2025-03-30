@@ -7,7 +7,7 @@ import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mmimobile/app/helper/helper_fldev.dart';
+import 'package:mmimobile/app/helpers/helper_fldev.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/session/user_session.dart';
 import 'package:mmimobile/app/configs/format_config.dart';
@@ -28,6 +28,7 @@ class ProfileView extends GetView<ProfileController> {
     final sizeScreen = MediaQuery.of(context).size;
     final userData = Get.put(UserController());
     final imageConvert = Get.put(ImageConverterFldev());
+    final controller = Get.put(ProfileController());
 
     return Scaffold(
         body: CanvaApps(
@@ -246,11 +247,12 @@ class ProfileView extends GetView<ProfileController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Obx(() {
-                  String formattedText = HelperFldev.newParagraphText(
-                      userController.user.customerName ?? "Guest", 12);
+                  String formattedText = HelperFldev.capitalizeFirstLetter(
+                      HelperFldev.newParagraphText(
+                          userController.user.customerName ?? "Guest", 20));
                   return Text(
                     formattedText.length > 20
-                        ? formattedText.substring(0, 12) + "..."
+                        ? formattedText.substring(0, 20) + "..."
                         : formattedText,
                     style: secondary700.copyWith(fontSize: 16.0),
                   );

@@ -24,6 +24,8 @@ class HelperFldev {
         : text;
   }
 
+  static String capitalizeFirstLetter(String text) {
+    if (text.isEmpty) return text; // Jika teks kosong, langsung return
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
+  }
 }
-
-
