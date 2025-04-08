@@ -227,11 +227,13 @@ class ProfileView extends GetView<ProfileController> {
                 child: Stack(
               children: [
                 imageUrlUser.isNotEmpty
-                    ? ImageCircle(
-                        size: 60.0,
-                        edit: false,
-                        imageUrl: imageUrlUser,
-                        // AssetConfigFLdev.logoNetwork,
+                    ? Obx(
+                        () => ImageCircle(
+                          size: 60.0,
+                          edit: false,
+                          imageUrl: imageUrlUser,
+                          // AssetConfigFLdev.logoNetwork,
+                        ),
                       )
                     : ImageCircle(
                         size: 60.0,
