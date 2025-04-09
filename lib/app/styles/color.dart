@@ -21,7 +21,8 @@ class ColorApps {
   static const reward = Color(0xfff94c2f);
   static const disable = Color(0xffAFAFAF);
   static const disable2 = Color(0xff5E5E5E);
-  static const silverMember = Color(0xffa6a6a6);
+  // static const silverMember = Color(0xffa6a6a6);
+  static const silverMember = Color(0xff969292);
   static const silverMember2 = Color(0xffFFFFFF);
   static const goldMember = Color(0xffe1c340);
   static const goldMember2 = Color(0xff6E5B1D);

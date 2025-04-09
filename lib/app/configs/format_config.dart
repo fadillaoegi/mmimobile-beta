@@ -23,6 +23,31 @@ class FormatAppsFLdev {
     }
   }
 
+  static String currencyShort(String value) {
+    try {
+      double amount = double.parse(value);
+
+      if (amount >= 1000000000) {
+        // 1 Miliar ke atas
+        double result = amount / 1000000000;
+        return "Rp. ${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} M";
+      } else if (amount >= 1000000) {
+        // 1 Juta ke atas
+        double result = amount / 1000000;
+        return "Rp. ${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} jt";
+      } else {
+        // Di bawah 1 juta, tampil full format
+        return NumberFormat.currency(
+          locale: "id_ID",
+          decimalDigits: 0,
+          symbol: "Rp. ",
+        ).format(amount);
+      }
+    } catch (e) {
+      return "Rp. 0";
+    }
+  }
+
   // Format currency dengan simbol "Rp."
   static String currency(String value) {
     try {

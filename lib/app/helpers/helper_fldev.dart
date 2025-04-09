@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'dart:ui';
+import 'package:mmimobile/app/styles/color.dart';
 
 class HelperFldev {
   static String newParagraphText(String text, int maxLength) {
@@ -27,5 +29,18 @@ class HelperFldev {
   static String capitalizeFirstLetter(String text) {
     if (text.isEmpty) return text; // Jika teks kosong, langsung return
     return text[0].toUpperCase() + text.substring(1).toLowerCase();
+  }
+
+  static Color safeHexToColor(String hex,
+      {Color fallback = ColorApps.secondary}) {
+    try {
+      hex = hex.replaceAll("#", "").toUpperCase();
+      // Validasi hanya karakter 0-9 dan A-F
+      final validHex = RegExp(r'^[0-9A-F]{6}$');
+      if (!validHex.hasMatch(hex)) return fallback;
+      return Color(int.parse("0xFF$hex"));
+    } catch (_) {
+      return fallback;
+    }
   }
 }
