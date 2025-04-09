@@ -106,6 +106,9 @@ class SectionOneMembershipDetail extends StatelessWidget {
                 child: Row(
                   children: rowItems.map((item) {
                     String name = item["customer_membership_name"].toString();
+                    String color = item["customer_membership_color"].toString();
+                    String colorSecond =
+                        item["customer_membership_color_second"].toString();
                     int min =
                         int.parse(item["customer_membership_min"].toString());
                     int max =
@@ -122,8 +125,8 @@ class SectionOneMembershipDetail extends StatelessWidget {
                             // colors: _getMembershipColors(name),
 
                             colors: [
-                              HelperFldev.safeHexToColor(controller.hex2),
-                              HelperFldev.safeHexToColor(controller.hex),
+                              HelperFldev.safeHexToColor(colorSecond),
+                              HelperFldev.safeHexToColor(color),
                             ],
                           ),
                           borderRadius: BorderRadius.circular(10.0),
