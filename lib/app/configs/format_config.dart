@@ -27,24 +27,32 @@ class FormatAppsFLdev {
     try {
       double amount = double.parse(value);
 
-      if (amount >= 1000000000) {
+      if (amount >= 1000000000000) {
+        // 1 Triliun ke atas
+        double result = amount / 1000000000000;
+        return "Rp.${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} T";
+      } else if (amount >= 1000000000) {
         // 1 Miliar ke atas
         double result = amount / 1000000000;
-        return "Rp. ${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} M";
+        return "Rp.${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} M";
       } else if (amount >= 1000000) {
         // 1 Juta ke atas
         double result = amount / 1000000;
-        return "Rp. ${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} jt";
+        return "Rp.${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} jt";
+      } else if (amount >= 1000) {
+        // 1 Ribu ke atas
+        double result = amount / 1000;
+        return "Rp.${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)} Rb";
       } else {
-        // Di bawah 1 juta, tampil full format
+        // Di bawah 1 ribu, tampil full format
         return NumberFormat.currency(
           locale: "id_ID",
           decimalDigits: 0,
-          symbol: "Rp. ",
+          symbol: "Rp.",
         ).format(amount);
       }
     } catch (e) {
-      return "Rp. 0";
+      return "Rp.0";
     }
   }
 

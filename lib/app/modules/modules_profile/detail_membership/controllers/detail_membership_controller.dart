@@ -1,57 +1,57 @@
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:mmimobile/app/api/api.dart';
+import 'package:mmimobile/app/api/request_apps.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
 
 class DetailMembershipController extends GetxController {
-  final dataMembership = [
-    {
-      "customer_membership_id": 1,
-      "customer_membership_name": "Silver",
-      "customer_membership_min": 0,
-      "customer_membership_max": 1000000,
-      "customer_membership_color": "e1c340",
-      "customer_membership_color_second": "6E5B1D",
-      "customer_membership_status": "1"
-    },
-    {
-      "customer_membership_id": 2,
-      "customer_membership_name": "Gold",
-      "customer_membership_min": 1000000,
-      "customer_membership_max": 10000000,
-      "customer_membership_color": "e1c340",
-      "customer_membership_color_second": "6E5B1D",
-      "customer_membership_status": "1"
-    },
-    {
-      "customer_membership_id": 3,
-      "customer_membership_name": "Platinum",
-      "customer_membership_min": 10000000,
-      "customer_membership_max": 100000000,
-      "customer_membership_color": "e1c340",
-      "customer_membership_color_second": "6E5B1D",
-      "customer_membership_status": "1"
-    },
-    {
-      "customer_membership_id": 4,
-      "customer_membership_name": "Prioritas",
-      "customer_membership_min": 100000000,
-      "customer_membership_max": 500000000,
-      "customer_membership_color": "e1c340",
-      "customer_membership_color_second": "6E5B1D",
-      "customer_membership_status": "1"
-    },
-  ].obs;
-  final categoryMembership = ["Silver", "Gold", "Platinum", "Prioritas"].obs;
-  final selectedCategory = "Silver".obs;
+  final userData = Get.put(UserController());
+  final isLoading = false.obs;
+  final dataMembership = <MembershipData>[].obs;
+  // final selectedCategory = "Silver".obs;
+  final selectedCategoryId = ''.obs;
+
   @override
   void onInit() {
     super.onInit();
+    selectedCategoryId.value = userData.user.membershipId.toString();
+    refreshDataMembership();
   }
 
-  void setCategory(String category) {
-    selectedCategory.value = category;
+  void setCategory(String categoryId) {
+    selectedCategoryId.value = categoryId;
   }
 
   refreshDataMembership() async {
-    try {} catch (e) {}
+    isLoading(true);
+    try {
+      final response = await RequestApp.getFutureDio(ApiApps.membershipData);
+      final data = response!.data['data'] as List;
+      dataMembership.value = data
+          .map(
+            (e) => MembershipData.fromJson(e),
+          )
+          .toList();
+
+      if (response.statusCode == 200) {
+      } else if (response.statusCode == 500) {
+        SnackbarFLdev.snackShow(
+          title: "Terjadi kesalahan pada server",
+          message: "Gagal mengambil data membership",
+        );
+      } else {
+        SnackbarFLdev.snackShow(
+          title: "Terjadi kesalahan pada server",
+          message: "Gagal mengambil data membership",
+        );
+      }
+    } catch (e) {
+    } finally {
+      isLoading(false);
+    }
   }
 }

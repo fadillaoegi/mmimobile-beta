@@ -41,7 +41,7 @@ class MembershipController extends GetxController {
   }
 
   fetchMembershipDataId() async {
-    print(userData.user.membershipId);
+    // print(userData.user.membershipId);
     isLoading(true);
     final formData = FormData.fromMap(
         {'membership_id': userData.user.membershipId.toString()});

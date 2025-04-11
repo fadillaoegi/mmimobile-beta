@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initializeDateFormatting("id_ID");
 
-  // NOTE: Ambil data sesi pengguna sebelum menjalankan aplikasi
+  // NOTE: put data session user before run apps
   User? currentUser = await SessionUserFLdev.getUser();
 
   runApp(

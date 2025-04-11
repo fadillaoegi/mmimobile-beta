@@ -15,6 +15,7 @@ class MembershipData {
   String? customerMembershipMin;
   String? customerMembershipMax;
   String? customerMembershipColor;
+  String? customerMembershipColorSecond;
   String? customerMembershipStatus;
 
   MembershipData({
@@ -23,6 +24,7 @@ class MembershipData {
     this.customerMembershipMin,
     this.customerMembershipMax,
     this.customerMembershipColor,
+    this.customerMembershipColorSecond,
     this.customerMembershipStatus,
   });
 
@@ -32,6 +34,7 @@ class MembershipData {
         customerMembershipMin: json["customer_membership_min"],
         customerMembershipMax: json["customer_membership_max"],
         customerMembershipColor: json["customer_membership_color"],
+        customerMembershipColorSecond: json["customer_membership_color_second"],
         customerMembershipStatus: json["customer_membership_status"],
       );
 
@@ -41,6 +44,7 @@ class MembershipData {
         "customer_membership_min": customerMembershipMin,
         "customer_membership_max": customerMembershipMax,
         "customer_membership_color": customerMembershipColor,
+        "customer_membership_color_second": customerMembershipColorSecond,
         "customer_membership_status": customerMembershipStatus,
       };
 }
