@@ -31,8 +31,13 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
               child: Column(
                 children: [
                   // NOTE: SECTION 1
-                  SectionOneMembershipDetail(
-                    controller: controller,
+                  SizedBox(
+                    width: MediaQuery.sizeOf(context).width,
+                    child: Center(
+                      child: SectionOneMembershipDetail(
+                        controller: controller,
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -46,14 +51,10 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
                       children: List.generate(
                         controller.dataMembership.length,
                         (index) {
-                          // String category = controller.dataMembership[index].toString();
-                          // String category = c)ontroller.dataMembership[index]
-                          //         ["customer_membership_name"]
-                          //     .toString();
                           String categoryId = controller
                               .dataMembership[index].customerMembershipId
                               .toString();
-                          String category = controller
+                          String categoryName = controller
                               .dataMembership[index].customerMembershipName
                               .toString();
 
@@ -72,7 +73,7 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Text(
-                                  category,
+                                  categoryName,
                                   textAlign: TextAlign.center,
                                   style: controller.selectedCategoryId.value ==
                                           categoryId
@@ -117,8 +118,10 @@ class SectionOneMembershipDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Center(
-          child: Column(
+    final screenSized = MediaQuery.sizeOf(context);
+    return SizedBox(
+      width: screenSized.width,
+      child: Obx(() => Column(
             children: List.generate(
               (controller.dataMembership.length / 2).ceil(),
               (rowIndex) {
@@ -126,62 +129,65 @@ class SectionOneMembershipDetail extends StatelessWidget {
                 final end = (start + 2 < controller.dataMembership.length)
                     ? start + 2
                     : controller.dataMembership.length;
-
                 final rowItems = controller.dataMembership.sublist(start, end);
-
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: rowItems.map((item) {
-                      String name = item.customerMembershipName.toString();
-                      String color = item.customerMembershipColor.toString();
-                      String colorSecond =
-                          item.customerMembershipColorSecond.toString();
-                      int min =
-                          int.parse(item.customerMembershipMin.toString());
-                      int max =
-                          int.parse(item.customerMembershipMax.toString());
+                  padding: const EdgeInsets.only(
+                      bottom: 10.0, left: 12.0, right: 12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: rowItems.map((item) {
+                          String name = item.customerMembershipName.toString();
+                          String color =
+                              item.customerMembershipColor.toString();
+                          String colorSecond =
+                              item.customerMembershipColorSecond.toString();
+                          int min =
+                              int.parse(item.customerMembershipMin.toString());
+                          int max =
+                              int.parse(item.customerMembershipMax.toString());
 
-                      return Container(
-                        width: 160.0,
-                        margin: const EdgeInsets.only(right: 10.0),
-                        height: 100.0,
-                        padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          boxShadow: boxShadow,
-                          gradient: LinearGradient(
-                            // colors: _getMembershipColors(name),
-
-                            colors: [
-                              HelperFldev.safeHexToColor(colorSecond),
-                              HelperFldev.safeHexToColor(color),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              name,
-                              style: white700.copyWith(fontSize: 14.0),
+                          return Container(
+                            width: 160.0,
+                            // margin: const EdgeInsets.only(right: 10.0),
+                            height: 100.0,
+                            padding: const EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                              boxShadow: boxShadow,
+                              gradient: LinearGradient(
+                                colors: [
+                                  HelperFldev.safeHexToColor(colorSecond),
+                                  HelperFldev.safeHexToColor(color),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
-                            const SizedBox(height: 10.0),
-                            Text(
-                              // "${_formatCurrency(min)} - ${_formatCurrency(max)}",
-                              "${FormatAppsFLdev.currencyShort(min.toString())} - ${FormatAppsFLdev.currencyShort(max.toString())}",
-                              style: white500.copyWith(fontSize: 12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  name,
+                                  style: white700.copyWith(fontSize: 14.0),
+                                ),
+                                const SizedBox(height: 10.0),
+                                Text(
+                                  // "${_formatCurrency(min)} - ${_formatCurrency(max)}",
+                                  "${FormatAppsFLdev.currencyShort(min.toString())} - ${FormatAppsFLdev.currencyShort(max.toString())}",
+                                  style: white500.copyWith(fontSize: 12.0),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      );
-                    }).toList(),
+                          );
+                        }).toList(),
+                      ),
+                    ],
                   ),
                 );
               },
             ),
-          ),
-        ));
+          )),
+    );
   }
 }

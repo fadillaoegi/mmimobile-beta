@@ -12,7 +12,6 @@ class DetailMembershipController extends GetxController {
   final userData = Get.put(UserController());
   final isLoading = false.obs;
   final dataMembership = <MembershipData>[].obs;
-  // final selectedCategory = "Silver".obs;
   final selectedCategoryId = ''.obs;
 
   @override
