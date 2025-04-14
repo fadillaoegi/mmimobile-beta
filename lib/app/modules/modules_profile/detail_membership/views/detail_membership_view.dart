@@ -137,7 +137,7 @@ class SectionOneMembershipDetail extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: rowItems.map((item) {
                           String name = item.customerMembershipName.toString();
                           String color =
@@ -150,8 +150,8 @@ class SectionOneMembershipDetail extends StatelessWidget {
                               int.parse(item.customerMembershipMax.toString());
 
                           return Container(
-                            width: 160.0,
-                            // margin: const EdgeInsets.only(right: 10.0),
+                            width: MediaQuery.sizeOf(context).width / 2.4,
+                            margin: const EdgeInsets.only(right: 10.0),
                             height: 100.0,
                             padding: const EdgeInsets.all(10.0),
                             decoration: BoxDecoration(

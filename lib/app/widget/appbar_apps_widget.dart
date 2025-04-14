@@ -11,8 +11,10 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
     this.checkClick = false,
     this.backRoute = true,
     this.onTap,
-    this.color = ColorApps.card3,
-    this.colorFontIcon = ColorApps.white,
+    // this.color = ColorApps.card3,
+    this.color = ColorApps.white,
+    this.colorFontIcon = ColorApps.secondary,
+    // this.colorFontIcon = ColorApps.white,
   });
 
   final String? title;

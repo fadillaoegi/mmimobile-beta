@@ -77,14 +77,6 @@ class HomeView extends GetView<HomeController> {
                                         20,
                                       ));
 
-                                      // formattedText =
-                                      //     HelperFldev.capitalizeFirstLetter(
-                                      //         HelperFldev.newParagraphText(
-                                      //   (userData.user.customerName ?? "Guest")
-                                      //       .toString(),
-                                      //   20,
-                                      // ));
-
                                       return Text(
                                         formattedText.length > 20
                                             ? "${formattedText.substring(0, 20)}..."
@@ -93,23 +85,6 @@ class HomeView extends GetView<HomeController> {
                                             fontSize: 16.0),
                                       );
                                     }),
-
-                                    // Obx(() {
-                                    //   String formattedText =
-                                    //       HelperFldev.newParagraphText(
-                                    //     (userData.user.customerName ?? "Guest")
-                                    //        .toString(),
-                                    //     20,
-                                    //   );
-
-                                    //   return Text(
-                                    //     formattedText.length > 20
-                                    //         ? "${formattedText.substring(0, 20)}..."
-                                    //         : formattedText,
-                                    //     style: secondary700.copyWith(
-                                    //         fontSize: 16.0),
-                                    //   );
-                                    // }),
                                     const SizedBox(height: 4.0),
                                     Row(
                                       children: [

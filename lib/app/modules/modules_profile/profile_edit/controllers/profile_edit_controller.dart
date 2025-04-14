@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:path/path.dart' as path;
 import 'package:mmimobile/app/api/api.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,9 +12,9 @@ import 'package:mmimobile/app/styles/color.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-// import 'package:mmimobile/app/widget/snackbar_wiget.dart';
-import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/session/user_session.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/data/models/user_model.dart';
 import 'package:mmimobile/app/data/sources/source_apps.dart';
 import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -47,7 +46,7 @@ class ProfileEditController extends GetxController {
     addressController.text = userData.user.customerAddress ?? "";
     addressSendController.text = userData.user.customerAddressRecipient ?? "";
 
-    // Konversi tanggal lahir jika ada
+    // NOTE: Convert date birth
     if (userData.user.customerDateBirth != null &&
         userData.user.customerDateBirth!.isNotEmpty) {
       try {
@@ -61,13 +60,65 @@ class ProfileEditController extends GetxController {
       }
     }
 
-    // Jika ada foto profil, tampilkan di UI dalam bentuk base64
+    // NOTE: when Jika ada foto profil, show in UI base64
     if (userData.user.customerPhotoProfil != null) {
       selectedImageBase64.value = userData.user.customerPhotoProfil;
     }
   }
 
-  /// Fungsi untuk memilih gambar dari kamera atau galeri
+  Future<void> refreshUserData() async {
+    isLoading(true);
+    try {
+      final formData = FormData.fromMap({
+        'customer_id': userData.user.customerId,
+      });
+
+      final result = await SourceApps.hitApiToMap(ApiApps.getUser, formData);
+      User user = User.fromJson(result!['data']);
+      SessionUserFLdev.saveUser(user);
+
+      if (result.isNotEmpty && result['status'] == true) {
+        User user = User.fromJson(result['data']);
+        await SessionUserFLdev.saveUser(user);
+        userData.user != user; // Update user controller
+
+        // NOTE: Update TextEditingController
+        nameController.text = user.customerName ?? "";
+        emailController.text = user.customerEmail ?? "";
+        phoneController.text = user.customerPhone ?? "";
+        addressController.text = user.customerAddress ?? "";
+        addressSendController.text = user.customerAddressRecipient ?? "";
+
+        // Update tanggal lahir
+        if (user.customerDateBirth != null &&
+            user.customerDateBirth!.isNotEmpty) {
+          try {
+            DateTime parsedDate =
+                DateFormat("yyyy-MM-dd").parse(user.customerDateBirth!);
+            bornController.text = DateFormat("dd MMMM yyyy").format(parsedDate);
+            selectedDate.value = DateFormat("yyyy-MM-dd").format(parsedDate);
+          } catch (e) {
+            bornController.text = "";
+            selectedDate.value = "";
+          }
+        }
+
+        // Update gambar profil (base64)
+        selectedImageBase64.value = user.customerPhotoProfil;
+
+        update();
+      } else {
+        Get.snackbar("Gagal", "Gagal menyegarkan data pengguna.");
+      }
+    } catch (e) {
+      print("Error refresh user: $e");
+      Get.snackbar("Error", "Terjadi kesalahan saat refresh data.");
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  // NOTE: Choose camera or gallery
   Future<void> pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: source);
@@ -76,7 +127,7 @@ class ProfileEditController extends GetxController {
     }
   }
 
-  /// **Fungsi untuk memotong gambar sebelum diunggah**
+  // NOTE: Fungsi untuk memotong gambar sebelum diunggah
   Future<void> cropImage(String imagePath) async {
     final CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: imagePath,
@@ -103,7 +154,7 @@ class ProfileEditController extends GetxController {
     }
   }
 
-  /// Konversi gambar ke base64 untuk tampilan real-time
+  // NOTE: Konversi gambar ke base64 untuk tampilan real-time
   Future<void> _convertImageToBase64(String imagePath) async {
     File imageFile = File(imagePath);
     List<int> imageBytes = await imageFile.readAsBytes();
@@ -111,7 +162,7 @@ class ProfileEditController extends GetxController {
     selectedImageBase64.value = base64Image;
   }
 
-  /// Fungsi untuk memilih tanggal lahir
+  // NOTE: Fungsi untuk memilih tanggal lahir
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -127,7 +178,7 @@ class ProfileEditController extends GetxController {
     }
   }
 
-  /// Fungsi untuk mengupdate profil ke API
+  // NOTE: Fungsi untuk mengupdate profil ke API
   Future<void> updateProfile() async {
     Get.dialog(AlertDialogApps(
       lotties: AssetConfigFLdev.lottieWarning,
@@ -141,7 +192,7 @@ class ProfileEditController extends GetxController {
         try {
           FormData formData = FormData.fromMap({
             'customer_id': userData.user.customerId.toString().trim(),
-            'customer_name': nameController.text.toString().trim(),
+            'customer_name': nameController.value.text.toString().trim(),
             'customer_email': emailController.text.toString().trim(),
             'customer_phone': phoneController.text.toString().trim(),
             'customer_address': addressController.text.toString().trim(),
@@ -174,8 +225,6 @@ class ProfileEditController extends GetxController {
             Future.delayed(const Duration(seconds: 3), Get.back);
             return;
           }
-
-          
 
           User user = User.fromJson(result['data']);
           SessionUserFLdev.saveUser(user);

@@ -24,16 +24,11 @@ class HomeController extends GetxController {
     AssetConfigFLdev.banner1,
     AssetConfigFLdev.banner2,
     AssetConfigFLdev.banner3,
-    // 'https://mashmoshem.co.id/wp-content/uploads/2024/09/Clay-Mask.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2021/04/beda-oem-dan-odm.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2024/12/make-up-untuk-kulit-kering.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2022/12/cara-membuat-brand-skincare.webp',
   ].obs;
 
   @override
   void onInit() {
     super.onInit();
-    print("WOKWOKWOK");
   }
 
   @override
