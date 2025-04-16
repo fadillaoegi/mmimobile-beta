@@ -62,7 +62,7 @@ class MembershipView extends GetView<MembershipController> {
                         children: [
                           SectionTittle(title: "Hak Istimewa", size: 20.0),
                           const SizedBox(height: 10.0),
-                          if (controller.membershipDataId.isEmpty)
+                          if (controller.membershipDataBenefit.isEmpty)
                             Center(
                               child: Text(
                                 "Tidak ada data privilege.",
@@ -71,12 +71,13 @@ class MembershipView extends GetView<MembershipController> {
                             )
                           else
                             ListView.builder(
-                              itemCount: controller.membershipDataId.length,
+                              itemCount:
+                                  controller.membershipDataBenefit.length,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 final membership =
-                                    controller.membershipDataId[index];
+                                    controller.membershipDataBenefit[index];
                                 return Obx(() => ItemPrivilege(
                                       claimed: controller.privilage.value,
                                       onTap: () => controller.claimPrivilage(),

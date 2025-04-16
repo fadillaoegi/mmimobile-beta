@@ -1,12 +1,12 @@
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:mmimobile/app/api/api.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
-import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class DetailMembershipController extends GetxController {
   final userData = Get.put(UserController());

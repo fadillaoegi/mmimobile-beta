@@ -5,14 +5,14 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
-import 'package:mmimobile/app/data/models/membership/membership_data_id_model.dart';
+import 'package:mmimobile/app/data/models/membership/membership_data_benefit_model.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class MembershipController extends GetxController {
   final count = 0.obs;
   final privilage = false.obs;
-  final membershipDataId = <MembershipDataId>[].obs;
+  final membershipDataBenefit = <MembershipDataBenefit>[].obs;
   final userData = Get.put(UserController());
   final isLoading = false.obs;
 
@@ -46,14 +46,14 @@ class MembershipController extends GetxController {
     final formData = FormData.fromMap(
         {'membership_id': userData.user.membershipId.toString()});
     try {
-      final response =
-          await RequestApp.postFutureDio(ApiApps.membershipDataId, formData);
+      final response = await RequestApp.postFutureDio(
+          ApiApps.membershipDataBenefitId, formData);
 
       final data = response!.data['data'] as List;
 
-      membershipDataId.value = data
+      membershipDataBenefit.value = data
           .map(
-            (items) => MembershipDataId.fromJson(items),
+            (items) => MembershipDataBenefit.fromJson(items),
           )
           .toList();
 

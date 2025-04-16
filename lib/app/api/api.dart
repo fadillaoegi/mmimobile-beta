@@ -3,12 +3,12 @@ class ApiApps {
   // static const root = "https://mmi.entis.app/api";
 
   // NOTE: ROOT LOCAL
-  static const root = "http://190.110.0.62/EntIS-MMI/api";
+  static const root = "http://190.110.0.26/EntIS-MMI/api";
 
   // NOTE: Ui Avatar
   // static const avatar = "https://ui-avatars.com/api/?name=John+Doe";
 
-  // NOTE: SLIDER IMAGE
+  // NOTE: SLIDER IMAGE PATCH
   static const assetSlider = "https://mmi.entis.app/uploads/";
 
   // NOTE: GET DATA
@@ -31,4 +31,5 @@ class ApiApps {
   // NOTE: MEMBESHIP
   static const membershipData = "$root/membershipData";
   static const membershipDataId = "$root/membershipDataId";
+  static const membershipDataBenefitId = "$root/membershipDataBenefitId";
 }
