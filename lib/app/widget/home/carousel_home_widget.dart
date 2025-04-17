@@ -38,7 +38,7 @@ class CarouselHome extends StatelessWidget {
 
         return Stack(
           children: [
-            // Carousel Slider
+            // NOTE: Carousel Slider
             Center(
               child: Container(
                 // elevation: 4.0,
@@ -58,7 +58,7 @@ class CarouselHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: GestureDetector(
-                        onTap: () => Get.toNamed(Routes.listSupport),
+                        onTap: () => Get.toNamed(Routes.supportDetail),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(4.0),
                             child: Image.asset(

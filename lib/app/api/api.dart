@@ -9,10 +9,14 @@ class ApiApps {
   // static const avatar = "https://ui-avatars.com/api/?name=John+Doe";
 
   // NOTE: SLIDER IMAGE PATCH
-  static const assetSlider = "https://mmi.entis.app/uploads/";
+  static const assetPatch = "https://mmi.entis.app/uploads/";
 
   // NOTE: GET DATA
   static const getUser = "$root/getUser";
+  static const getDataSlider = "$root/getDataSlider";
+
+  // NOTE: HOME
+  static const getHighlightData = "$root/getHighlightData";
 
   // NOTE: CUSTOMER AUTH API
   static const signIn = "$root/signin";
@@ -28,7 +32,7 @@ class ApiApps {
   static const history = "$root/historySO";
   static const historyDetail = "$root/historyDetail";
 
-  // NOTE: MEMBESHIP
+  // NOTE: MEMBERSHIP
   static const membershipData = "$root/membershipData";
   static const membershipDataId = "$root/membershipDataId";
   static const membershipDataBenefitId = "$root/membershipDataBenefitId";

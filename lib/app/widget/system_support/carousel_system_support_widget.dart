@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
@@ -11,6 +13,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_system_support/system_support/controllers/system_support_controller.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 
 class CarouselSystemSupport extends StatelessWidget {
   const CarouselSystemSupport({
@@ -27,7 +30,7 @@ class CarouselSystemSupport extends StatelessWidget {
     return Obx(
       () {
         // Validasi jika imageUrl kosong
-        if (controller.imageUrl.isEmpty) {
+        if (controller.dataSLider.isEmpty) {
           return const Center(
             child: Text(
               "No images available",
@@ -46,9 +49,9 @@ class CarouselSystemSupport extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: CarouselSlider.builder(
-                itemCount: controller.imageUrl.length,
+                itemCount: controller.dataSLider.length,
                 itemBuilder: (context, index, _) {
-                  final url = controller.imageUrl[index];
+                  final url = controller.dataSLider[index].masterSliderImg;
                   return Container(
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -58,26 +61,28 @@ class CarouselSystemSupport extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () => Get.toNamed(Routes.listSupport),
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4.0),
-                          child: Image.asset(
-                            url,
-                            fit: BoxFit.cover,
-                          )
+                        borderRadius: BorderRadius.circular(4.0),
+                        child:
 
-                          // CachedNetworkImage(
-                          //   imageUrl: url,
-                          //   fit: BoxFit.cover,
-                          //   placeholder: (context, url) => const Center(
-                          //     child: CupertinoActivityIndicator(),
-                          //   ),
-                          //   errorWidget: (context, url, error) => const Center(
-                          //     child: Icon(
-                          //       Icons.broken_image,
-                          //       color: Colors.grey,
-                          //     ),
-                          //   ),
-                          // ),
+                            // Image.asset(
+                            //   url,
+                            //   fit: BoxFit.cover,
+                            // )
+
+                            CachedNetworkImage(
+                          imageUrl: "${ApiApps.assetPatch}/$url",
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => const Center(
+                            child: LoadingApps(),
                           ),
+                          errorWidget: (context, url, error) => const Center(
+                            child: Icon(
+                              Icons.broken_image,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },

@@ -1,30 +1,67 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:mmimobile/app/api/api.dart';
+import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/data/models/slider_model.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class SystemSupportController extends GetxController {
-  // Carousel Controller
+  // final itemEmpty = List<String>.filled(10, "").obs;
   final CarouselController buttonCarouselController = CarouselController();
-
-  // Reactive Variables
+  final userData = Get.put(UserController());
   final currentIndex = 0.obs;
-  final itemEmpty = List<String>.filled(10, "").obs;
+  final isLoading = false.obs;
+  final dataSLider = <SliderApps>[].obs;
 
-  final imageUrl = [
-    AssetConfigFLdev.banner1,
-    AssetConfigFLdev.banner2,
-    AssetConfigFLdev.banner3,
-    // 'https://mashmoshem.co.id/wp-content/uploads/2024/08/MMI-Banner-2.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2024/09/Clay-Mask.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2021/04/beda-oem-dan-odm.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2024/12/make-up-untuk-kulit-kering.webp',
-    // 'https://mashmoshem.co.id/wp-content/uploads/2022/12/cara-membuat-brand-skincare.webp',
-  ].obs;
+  @override
+  void onInit() {
+    super.onInit();
+    getDataSLider();
+  }
 
-  // Function to handle carousel page change
+  // NOTE: Function to handle carousel page change
   void onPageChanged(int index, CarouselPageChangedReason reason) {
     currentIndex.value = index;
+  }
+
+  // NOTE: Function to handle get data from API
+  getDataSLider() async {
+    isLoading(true);
+    final formData = FormData.fromMap({
+      "membership_id": userData.user.membershipId,
+    });
+    try {
+      final response =
+          await RequestApp.postFutureDio(ApiApps.getDataSlider, formData);
+      print(response);
+      final data = response!.data['data'] as List;
+      dataSLider.value = data
+          .map(
+            (e) => SliderApps.fromJson(e),
+          )
+          .toList();
+      if (response.statusCode == 200) {
+      } else if (response.statusCode == 500) {
+        SnackbarFLdev.snackShow(
+          title: "Terjadi kesalahan pada server",
+          message: "Gagal mengambil data slider",
+        );
+      } else {
+        SnackbarFLdev.snackShow(
+          title: "Terjadi kesalahan pada server",
+          message: "Gagal mengambil data slider",
+        );
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
   }
 }

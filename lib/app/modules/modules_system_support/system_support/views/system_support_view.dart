@@ -7,7 +7,6 @@ import '../controllers/system_support_controller.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:mmimobile/app/widget/system_support/item_system_support_widget.dart';
 import 'package:mmimobile/app/widget/system_support/carousel_system_support_widget.dart';
 
 class SystemSupportView extends GetView<SystemSupportController> {
@@ -29,15 +28,8 @@ class SystemSupportView extends GetView<SystemSupportController> {
             children: [
               SectionTittle(
                 title: "Professional Development\nTraining Programs",
-                size: 20.0,
+                size: 18.0,
               ),
-              // Center(
-              //   child: Text(
-              //     "Professional Development\nTraining Programs",
-              //     textAlign: TextAlign.center,
-              //     style: black700.copyWith(fontSize: 20.0),
-              //   ),
-              // ),
               const SizedBox(
                 height: 20.0,
               ),
@@ -65,25 +57,6 @@ class SystemSupportView extends GetView<SystemSupportController> {
                 ),
               ),
               // // NOTE: Carousel Section
-              // CarouselSystemSupport(controller: controller),
-              // const SizedBox(height: 10.0),
-              // // NOTE: Free Class Section
-              // SectionTittle(
-              //   title: "Free Class",
-              //   onTap: () => Get.toNamed(Routes.systemSupportClass),
-              // ),
-              // const SizedBox(height: 10.0),
-              // buildHorizontalList(controller.itemEmpty),
-
-              // // NOTE: Premium Class Section
-              // const SectionTittle(title: "Premium Class"),
-              // const SizedBox(height: 10.0),
-              // buildHorizontalList(controller.itemEmpty),
-
-              // // NOTE: Forum Section
-              // const SectionTittle(title: "Forum"),
-              // const SizedBox(height: 10.0),
-              // buildHorizontalList(controller.itemEmpty),
             ],
           ),
         ),
@@ -91,21 +64,21 @@ class SystemSupportView extends GetView<SystemSupportController> {
     );
   }
 
-  Widget buildHorizontalList(List<String> items) {
-    if (items.isEmpty) {
-      return const Center(
-        child: Text("No items available"),
-      );
-    }
-    return SizedBox(
-      height: 200.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return const ItemSystemSupport();
-        },
-      ),
-    );
-  }
+  // Widget buildHorizontalList(List<String> items) {
+  //   if (items.isEmpty) {
+  //     return const Center(
+  //       child: Text("No items available"),
+  //     );
+  //   }
+  //   return SizedBox(
+  //     height: 200.0,
+  //     child: ListView.builder(
+  //       scrollDirection: Axis.horizontal,
+  //       itemCount: items.length,
+  //       itemBuilder: (context, index) {
+  //         return const ItemSystemSupport();
+  //       },
+  //     ),
+  //   );
+  // }
 }
