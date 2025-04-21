@@ -37,7 +37,7 @@ class ProfileView extends GetView<ProfileController> {
           SafeArea(
               child: Obx(
             () => RefreshIndicator(
-              onRefresh: () => controller.refreshUserData(),
+              onRefresh: () => controller.refreshData(),
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
@@ -271,32 +271,14 @@ class ProfileView extends GetView<ProfileController> {
           child: Container(
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              // color: ColorApps.goldMember,
               gradient: LinearGradient(colors: [
-                userController.user.customerMembershipName == "Gold"
-                    ? ColorApps.goldMember
-                    : userController.user.customerMembershipName == "Platinum"
-                        ? ColorApps.platinumMember
-                        : userController.user.customerMembershipName ==
-                                "Prioritas"
-                            ? ColorApps.prioritasMember
-                            : ColorApps.silverMember,
-                userController.user.customerMembershipName == "Gold"
-                    ? ColorApps.goldMember2
-                    : userController.user.customerMembershipName == "Platinum"
-                        ? ColorApps.platinumMember2
-                        : userController.user.customerMembershipName ==
-                                "Prioritas"
-                            ? ColorApps.prioritasMember2
-                            : const Color.fromARGB(255, 190, 187, 187),
+                HelperFldev.safeHexToColor(controller
+                    .membershipData.value.customerMembershipColorSecond
+                    .toString()),
+                HelperFldev.safeHexToColor(controller
+                    .membershipData.value.customerMembershipColor
+                    .toString()),
               ]),
-              // color: membership == "Gold"
-              //     ? ColorApps.goldMember
-              //     : membership == "Platinum"
-              //         ? ColorApps.platinumMember
-              //         : membership == "Prioritas"
-              //             ? ColorApps.prioritasMember
-              //             : ColorApps.silverMember,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Row(
@@ -305,14 +287,7 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 const SizedBox(width: 2.0),
                 Text(
-                  userController.user.customerMembershipName == "Gold"
-                      ? "Gold"
-                      : userController.user.customerMembershipName == "Platinum"
-                          ? "Platinum"
-                          : userController.user.customerMembershipName ==
-                                  "Prioritas"
-                              ? "Prioritas"
-                              : "Silver",
+                  userController.user.customerMembershipName.toString(),
                   style: white500.copyWith(fontSize: 14.0),
                 ),
                 const SizedBox(width: 2.0),

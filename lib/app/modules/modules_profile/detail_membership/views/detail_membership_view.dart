@@ -23,6 +23,7 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
     return Obx(
       () => ModalProgressHUD(
         inAsyncCall: controller.isLoading.value,
+        dismissible: controller.isLoading.value,
         progressIndicator: LoadingApps(),
         child: Scaffold(
           appBar: AppBarAppFLdev(title: "Rincian membership"),

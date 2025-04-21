@@ -23,7 +23,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
-    // final sizeScreen = MediaQuery.of(context).size;
     final imageUrlUser = controller.userData.user.customerPhotoProfil ?? "";
 
     return Obx(
@@ -88,28 +87,46 @@ class HomeView extends GetView<HomeController> {
                                       const SizedBox(height: 4.0),
                                       Row(
                                         children: [
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10.0,
-                                                vertical: 2.0),
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: _getMembershipColors(
-                                                    controller.userData.user
-                                                        .customerMembershipName),
-                                                begin: Alignment.bottomRight,
-                                                end: Alignment.topLeft,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            child: Text(
-                                              controller.userData.user
-                                                  .customerMembershipName
-                                                  .toString(),
-                                              style: white600.copyWith(
-                                                  fontSize: 12.0),
-                                            ),
+                                          Obx(
+                                            () {
+                                              return Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10.0,
+                                                        vertical: 2.0),
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      HelperFldev.safeHexToColor(
+                                                          controller
+                                                              .membershipData
+                                                              .value
+                                                              .customerMembershipColor
+                                                              .toString()),
+                                                      HelperFldev.safeHexToColor(
+                                                          controller
+                                                              .membershipData
+                                                              .value
+                                                              .customerMembershipColorSecond
+                                                              .toString()),
+                                                    ],
+                                                    begin:
+                                                        Alignment.bottomRight,
+                                                    end: Alignment.topLeft,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          6.0),
+                                                ),
+                                                child: Text(
+                                                  controller.userData.user
+                                                      .customerMembershipName
+                                                      .toString(),
+                                                  style: white600.copyWith(
+                                                      fontSize: 12.0),
+                                                ),
+                                              );
+                                            },
                                           ),
                                           const SizedBox(width: 6.0),
                                           Text("|",
@@ -241,18 +258,5 @@ class HomeView extends GetView<HomeController> {
         ),
       ],
     );
-  }
-
-  List<Color> _getMembershipColors(String? membership) {
-    switch (membership) {
-      case "Gold":
-        return [ColorApps.goldMember2, ColorApps.goldMember];
-      case "Platinum":
-        return [ColorApps.platinumMember2, ColorApps.platinumMember];
-      case "Prioritas":
-        return [ColorApps.prioritasMember2, ColorApps.prioritasMember];
-      default:
-        return [ColorApps.silverMember, ColorApps.silverMember];
-    }
   }
 }
