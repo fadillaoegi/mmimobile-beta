@@ -12,6 +12,7 @@ class ItemPrivilege extends StatelessWidget {
       this.pointPrice = 0,
       this.claimed = false,
       this.image = AssetConfigFLdev.logo,
+      this.btnClaim = true,
       this.onTap});
 
   final String privilagenName;
@@ -19,6 +20,7 @@ class ItemPrivilege extends StatelessWidget {
   final String image;
   final int pointPrice;
   final bool? claimed;
+  final bool? btnClaim;
   final VoidCallback? onTap;
 
   @override
@@ -87,25 +89,29 @@ class ItemPrivilege extends StatelessWidget {
               ],
             ),
           ),
-          InkWell(
-            onTap: onTap,
-            child: Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 14.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: claimed! ? ColorApps.disable : ColorApps.secondary,
-                  width: 1.0,
-                ),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Text(
-                claimed! ? "Telah diambil" : "Ambil",
-                style:
-                    claimed! ? disable400.copyWith() : secondary400.copyWith(),
-              ),
-            ),
-          ),
+          btnClaim!
+              ? InkWell(
+                  onTap: onTap,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 14.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color:
+                            claimed! ? ColorApps.disable : ColorApps.secondary,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Text(
+                      claimed! ? "Telah diambil" : "Ambil",
+                      style: claimed!
+                          ? disable400.copyWith()
+                          : secondary400.copyWith(),
+                    ),
+                  ),
+                )
+              : const SizedBox(),
         ],
       ),
     );

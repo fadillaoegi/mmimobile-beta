@@ -95,7 +95,6 @@ class MembershipView extends GetView<MembershipController> {
                       },
                     ),
                   )
-                  // NOTE SECTION 3
                 ],
               ),
             ),
