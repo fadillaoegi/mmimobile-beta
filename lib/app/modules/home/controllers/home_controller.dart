@@ -8,6 +8,7 @@ import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
+import 'package:mmimobile/app/data/models/slider_model.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/helpers/refresh_data_fldev.dart';
 import 'package:mmimobile/app/data/models/highlight_model.dart';
@@ -22,6 +23,7 @@ class HomeController extends GetxController {
   final dataHighLightODM = <HighLight>[].obs;
   final dataHighLightOEM = <HighLight>[].obs;
   final membershipData = MembershipData().obs;
+  final dataSLider = <SliderApps>[].obs;
 
   // Daftar URL gambar untuk carousel
   final urlImageCarousel = <String>[
@@ -35,11 +37,47 @@ class HomeController extends GetxController {
     super.onInit();
     getDataHighLightODM();
     fetchMembershipDataId();
+    getDataSLider();
   }
 
   // NOTE:  Carousel Change pages function
   void onPageChanged(int index, CarouselPageChangedReason reason) {
     currentIndex.value = index;
+  }
+
+  // NOTE: Function to handle get data from API
+  getDataSLider() async {
+    isLoading(true);
+    final formData = FormData.fromMap({
+      "membership_id": userData.user.membershipId,
+    });
+    try {
+      final response =
+          await RequestApp.postFutureDio(ApiApps.getDataSlider, formData);
+      print(response);
+      final data = response!.data['data'] as List;
+      dataSLider.value = data
+          .map(
+            (e) => SliderApps.fromJson(e),
+          )
+          .toList();
+      if (response.statusCode == 200) {
+      } else if (response.statusCode == 500) {
+        SnackbarFLdev.snackShow(
+          title: "Terjadi kesalahan pada server",
+          message: "Gagal mengambil data slider",
+        );
+      } else {
+        SnackbarFLdev.snackShow(
+          title: "Terjadi kesalahan pada server",
+          message: "Gagal mengambil data slider",
+        );
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
   }
 
   // NOTE: refresh data

@@ -51,7 +51,16 @@ class ProfileView extends GetView<ProfileController> {
                     const SizedBox(height: 20.0),
 
                     // NOTE: SECTION 2
-                    sectionTwoProfile(sizeScreen),
+                    GestureDetector(
+                      onTap: () => controller.cr(context),
+                      child: sectionTwoProfile(sizeScreen),
+                    ),
+                    // Obx(
+                    //   () => GestureDetector(
+                    //     onTap: () => controller.cr(context),
+                    //     child: sectionTwoProfile(sizeScreen),
+                    //   ),
+                    // ),
                     const SizedBox(height: 20.0),
 
                     // NOTE: SECTION 3

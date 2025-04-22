@@ -1,29 +1,28 @@
 import 'package:dio/dio.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/api/api.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:mmimobile/app/styles/color.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
-import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
-import 'package:mmimobile/app/helpers/refresh_data_fldev.dart';
-import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
+import 'package:mmimobile/app/helpers/refresh_data_fldev.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class ProfileController extends GetxController {
   final isLoading = false.obs;
   final userData = Get.put(UserController());
   final membershipData = MembershipData().obs;
+  var clickCount = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
     fetchMembershipDataId();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 
   // NOTE: fetch data memebrship Id
@@ -70,5 +69,20 @@ class ProfileController extends GetxController {
     } finally {
       isLoading(false);
     }
+  }
+
+  void cr(BuildContext context) {
+    clickCount++;
+
+    if (clickCount.value >= 30) {
+      Get.snackbar(
+        "FLdev copyright",
+        "This application was developed by FLdev",
+        snackPosition: SnackPosition.BOTTOM,
+        colorText: ColorApps.secondary,
+      );
+      clickCount.value = 0;
+    }
+    update();
   }
 }
