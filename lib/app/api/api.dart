@@ -1,9 +1,9 @@
 class ApiApps {
   // NOTE: ROOT API
-  static const root = "https://mmi.entis.app/api";
+  // static const root = "https://mmi.entis.app/api";
 
   // NOTE: ROOT LOCAL
-  // static const root = "http://190.110.0.26/EntIS-MMI/api";
+  static const root = "http://190.110.0.16/EntIS-MMI/api";
 
   // NOTE: Ui Avatar
   // static const avatar = "https://ui-avatars.com/api/?name=John+Doe";
@@ -17,6 +17,9 @@ class ApiApps {
 
   // NOTE: HOME
   static const getHighlightData = "$root/getHighlightData";
+
+  // NOTE: SYSTEM SUPPORT
+  static const listSupportSystem = "$root/listSupportSystem";
 
   // NOTE: CUSTOMER AUTH API
   static const signIn = "$root/signin";

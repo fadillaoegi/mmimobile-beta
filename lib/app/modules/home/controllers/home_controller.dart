@@ -8,10 +8,10 @@ import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
-import 'package:mmimobile/app/data/models/slider_model.dart';
+import 'package:mmimobile/app/data/models/home/slider_model.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/helpers/refresh_data_fldev.dart';
-import 'package:mmimobile/app/data/models/highlight_model.dart';
+import 'package:mmimobile/app/data/models/home/highlight_model.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
