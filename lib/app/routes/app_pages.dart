@@ -1,13 +1,11 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-import '../modules/modules_profile/account_security/bindings/account_security_binding.dart';
-import '../modules/modules_profile/account_security/views/account_security_view.dart';
 import '../modules/app_main/bindings/app_main_binding.dart';
 import '../modules/app_main/views/app_main_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
-import '../modules/modules_system_support/list_support/bindings/list_support_binding.dart';
-import '../modules/modules_system_support/list_support/views/list_support_view.dart';
+import '../modules/home_modules/detail_high_light/bindings/detail_high_light_binding.dart';
+import '../modules/home_modules/detail_high_light/views/detail_high_light_view.dart';
+import '../modules/home_modules/home/bindings/home_binding.dart';
+import '../modules/home_modules/home/views/home_view.dart';
 import '../modules/modules_auth/add_email/bindings/add_email_binding.dart';
 import '../modules/modules_auth/add_email/views/add_email_view.dart';
 import '../modules/modules_auth/forgot_password/bindings/forgot_password_binding.dart';
@@ -24,6 +22,8 @@ import '../modules/modules_history/history/bindings/history_binding.dart';
 import '../modules/modules_history/history/views/history_view.dart';
 import '../modules/modules_history/history_detail/bindings/history_detail_binding.dart';
 import '../modules/modules_history/history_detail/views/history_detail_view.dart';
+import '../modules/modules_profile/account_security/bindings/account_security_binding.dart';
+import '../modules/modules_profile/account_security/views/account_security_view.dart';
 import '../modules/modules_profile/account_setting/bindings/account_setting_binding.dart';
 import '../modules/modules_profile/account_setting/views/account_setting_view.dart';
 import '../modules/modules_profile/detail_membership/bindings/detail_membership_binding.dart';
@@ -64,6 +64,10 @@ import '../modules/modules_survey/survey/bindings/survey_binding.dart';
 import '../modules/modules_survey/survey/views/survey_view.dart';
 import '../modules/modules_survey/survey_complain/bindings/survey_complain_binding.dart';
 import '../modules/modules_survey/survey_complain/views/survey_complain_view.dart';
+import '../modules/modules_system_support/list_support/bindings/list_support_binding.dart';
+import '../modules/modules_system_support/list_support/views/list_support_view.dart';
+import '../modules/modules_system_support/support_detail/bindings/support_detail_binding.dart';
+import '../modules/modules_system_support/support_detail/views/support_detail_view.dart';
 import '../modules/modules_system_support/system_support/bindings/system_support_binding.dart';
 import '../modules/modules_system_support/system_support/views/system_support_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
@@ -72,10 +76,9 @@ import '../modules/product_detail/bindings/product_detail_binding.dart';
 import '../modules/product_detail/views/product_detail_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/modules_system_support/support_detail/bindings/support_detail_binding.dart';
-import '../modules/modules_system_support/support_detail/views/support_detail_view.dart';
 import '../modules/underdevelopment/bindings/underdevelopment_binding.dart';
 import '../modules/underdevelopment/views/underdevelopment_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -285,6 +288,11 @@ class AppPages {
       name: _Paths.listSupport,
       page: () => const ListSupportView(),
       binding: ListSupportBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_HIGH_LIGHT,
+      page: () => const DetailHighLightView(),
+      binding: DetailHighLightBinding(),
     ),
   ];
 }

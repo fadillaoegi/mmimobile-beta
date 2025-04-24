@@ -20,7 +20,7 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
     return Obx(
       () => Scaffold(
         appBar: AppBarAppFLdev(title: "Rincian membership"),
-        body: CanvaApps(
+        body: CanvaFLdev(
           widget: SingleChildScrollView(
             child: Column(
               children: [

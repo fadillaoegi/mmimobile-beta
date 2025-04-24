@@ -17,7 +17,7 @@ class SupportDetailView extends GetView<SupportDetailController> {
         title: "Support detail",
       ),
       body: SingleChildScrollView(
-        child: CanvaApps(
+        child: CanvaFLdev(
           widget: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

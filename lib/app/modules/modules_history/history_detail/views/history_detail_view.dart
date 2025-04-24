@@ -25,7 +25,7 @@ class HistoryDetailView extends GetView<HistoryDetailController> {
         appBar: AppBarAppFLdev(
           title: "Rincian riwayat",
         ),
-        body: CanvaApps(
+        body: CanvaFLdev(
           top: 14.0,
           right: 14.0,
           left: 14.0,

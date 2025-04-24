@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -18,11 +20,17 @@ class ProfileController extends GetxController {
   final userData = Get.put(UserController());
   final membershipData = MembershipData().obs;
   var clickCount = 0.obs;
+  Timer? _resetTimer;
 
   @override
   void onInit() {
     super.onInit();
     fetchMembershipDataId();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
   }
 
   // NOTE: fetch data memebrship Id
@@ -73,16 +81,25 @@ class ProfileController extends GetxController {
 
   void cr(BuildContext context) {
     clickCount++;
+    // NOTE: Cancel timer
+    _resetTimer?.cancel();
 
+    // NOTE:
     if (clickCount.value >= 30) {
       Get.snackbar(
-        "FLdev copyright",
-        "This application was developed by FLdev",
+        "FLdev",
+        "This application was developed by FLdev😊",
         snackPosition: SnackPosition.BOTTOM,
         colorText: ColorApps.secondary,
       );
       clickCount.value = 0;
+      update();
+      return;
     }
-    update();
+
+    // NOTE: Timer 3 detik, kalau gak klik lagi akan reset
+    _resetTimer = Timer(const Duration(seconds: 3), () {
+      clickCount.value = 0;
+    });
   }
 }

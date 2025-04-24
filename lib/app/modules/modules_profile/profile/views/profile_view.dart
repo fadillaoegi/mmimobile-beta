@@ -31,7 +31,7 @@ class ProfileView extends GetView<ProfileController> {
     final controller = Get.put(ProfileController());
 
     return Scaffold(
-        body: CanvaApps(
+        body: CanvaFLdev(
       widget: Stack(
         children: [
           SafeArea(

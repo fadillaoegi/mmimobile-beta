@@ -24,7 +24,7 @@ class AccountSecurityView extends GetView<AccountSecurityController> {
       appBar: AppBarAppFLdev(
         title: "Akun & Keamanan",
       ),
-      body: CanvaApps(
+      body: CanvaFLdev(
         widget: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

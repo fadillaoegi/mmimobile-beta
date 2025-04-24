@@ -16,7 +16,7 @@ class UnderdevelopmentView extends GetView<UnderdevelopmentController> {
       appBar: AppBarAppFLdev(
         title: 'Underdevelopment',
       ),
-      body: CanvaApps(
+      body: CanvaFLdev(
         widget: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

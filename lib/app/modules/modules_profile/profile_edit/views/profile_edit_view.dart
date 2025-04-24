@@ -30,7 +30,7 @@ class ProfileEditView extends StatelessWidget {
             appBar: AppBarAppFLdev(
               title: "Ubah Profil",
             ),
-            body: CanvaApps(
+            body: CanvaFLdev(
               widget: RefreshIndicator(
                 onRefresh: () => controller.refreshUserData(),
                 child: SingleChildScrollView(

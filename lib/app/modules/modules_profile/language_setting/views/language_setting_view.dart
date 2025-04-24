@@ -16,7 +16,7 @@ class LanguageSettingView extends GetView<LanguageSettingController> {
 
     return Scaffold(
       appBar: const AppBarAppFLdev(title: "Pengaturan Bahasa"),
-      body: CanvaApps(
+      body: CanvaFLdev(
         widget: Obx(() => Column(
               children: [
                 CardFLdev(

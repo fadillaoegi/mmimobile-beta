@@ -22,7 +22,7 @@ class SurveyView extends GetView<SurveyController> {
         title: "Survei",
         backRoute: false,
       ),
-      body: CanvaApps(
+      body: CanvaFLdev(
         // color: const Color.fromARGB(255, 28, 34, 11),
         widget: SingleChildScrollView(
           child: Column(

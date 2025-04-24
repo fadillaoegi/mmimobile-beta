@@ -33,7 +33,7 @@ class SignInView extends GetView<SignInController> {
           },
           child: Scaffold(
             body: SingleChildScrollView(
-              child: CanvaApps(
+              child: CanvaFLdev(
                 bg: AssetConfigFLdev.bgLoginNew,
                 widget: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

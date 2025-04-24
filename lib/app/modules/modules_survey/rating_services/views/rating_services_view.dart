@@ -20,7 +20,7 @@ class RatingServicesView extends GetView<RatingServicesController> {
       appBar: AppBarAppFLdev(
         title: 'Rating layanan\nbusiness development',
       ),
-      body: CanvaApps(
+      body: CanvaFLdev(
         widget: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

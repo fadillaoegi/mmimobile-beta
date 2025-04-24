@@ -34,7 +34,7 @@ class HistoryView extends GetView<HistoryController> {
         title: "Riwayat",
         backRoute: false,
       ),
-      body: CanvaApps(
+      body: CanvaFLdev(
         widget: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

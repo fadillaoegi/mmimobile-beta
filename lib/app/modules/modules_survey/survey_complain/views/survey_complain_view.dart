@@ -24,7 +24,7 @@ class SurveyComplainView extends GetView<SurveyComplainController> {
                 minHeight: constraints.maxHeight,
               ),
               child: IntrinsicHeight(
-                child: CanvaApps(
+                child: CanvaFLdev(
                   widget: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

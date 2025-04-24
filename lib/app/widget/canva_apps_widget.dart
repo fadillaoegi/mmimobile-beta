@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
 
-class CanvaApps extends StatelessWidget {
-  const CanvaApps({
+class CanvaFLdev extends StatelessWidget {
+  const CanvaFLdev({
     super.key,
     this.widget,
     this.bottom = 0.0,
