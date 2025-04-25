@@ -15,7 +15,7 @@ void main() async {
 
   runApp(
     GetMaterialApp(
-      title: "Mmimobile",
+      title: "Moshem",
       debugShowCheckedModeBanner: false,
       initialRoute: currentUser != null && currentUser.customerId != null
           ? AppPages.mainApp
