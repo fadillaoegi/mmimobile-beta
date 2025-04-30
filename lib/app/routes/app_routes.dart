@@ -50,7 +50,7 @@ abstract class Routes {
   static const accountSecurity = _Paths.accountSecurity;
   static const supportDetail = _Paths.supportDetail;
   static const listSupport = _Paths.listSupport;
-  static const DETAIL_HIGH_LIGHT = _Paths.DETAIL_HIGH_LIGHT;
+  static const detailHighLight = _Paths.detailHighLight;
 }
 
 abstract class _Paths {
@@ -106,5 +106,5 @@ abstract class _Paths {
   static const accountSecurity = '/account-security';
   static const supportDetail = '/support-detail';
   static const listSupport = '/list-support';
-  static const DETAIL_HIGH_LIGHT = '/detail-high-light';
+  static const detailHighLight = '/detail-high-light';
 }

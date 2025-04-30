@@ -31,9 +31,9 @@ class SystemSupportView extends GetView<SystemSupportController> {
                     child: LoadingApps(),
                   ),
                 )
-              : SingleChildScrollView(
-                  child: CanvaFLdev(
-                    widget: Column(
+              : CanvaFLdev(
+                  widget: SingleChildScrollView(
+                    child: Column(
                       children: [
                         ListView.builder(
                           itemCount: controller.listDataSystemSuport.length,

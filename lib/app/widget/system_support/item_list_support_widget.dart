@@ -39,11 +39,10 @@ class ItemListSupport extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(10.0)),
               child: CachedNetworkImage(
-                imageUrl:
-                    '${ApiApps.assetPatch}/$imageUrl', // ← Ganti dengan URL gambar sebenarnya
+                imageUrl: '${ApiApps.assetPatch}/$imageUrl',
                 width: sizeScreen.width,
                 fit: BoxFit.cover,
-                height: 242.0 / 2,
+                height: 180.0,
                 placeholder: (context, url) =>
                     const Center(child: LoadingApps()),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
@@ -51,7 +50,7 @@ class ItemListSupport extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -62,28 +61,28 @@ class ItemListSupport extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
-                  const SizedBox(height: 20.0),
-                  Row(
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.video_collection_outlined,
-                              color: ColorApps.disable),
-                          const SizedBox(width: 8.0),
-                          Text("15", style: disable500),
-                        ],
-                      ),
-                      const SizedBox(width: 60.0),
-                      Row(
-                        children: [
-                          const Icon(Icons.timer_outlined,
-                              color: ColorApps.disable),
-                          const SizedBox(width: 8.0),
-                          Text("120 menit", style: disable500),
-                        ],
-                      ),
-                    ],
-                  )
+                  // const SizedBox(height: 20.0),
+                  // Row(
+                  //   children: [
+                  //     Row(
+                  //       children: [
+                  //         const Icon(Icons.video_collection_outlined,
+                  //             color: ColorApps.disable),
+                  //         const SizedBox(width: 8.0),
+                  //         Text("15", style: disable500),
+                  //       ],
+                  //     ),
+                  //     const SizedBox(width: 60.0),
+                  //     Row(
+                  //       children: [
+                  //         const Icon(Icons.timer_outlined,
+                  //             color: ColorApps.disable),
+                  //         const SizedBox(width: 8.0),
+                  //         Text("120 menit", style: disable500),
+                  //       ],
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
             ),

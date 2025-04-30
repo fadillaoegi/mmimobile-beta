@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mmimobile/app/api/api.dart';
+import 'package:mmimobile/app/widget/home/high_light_item_widget.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -10,7 +11,6 @@ import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helpers/helper_fldev.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
-import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -25,6 +25,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
     final imageUrlUser = controller.userData.user.customerPhotoProfil ?? "";
+    final sizeScreen = MediaQuery.sizeOf(context);
 
     return Obx(
       () => Scaffold(
@@ -34,13 +35,12 @@ class HomeView extends GetView<HomeController> {
               RefreshIndicator(
                 onRefresh: () => controller.refreshData(),
                 child: SingleChildScrollView(
-                    child: CanvaFLdev(
-                  widget: Column(
-                    children: [
-                      Obx(
-                        () => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                          child: Row(
+                  child: Container(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        Obx(
+                          () => Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
@@ -158,114 +158,147 @@ class HomeView extends GetView<HomeController> {
                             ],
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
 
-                      // NOTE: CAROUSEL HOME
-                      CarouselHome(controller: controller),
-                      const SizedBox(height: 20.0),
+                        // NOTE: CAROUSEL HOME
+                        CarouselHome(controller: controller),
+                        const SizedBox(height: 20.0),
 
-                      // NOTE: HIGH LIGHT
-                      SectionTittle(title: "Best Ingredients for ODM"),
-                      const SizedBox(height: 10.0),
-                      SizedBox(
-                        height: 130.0,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: controller.dataHighLightODM.length,
-                          itemBuilder: (context, index) {
-                            final image = controller
-                                .dataHighLightODM[index].masterArticleImg;
-                            final title = controller
-                                .dataHighLightODM[index].masterArticleTitle;
-                            print(image);
-                            return highlight(() {},
-                                image: image.toString(),
-                                title: title.toString());
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 20.0),
-                      SectionTittle(title: "Ready to go OEM"),
-                      const SizedBox(height: 10.0),
-                      SizedBox(
-                        height: 160.0,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: controller.dataHighLightODM.length,
-                          itemBuilder: (context, index) {
-                            final image = controller
-                                .dataHighLightODM[index].masterArticleImg;
-                            final title = controller
-                                .dataHighLightODM[index].masterArticleTitle;
-                            final desc = controller
-                                .dataHighLightODM[index].masterArticleDesc;
-
-                            return highlight(() {
-                              Get.toNamed(Routes.accountSecurity, arguments: {
+                        // NOTE: HIGH LIGHT
+                        SectionTittle(title: "Best Ingredients for ODM"),
+                        const SizedBox(height: 10.0),
+                        SizedBox(
+                          height: 140.0,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: controller.dataHighLightODM.length,
+                            itemBuilder: (context, index) {
+                              final image = controller
+                                  .dataHighLightODM[index].masterArticleImg;
+                              final title = controller
+                                  .dataHighLightODM[index].masterArticleTitle;
+                              final desc = controller
+                                  .dataHighLightOEM[index].masterArticleDesc;
+                              return HighLightItem(
                                 title: title.toString(),
                                 image: image.toString(),
-                                desc: desc.toString(),
-                              });
+                                onTap: () => Get.toNamed(Routes.detailHighLight,
+                                    arguments: {
+                                      title: title.toString(),
+                                      image: image.toString(),
+                                      desc: desc.toString(),
+                                    }),
+                              );
                             },
-                                image: image.toString(),
-                                title: title.toString());
-                          },
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10.0),
-                    ],
+                        const SizedBox(height: 20.0),
+                        SectionTittle(title: "Ready to go OEM"),
+                        const SizedBox(height: 10.0),
+                        SizedBox(
+                          height: 140.0,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: controller.dataHighLightOEM.length,
+                            itemBuilder: (context, index) {
+                              final image = controller
+                                  .dataHighLightOEM[index].masterArticleImg;
+                              final title = controller
+                                  .dataHighLightOEM[index].masterArticleTitle;
+                              final desc = controller
+                                  .dataHighLightOEM[index].masterArticleDesc;
+
+                              return HighLightItem(
+                                title: title.toString(),
+                                image: image.toString(),
+                                onTap: () => Get.toNamed(Routes.detailHighLight,
+                                    arguments: {
+                                      title: title.toString(),
+                                      image: image.toString(),
+                                      desc: desc.toString(),
+                                    }),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 20.0),
+                        SectionTittle(title: "Article"),
+                        const SizedBox(height: 10.0),
+                        SizedBox(
+                          height: 200.0,
+                          child: ListView.builder(
+                            itemCount: controller.dataHighLightODM.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final image = controller
+                                  .dataHighLightODM[index].masterArticleImg;
+                              final title = controller
+                                  .dataHighLightODM[index].masterArticleTitle;
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    // onTap: onTap,
+                                    onTap: () {},
+                                    child: Container(
+                                      height: 100.0,
+                                      width: sizeScreen.width,
+                                      margin:
+                                          const EdgeInsets.only(bottom: 20.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        boxShadow: boxShadow,
+                                        color: Colors.grey[
+                                            200], // default bg color jika gambar gagal
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        child: image!.isEmpty
+                                            ? const Icon(
+                                                Icons.image_not_supported,
+                                                size: 40.0,
+                                                color: Colors.grey)
+                                            : CachedNetworkImage(
+                                                imageUrl:
+                                                    "${ApiApps.assetPatch}/$image",
+                                                fit: BoxFit.cover,
+                                                placeholder: (context, url) =>
+                                                    const Center(
+                                                        child: LoadingApps()),
+                                                errorWidget: (context, url,
+                                                        error) =>
+                                                    const Center(
+                                                        child: Icon(
+                                                            Icons.broken_image,
+                                                            color:
+                                                                Colors.grey)),
+                                              ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  Text(
+                                    title.toString(),
+                                    style: black500.copyWith(fontSize: 14.0),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )),
+                ),
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget highlight(
-    VoidCallback onTap, {
-    String title = "title",
-    String image = "",
-  }) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            height: 100.0,
-            width: 120.0,
-            margin: const EdgeInsets.only(right: 20.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              boxShadow: boxShadow,
-              color: Colors.grey[200], // default bg color jika gambar gagal
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: image.isEmpty
-                  ? const Icon(Icons.image_not_supported,
-                      size: 40.0, color: Colors.grey)
-                  : CachedNetworkImage(
-                      imageUrl: "${ApiApps.assetPatch}/$image",
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) =>
-                          const Center(child: LoadingApps()),
-                      errorWidget: (context, url, error) => const Center(
-                          child: Icon(Icons.broken_image, color: Colors.grey)),
-                    ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 10.0),
-        Text(
-          title,
-          style: black500.copyWith(fontSize: 14.0),
-          textAlign: TextAlign.center,
-        ),
-      ],
     );
   }
 }

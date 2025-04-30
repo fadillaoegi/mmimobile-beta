@@ -290,7 +290,7 @@ class AppPages {
       binding: ListSupportBinding(),
     ),
     GetPage(
-      name: _Paths.DETAIL_HIGH_LIGHT,
+      name: _Paths.detailHighLight,
       page: () => const DetailHighLightView(),
       binding: DetailHighLightBinding(),
     ),

@@ -35,9 +35,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getDataHighLightODM();
-    fetchMembershipDataId();
-    getDataSLider();
+    refreshData();
   }
 
   // NOTE:  Carousel Change pages function
@@ -47,7 +45,7 @@ class HomeController extends GetxController {
 
   // NOTE: Function to handle get data from API
   getDataSLider() async {
-    isLoading(true);
+    // isLoading(true);
     final formData = FormData.fromMap({
       "membership_id": userData.user.membershipId,
     });
@@ -76,7 +74,7 @@ class HomeController extends GetxController {
     } catch (e) {
       print(e);
     } finally {
-      isLoading(false);
+      // isLoading(false);
     }
   }
 
@@ -85,7 +83,9 @@ class HomeController extends GetxController {
     isLoading(true);
     try {
       getDataHighLightODM();
+      getDataHighLightOEM();
       fetchMembershipDataId();
+      getDataSLider();
       RefreshDataFldev.refreshDataUser(
           FormData.fromMap({'customer_id': userData.user.customerId}));
     } catch (e) {
@@ -95,12 +95,32 @@ class HomeController extends GetxController {
     }
   }
 
-  // NOTE: get data HighLight ODM
-  getDataHighLightODM() async {
-    isLoading(true);
+  // NOTE: get data HighLight OEM
+  getDataHighLightOEM() async {
     final formData = FormData.fromMap({
       'membership_id': userData.user.membershipId.toString(),
       'category_id': '1',
+    });
+    try {
+      final response =
+          await RequestApp.postFutureDio(ApiApps.getHighlightData, formData);
+      final data = response!.data['data'] as List;
+      dataHighLightOEM.value = data
+          .map(
+            (e) => HighLight.fromJson(e),
+          )
+          .toList();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // NOTE: get data HighLight ODM
+  getDataHighLightODM() async {
+    // isLoading(true);
+    final formData = FormData.fromMap({
+      'membership_id': userData.user.membershipId.toString(),
+      'category_id': '2',
     });
     try {
       final response =
@@ -115,33 +135,13 @@ class HomeController extends GetxController {
     } catch (e) {
       print(e);
     } finally {
-      isLoading(false);
-    }
-  }
-
-  // NOTE: get data HighLight OEM
-  getDataHighLightOEM() async {
-    final formData = FormData.fromMap({
-      'membership_id': userData.user.membershipId.toString(),
-      'category_id': '2',
-    });
-    try {
-      final response =
-          await RequestApp.postFutureDio(ApiApps.getHighlightData, formData);
-      final data = response!.data['data'] as List;
-      dataHighLightODM.value = data
-          .map(
-            (e) => HighLight.fromJson(e),
-          )
-          .toList();
-    } catch (e) {
-      print(e);
+      // isLoading(false);
     }
   }
 
   // NOTE: fetch membership
   fetchMembershipDataId() async {
-    isLoading(true);
+    // isLoading(true);
     final formData = FormData.fromMap(
         {'membership_id': userData.user.membershipId.toString()});
     try {
@@ -167,7 +167,7 @@ class HomeController extends GetxController {
     } catch (e) {
       print(e);
     } finally {
-      isLoading(false);
+      // isLoading(false);
     }
   }
 }
