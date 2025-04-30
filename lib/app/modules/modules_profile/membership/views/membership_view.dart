@@ -13,7 +13,6 @@ import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/item_privilege_widget.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
@@ -27,76 +26,71 @@ class MembershipView extends GetView<MembershipController> {
     final controller = Get.put(MembershipController());
     // final membership = "Prioritas";
     return Obx(
-      () => ModalProgressHUD(
-        inAsyncCall: controller.isLoading.value,
-        dismissible: controller.isLoading.value,
-        child: Scaffold(
-          appBar: AppBarAppFLdev(
-            title: "Membership",
-            color: ColorApps.white,
-            colorFontIcon: ColorApps.secondary,
-          ),
-          body: RefreshIndicator(
-            onRefresh: () => controller.refreshData(),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // NOTE: SECTION 1
-                  sectionOneMembership(sizeScreen, userData),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
+      () => Scaffold(
+        appBar: AppBarAppFLdev(
+          title: "Membership",
+          color: ColorApps.white,
+          colorFontIcon: ColorApps.secondary,
+        ),
+        body: RefreshIndicator(
+          onRefresh: () => controller.refreshData(),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // NOTE: SECTION 1
+                sectionOneMembership(sizeScreen, userData),
+                const SizedBox(
+                  height: 10.0,
+                ),
 
-                  // NOTE SECTION 2
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Obx(
-                      () {
-                        if (controller.isLoading.value) {
-                          return const Center(
-                            child: LoadingApps(),
-                          );
-                        }
-
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SectionTittle(title: "Hak Istimewa", size: 20.0),
-                            const SizedBox(height: 10.0),
-                            if (controller.membershipDataBenefit.isEmpty)
-                              Center(
-                                child: Text(
-                                  "Tidak ada data privilege.",
-                                  style: black400.copyWith(fontSize: 14.0),
-                                ),
-                              )
-                            else
-                              ListView.builder(
-                                itemCount:
-                                    controller.membershipDataBenefit.length,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  final membership =
-                                      controller.membershipDataBenefit[index];
-                                  return Obx(() => ItemPrivilege(
-                                        claimed: controller.privilage.value,
-                                        onTap: () =>
-                                            controller.claimPrivilage(),
-                                        privilagenName: membership
-                                                .customerMembershipBenefit ??
-                                            "Tidak ada benefit",
-                                      ));
-                                },
-                              ),
-                          ],
+                // NOTE SECTION 2
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Obx(
+                    () {
+                      if (controller.isLoading.value) {
+                        return const Center(
+                          child: LoadingApps(),
                         );
-                      },
-                    ),
-                  )
-                ],
-              ),
+                      }
+
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SectionTittle(title: "Hak Istimewa", size: 20.0),
+                          const SizedBox(height: 10.0),
+                          if (controller.membershipDataBenefit.isEmpty)
+                            Center(
+                              child: Text(
+                                "Tidak ada data privilege.",
+                                style: black400.copyWith(fontSize: 14.0),
+                              ),
+                            )
+                          else
+                            ListView.builder(
+                              itemCount:
+                                  controller.membershipDataBenefit.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                final membership =
+                                    controller.membershipDataBenefit[index];
+                                return Obx(() => ItemPrivilege(
+                                      claimed: controller.privilage.value,
+                                      onTap: () => controller.claimPrivilage(),
+                                      privilagenName: membership
+                                              .customerMembershipBenefit ??
+                                          "Tidak ada benefit",
+                                    ));
+                              },
+                            ),
+                        ],
+                      );
+                    },
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -109,20 +103,14 @@ class MembershipView extends GetView<MembershipController> {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       width: sizeScreen.width,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-            colors: [
-              HelperFldev.safeHexToColor(controller
-                  .membershipData.value.customerMembershipColor
-                  .toString()),
-              HelperFldev.safeHexToColor(controller
-                  .membershipData.value.customerMembershipColorSecond
-                  .toString()),
-            ],
-
-            // _getMembershipColors(
-            //     userData.user.customerMembershipName.toString()),
-            begin: Alignment.bottomRight,
-            end: Alignment.topLeft),
+        gradient: LinearGradient(colors: [
+          HelperFldev.safeHexToColor(controller
+              .membershipData.value.customerMembershipColor
+              .toString()),
+          HelperFldev.safeHexToColor(controller
+              .membershipData.value.customerMembershipColorSecond
+              .toString()),
+        ], begin: Alignment.bottomRight, end: Alignment.topLeft),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

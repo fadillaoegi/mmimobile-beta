@@ -90,41 +90,45 @@ class HomeView extends GetView<HomeController> {
                                         children: [
                                           Obx(
                                             () {
-                                              return Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 10.0,
-                                                        vertical: 2.0),
-                                                decoration: BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                    colors: [
-                                                      HelperFldev.safeHexToColor(
-                                                          controller
-                                                              .membershipData
-                                                              .value
-                                                              .customerMembershipColor
-                                                              .toString()),
-                                                      HelperFldev.safeHexToColor(
-                                                          controller
-                                                              .membershipData
-                                                              .value
-                                                              .customerMembershipColorSecond
-                                                              .toString()),
-                                                    ],
-                                                    begin:
-                                                        Alignment.bottomRight,
-                                                    end: Alignment.topLeft,
+                                              return GestureDetector(
+                                                onTap: () => Get.toNamed(
+                                                    Routes.membership),
+                                                child: Container(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 10.0,
+                                                      vertical: 2.0),
+                                                  decoration: BoxDecoration(
+                                                    gradient: LinearGradient(
+                                                      colors: [
+                                                        HelperFldev.safeHexToColor(
+                                                            controller
+                                                                .membershipData
+                                                                .value
+                                                                .customerMembershipColor
+                                                                .toString()),
+                                                        HelperFldev.safeHexToColor(
+                                                            controller
+                                                                .membershipData
+                                                                .value
+                                                                .customerMembershipColorSecond
+                                                                .toString()),
+                                                      ],
+                                                      begin:
+                                                          Alignment.bottomRight,
+                                                      end: Alignment.topLeft,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6.0),
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          6.0),
-                                                ),
-                                                child: Text(
-                                                  controller.userData.user
-                                                      .customerMembershipName
-                                                      .toString(),
-                                                  style: white600.copyWith(
-                                                      fontSize: 12.0),
+                                                  child: Text(
+                                                    controller.userData.user
+                                                        .customerMembershipName
+                                                        .toString(),
+                                                    style: white600.copyWith(
+                                                        fontSize: 12.0),
+                                                  ),
                                                 ),
                                               );
                                             },
@@ -239,7 +243,6 @@ class HomeView extends GetView<HomeController> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   GestureDetector(
-                                    // onTap: onTap,
                                     onTap: () {},
                                     child: Container(
                                       height: 100.0,
