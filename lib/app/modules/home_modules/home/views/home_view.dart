@@ -1,6 +1,5 @@
+import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:mmimobile/app/api/api.dart';
-import 'package:mmimobile/app/widget/home/high_light_item_widget.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
@@ -10,12 +9,11 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helpers/helper_fldev.dart';
-import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/home/carousel_home_widget.dart';
+import 'package:mmimobile/app/widget/home/high_light_item_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -226,68 +224,39 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         const SizedBox(height: 20.0),
+
+                        // // NOTE: ARTICLE
                         SectionTittle(title: "Article"),
                         const SizedBox(height: 10.0),
+
                         SizedBox(
-                          height: 200.0,
+                          height: 140.0,
                           child: ListView.builder(
-                            itemCount: controller.dataHighLightODM.length,
+                            itemCount: controller.dataArticle.length,
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              final image = controller
-                                  .dataHighLightODM[index].masterArticleImg;
-                              final title = controller
-                                  .dataHighLightODM[index].masterArticleTitle;
+                              final articlefetch =
+                                  controller.dataArticle[index];
+                              final title =
+                                  articlefetch.title?.rendered.toString() ??
+                                      "-";
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      height: 100.0,
-                                      width: sizeScreen.width,
-                                      margin:
-                                          const EdgeInsets.only(bottom: 20.0),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        boxShadow: boxShadow,
-                                        color: Colors.grey[
-                                            200], // default bg color jika gambar gagal
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        child: image!.isEmpty
-                                            ? const Icon(
-                                                Icons.image_not_supported,
-                                                size: 40.0,
-                                                color: Colors.grey)
-                                            : CachedNetworkImage(
-                                                imageUrl:
-                                                    "${ApiApps.assetPatch}/$image",
-                                                fit: BoxFit.cover,
-                                                placeholder: (context, url) =>
-                                                    const Center(
-                                                        child: LoadingApps()),
-                                                errorWidget: (context, url,
-                                                        error) =>
-                                                    const Center(
-                                                        child: Icon(
-                                                            Icons.broken_image,
-                                                            color:
-                                                                Colors.grey)),
-                                              ),
-                                      ),
+                                    onTap: () async {
+                                      await EasyLauncher.url(
+                                          url: articlefetch.link.toString(),
+                                          mode: Mode.inAppWeb);
+                                    },
+                                    child: Text(
+                                      title.toString(),
+                                      style: black500.copyWith(fontSize: 14.0),
+                                      // textAlign: TextAlign.center,
                                     ),
                                   ),
                                   const SizedBox(height: 10.0),
-                                  Text(
-                                    title.toString(),
-                                    style: black500.copyWith(fontSize: 14.0),
-                                    textAlign: TextAlign.center,
-                                  ),
                                 ],
                               );
                             },

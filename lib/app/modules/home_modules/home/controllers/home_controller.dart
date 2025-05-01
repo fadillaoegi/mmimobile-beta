@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -7,6 +9,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
+import 'package:mmimobile/app/data/models/home/article_from_web_model.dart';
 import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
 import 'package:mmimobile/app/data/models/home/slider_model.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
@@ -24,6 +27,7 @@ class HomeController extends GetxController {
   final dataHighLightOEM = <HighLight>[].obs;
   final membershipData = MembershipData().obs;
   final dataSLider = <SliderApps>[].obs;
+  final dataArticle = <ArticleWeb>[].obs;
 
   // Daftar URL gambar untuk carousel
   final urlImageCarousel = <String>[
@@ -36,6 +40,24 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     refreshData();
+    fetchArticle();
+  }
+
+  // NOTE: refresh data
+  refreshData() async {
+    isLoading(true);
+    try {
+      getDataHighLightODM();
+      getDataHighLightOEM();
+      fetchMembershipDataId();
+      getDataSLider();
+      RefreshDataFldev.refreshDataUser(
+          FormData.fromMap({'customer_id': userData.user.customerId}));
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
   }
 
   // NOTE:  Carousel Change pages function
@@ -78,43 +100,6 @@ class HomeController extends GetxController {
     }
   }
 
-  // NOTE: refresh data
-  refreshData() async {
-    isLoading(true);
-    try {
-      getDataHighLightODM();
-      getDataHighLightOEM();
-      fetchMembershipDataId();
-      getDataSLider();
-      RefreshDataFldev.refreshDataUser(
-          FormData.fromMap({'customer_id': userData.user.customerId}));
-    } catch (e) {
-      print(e);
-    } finally {
-      isLoading(false);
-    }
-  }
-
-  // NOTE: get data HighLight OEM
-  getDataHighLightOEM() async {
-    final formData = FormData.fromMap({
-      'membership_id': userData.user.membershipId.toString(),
-      'category_id': '1',
-    });
-    try {
-      final response =
-          await RequestApp.postFutureDio(ApiApps.getHighlightData, formData);
-      final data = response!.data['data'] as List;
-      dataHighLightOEM.value = data
-          .map(
-            (e) => HighLight.fromJson(e),
-          )
-          .toList();
-    } catch (e) {
-      print(e);
-    }
-  }
-
   // NOTE: get data HighLight ODM
   getDataHighLightODM() async {
     // isLoading(true);
@@ -139,6 +124,26 @@ class HomeController extends GetxController {
     }
   }
 
+  // NOTE: get data HighLight OEM
+  getDataHighLightOEM() async {
+    final formData = FormData.fromMap({
+      'membership_id': userData.user.membershipId.toString(),
+      'category_id': '1',
+    });
+    try {
+      final response =
+          await RequestApp.postFutureDio(ApiApps.getHighlightData, formData);
+      final data = response!.data['data'] as List;
+      dataHighLightOEM.value = data
+          .map(
+            (e) => HighLight.fromJson(e),
+          )
+          .toList();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   // NOTE: fetch membership
   fetchMembershipDataId() async {
     // isLoading(true);
@@ -150,7 +155,6 @@ class HomeController extends GetxController {
 
       final rawData = response!.data['data'];
       membershipData.value = MembershipData.fromJson(rawData);
-      print("ORINT: ${membershipData.value}");
 
       if (response.statusCode == 200) {
       } else if (response.statusCode == 500) {
@@ -169,5 +173,28 @@ class HomeController extends GetxController {
     } finally {
       // isLoading(false);
     }
+  }
+
+  // NOTE: fetch article
+  fetchArticle() async {
+    try {
+      final response = await RequestApp.getFutureDio(ApiApps.getDataArticle);
+      final List<ArticleWeb> articles =
+          articleWebFromJson(jsonEncode(response!.data));
+      dataArticle.value = articles;
+    } catch (e) {
+      print("Error fetching articles: $e");
+    }
+    // try {
+    //   final result = await RequestApp.getFutureDio(ApiApps.getDataArticle);
+    //   final data = result!.data as List;
+    //   dataArticle.value = data
+    //       .map(
+    //         (e) => ArticleFromWeb.fromJson(e),
+    //       )
+    //       .toList();
+    // } catch (e) {
+    //   print(e);
+    // }
   }
 }

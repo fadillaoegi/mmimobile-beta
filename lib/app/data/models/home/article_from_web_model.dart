@@ -1,25 +1,23 @@
-// To parse this JSON data, do
-//
-//     final articleFromWeb = articleFromWebFromJson(jsonString);
-
 import 'dart:convert';
 
-ArticleFromWeb articleFromWebFromJson(String str) =>
-    ArticleFromWeb.fromJson(json.decode(str));
+List<ArticleWeb> articleWebFromJson(String str) =>
+    List<ArticleWeb>.from(json.decode(str).map((x) => ArticleWeb.fromJson(x)));
 
-String articleFromWebToJson(ArticleFromWeb data) => json.encode(data.toJson());
+String articleWebToJson(List<ArticleWeb> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ArticleFromWeb {
+class ArticleWeb {
   String? id;
   DateTime? date;
   String? slug;
   String? status;
   String? type;
   String? link;
-  Content? title;
-  Content? content;
+  RenderedText? title;
+  RenderedText? content;
+  RenderedText? excerpt;
 
-  ArticleFromWeb({
+  ArticleWeb({
     this.id,
     this.date,
     this.slug,
@@ -28,18 +26,24 @@ class ArticleFromWeb {
     this.link,
     this.title,
     this.content,
+    this.excerpt,
   });
 
-  factory ArticleFromWeb.fromJson(Map<String, dynamic> json) => ArticleFromWeb(
-        id: json["id"],
+  factory ArticleWeb.fromJson(Map<String, dynamic> json) => ArticleWeb(
+        id: json["id"].toString(),
         date: json["date"] == null ? null : DateTime.parse(json["date"]),
         slug: json["slug"],
         status: json["status"],
         type: json["type"],
         link: json["link"],
-        title: json["title"] == null ? null : Content.fromJson(json["title"]),
-        content:
-            json["content"] == null ? null : Content.fromJson(json["content"]),
+        title:
+            json["title"] == null ? null : RenderedText.fromJson(json["title"]),
+        content: json["content"] == null
+            ? null
+            : RenderedText.fromJson(json["content"]),
+        excerpt: json["excerpt"] == null
+            ? null
+            : RenderedText.fromJson(json["excerpt"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,21 +55,23 @@ class ArticleFromWeb {
         "link": link,
         "title": title?.toJson(),
         "content": content?.toJson(),
+        "excerpt": excerpt?.toJson(),
       };
 }
 
-class Content {
+class RenderedText {
   String? rendered;
+  bool? protected;
 
-  Content({
-    this.rendered,
-  });
+  RenderedText({this.rendered, this.protected});
 
-  factory Content.fromJson(Map<String, dynamic> json) => Content(
+  factory RenderedText.fromJson(Map<String, dynamic> json) => RenderedText(
         rendered: json["rendered"],
+        protected: json["protected"],
       );
 
   Map<String, dynamic> toJson() => {
         "rendered": rendered,
+        "protected": protected,
       };
 }
