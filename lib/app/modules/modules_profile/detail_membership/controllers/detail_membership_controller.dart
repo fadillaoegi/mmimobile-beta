@@ -23,17 +23,15 @@ class DetailMembershipController extends GetxController {
     selectedCategoryId.value = userData.user.membershipId.toString();
     refreshDataMembership();
     fetchDataMembershipBenefit();
-    update();
   }
 
   void setCategory(String categoryId) {
     selectedCategoryId.value = categoryId;
     fetchDataMembershipBenefit();
-    update();
   }
 
   fetchDataMembershipBenefit() async {
-    isLoading(true);
+    // isLoading(true);
     final formData = FormData.fromMap({
       "membership_id": selectedCategoryId.value.toString(),
       // "membership_id": userData.user.membershipId.toString(),
@@ -50,13 +48,13 @@ class DetailMembershipController extends GetxController {
     } catch (e) {
       print(e);
     } finally {
-      update();
-      isLoading(false);
+      // isLoading(false);
+      // update();
     }
   }
 
   refreshDataMembership() async {
-    isLoading(true);
+    // isLoading(true);
     try {
       final response = await RequestApp.getFutureDio(ApiApps.membershipData);
       final data = response!.data['data'] as List;
@@ -80,7 +78,7 @@ class DetailMembershipController extends GetxController {
       }
     } catch (e) {
     } finally {
-      isLoading(false);
+      // isLoading(false);
     }
   }
 }

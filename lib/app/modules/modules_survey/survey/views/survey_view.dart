@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/get_instance.dart';
 import '../controllers/survey_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
@@ -16,14 +17,13 @@ class SurveyView extends GetView<SurveyController> {
   const SurveyView({super.key});
   @override
   Widget build(BuildContext context) {
-    // final sizeScreen = MediaQuery.sizeOf(context);
+    final controller = Get.put(SurveyController());
     return Scaffold(
       appBar: AppBarAppFLdev(
         title: "Survei",
         backRoute: false,
       ),
       body: CanvaFLdev(
-        // color: const Color.fromARGB(255, 28, 34, 11),
         widget: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,15 +40,14 @@ class SurveyView extends GetView<SurveyController> {
                   ),
                 ),
               ),
-              // const SizedBox(
-              //   height: 50.0,
-              // ),
               CardFLdev(
                 padding: 14.0,
                 margin: 14.0,
                 color: ColorApps.card2,
                 child: Column(
-                  children: [
+                  children: 
+                  
+                  [
                     ItemList(
                       label: "Rating layanan\nbusiness development",
                       iconImage: AssetConfigFLdev.iconServiceBusiness,

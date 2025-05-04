@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
-
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import '../controllers/otp_controller.dart';
 
 class OtpView extends GetView<OtpController> {

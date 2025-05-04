@@ -9,7 +9,7 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title = "",
     this.checkClick = false,
-    this.backRoute = true,
+    this.backRoute = false,
     this.onTap,
     // this.color = ColorApps.card3,
     this.color = ColorApps.white,
@@ -28,7 +28,7 @@ class AppBarAppFLdev extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       // backgroundColor: Color(0x0077bba2),
       backgroundColor: color,
       title: Row(

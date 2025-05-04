@@ -59,7 +59,7 @@ class CarouselHome extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: GestureDetector(
-                      onTap: () => Get.toNamed(Routes.listSupport),
+                      onTap: () => Get.toNamed(Routes.systemSupport),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(4.0),
                         child:
@@ -107,7 +107,7 @@ class CarouselHome extends StatelessWidget {
               children: [
                 GestureDetector(
                   // onTap: () => Get.toNamed(Routes.underDevelopment),
-                  onTap: () => Get.toNamed(Routes.listSupport),
+                  onTap: () => Get.toNamed(Routes.systemSupport),
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
                     margin: const EdgeInsets.only(top: 10.0, right: 10.0),

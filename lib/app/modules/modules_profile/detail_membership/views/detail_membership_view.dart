@@ -3,15 +3,15 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/item_privilege_widget.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:mmimobile/app/modules/modules_profile/detail_membership/controllers/detail_membership_controller.dart';
-import 'package:mmimobile/app/widget/loading_widget.dart';
-import 'package:mmimobile/app/widget/membership_detail/section_one_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:mmimobile/app/widget/membership_detail/section_one_widget.dart';
+import 'package:mmimobile/app/modules/modules_profile/detail_membership/controllers/detail_membership_controller.dart';
 
 class DetailMembershipView extends GetView<DetailMembershipController> {
   const DetailMembershipView({super.key});
@@ -30,12 +30,12 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
             widget: SingleChildScrollView(
               child: Column(
                 children: [
-                  // NOTE: SECTION 1
+                  // NOTE: SECTION 1 
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width,
                     child: Center(
                       child: SectionOneMembershipDetail(
-                        controller: controller,
+                        controller: controller
                       ),
                     ),
                   ),
@@ -61,11 +61,11 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
                           return InkWell(
                             onTap: () => controller.setCategory(categoryId),
                             child: Obx(() {
-                              // if (controller.isLoading.value) {
-                              //   return const Center(
-                              //     child: LoadingApps(),
-                              //   );
-                              // }
+                              if (controller.isLoading.value) {
+                                return const Center(
+                                  child: LoadingApps(),
+                                );
+                              }
 
                               return Container(
                                 padding: const EdgeInsets.symmetric(
