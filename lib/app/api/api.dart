@@ -1,15 +1,19 @@
 class ApiApps {
   // NOTE: ROOT API
-  static const root = "https://mmi.entis.app/api";
+  // static const root = "https://mmi.entis.app/api";
 
   // NOTE: ROOT LOCAL
-  // static const root = "http://192.168.1.19/EntIS-MMI/api";
+  static const root = "http://190.110.0.44/EntIS-MMI/api";
 
   // NOTE: Ui Avatar
   // static const avatar = "https://ui-avatars.com/api/?name=John+Doe";
 
   // NOTE: SLIDER IMAGE PATCH
   static const assetPatch = "https://mmi.entis.app/uploads/";
+
+  // NOTE: SURVEY
+  static const getSurveyMenu = "$root/getSurveyMenu";
+  static const getSurveyContent = "$root/getSurveyContent";
 
   // NOTE: GET DATA
   static const getUser = "$root/getUser";
@@ -32,7 +36,7 @@ class ApiApps {
   static const updateAdress = "$root/updateAdress";
   static const updateProfileFull = "$root/updateProfileFull";
 
-  // NOTE: CUSTONER HISTORY
+  // NOTE: CUSTOMER HISTORY
   static const history = "$root/historySO";
   static const historyDetail = "$root/historyDetail";
 
