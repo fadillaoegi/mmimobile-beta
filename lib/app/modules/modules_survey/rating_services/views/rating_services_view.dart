@@ -7,6 +7,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import '../controllers/rating_services_controller.dart';
 
@@ -27,8 +28,8 @@ class RatingServicesView extends GetView<RatingServicesController> {
             Expanded(
               child: Obx(() {
                 // Cegah error jika ratings masih kosong
-                if (controller.ratings.isEmpty) {
-                  return const Center(child: CircularProgressIndicator());
+                if (controller.isLoading.value == true) {
+                  return const Center(child: LoadingApps());
                 }
 
                 return ListView.builder(
@@ -40,13 +41,10 @@ class RatingServicesView extends GetView<RatingServicesController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SectionTittle(
-                            title: controller.questionsSurveyRatings[index],
+                            title: controller.questionsSurveyRatings[index]
+                                .masterSurveyDetailAssessment,
                             size: 14.0,
                           ),
-                          // Text(
-                          //   controller.questionsSurveyRatings[index],
-                          //   style: black600.copyWith(fontSize: 14.0),
-                          // ),
                           const SizedBox(height: 10),
                           Obx(() => RatingBar.builder(
                                 initialRating: controller.ratings[index],
