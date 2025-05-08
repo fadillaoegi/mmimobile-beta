@@ -46,24 +46,25 @@ class RatingServicesController extends GetxController {
     );
   }
 
-  Future<void> refresh() async {
-    isLoading(true);
-    try {
-      // fetchSurveyContent(surveyId);
-      // fetchSurveyContent(args['surveyMenuId'].toString());
-    } catch (e) {
-      print(e);
-    } finally {
-      update();
-      isLoading(false);
-    }
-  }
+  // Future<void> refresh() async {
+  //   isLoading(true);
+  //   try {
+  //     // fetchSurveyContent(surveyId);
+  //     // fetchSurveyContent(args['surveyMenuId'].toString());
+  //   } catch (e) {
+  //     print(e);
+  //   } finally {
+  //     isLoading(false);
+  //     update();
+  //   }
+  // }
 
   fetchSurveyContent(String surveyId) async {
     final formData = FormData.fromMap({
       "survey_id": surveyId,
     });
     try {
+      isLoading(true);
       final response =
           await RequestApp.postFutureDio(ApiApps.getSurveyContent, formData);
 
@@ -79,7 +80,7 @@ class RatingServicesController extends GetxController {
     } catch (e) {
       print(e);
     } finally {
-      update();
+      isLoading(false);
     }
   }
 }
