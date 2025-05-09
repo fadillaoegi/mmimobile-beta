@@ -1,21 +1,18 @@
-// To parse this JSON data, do
-//
-//     final highLight = highLightFromJson(jsonString);
-
 import 'dart:convert';
 
-HighLight highLightFromJson(String str) => HighLight.fromJson(json.decode(str));
+HighLightOem highLightFromJson(String str) =>
+    HighLightOem.fromJson(json.decode(str));
 
-String highLightToJson(HighLight data) => json.encode(data.toJson());
+String highLightToJson(HighLightOem data) => json.encode(data.toJson());
 
-class HighLight {
+class HighLightOem {
   String? masterArticleId;
   String? masterArticleTitle;
   String? masterArticleDesc;
   String? masterArticleImg;
   String? masterArticlePublishDate;
 
-  HighLight({
+  HighLightOem({
     this.masterArticleId,
     this.masterArticleTitle,
     this.masterArticleDesc,
@@ -23,7 +20,7 @@ class HighLight {
     this.masterArticlePublishDate,
   });
 
-  factory HighLight.fromJson(Map<String, dynamic> json) => HighLight(
+  factory HighLightOem.fromJson(Map<String, dynamic> json) => HighLightOem(
         masterArticleId: json["master_article_id"],
         masterArticleTitle: json["master_article_title"],
         masterArticleDesc: json["master_article_desc"],

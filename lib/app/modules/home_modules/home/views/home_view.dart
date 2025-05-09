@@ -1,4 +1,3 @@
-import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:flutter/material.dart';
 import '../controllers/home_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -9,6 +8,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/helpers/helper_fldev.dart';
+import 'package:easy_url_launcher/easy_url_launcher.dart';
 import 'package:mmimobile/app/widget/image_circle_widget.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -175,7 +175,7 @@ class HomeView extends GetView<HomeController> {
                           final title = controller
                               .dataHighLightODM[index].masterArticleTitle;
                           final desc = controller
-                              .dataHighLightOEM[index].masterArticleDesc;
+                              .dataHighLightODM[index].masterArticleDesc;
                           return HighLightItem(
                             title: title.toString(),
                             image: image.toString(),

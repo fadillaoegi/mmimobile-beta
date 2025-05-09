@@ -1,9 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/api/api.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
@@ -14,16 +11,18 @@ class ItemListSupport extends StatelessWidget {
       {super.key,
       required this.sizeScreen,
       this.imageUrl = "202504/7c7db9b1b795a5db53da27a05687c101.jpg",
-      this.title = "Void title"});
+      this.title = "Void title",
+      this.onTap});
 
   final Size sizeScreen;
   final String? title;
   final String? imageUrl;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(Routes.supportDetail),
+      onTap: onTap,
       child: Container(
         width: sizeScreen.width,
         margin: const EdgeInsets.only(bottom: 12.0),

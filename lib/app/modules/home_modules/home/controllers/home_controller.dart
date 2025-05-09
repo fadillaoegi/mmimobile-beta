@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -9,13 +8,14 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
-import 'package:mmimobile/app/data/models/home/article_from_web_model.dart';
-import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
-import 'package:mmimobile/app/data/models/home/slider_model.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/helpers/refresh_data_fldev.dart';
-import 'package:mmimobile/app/data/models/home/highlight_model.dart';
+import 'package:mmimobile/app/data/models/home/slider_model.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:mmimobile/app/data/models/home/highlight_oem_model.dart';
+import 'package:mmimobile/app/data/models/home/highlight_odm_model.dart';
+import 'package:mmimobile/app/data/models/home/article_from_web_model.dart';
+import 'package:mmimobile/app/data/models/membership/membership_data_model.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class HomeController extends GetxController {
@@ -23,8 +23,8 @@ class HomeController extends GetxController {
   final userData = Get.put(UserController());
   final currentIndex = 0.obs;
   final isLoading = false.obs;
-  final dataHighLightODM = <HighLight>[].obs;
-  final dataHighLightOEM = <HighLight>[].obs;
+  final dataHighLightODM = <HighLightOdm>[].obs;
+  final dataHighLightOEM = <HighLightOem>[].obs;
   final membershipData = MembershipData().obs;
   final dataSLider = <SliderApps>[].obs;
   final dataArticle = <ArticleWeb>[].obs;
@@ -114,7 +114,7 @@ class HomeController extends GetxController {
       final data = response!.data["data"] as List;
       dataHighLightODM.value = data
           .map(
-            (e) => HighLight.fromJson(e),
+            (e) => HighLightOdm.fromJson(e),
           )
           .toList();
     } catch (e) {
@@ -136,7 +136,7 @@ class HomeController extends GetxController {
       final data = response!.data['data'] as List;
       dataHighLightOEM.value = data
           .map(
-            (e) => HighLight.fromJson(e),
+            (e) => HighLightOem.fromJson(e),
           )
           .toList();
     } catch (e) {
