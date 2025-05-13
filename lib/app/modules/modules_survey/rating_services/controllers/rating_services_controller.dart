@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:mmimobile/app/api/api.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -10,19 +11,13 @@ import 'package:mmimobile/app/data/models/survey/survey_content_model.dart';
 class RatingServicesController extends GetxController {
   final isLoading = false.obs;
   final questionsSurveyRatings = <SurveyContent>[].obs;
-  // final questionsSurveyRatings = [
-  //   "Apakah anda puas dengan layanan dan keramahan marketing kami?",
-  //   "Apakah marketing kami memberikan informasi yang Anda butuhkan secara jelas dan lengkap?",
-  //   "Seberapa cepat marketing kami merespons pertanyaan atau masalah Anda?",
-  // ].obs;
+  final surveyData = [].obs;
 
   @override
   void onInit() {
     super.onInit();
     final args = Get.arguments;
     fetchSurveyContent(args['surveyMenuId'].toString());
-
-    // refresh();
   }
 
   // NOTE: List for save rating every question
@@ -33,31 +28,23 @@ class RatingServicesController extends GetxController {
   }
 
   void submitReview() {
-    String result = "";
+    final surveyDetailAssessment = "".obs;
+    final surveyDetailPoint = "".obs;
     for (int i = 0; i < questionsSurveyRatings.length; i++) {
-      result +=
-          "Q${i + 1}: ${questionsSurveyRatings[i]}\nRating: ${ratings[i]}\n\n";
+      // surveyDetailAssessment.value +=
+      //     "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\nRating: ${ratings[i]}\n\n";
+      surveyDetailAssessment.value +=
+          "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\n\n";
+      surveyDetailPoint.value += "${ratings[i]}\n\n";
     }
 
     Get.snackbar(
       "Review Dikirim",
-      result,
+      titleText: Text(surveyDetailAssessment.value.toString()),
+      surveyDetailPoint.value.toString(),
       snackPosition: SnackPosition.BOTTOM,
     );
   }
-
-  // Future<void> refresh() async {
-  //   isLoading(true);
-  //   try {
-  //     // fetchSurveyContent(surveyId);
-  //     // fetchSurveyContent(args['surveyMenuId'].toString());
-  //   } catch (e) {
-  //     print(e);
-  //   } finally {
-  //     isLoading(false);
-  //     update();
-  //   }
-  // }
 
   fetchSurveyContent(String surveyId) async {
     final formData = FormData.fromMap({

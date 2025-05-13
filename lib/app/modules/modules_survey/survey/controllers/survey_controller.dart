@@ -8,27 +8,6 @@ import 'package:mmimobile/app/data/models/survey/survey_menu_model.dart';
 class SurveyController extends GetxController {
   final isLoading = false.obs;
   final listSurveyMenu = <SurveyMenu>[].obs;
-  // final listSurveyContent = <SurveyMenu>[].obs;
-  // final listSurveyMenu = [
-  //   {
-  //     "master_survey_id": "1",
-  //     "master_survey_title": "Rating Layanan",
-  //   },
-  //   {
-  //     "master_survey_id": "2",
-  //     "master_survey_title": "Rating Kualitas Product",
-  //   },
-  // ].obs;
-  final listSurveyContent = [
-    {
-      "master_survey_id": "1",
-      "master_survey_title": "Rating Layanan",
-    },
-    {
-      "master_survey_id": "2",
-      "master_survey_title": "Rating Kualitas Product",
-    },
-  ].obs;
   @override
   void onInit() {
     super.onInit();
@@ -53,7 +32,11 @@ class SurveyController extends GetxController {
           await RequestApp.postFutureDio(ApiApps.getSurveyMenu, formData);
 
       final data = response!.data['data'] as List;
-      listSurveyMenu.value = data.map((e) => SurveyMenu.fromJson(e),).toList();
+      listSurveyMenu.value = data
+          .map(
+            (e) => SurveyMenu.fromJson(e),
+          )
+          .toList();
     } catch (e) {
       print(e);
     }
