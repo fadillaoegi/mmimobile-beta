@@ -55,15 +55,17 @@ class SurveyView extends GetView<SurveyController> {
                       final surveyMenuId = controller
                           .listSurveyMenu[index].masterSurveyId
                           .toString();
-
+                      final surveyMenuPoint = controller
+                          .listSurveyMenu[index].masterSurveyPoint
+                          .toString();
                       return ItemList(
                         label: surveyMenuName.toString(),
-                        // label: "surveyMenuName.toString() sodmvopds vmsdl; ms",
                         iconImage: AssetConfigFLdev.iconServiceBusiness,
                         iconSize: 40.0,
                         onTap: () =>
                             Get.toNamed(Routes.ratingService, arguments: {
                           'surveyMenuId': surveyMenuId,
+                          'surveyMenuPoint': surveyMenuPoint,
                         }),
                       );
                     },

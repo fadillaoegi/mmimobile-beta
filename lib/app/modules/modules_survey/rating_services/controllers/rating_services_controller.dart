@@ -12,12 +12,14 @@ class RatingServicesController extends GetxController {
   final isLoading = false.obs;
   final questionsSurveyRatings = <SurveyContent>[].obs;
   final surveyData = [].obs;
+  final surveyId = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
     final args = Get.arguments;
-    fetchSurveyContent(args['surveyMenuId'].toString());
+    surveyId.value = args['surveyMenuId'].toString();
+    fetchSurveyContent();
   }
 
   // NOTE: List for save rating every question
@@ -27,16 +29,27 @@ class RatingServicesController extends GetxController {
     ratings[index] = value;
   }
 
+  refresh() async {}
+
   void submitReview() {
     final surveyDetailAssessment = "".obs;
     final surveyDetailPoint = "".obs;
+    final List<Map<String, dynamic>> data = [];
     for (int i = 0; i < questionsSurveyRatings.length; i++) {
-      // surveyDetailAssessment.value +=
-      //     "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\nRating: ${ratings[i]}\n\n";
       surveyDetailAssessment.value +=
           "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\n\n";
       surveyDetailPoint.value += "${ratings[i]}\n\n";
+
+      // NOTE:
+      data.add({
+        'survey_result_id': surveyId.value,
+        'survey_result_detail_point': ratings[i],
+        'survey_result_detail_desc':
+            questionsSurveyRatings[i].masterSurveyDetailAssessment,
+      });
     }
+
+    surveyData.value = data;
 
     Get.snackbar(
       "Review Dikirim",
@@ -46,9 +59,10 @@ class RatingServicesController extends GetxController {
     );
   }
 
-  fetchSurveyContent(String surveyId) async {
+  fetchSurveyContent() async {
     final formData = FormData.fromMap({
-      "survey_id": surveyId,
+      // "survey_id": surveyId,
+      "survey_id": surveyId.value.toString(),
     });
     try {
       isLoading(true);
