@@ -1,25 +1,27 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:get/instance_manager.dart';
 import 'package:mmimobile/app/api/api.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/data/models/survey/survey_content_model.dart';
+import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
 
 class RatingServicesController extends GetxController {
   final isLoading = false.obs;
   final questionsSurveyRatings = <SurveyContent>[].obs;
   final surveyData = [].obs;
   final surveyId = ''.obs;
+  final userData = Get.put(UserController());
 
   @override
   void onInit() {
     super.onInit();
     final args = Get.arguments;
     surveyId.value = args['surveyMenuId'].toString();
-    fetchSurveyContent();
+    refresh();
   }
 
   // NOTE: List for save rating every question
@@ -29,7 +31,27 @@ class RatingServicesController extends GetxController {
     ratings[index] = value;
   }
 
-  refresh() async {}
+  refresh() async {
+    isLoading(true);
+    try {
+      fetchSurveyContent();
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
+  }
+
+  void sendSurvey() async {
+    final formData = FormData.fromMap({
+      'customer_id': userData.user.customerId.toString(),
+      'survey_id': surveyId.value,
+    });
+
+    final response =
+        await RequestApp.postFutureDio(ApiApps.getSurveyContent, formData);
+    print(response!.data);
+  }
 
   void submitReview() {
     final surveyDetailAssessment = "".obs;
@@ -49,12 +71,22 @@ class RatingServicesController extends GetxController {
       });
     }
 
-    surveyData.value = data;
+    // surveyData.value = data;
+    final xixi = surveyData;
+
+    if (xixi.isNotEmpty) {
+      Get.snackbar(
+        "Review Dikirim",
+        titleText: Text(surveyDetailAssessment.value.toString()),
+        surveyDetailPoint.value.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
 
     Get.snackbar(
-      "Review Dikirim",
-      titleText: Text(surveyDetailAssessment.value.toString()),
-      surveyDetailPoint.value.toString(),
+      "Review Gagal",
+      // titleText: Text(surveyDetailAssessment.value.toString()),
+      "Gagal",
       snackPosition: SnackPosition.BOTTOM,
     );
   }
@@ -65,7 +97,7 @@ class RatingServicesController extends GetxController {
       "survey_id": surveyId.value.toString(),
     });
     try {
-      isLoading(true);
+      // isLoading(true);
       final response =
           await RequestApp.postFutureDio(ApiApps.getSurveyContent, formData);
 
@@ -81,7 +113,7 @@ class RatingServicesController extends GetxController {
     } catch (e) {
       print(e);
     } finally {
-      isLoading(false);
+      // isLoading(false);
     }
   }
 }

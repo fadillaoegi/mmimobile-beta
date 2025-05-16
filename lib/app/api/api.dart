@@ -3,7 +3,7 @@ class ApiApps {
   // static const root = "https://mmi.entis.app/api";
 
   // NOTE: ROOT LOCAL
-  static const root = "http://190.110.0.21/EntIS-MMI/api";
+  static const root = "http://190.110.0.105/EntIS-MMI/api";
 
   // NOTE: Ui Avatar
   // static const avatar = "https://ui-avatars.com/api/?name=John+Doe";
@@ -14,6 +14,7 @@ class ApiApps {
   // NOTE: SURVEY
   static const getSurveyMenu = "$root/getSurveyMenu";
   static const getSurveyContent = "$root/getSurveyContent";
+  static const saveSurvey = "$root/saveSurvey";
 
   // NOTE: GET DATA
   static const getUser = "$root/getUser";
