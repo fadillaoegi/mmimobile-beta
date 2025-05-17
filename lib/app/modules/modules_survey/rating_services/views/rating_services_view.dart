@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
-import 'package:mmimobile/app/widget/loading_widget.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../controllers/rating_services_controller.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/section_title_widget.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:mmimobile/app/widget/form/form_apps_fldev_widget.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class RatingServicesView extends GetView<RatingServicesController> {

@@ -78,6 +78,7 @@ class MembershipView extends GetView<MembershipController> {
                                     controller.membershipDataBenefit[index];
                                 return Obx(() => ItemPrivilege(
                                       claimed: controller.privilage.value,
+                                      
                                       onTap: () => controller.claimPrivilage(),
                                       privilagenName: membership
                                               .customerMembershipBenefit ??

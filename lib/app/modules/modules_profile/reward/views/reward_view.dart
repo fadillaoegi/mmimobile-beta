@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mmimobile/app/styles/shadow.dart';
 import '../controllers/reward_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
+import 'package:mmimobile/app/styles/shadow.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:mmimobile/app/widget/button/btn_apps_widget.dart';
 import 'package:mmimobile/app/widget/reward/item_reward_widget.dart';
+import 'package:mmimobile/app/widget/reward/item_history_reward_widget.dart';
 
 class RewardView extends GetView<RewardController> {
   const RewardView({super.key});
@@ -162,7 +162,8 @@ class RewardView extends GetView<RewardController> {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             // itemBuilder: (context, index) => const ItemMission(),
-                            itemBuilder: (context, index) => ItemHistoryReward(),
+                            itemBuilder: (context, index) =>
+                                ItemHistoryReward(),
                           ),
                         ],
                       ),
@@ -173,79 +174,5 @@ class RewardView extends GetView<RewardController> {
             ),
           ],
         ));
-  }
-}
-
-class ItemHistoryReward extends StatelessWidget {
-  const ItemHistoryReward({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.symmetric(vertical: 6.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment:
-                MainAxisAlignment.spaceBetween,
-            crossAxisAlignment:
-                CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Image.asset(
-                    AssetConfigFLdev.iconCoinNew,
-                    height: 40.0,
-                    width: 40.0,
-                  ),
-                  const SizedBox(
-                    width: 12.0,
-                  ),
-                  Column(
-                    crossAxisAlignment:
-                        CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hadiah harian",
-                        style: secondary600.copyWith(
-                            fontSize: 16.0),
-                      ),
-                      SizedBox(
-                        height: 2.0,
-                      ),
-                      Text(
-                        "Poin cek-in harian",
-                        style: secondary300.copyWith(
-                            fontSize: 14.0),
-                      ),
-                      SizedBox(
-                        height: 2.0,
-                      ),
-                      Text(
-                        "18-02-2025 15:54",
-                        style: secondary300.copyWith(
-                            fontSize: 14.0),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              Text(
-                "10 +",
-                style: secondary300.copyWith(
-                    fontSize: 18.0),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8.0),
-          Divider(
-            color: ColorApps.disable,
-          )
-        ],
-      ),
-    );
   }
 }

@@ -92,12 +92,12 @@ class RatingServicesController extends GetxController {
   }
 
   fetchSurveyContent() async {
+      // isLoading(true);
     final formData = FormData.fromMap({
       // "survey_id": surveyId,
       "survey_id": surveyId.value.toString(),
     });
     try {
-      // isLoading(true);
       final response =
           await RequestApp.postFutureDio(ApiApps.getSurveyContent, formData);
 

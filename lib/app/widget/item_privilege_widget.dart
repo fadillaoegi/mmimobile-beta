@@ -11,7 +11,7 @@ class ItemPrivilege extends StatelessWidget {
       this.privilagecount = "",
       this.pointPrice = 0,
       this.claimed = false,
-      this.image = AssetConfigFLdev.logo,
+      this.image = "",
       this.btnClaim = true,
       this.onTap});
 
@@ -51,7 +51,8 @@ class ItemPrivilege extends StatelessWidget {
                   decoration: BoxDecoration(
                       // color: const Color.fromARGB(180, 109, 133, 36),
                       image: privilagecount.isEmpty
-                          ? DecorationImage(image: AssetImage(image))
+                          ? DecorationImage(
+                              image: AssetImage(AssetConfigFLdev.logo))
                           : null,
                       color: ColorApps.primary,
                       borderRadius: BorderRadius.circular(100.0)),
