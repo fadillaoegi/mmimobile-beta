@@ -92,7 +92,7 @@ class RatingServicesController extends GetxController {
   }
 
   fetchSurveyContent() async {
-      // isLoading(true);
+    // isLoading(true);
     final formData = FormData.fromMap({
       // "survey_id": surveyId,
       "survey_id": surveyId.value.toString(),
