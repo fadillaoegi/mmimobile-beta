@@ -28,6 +28,9 @@ class HomeController extends GetxController {
   final membershipData = MembershipData().obs;
   final dataSLider = <SliderApps>[].obs;
   final dataArticle = <ArticleWeb>[].obs;
+  final visibleArticleCount = 4.obs;
+  bool get isShowingAllArticles =>
+      visibleArticleCount.value >= dataArticle.length;
 
   // Daftar URL gambar untuk carousel
   final urlImageCarousel = <String>[
@@ -185,16 +188,21 @@ class HomeController extends GetxController {
     } catch (e) {
       print("Error fetching articles: $e");
     }
-    // try {
-    //   final result = await RequestApp.getFutureDio(ApiApps.getDataArticle);
-    //   final data = result!.data as List;
-    //   dataArticle.value = data
-    //       .map(
-    //         (e) => ArticleFromWeb.fromJson(e),
-    //       )
-    //       .toList();
-    // } catch (e) {
-    //   print(e);
-    // }
   }
+
+  // NOTE: for load more article
+  void loadMoreArticles() {
+    if (!isShowingAllArticles) {
+      visibleArticleCount.value += 4;
+    }
+  }
+
+  void showLessArticles() {
+    visibleArticleCount.value = 4;
+  }
+  // void loadMoreArticles() {
+  //   if (visibleArticleCount.value < dataArticle.length) {
+  //     visibleArticleCount.value += 4;
+  //   }
+  // }
 }

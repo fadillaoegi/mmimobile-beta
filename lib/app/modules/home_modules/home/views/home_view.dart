@@ -140,6 +140,8 @@ class HomeView extends GetView<HomeController> {
                               )
                             ],
                           ),
+
+                          // NOTE: Notification
                           // IconButton(
                           //   onPressed: () => Get.snackbar(
                           //     "Welcome to MMI mobile",
@@ -220,47 +222,66 @@ class HomeView extends GetView<HomeController> {
                     ),
                     const SizedBox(height: 20.0),
 
-                    // // NOTE: ARTICLE
+                    // NOTE: ARTICLE
+                    // NOTE: ARTICLE
                     SectionTittle(title: "Article"),
                     const SizedBox(height: 10.0),
 
-                    ListView.builder(
-                      itemCount: controller.dataArticle.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final articlefetch = controller.dataArticle[index];
-                        final title =
-                            articlefetch.title?.rendered.toString() ?? "-";
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GestureDetector(
+                    Obx(() {
+                      final visibleCount = controller.visibleArticleCount.value;
+                      final articles = controller.dataArticle;
+                      final articlesToShow =
+                          articles.take(visibleCount).toList();
+
+                      return Column(
+                        children: [
+                          ListView.builder(
+                            itemCount: articlesToShow.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final article = articlesToShow[index];
+                              final title =
+                                  article.title?.rendered.toString() ?? "-";
+                              return GestureDetector(
                                 onTap: () async {
                                   await EasyLauncher.url(
-                                      url: articlefetch.link.toString(),
-                                      mode: Mode.inAppWeb);
+                                    url: article.link.toString(),
+                                    mode: Mode.inAppWeb,
+                                  );
                                 },
                                 child: Container(
                                   width: sizeScreen.width,
                                   padding: const EdgeInsets.all(20.0),
                                   margin: const EdgeInsets.only(bottom: 10.0),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(6.0),
-                                      ),
-                                      boxShadow: boxShadow,
-                                      color: ColorApps.white),
-                                  child: Text(
-                                    title.toString(),
-                                    style: black400.copyWith(fontSize: 14.0),
-                                    // textAlign: TextAlign.center,
+                                    borderRadius: BorderRadius.circular(6.0),
+                                    boxShadow: boxShadow,
+                                    color: ColorApps.white,
                                   ),
-                                )),
-                          ],
-                        );
-                      },
-                    ),
+                                  child: Text(
+                                    title,
+                                    style: black400.copyWith(fontSize: 14.0),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          if (articles.length > 4)
+                            TextButton(
+                              onPressed: controller.isShowingAllArticles
+                                  ? controller.showLessArticles
+                                  : controller.loadMoreArticles,
+                              child: Text(
+                                controller.isShowingAllArticles
+                                    ? "Show Less"
+                                    : "Load More",
+                                style: black400,
+                              ),
+                            ),
+                        ],
+                      );
+                    }),
                   ],
                 ),
               ),

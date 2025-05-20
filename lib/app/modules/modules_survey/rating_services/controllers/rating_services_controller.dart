@@ -62,7 +62,7 @@ class RatingServicesController extends GetxController {
           "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\n\n";
       surveyDetailPoint.value += "${ratings[i]}\n\n";
 
-      // NOTE:
+      // NOTE: 
       data.add({
         'survey_result_id': surveyId.value,
         'survey_result_detail_point': ratings[i],
