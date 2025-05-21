@@ -7,7 +7,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:carousel_slider/carousel_options.dart';
-import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 import 'package:mmimobile/app/helpers/refresh_data_fldev.dart';
 import 'package:mmimobile/app/data/models/home/slider_model.dart';
@@ -33,17 +32,16 @@ class HomeController extends GetxController {
       visibleArticleCount.value >= dataArticle.length;
 
   // Daftar URL gambar untuk carousel
-  final urlImageCarousel = <String>[
-    AssetConfigFLdev.banner1,
-    AssetConfigFLdev.banner2,
-    AssetConfigFLdev.banner3,
-  ].obs;
+  // final urlImageCarousel = <String>[
+  //   AssetConfigFLdev.banner1,
+  //   AssetConfigFLdev.banner2,
+  //   AssetConfigFLdev.banner3,
+  // ].obs;
 
   @override
   void onInit() {
     super.onInit();
     refreshData();
-    fetchArticle();
   }
 
   // NOTE: refresh data
@@ -54,6 +52,8 @@ class HomeController extends GetxController {
       getDataHighLightOEM();
       fetchMembershipDataId();
       getDataSLider();
+      fetchArticle();
+      showLessArticles();
       RefreshDataFldev.refreshDataUser(
           FormData.fromMap({'customer_id': userData.user.customerId}));
     } catch (e) {
@@ -197,12 +197,8 @@ class HomeController extends GetxController {
     }
   }
 
+  // NOTE: for load less article
   void showLessArticles() {
     visibleArticleCount.value = 4;
   }
-  // void loadMoreArticles() {
-  //   if (visibleArticleCount.value < dataArticle.length) {
-  //     visibleArticleCount.value += 4;
-  //   }
-  // }
 }

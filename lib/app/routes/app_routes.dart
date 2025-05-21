@@ -57,6 +57,7 @@ abstract class _Paths {
   _Paths._();
   static const splash = '/splash';
   static const appMain = '/app-main';
+  static const underDevelopment = '/underdevelopment';
 
   // NOTE: MODULE AUTH
   static const signIn = '/sign-in';
@@ -64,13 +65,31 @@ abstract class _Paths {
   static const resetPassword = '/reset-password';
   static const forgotPassword = '/forgot-password';
   static const otp = '/otp';
+  static const addEmail = '/add-email';
 
   // NOTE: MODULE HOME
   static const home = '/home';
+  static const detailHighLight = '/detail-high-light';
+  static const website = '/website';
+  static const notification = '/notification';
+
+  // NOTE: MODULE SYTEM SUPPORT
+  static const systemSupport = '/system-support';
+  static const membership = '/membership';
+  static const detailMembership = '/detail-membership';
+  static const supportDetail = '/support-detail';
+  static const listSupport = '/list-support';
+
+  // NOTE: MODULE SURVEY
+  static const survey = '/survey';
+  static const surveyComplain = '/survey-complain';
+  static const ratingProduct = '/rating-product';
+  static const ratingService = '/rating-services';
 
   // NOTE: MODULE HISTORY
   static const history = '/history';
   static const historyDetail = '/history-detail';
+  static const productDetail = '/product-detail';
 
   // NOTE: MODULE REWARD
   static const reward = '/reward';
@@ -79,32 +98,14 @@ abstract class _Paths {
   // NOTE: MODULE PROFILE
   static const profile = '/profile';
   static const profileSetting = '/profile-setting';
-  static const faq = '/faq';
   static const profileEditPassword = '/profile-edit-password';
-
-  // NOTE: MODULE SYTEM SUPPORT
-  static const systemSupport = '/system-support';
-  static const productDetail = '/product-detail';
-  static const privacyPolicy = '/privacy-policy';
-  static const website = '/website';
-  static const notification = '/notification';
-  static const underDevelopment = '/underdevelopment';
-  static const addEmail = '/add-email';
   static const accountSetting = '/account-setting';
   static const profileUpdateEmail = '/profile-update-email';
   static const profileUpdatePhone = '/profile-update-phone';
   static const profileUpdateAddress = '/profile-update-address';
-  static const ratingService = '/rating-services';
   static const languageSetting = '/language-setting';
   static const profileEdit = '/profile-edit';
-  static const membership = '/membership';
-  static const detailMembership = '/detail-membership';
-  static const survey = '/survey';
-  static const surveyComplain = '/survey-complain';
-
-  static const ratingProduct = '/rating-product';
   static const accountSecurity = '/account-security';
-  static const supportDetail = '/support-detail';
-  static const listSupport = '/list-support';
-  static const detailHighLight = '/detail-high-light';
+  static const privacyPolicy = '/privacy-policy';
+  static const faq = '/faq';
 }
