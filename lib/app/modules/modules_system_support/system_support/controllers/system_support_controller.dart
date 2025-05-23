@@ -24,41 +24,52 @@ class SystemSupportController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchSystemSupport();
+    refresh();
+  }
+
+  refresh() async {
+    isLoading(true);
+    try {
+      fetchSystemSupport();
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
   }
 
   // NOTE: fetch data system support
   Future<void> fetchSystemSupport() async {
-    isLoading(true);
+    // isLoading(true);
     final formData = FormData.fromMap({
       'membership_id': userData.user.membershipId.toString(),
     });
-    try {
-      final response =
-          await RequestApp.postFutureDio(ApiApps.listSupportSystem, formData);
+    // try {
+    final response =
+        await RequestApp.postFutureDio(ApiApps.listSupportSystem, formData);
 
-      final data = response!.data['data'] as List;
-      listDataSystemSuport.value =
-          data.map((e) => SystemSupport.fromJson(e)).toList();
-      print("PRINT $listDataSystemSuport");
-      if (response.statusCode == 200) {
-      } else if (response.statusCode == 500) {
-        SnackbarFLdev.snackShow(
-          title: "Terjadi kesalahan pada server",
-          message: "Gagal mengambil data slider",
-        );
-      } else {
-        SnackbarFLdev.snackShow(
-          title: "Terjadi kesalahan pada server",
-          message: "Gagal mengambil data slider",
-        );
-      }
-    } catch (e) {
-      print(e);
-    } finally {
-      update();
-      isLoading(false);
+    final data = response!.data['data'] as List;
+    listDataSystemSuport.value =
+        data.map((e) => SystemSupport.fromJson(e)).toList();
+    print("PRINT $listDataSystemSuport");
+    if (response.statusCode == 200) {
+    } else if (response.statusCode == 500) {
+      SnackbarFLdev.snackShow(
+        title: "Terjadi kesalahan pada server",
+        message: "Gagal mengambil data slider",
+      );
+    } else {
+      SnackbarFLdev.snackShow(
+        title: "Terjadi kesalahan pada server",
+        message: "Gagal mengambil data slider",
+      );
     }
+    // } catch (e) {
+    //   print(e);
+    // } finally {
+    //   update();
+    //   isLoading(false);
+    // }
   }
 
   // NOTE: Function to handle carousel page change

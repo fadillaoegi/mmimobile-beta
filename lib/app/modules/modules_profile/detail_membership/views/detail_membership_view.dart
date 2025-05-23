@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -30,13 +31,11 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
             widget: SingleChildScrollView(
               child: Column(
                 children: [
-                  // NOTE: SECTION 1 
+                  // NOTE: SECTION 1
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width,
                     child: Center(
-                      child: SectionOneMembershipDetail(
-                        controller: controller
-                      ),
+                      child: SectionOneMembershipDetail(controller: controller),
                     ),
                   ),
                   const SizedBox(
@@ -114,8 +113,12 @@ class DetailMembershipView extends GetView<DetailMembershipController> {
                       itemBuilder: (context, index) {
                         final membership =
                             controller.membershipDataBenefit[index];
+                        print(membership.customerMembershipFile);
+                        String imageFile =
+                            membership.customerMembershipFile.toString();
                         return ItemPrivilege(
                           btnClaim: false,
+                          image: "${ApiApps.assetPatch}/$imageFile",
                           privilagenName:
                               membership.customerMembershipBenefit ??
                                   "Tidak ada benefit",

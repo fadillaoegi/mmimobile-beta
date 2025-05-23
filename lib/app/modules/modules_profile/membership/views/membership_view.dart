@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
@@ -78,7 +79,8 @@ class MembershipView extends GetView<MembershipController> {
                                     controller.membershipDataBenefit[index];
                                 return Obx(() => ItemPrivilege(
                                       claimed: controller.privilage.value,
-                                      
+                                      image:
+                                          "${ApiApps.assetPatch}/${membership.customerMembershipFile}",
                                       onTap: () => controller.claimPrivilage(),
                                       privilagenName: membership
                                               .customerMembershipBenefit ??

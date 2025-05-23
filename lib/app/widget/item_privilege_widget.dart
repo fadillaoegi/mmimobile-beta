@@ -3,24 +3,27 @@ import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/shadow.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 
 class ItemPrivilege extends StatelessWidget {
-  const ItemPrivilege(
-      {super.key,
-      this.privilagenName = "",
-      this.privilagecount = "",
-      this.pointPrice = 0,
-      this.claimed = false,
-      this.image = "",
-      this.btnClaim = true,
-      this.onTap});
+  const ItemPrivilege({
+    super.key,
+    this.privilagenName = "",
+    this.privilagecount = "",
+    this.pointPrice = 0,
+    this.claimed = false,
+    this.image = "",
+    this.btnClaim = true,
+    this.onTap,
+  });
 
   final String privilagenName;
   final String privilagecount;
   final String image;
   final int pointPrice;
-  final bool? claimed;
-  final bool? btnClaim;
+  final bool claimed;
+  final bool btnClaim;
   final VoidCallback? onTap;
 
   @override
@@ -41,47 +44,49 @@ class ItemPrivilege extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                Container(
-                  height: privilagecount.isEmpty ? 60.0 : 60.0,
-                  width: privilagecount.isEmpty ? 60.0 : 60.0,
-                  padding: privilagecount.isNotEmpty
-                      ? const EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 12.0)
-                      : const EdgeInsets.all(0.0),
-                  decoration: BoxDecoration(
-                      // color: const Color.fromARGB(180, 109, 133, 36),
-                      image: privilagecount.isEmpty
-                          ? DecorationImage(
-                              image: AssetImage(AssetConfigFLdev.logo))
-                          : null,
-                      color: ColorApps.primary,
-                      borderRadius: BorderRadius.circular(100.0)),
-                  child: privilagecount.isNotEmpty
-                      ? Center(
-                          child: Text(
-                            privilagecount,
-                            style: secondary700.copyWith(fontSize: 20.0),
-                          ),
-                        )
-                      : const SizedBox(),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100.0),
+                  child: Container(
+                    height: 60.0,
+                    width: 60.0,
+                    color: privilagecount.isNotEmpty
+                        ? ColorApps.primary
+                        : Colors.transparent,
+                    child: privilagecount.isNotEmpty
+                        ? Center(
+                            child: Text(
+                              privilagecount,
+                              style: secondary700.copyWith(fontSize: 20.0),
+                            ),
+                          )
+                        : image.isNotEmpty
+                            ? CachedNetworkImage(
+                                imageUrl: image,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) =>
+                                    const Center(child: LoadingApps()),
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
+                                  AssetConfigFLdev.logo,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : Image.asset(
+                                AssetConfigFLdev.logo,
+                                fit: BoxFit.cover,
+                              ),
+                  ),
                 ),
-                // Image.asset(
-                //   AssetConfigFLdev.logo,
-                //   height: 50.0,
-                //   width: 50.0,
-                // ),
                 const SizedBox(width: 12.0),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        // HelperFldev.newParagraphText(missionName, 22),
                         privilagenName,
-                        style: claimed!
+                        style: claimed
                             ? disable500.copyWith(fontSize: 12.0)
                             : black500.copyWith(fontSize: 14.0),
-                        // overflow: TextOverflow.ellipsis,
                         softWrap: true,
                       ),
                     ],
@@ -90,7 +95,7 @@ class ItemPrivilege extends StatelessWidget {
               ],
             ),
           ),
-          btnClaim!
+          btnClaim
               ? InkWell(
                   onTap: onTap,
                   child: Container(
@@ -99,14 +104,14 @@ class ItemPrivilege extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(
                         color:
-                            claimed! ? ColorApps.disable : ColorApps.secondary,
+                            claimed ? ColorApps.disable : ColorApps.secondary,
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Text(
-                      claimed! ? "Telah diambil" : "Ambil",
-                      style: claimed!
+                      claimed ? "Telah diambil" : "Ambil",
+                      style: claimed
                           ? disable400.copyWith()
                           : secondary400.copyWith(),
                     ),
