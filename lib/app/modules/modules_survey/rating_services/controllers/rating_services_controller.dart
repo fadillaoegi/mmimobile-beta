@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/instance_manager.dart';
 import 'package:mmimobile/app/api/api.dart';
@@ -8,12 +7,14 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/data/models/survey/survey_content_model.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
+import 'package:mmimobile/app/widget/snackbar_wiget.dart';
 
 class RatingServicesController extends GetxController {
   final isLoading = false.obs;
   final questionsSurveyRatings = <SurveyContent>[].obs;
   final surveyData = [].obs;
   final surveyId = ''.obs;
+  final surveyMenuPoint = ''.obs;
   final userData = Get.put(UserController());
 
   @override
@@ -21,6 +22,7 @@ class RatingServicesController extends GetxController {
     super.onInit();
     final args = Get.arguments;
     surveyId.value = args['surveyMenuId'].toString();
+    surveyMenuPoint.value = args['surveyMenuPoint'].toString();
     refresh();
   }
 
@@ -42,18 +44,24 @@ class RatingServicesController extends GetxController {
     }
   }
 
-  void sendSurvey() async {
+  Future<bool> sendSurvey() async {
     final formData = FormData.fromMap({
-      'customer_id': userData.user.customerId.toString(),
-      'survey_id': surveyId.value,
+      "customer_id": userData.user.customerId.toString(),
+      "master_survey_point": surveyMenuPoint.value.toString(),
+      "master_survey_id": surveyId.value.toString(),
+      "survey_data": surveyData.toList(),
     });
 
     final response =
-        await RequestApp.postFutureDio(ApiApps.getSurveyContent, formData);
+        await RequestApp.postFutureDio(ApiApps.saveSurvey, formData);
     print(response!.data);
+
+    bool ada = response.data;
+
+    return ada;
   }
 
-  void submitReview() {
+  void submitReview() async {
     final surveyDetailAssessment = "".obs;
     final surveyDetailPoint = "".obs;
     final List<Map<String, dynamic>> data = [];
@@ -62,33 +70,40 @@ class RatingServicesController extends GetxController {
           "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\n\n";
       surveyDetailPoint.value += "${ratings[i]}\n\n";
 
-      // NOTE: 
+      // NOTE:
       data.add({
-        'survey_result_id': surveyId.value,
         'survey_result_detail_point': ratings[i],
-        'survey_result_detail_desc':
+        'survey_result_detail_desc': "",
+        'survey_result_id': surveyId.value,
+        "master_survey_detail_id":
+            questionsSurveyRatings[i].masterSurveyDetailId,
+        "master_survey_detail_assessment":
             questionsSurveyRatings[i].masterSurveyDetailAssessment,
       });
     }
 
-    // surveyData.value = data;
+    surveyData.value = data;
     final xixi = surveyData;
+    print(xixi.toList());
 
-    if (xixi.isNotEmpty) {
+    if (xixi.isEmpty) {
       Get.snackbar(
-        "Review Dikirim",
-        titleText: Text(surveyDetailAssessment.value.toString()),
-        surveyDetailPoint.value.toString(),
+        "Review Gagal",
+        // titleText: Text(surveyDetailAssessment.value.toString()),
+        "Gagal",
         snackPosition: SnackPosition.BOTTOM,
       );
     }
-
-    Get.snackbar(
-      "Review Gagal",
-      // titleText: Text(surveyDetailAssessment.value.toString()),
-      "Gagal",
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    bool hehe = await sendSurvey();
+    if (hehe) {
+      SnackbarFLdev.snackShow(title: "ijijijijiji", message: "");
+    }
+    // Get.snackbar(
+    //   "Review Dikirim",
+    //   titleText: Text(surveyDetailAssessment.value.toString()),
+    //   surveyDetailPoint.value.toString(),
+    //   snackPosition: SnackPosition.BOTTOM,
+    // );
   }
 
   fetchSurveyContent() async {
