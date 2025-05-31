@@ -25,7 +25,7 @@ class ProfileView extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    final sizeScreen = MediaQuery.of(context).size;
+    // final sizeScreen = MediaQuery.of(context).size;
     final userData = Get.put(UserController());
     final imageConvert = Get.put(ImageConverterFldev());
     final controller = Get.put(ProfileController());
@@ -44,17 +44,17 @@ class ProfileView extends GetView<ProfileController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // NOTE: SECTION 1
-                    sectionOneProfile(userData, imageConvert),
+                    sectionOneProfile(userData, imageConvert, context),
                     // Obx(
                     //   () => sectionOneProfile(userData, imageConvert),
                     // ),
                     const SizedBox(height: 20.0),
 
                     // NOTE: SECTION 2
-                    GestureDetector(
-                      onTap: () => controller.cr(context),
-                      child: sectionTwoProfile(sizeScreen),
-                    ),
+                    // GestureDetector(
+                    //   onTap: () => controller.cr(context),
+                    //   child: sectionTwoProfile(sizeScreen),
+                    // ),
                     // Obx(
                     //   () => GestureDetector(
                     //     onTap: () => controller.cr(context),
@@ -101,23 +101,23 @@ class ProfileView extends GetView<ProfileController> {
           //   icon: Icons.notification_important_outlined,
           // ),
 
-          ItemList(
-            onTap: () => Get.toNamed(Routes.languageSetting),
-            label: "Pengaturan Bahasa",
-            icon: Icons.book_outlined,
-          ),
-          ItemList(
-            onTap: () => Get.toNamed(Routes.accountSecurity),
-            label: "Akun & keamanan",
-            icon: Icons.security_outlined,
-          ),
+          // ItemList(
+          //   onTap: () => Get.toNamed(Routes.languageSetting),
+          //   label: "Pengaturan Bahasa",
+          //   icon: Icons.book_outlined,
+          // ),
+          // ItemList(
+          //   onTap: () => Get.toNamed(Routes.accountSecurity),
+          //   label: "Akun & keamanan",
+          //   icon: Icons.security_outlined,
+          // ),
 
-          ItemList(
-            onTap: () => Get.toNamed(Routes.underDevelopment),
-            label: "Rating Aplikasi",
-            icon: Icons.star_border,
-            // iconImage: AssetConfigFLdev.iconFaq,
-          ),
+          // ItemList(
+          //   onTap: () => Get.toNamed(Routes.underDevelopment),
+          //   label: "Rating Aplikasi",
+          //   icon: Icons.star_border,
+          //   // iconImage: AssetConfigFLdev.iconFaq,
+          // ),
           ItemList(
             onTap: () {
               Get.dialog(
@@ -223,6 +223,7 @@ class ProfileView extends GetView<ProfileController> {
   Widget sectionOneProfile(
     UserController userController,
     ImageConverterFldev imageConvert,
+    BuildContext context,
   ) {
     final imageUrlUser = userController.user.customerPhotoProfil ?? "";
 
@@ -233,26 +234,27 @@ class ProfileView extends GetView<ProfileController> {
         Row(
           children: [
             GestureDetector(
+                onTap: () => controller.cr(context),
                 child: Stack(
-              children: [
-                imageUrlUser.isNotEmpty
-                    ? Obx(
-                        () => ImageCircle(
-                          size: 60.0,
-                          edit: false,
-                          imageUrl: imageUrlUser,
-                          // AssetConfigFLdev.logoNetwork,
-                        ),
-                      )
-                    : ImageCircle(
-                        size: 60.0,
-                        edit: false,
-                        imageUrl:
-                            "https://ui-avatars.com/api/?name=${userController.user.customerName}&background=6C8524&font-size=0.30&color=ffffff",
-                        // AssetConfigFLdev.logoNetwork,
-                      ),
-              ],
-            )),
+                  children: [
+                    imageUrlUser.isNotEmpty
+                        ? Obx(
+                            () => ImageCircle(
+                              size: 60.0,
+                              edit: false,
+                              imageUrl: imageUrlUser,
+                              // AssetConfigFLdev.logoNetwork,
+                            ),
+                          )
+                        : ImageCircle(
+                            size: 60.0,
+                            edit: false,
+                            imageUrl:
+                                "https://ui-avatars.com/api/?name=${userController.user.customerName}&background=6C8524&font-size=0.30&color=ffffff",
+                            // AssetConfigFLdev.logoNetwork,
+                          ),
+                  ],
+                )),
             const SizedBox(width: 10.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

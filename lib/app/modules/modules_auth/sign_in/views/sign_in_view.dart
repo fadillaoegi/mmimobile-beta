@@ -4,9 +4,9 @@ import '../controllers/sign_in_controller.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:mmimobile/app/routes/app_pages.dart';
+// import 'package:mmimobile/app/routes/app_pages.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+// import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:mmimobile/app/widget/loading_widget.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
@@ -137,24 +137,24 @@ class SignInView extends GetView<SignInController> {
                                     const SizedBox(
                                       height: 6.0,
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Get.toNamed(
-                                                  Routes.forgotPassword);
-                                            },
-                                            child: Text(
-                                              "Lupa password",
-                                              style: secondary600.copyWith(
-                                                  fontSize: 13.0),
-                                            ))
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 6.0,
-                                    ),
+                                    // Row(
+                                    //   mainAxisAlignment: MainAxisAlignment.end,
+                                    //   children: [
+                                    //     TextButton(
+                                    //         onPressed: () {
+                                    //           Get.toNamed(
+                                    //               Routes.forgotPassword);
+                                    //         },
+                                    //         child: Text(
+                                    //           "Lupa password",
+                                    //           style: secondary600.copyWith(
+                                    //               fontSize: 13.0),
+                                    //         ))
+                                    //   ],
+                                    // ),
+                                    // const SizedBox(
+                                    //   height: 6.0,
+                                    // ),
                                     BtnApps(
                                       onPress: () => controller.signIn(
                                           context,

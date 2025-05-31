@@ -32,8 +32,8 @@ class AlertDialogNoAction extends StatelessWidget {
                     )
                   : Lottie.asset(
                       lotties!,
-                      width: 80.0,
-                      height: 80.0,
+                      width: 120.0,
+                      height: 120.0,
                     ),
           Padding(
             padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),

@@ -4,10 +4,12 @@ import 'package:get/instance_manager.dart';
 import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/api/request_apps.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:mmimobile/app/configs/asset_config.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:mmimobile/app/data/models/survey/survey_content_model.dart';
+import 'package:mmimobile/app/widget/alert/alert_dialog_no_action_widget.dart';
 import 'package:mmimobile/app/modules/modules_auth/data/controller/user_controller.dart';
-import 'package:mmimobile/app/widget/snackbar_wiget.dart';
+import 'package:mmimobile/app/widget/alert/alert_dialog_widget.dart';
 
 class RatingServicesController extends GetxController {
   final isLoading = false.obs;
@@ -45,65 +47,114 @@ class RatingServicesController extends GetxController {
   }
 
   Future<bool> sendSurvey() async {
-    final formData = FormData.fromMap({
-      "customer_id": userData.user.customerId.toString(),
-      "master_survey_point": surveyMenuPoint.value.toString(),
-      "master_survey_id": surveyId.value.toString(),
-      "survey_data": surveyData.toList(),
-    });
+    try {
+      final formData = FormData.fromMap({
+        "customer_id": userData.user.customerId.toString(),
+        "master_survey_point": surveyMenuPoint.value,
+        "master_survey_id": surveyId.value,
+        "survey_data": surveyData.toList(),
+      });
 
-    final response =
-        await RequestApp.postFutureDio(ApiApps.saveSurvey, formData);
-    print(response!.data);
+      final response =
+          await RequestApp.postFutureDio(ApiApps.saveSurvey, formData);
+      print(response?.data);
 
-    bool ada = response.data;
+      // NOTE: for validasi
+      if (response != null && response.data['status'] == true) {
+        return true;
+      }
+    } catch (e) {
+      print("Error saat mengirim survey: $e");
+    }
 
-    return ada;
+    return false;
   }
 
-  void submitReview() async {
-    final surveyDetailAssessment = "".obs;
-    final surveyDetailPoint = "".obs;
-    final List<Map<String, dynamic>> data = [];
-    for (int i = 0; i < questionsSurveyRatings.length; i++) {
-      surveyDetailAssessment.value +=
-          "${questionsSurveyRatings[i].masterSurveyDetailAssessment}\n\n";
-      surveyDetailPoint.value += "${ratings[i]}\n\n";
+  void submitReview() {
+    Get.dialog(AlertDialogApps(
+      lotties: AssetConfigFLdev.lottieWarning,
+      postive: true,
+      title: "Anda yakin ?",
+      content: "Sudah yakin dengan penilaian anda ?",
+      onTap: () async {
+        if (ratings.length != questionsSurveyRatings.length) {
+          Get.snackbar(
+            "Review Gagal",
+            "Semua pertanyaan harus diberi rating.",
+            snackPosition: SnackPosition.BOTTOM,
+          );
+          return;
+        }
 
-      // NOTE:
-      data.add({
-        'survey_result_detail_point': ratings[i],
-        'survey_result_detail_desc': "",
-        'survey_result_id': surveyId.value,
-        "master_survey_detail_id":
-            questionsSurveyRatings[i].masterSurveyDetailId,
-        "master_survey_detail_assessment":
-            questionsSurveyRatings[i].masterSurveyDetailAssessment,
-      });
-    }
+        final List<Map<String, dynamic>> data = [];
 
-    surveyData.value = data;
-    final xixi = surveyData;
-    print(xixi.toList());
+        for (int i = 0; i < questionsSurveyRatings.length; i++) {
+          data.add({
+            'survey_result_detail_point': ratings[i],
+            'survey_result_detail_desc': "",
+            'survey_result_id': surveyId.value,
+            "master_survey_detail_id":
+                questionsSurveyRatings[i].masterSurveyDetailId,
+            "master_survey_detail_assessment":
+                questionsSurveyRatings[i].masterSurveyDetailAssessment,
+          });
+        }
 
-    if (xixi.isEmpty) {
-      Get.snackbar(
-        "Review Gagal",
-        // titleText: Text(surveyDetailAssessment.value.toString()),
-        "Gagal",
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-    bool hehe = await sendSurvey();
-    if (hehe) {
-      SnackbarFLdev.snackShow(title: "ijijijijiji", message: "");
-    }
-    // Get.snackbar(
-    //   "Review Dikirim",
-    //   titleText: Text(surveyDetailAssessment.value.toString()),
-    //   surveyDetailPoint.value.toString(),
-    //   snackPosition: SnackPosition.BOTTOM,
-    // );
+        surveyData.assignAll(data); // assign ke RxList
+
+        if (surveyData.isEmpty) {
+          Get.snackbar(
+            "Review Gagal",
+            "Data review tidak boleh kosong",
+            snackPosition: SnackPosition.BOTTOM,
+          );
+          return;
+        }
+
+        // Tampilkan loading sementara submit
+        isLoading.value = true;
+        final success = await sendSurvey();
+        isLoading.value = false;
+
+        if (success) {
+          Get.dialog(AlertDialogNoAction(
+            lotties: AssetConfigFLdev.lottieSuccess,
+            title: "Berhasil",
+            content: "Penilaian berhasil !",
+          ));
+          Future.delayed(
+            Duration(seconds: 4),
+            () => Get.back(),
+          );
+          Future.delayed(
+            Duration(seconds: 6),
+            () {
+              Get.dialog(
+                AlertDialogNoAction(
+                  lotties: AssetConfigFLdev.lottieCupFLdev,
+                  title: 'Anda mendapat ${surveyMenuPoint.value} point',
+                  content:
+                      '${surveyMenuPoint.value} point berhasil ditambahkan',
+                ),
+                barrierDismissible: false,
+              );
+
+              Future.delayed(
+                const Duration(seconds: 3),
+                () => Get.back(), // Tutup dialog
+              );
+            },
+          );
+        } else {
+          Get.snackbar(
+            "Review Gagal",
+            "Gagal mengirim survey, silakan coba lagi.",
+            snackPosition: SnackPosition.BOTTOM,
+          );
+        }
+        Get.back();
+      },
+    ));
   }
 
   fetchSurveyContent() async {
@@ -122,6 +173,7 @@ class RatingServicesController extends GetxController {
             (e) => SurveyContent.fromJson(e),
           )
           .toList();
+
       // NOTE: Initial rating value default
       ratings.assignAll(
           List.generate(questionsSurveyRatings.length, (index) => 3.5));

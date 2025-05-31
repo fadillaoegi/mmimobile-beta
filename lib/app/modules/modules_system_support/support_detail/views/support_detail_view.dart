@@ -6,6 +6,7 @@ import 'package:mmimobile/app/api/api.dart';
 import 'package:mmimobile/app/styles/color.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:mmimobile/app/widget/loading_widget.dart';
 import '../controllers/support_detail_controller.dart';
 import 'package:mmimobile/app/widget/canva_apps_widget.dart';
 import 'package:mmimobile/app/widget/appbar_apps_widget.dart';
@@ -44,14 +45,14 @@ class SupportDetailView extends GetView<SupportDetailController> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  // Text(
-                  //   // "Apakah Anda ingin brand anda lebih dikenal oleh banyak orang? Bergabunglah dengan pelatihan kami, 'Make Up Your Brand,' dan jadikan brand anda menjadi dikenali!",
-                  //   controller.desc.toString(),
-                  //   style: black400.copyWith(fontSize: 16.0),
-                  //   softWrap: true,
-                  //   overflow: TextOverflow.visible,
-                  // ),
-                  Html(data: controller.desc.toString()),
+                  controller.desc.value.isEmpty
+                      ? const Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20.0),
+                            child: LoadingApps(),
+                          ),
+                        )
+                      : Html(data: controller.desc.toString()),
                   const SizedBox(
                     height: 20.0,
                   ),
@@ -86,42 +87,4 @@ class SupportDetailView extends GetView<SupportDetailController> {
       },
     );
   }
-
-  Widget pointList({String value = ""}) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Icon(
-            Icons.panorama_fish_eye,
-            size: 18.0,
-          ),
-          const SizedBox(
-            width: 2.0,
-          ),
-          Text(
-            "$value",
-            style: black400.copyWith(fontSize: 14.0),
-            softWrap: true,
-            overflow: TextOverflow.visible,
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Text(
-  //         "$title:",
-  //         style: black600.copyWith(fontSize: 16.0),
-  //         softWrap: true,
-  //         overflow: TextOverflow.visible,
-  //       ),
-  //       Text("\t\t\t\t"),
-  //       Text(
-  //         "$value",
-  //         style: black400.copyWith(fontSize: 16.0),
-  //         softWrap: true,
-  //         overflow: TextOverflow.visible,
-  //       ),
 }

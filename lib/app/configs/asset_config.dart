@@ -66,6 +66,8 @@ class AssetConfigFLdev {
   static const lottieLogout = "assets/lotties/logoutFldev.json";
   static const lottieWarning = "assets/lotties/warningFldev.json";
   static const lottieSuccess = "assets/lotties/successFldev.json";
+  static const lottieCoinRewardFLdev = "assets/lotties/coinRewardFLdev.json";
+  static const lottieCupFLdev = "assets/lotties/cupFLdev.json";
 
   // NOTE: NETWORKIMAGE
   static const logoNetwork =
