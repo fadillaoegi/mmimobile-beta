@@ -8,6 +8,7 @@ import 'package:mmimobile/app/data/models/survey/survey_menu_model.dart';
 class SurveyController extends GetxController {
   final isLoading = false.obs;
   final listSurveyMenu = <SurveyMenu>[].obs;
+
   @override
   void onInit() {
     super.onInit();

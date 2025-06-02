@@ -79,6 +79,7 @@ class MembershipView extends GetView<MembershipController> {
                                     controller.membershipDataBenefit[index];
                                 return Obx(() => ItemPrivilege(
                                       claimed: controller.privilage.value,
+                                      btnClaim: false,
                                       image:
                                           "${ApiApps.assetPatch}/${membership.customerMembershipFile}",
                                       onTap: () => controller.claimPrivilage(),

@@ -135,8 +135,11 @@ class SignInView extends GetView<SignInController> {
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 6.0,
+                                      height: 20.0,
                                     ),
+                                    // const SizedBox(
+                                    //   height: 6.0,
+                                    // ),
                                     // Row(
                                     //   mainAxisAlignment: MainAxisAlignment.end,
                                     //   children: [
