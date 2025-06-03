@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import '../controllers/faq_controller.dart';
 import 'package:mmimobile/app/styles/fonts.dart';
 import 'package:mmimobile/app/widget/faq/item_faq_widget.dart';
-
-import '../controllers/faq_controller.dart';
 
 class FaqView extends GetView<FaqController> {
   const FaqView({super.key});
@@ -15,7 +15,7 @@ class FaqView extends GetView<FaqController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("FAQ", style: primary600.copyWith(fontSize: 20.0)),
+        title: Text("FAQ", style: secondary600.copyWith(fontSize: 20.0)),
         scrolledUnderElevation: 0.0,
       ),
       body: Container(
